@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "My Wallet",
+    "description": "Blockchain.info My Wallet service packaged in a Chrome Extension!",
+    "container" : "GOOGLE_DRIVE",
+    "api_console_project_id" : "789483738880",
+    "version": "1.3",
+    "icons": {
+        "16": "favicon.ico",
+        "48": "cube48.png",
+        "64": "cube64.png",
+        "128": "cube128.png"
+    },
+    "permissions": [
+        "https://blockchain.info/",
+        "http://blockchain.info/",
+        "*://*.blockchain.info/",
+        "notifications",
+        "unlimitedStorage"
+    ],
+    "app": {
+      "launch": {
+        "local_path": "wallet.html"
+      }
+    },
+    "web_accessible_resources": [
+      "/Resources/cube48.png"
+    ],
+    "homepage_url": "https://blockchain.info/#",
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

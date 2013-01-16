@@ -1,0 +1,44 @@
+.navbar {
+	display:none;
+}
+
+.no-print {
+	display:none;
+}
+
+.nav {
+	display:none;
+}
+
+.quickstart {
+    display:none;
+}
+
+.tabs {
+	display:none;
+}
+
+table {
+	page-break-after:always;
+	border-style:none;
+	border-width:0px;
+}
+
+pre {
+	display: none;
+}
+
+.row-fluid .span2 {
+    display: none;
+}
+
+.row-fluid .span10 {
+    width: 100%;
+}
+
+.container {
+	width:100%;
+	max-width:100%;
+	padding:0px;
+	margin:0px;
+}
