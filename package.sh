@@ -55,6 +55,7 @@ cp $RESOURCE_DIR/android.png ./Resources/
 cp $RESOURCE_DIR/anon-man.png ./Resources/
 cp $RESOURCE_DIR/phone.png ./Resources/
 cp $RESOURCE_DIR/note_grey.png ./Resources/
+cp $RESOURCE_DIR/beep.wav ./Resources/
 
 cp $RESOURCE_DIR/bootstrap-responsive.min.css ./Resources/
 cp $RESOURCE_DIR/bootstrap.min.css ./Resources/
@@ -89,6 +90,7 @@ cp $RESOURCE_DIR/wallet/chrome.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/country_codes.html ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/anonymous-addresses.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/dicegames.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/mnemonic.js ./Resources/wallet/
 
 #icons
 cp $RESOURCE_DIR/cube48.png ./Resources/
