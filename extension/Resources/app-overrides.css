@@ -2,18 +2,6 @@
 	width:250px;
 }
 
-.yubikey { 
-	background: white url("/Resources/yubiright_16x16.gif") no-repeat 4px 4px; 
-	color:green;
-	text-indent:20px;
-}
-
-.google-auth { 
-	background: white url("/Resources/icon_google.png") no-repeat 2px 4px; 
-	color:green;
-	text-indent:20px;
-}
-
 .pointer {
     cursor:pointer;
 }
@@ -118,4 +106,19 @@ input, select {
 	left: 1px;
 	border-color: #e5e5e5;
 	cursor: pointer;
+}
+
+.auth-1 .code,.auth-3 .code {
+    background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;
+}
+
+.auth-2 .code {
+    background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;
+}
+
+.auth-4 .code {
+    background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;
+}
+.auth-5 .code {
+    background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;
 }

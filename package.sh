@@ -1,11 +1,14 @@
 #!/bin/bash          
 
+cd ../
+
+./minify.sh
+
+cd ./My-Wallet-Chrome-Extension/extension
+
 WEB_CONTENT="../../website/WebContent"
 
 RESOURCE_DIR="$WEB_CONTENT/Resources"
-
-
-cd ./extension
 
 wget --no-check-certificate -O wallet.html https://blockchain.info/wallet/extension-template
 
@@ -24,7 +27,7 @@ cp $RESOURCE_DIR/facebook.png ./Resources/
 cp $RESOURCE_DIR/facebook14.png ./Resources/
 cp $RESOURCE_DIR/bitcoin-wallet-app.png ./Resources/
 cp $RESOURCE_DIR/app-store.png ./Resources/
-cp $RESOURCE_DIR/logo_new.png ./Resources/
+cp $RESOURCE_DIR/logo_chrome.png ./Resources/logo_new.png
 cp $RESOURCE_DIR/export_24.png ./Resources/
 cp $RESOURCE_DIR/advanced.png ./Resources/
 cp $RESOURCE_DIR/chart_bar.png ./Resources/
@@ -56,6 +59,10 @@ cp $RESOURCE_DIR/anon-man.png ./Resources/
 cp $RESOURCE_DIR/phone.png ./Resources/
 cp $RESOURCE_DIR/note_grey.png ./Resources/
 cp $RESOURCE_DIR/beep.wav ./Resources/
+cp $RESOURCE_DIR/yubikey_16.gif ./Resources/
+cp $RESOURCE_DIR/email_16.gif ./Resources/
+cp $RESOURCE_DIR/sms_16.png ./Resources/
+cp $RESOURCE_DIR/google_16.png ./Resources/
 
 cp $RESOURCE_DIR/bootstrap-responsive.min.css ./Resources/
 cp $RESOURCE_DIR/bootstrap.min.css ./Resources/
@@ -96,3 +103,5 @@ cp $RESOURCE_DIR/wallet/mnemonic.js ./Resources/wallet/
 cp $RESOURCE_DIR/cube48.png ./Resources/
 cp $RESOURCE_DIR/cube64.png ./Resources/
 cp $RESOURCE_DIR/cube128.png ./Resources/
+
+zip ../Extension.zip *
