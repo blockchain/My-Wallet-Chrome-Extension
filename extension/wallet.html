@@ -6,11 +6,11 @@
     <title>My Wallet - Be Your Own Bank - Blockchain.info</title>
     <meta name="robots" content="noindex">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?b7df1eaa2344a05e" media="only screen"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?b7df1eaa2344a05e" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?ef44b5358e369d5f" media="only screen"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?ef44b5358e369d5f" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-    <link rel="stylesheet" href="/Resources/app-overrides.css?b7df1eaa2344a05e" type="text/css" media="only screen">
-    <link rel="stylesheet" href="/Resources/print.css?b7df1eaa2344a05e" type="text/css" media="print"/>
+    <link rel="stylesheet" href="/Resources/app-overrides.css?ef44b5358e369d5f" type="text/css" media="only screen">
+    <link rel="stylesheet" href="/Resources/print.css?ef44b5358e369d5f" type="text/css" media="print"/>
 
     <style type="text/css">
         .navbar {
@@ -18,12 +18,12 @@
         }
     </style>
 
-    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?b7df1eaa2344a05e" async></script>
-    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?b7df1eaa2344a05e" async></script>
-    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?b7df1eaa2344a05e"></script>
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?ef44b5358e369d5f" async></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?ef44b5358e369d5f" async></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?ef44b5358e369d5f"></script>
 
     
-        <script type="text/javascript" src="/Resources/wallet/chrome.js?b7df1eaa2344a05e"></script>
+        <script type="text/javascript" src="/Resources/wallet/chrome.js?ef44b5358e369d5f"></script>
     
 
     
@@ -31,7 +31,7 @@
     
 </head>
 
-<body data-war-checksum="b7df1eaa2344a05e" data-root="https://blockchain.info/" data-resource="/Resources/">
+<body  data-war-checksum="ef44b5358e369d5f" data-root="https://blockchain.info/" data-resource="/Resources/">
 
     <div class="navbar" style="height:40px;overflow:visible">
         <div class="navbar-inner">
@@ -87,7 +87,7 @@
                 </ul>
 
                 <h6 class="pull-right" id="status-container">
-                    <span style="display: none" class="loading-indicator"><span class="loading-text">Loading</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>&nbsp; Status: <span id="status" class="pop" title="Connection Status" data-content="If disconnected you will need to refresh the page to see new transactions. When connected new transactions will show instantly.">DISCONNECTED</span>
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Loading</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
                 </h6>
             </div>
         </div>
@@ -253,7 +253,7 @@
         <h3>Inactivity Logout</h3>
 
         <p>
-            By default you will be automatically be logged out of your wallet account after 5 minutes of inactivity. You can adjust the timeout period below.
+            By default you will be automatically be logged out of your wallet account after 10 minutes of inactivity. You can adjust the timeout period below.
         </p>
 
         <p style="padding-left:10px">
@@ -338,6 +338,18 @@
 
                 <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
             </div>
+
+
+            <input type="checkbox" value="4"> <b>HTTP Notifications</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>Http Notifications will be sent when transactions are sent or received. Please see developers section for a guide to implementing the callback.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+
+
         </div>
 
         <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 Notifications</b><br/>
@@ -577,7 +589,7 @@
         </div>
 
         <div class="well two-factor t2" style="display:none">
-            <b>Email</b> <br/> You will receive an authentication codes via email.
+            <b>Email</b> <br/> You will receive authentication codes via email.
         </div>
 
         <div class="two-factor t4" style="display:none">
@@ -588,7 +600,7 @@
             </p>
 
             <div class="alert alert-block alert-error">
-                You maybe locked out of your account if you leave this page without pairing with the mobile app or disabling Google Authenticator.
+                You may be locked out of your account if you leave this page without pairing with the mobile app or disabling Google Authenticator.
             </div>
 
             <div id="wallet-google-qr"></div>
@@ -612,6 +624,22 @@
             <div class="sms-unverified well">
                 <p>Enter the code contained within verification sms message.</p>
                 <p class="form-inline"><input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Verify</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Always Keep Browser Backup</h3>
+
+        <p>Enable this option to force a wallet backup to be stored in your browsers local storage even when two factor authentication is enabled. If enabled an attacker with access to your browser would be able to circumvent two factor authentication, however if the wallet is accessed using any other PC or browser it is still protected by two factor authentication.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Always Keep:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
             </div>
         </div>
     </div>
@@ -642,7 +670,6 @@
                 </div>
             </div>
         </div>
-        </p>
     </div>
 
     <div class="page-header">
@@ -738,7 +765,7 @@
             </table>
 
             <div style="text-align:center;padding-top:10px;overflow:hidden" class="no-watch-only">
-                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top"></div>
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
 
                 <div style="display:inline-block;vertical-align:middle;margin-top:5px" class="well">
                     <small>This Is Your Bitcoin Address</small>
@@ -818,10 +845,10 @@
             <p>Backing up your wallet is an important step which is easy to forget. Blockchain.info takes every precaution to keep your wallet safe but it's always better to keep a local copy just in case.</p>
 
             <div class="pull-right btn-group">
-                <button class="btn download-backup-btn">Download</button>
-                <button class="btn" id="dropbox-backup-btn">Dropbox</button>
-                <button class="btn" id="gdrive-backup-btn">Google Drive</button>
-                <button class="btn" id="email-backup-btn">Email</button>
+                <a class="btn download-backup-btn">Download</a>
+                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
+                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
+                <a class="btn" id="email-backup-btn">Email</a>
             </div>
         </div>
     </div>
@@ -893,7 +920,7 @@
 
             <p style="padding-top:10px">Payments received to anonymous addresses will be forwarded to another address in your wallet. Any payments received are sent through the a mixer isolating your personal wallet from the sender. Transactions received to anonymous addresses cannot be linked to your regular wallet. <a href="https://blockchain.info/wallet/send-anonymously" target="new">(More Info)</a></p>
 
-            <p>
+            <p class="well">
                 <b>Anonymous Addresses are valid for one transaction only and incur a 1.5% transaction fee.</b>
             </p>
 
@@ -944,7 +971,7 @@
                     <label class="control-label">Yubikey:</label>
 
                     <div class="controls">
-                        <input class="code yubikey" type="text"/>
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">Select the text box above and press the green LED light on your Yubikey.</p>
                     </div>
@@ -954,7 +981,7 @@
                     <label class="control-label">Email Code:</label>
 
                     <div class="controls">
-                        <input class="code" type="text"/>
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">An email containing a temporary confirmation code has been sent to your account.</p>
                     </div>
@@ -963,7 +990,7 @@
                 <div class="control-group auth-4" style="display:none">
                     <label class="control-label">Google Authenticator:</label>
 
-                    <div class="controls"><input class="code" type="text">
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
 
                         <p class="help-block">Please open your Google Authenticator app and enter the code displayed.</p>
                     </div>
@@ -973,7 +1000,7 @@
                     <label class="control-label">SMS Code:</label>
 
                     <div class="controls">
-                        <input class="code" type="text"/>
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">A text message has been sent to your cell phone. Please enter the code in that message above.</p>
                     </div>
@@ -1017,7 +1044,7 @@
             <p> If you have lost your wallet identifier first check the confirmation email you received during sign up. Can't find the email? Click the button below and we can send you a new one.</p>
 
             <p align="right">
-                <a class="btn btn-secondary" href="https://blockchain.info/wallet/forgot-identifier">Forgotten Identifier</a> <a class="btn btn-secondary" href="https://blockchain.info/wallet/import-wallet">Import Backup</a>
+                <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/forgot-identifier">Forgotten Identifier</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Import Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
             </p>
 
             <h4>Lost Two-factor Authentication Details.</h4>
@@ -1026,7 +1053,7 @@
 
 
             <p align="right">
-                <a class="btn btn-secondary" href="https://blockchain.info/wallet/reset-two-factor?guid=">Reset Two Factor Authentication</a>
+                <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/reset-two-factor?guid=">Reset Two Factor Authentication</a>
             </p>
 
             <h4>Lost Password</h4>
@@ -1034,7 +1061,7 @@
             <p>Your wallet is encrypted by your browser before it reaches us and for this reason we are unable to help recover lost passwords. To avoid any possible monetary loss due to forgotten passwords it is recommended you make a paper backup of your wallet's private keys.</p>
 
             <p align="right">
-                <a class="btn btn-secondary" href="https://blockchain.info/wallet/forgot-password?guid=">Forgot Password</a>
+                <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/forgot-password?guid=">Forgot Password</a>
             </p>
 
             <h4>Need Help?</h4>
@@ -1052,23 +1079,34 @@
 
 <div id="my-transactions" style="display:none;">
     <div class="row-fluid">
-        <div class="span7">
-            <h2>Transactions <small>Summary of your recent transactions</small></h2>
-        </div>
-        <div class="span5" style="text-align:right">
-            <select id="tx_display" style="width: 100px; margin-right: 10px">
-                <option value="0" selected>Compact</option>
-                <option value="1">Detailed</option>
-            </select>
+        <div class="span12">
+            <h2 style="display:inline-block">Transactions <small>Summary of your recent transactions</small></h2>
 
-            <select id="filter" style="width:100px">
-                <option value="0" selected>All</option>
-                <option value="1">Sent</option>
-                <option value="2">Received</option>
-                <option value="4">Escrow</option>
-            </select>
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> View</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> Compact</a></li>
+                        <li><a href="#" data-value="1"> Detailed</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> Export History</a></li>
+                    </ul>
+                </div>
 
-            <img id="export-history" src="/Resources/export_24.png" class="hidden-phone" style="padding-bottom:5px;padding-left:5px" alt="Export History">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> Filter</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> All</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Sent</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Received</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> Escrow</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
         </div>
     </div>
 
@@ -1129,7 +1167,7 @@
                     <label class="control-label pop" title="To Address" data-content="This is the Bitcoin Address of the recipient.">To:</label>
 
                     <div class="controls">
-                        <input placeholder="Bitcoin Address" name="send-to-address" type="text"/>
+                        <span class="qrcodeicon" /><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">Enter The Bitcoin Address of the Recipient</p>
                     </div>
@@ -1274,7 +1312,7 @@
                         <label class="control-label pop" title="To Address" data-content="This is the Bitcoin Address of the recipient.">To:</label>
 
                         <div class="controls">
-                            <input placeholder="Bitcoin Address" name="send-to-address" type="text"/>
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">Enter The Bitcoin Address of the Recipient</p>
                         </div>
@@ -1329,7 +1367,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <input placeholder="Bitcoin Address" name="send-to-address" type="text"/>
+                    <span class="qrcodeicon" /><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on">BTC</span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1982,14 +2020,15 @@ rpcssl=0
     </div>
 </div>
 
-<div id="qr-code-modal" class="modal hide">
+<div id="qr-code-modal" class="modal hide" style="width:400px">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Address QR Code <small class="address"></small></h3>
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>Address QR Code <small class="address"></small></h3>
     </div>
-    <div class="modal-body center" style="text-align:center">
-        <p class="address-qr-code"></p>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
     </div>
+
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Close</button>
@@ -2034,9 +2073,9 @@ rpcssl=0
         <h3>Address Not Saved</h3>
     </div>
     <div class="modal-body">
-        <p>This Address has not been saved on our servers yet and maybe lost after leaving this page.</p>
+        <p>This Address has not been saved on our servers yet and may be lost after leaving this page.</p>
 
-        <p><b>This Address has not been saved on our servers yet and maybe lost after leaving this page.</b></p>
+        <p><b>This Address has not been saved on our servers yet and may be lost after leaving this page.</b></p>
     </div>
 
     <div class="modal-footer">
@@ -2261,15 +2300,9 @@ rpcssl=0
     <div class="modal-body">
         <p>This action requires the private key of bitcoin address <span class="address" style="font-weight:bold"></span>. Please enter the private key below.</p>
 
-        <h5>Enter Manually</h5>
-
-        <p style="margin-top:10px;margin-left:45px;">
-            <input placeholder="Private Key" name="key" type="text"/>
-        </p>
-
-        <h5>Scan Using Webcam</h5>
-
-        <div id="qr-code-reader" style="width:300px;margin:0 auto;"></div>
+        <div style="margin:0 auto;width:400px">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
     </div>
 
     <div class="modal-footer">
@@ -2280,7 +2313,58 @@ rpcssl=0
     </div>
 </div>
 
+<div id="qr-code-reader-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Scan QR Code</h3>
+    </div>
 
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div class="qr-code-reader" style="width:320px;height:240px;margin:0 auto;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Restore Backup Instructions</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+           <ul>
+              <li>Download the <a href="https://blockchain.info/r?https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+</div>
 
 
 </body>

@@ -10,7 +10,7 @@ WEB_CONTENT="../../website/WebContent"
 
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
-wget --no-check-certificate -O wallet.html https://blockchain.info/wallet/extension-template
+wget --no-check-certificate -O wallet.html 'https://blockchain.info/wallet/extension-template?resource_relative=true&type=chrome'
 
 #Copy Favicon
 cp $WEB_CONTENT/favicon.ico ./
@@ -28,9 +28,9 @@ cp $RESOURCE_DIR/facebook14.png ./Resources/
 cp $RESOURCE_DIR/bitcoin-wallet-app.png ./Resources/
 cp $RESOURCE_DIR/app-store.png ./Resources/
 cp $RESOURCE_DIR/logo_chrome.png ./Resources/logo_new.png
-cp $RESOURCE_DIR/export_24.png ./Resources/
 cp $RESOURCE_DIR/advanced.png ./Resources/
 cp $RESOURCE_DIR/chart_bar.png ./Resources/
+cp $RESOURCE_DIR/qrcode.png ./Resources/
 cp $RESOURCE_DIR/ajax-loader.gif ./Resources/
 cp $RESOURCE_DIR/remove.png ./Resources/
 cp $RESOURCE_DIR/external.png ./Resources/
@@ -50,6 +50,8 @@ cp $RESOURCE_DIR/down_red.png ./Resources/
 cp $RESOURCE_DIR/cash_deposit_large.png ./Resources/
 cp $RESOURCE_DIR/network.png ./Resources/
 cp $RESOURCE_DIR/logout.png ./Resources/
+cp $RESOURCE_DIR/logout-orange.png ./Resources/
+cp $RESOURCE_DIR/logout-red.png ./Resources/
 cp $RESOURCE_DIR/sms.png ./Resources/
 cp $RESOURCE_DIR/twitter.png ./Resources/
 cp $RESOURCE_DIR/twitter-200.png ./Resources/
@@ -84,8 +86,8 @@ cp $RESOURCE_DIR/wallet/bitcoinjs.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/wallet.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/signer.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/llqrcode.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/jquery.qrcode.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/qr.code.reader.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/qr.code.creator.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/import-export.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/account.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/frame-modal.js ./Resources/wallet/
@@ -98,10 +100,12 @@ cp $RESOURCE_DIR/wallet/country_codes.html ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/anonymous-addresses.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/dicegames.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/mnemonic.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/jsuri-1.1.1.min.js ./Resources/wallet/
+
 
 #icons
 cp $RESOURCE_DIR/cube48.png ./Resources/
 cp $RESOURCE_DIR/cube64.png ./Resources/
 cp $RESOURCE_DIR/cube128.png ./Resources/
 
-zip ../Extension.zip *
+zip -r ../Extension.zip *

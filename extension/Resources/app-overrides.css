@@ -11,6 +11,26 @@
     font-size: 18px;
 }
 
+span.qrcodeicon {
+    position: relative;
+}
+
+span.qrcodeicon span {
+    position: absolute;
+    display: block;
+    top: 1px;
+    right: 6px;
+    width: 16px;
+    height: 16px;
+    background: url('/Resources/qrcode.png');
+    cursor: pointer;
+    z-index: 1;
+}
+span.qrcodeicon input {
+    padding-right: 16px;
+    z-index: 0;
+}
+
 @media (max-width: 767px) {
     .primary-address {
         font-size: 16px;
@@ -40,9 +60,14 @@ label {
 	font-weight:bold;
 }
 
-input, select {
+input {
 	width:100%;
-	max-width:290px;
+	max-width:270px;
+}
+
+select {
+    width:100%;
+    max-width:278px;
 }
 
 /** Virtual Keyboard **/
@@ -106,19 +131,4 @@ input, select {
 	left: 1px;
 	border-color: #e5e5e5;
 	cursor: pointer;
-}
-
-.auth-1 .code,.auth-3 .code {
-    background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;
-}
-
-.auth-2 .code {
-    background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;
-}
-
-.auth-4 .code {
-    background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;
-}
-.auth-5 .code {
-    background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;
 }

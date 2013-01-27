@@ -4,7 +4,7 @@
     "description": "Blockchain.info My Wallet service packaged in a Chrome Extension!",
     "container" : "GOOGLE_DRIVE",
     "api_console_project_id" : "789483738880",
-    "version": "1.5",
+    "version": "2.1",
     "icons": {
         "16": "favicon.ico",
         "48": "cube48.png",
@@ -26,6 +26,5 @@
     "web_accessible_resources": [
       "/Resources/cube48.png"
     ],
-    "homepage_url": "https://blockchain.info/#",
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "homepage_url": "https://blockchain.info/"
 }
