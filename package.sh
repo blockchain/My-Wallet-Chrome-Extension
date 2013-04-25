@@ -77,6 +77,7 @@ cp $RESOURCE_DIR/app-overrides.css ./Resources/
 mkdir ./Resources/flags/
 cp $RESOURCE_DIR/flags/us.png ./Resources/flags/
 cp $RESOURCE_DIR/flags/gb.png ./Resources/flags/
+cp $RESOURCE_DIR/flags/eu.png ./Resources/flags/
 
 #wallet resource
 mkdir ./Resources/wallet/
@@ -85,6 +86,7 @@ cp $RESOURCE_DIR/wallet/shared.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/bitcoinjs.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/wallet.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/signer.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/electrum.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/llqrcode.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jquery.qrcode.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/qr.code.reader.js ./Resources/wallet/

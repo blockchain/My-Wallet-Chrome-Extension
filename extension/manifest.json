@@ -4,7 +4,7 @@
     "description": "Blockchain.info My Wallet service packaged in a Chrome Extension!",
     "container" : "GOOGLE_DRIVE",
     "api_console_project_id" : "789483738880",
-    "version": "2.1",
+    "version": "2.5",
     "icons": {
         "16": "favicon.ico",
         "48": "cube48.png",
@@ -15,6 +15,7 @@
         "https://blockchain.info/",
         "http://blockchain.info/",
         "*://*.blockchain.info/",
+        "http://ecdsa.org:8081/",
         "notifications",
         "unlimitedStorage"
     ],

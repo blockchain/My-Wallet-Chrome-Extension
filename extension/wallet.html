@@ -6,11 +6,11 @@
     <title>My Wallet - Be Your Own Bank - Blockchain.info</title>
     <meta name="robots" content="noindex">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?ef44b5358e369d5f" media="only screen"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?ef44b5358e369d5f" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="Resources/bootstrap.min.css"><link rel="stylesheet" href="Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="Resources/overrides.min.css?"><script src="Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="Resources/wallet/bootstrap.min.js"></script><script src="Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-    <link rel="stylesheet" href="/Resources/app-overrides.css?ef44b5358e369d5f" type="text/css" media="only screen">
-    <link rel="stylesheet" href="/Resources/print.css?ef44b5358e369d5f" type="text/css" media="print"/>
+    <link rel="stylesheet" href="Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="Resources/print.css?" type="text/css" media="print"/>
 
     <style type="text/css">
         .navbar {
@@ -18,30 +18,28 @@
         }
     </style>
 
-    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?ef44b5358e369d5f" async></script>
-    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?ef44b5358e369d5f" async></script>
-    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?ef44b5358e369d5f"></script>
+    <script type="text/javascript" src="Resources/wallet/bitcoinjs.min.js?" async></script>
+    <script type="text/javascript" src="Resources/wallet/blockchainapi.min.js?" async></script>
+    <script type="text/javascript" src="Resources/wallet/wallet.min.js?"></script>
 
+    <script type="text/javascript" src="Resources/wallet/chrome.js?"></script>
     
-        <script type="text/javascript" src="/Resources/wallet/chrome.js?ef44b5358e369d5f"></script>
     
-
-    
-
     
 </head>
 
-<body  data-war-checksum="ef44b5358e369d5f" data-root="https://blockchain.info/" data-resource="/Resources/">
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="Resources/">
 
     <div class="navbar" style="height:40px;overflow:visible">
-        <div class="navbar-inner">
+        <div class="navbar-inner" style="height:43px;">
             <div class="container">
-                <div class="logo hidden-phone hidden-tablet"><a href="https://blockchain.info/"><img border="0" src="/Resources/logo_new.png" alt="Bitcoin block explorer and currency statistics"/></a></div>
+                <div class="logo hidden-phone hidden-tablet"><a href="https://blockchain.info/"><img border="0" src="Resources/logo_new.png" alt="Bitcoin block explorer and currency statistics"/></a></div>
 
                 <ul class="nav">
                     <li><a href="https://blockchain.info/" title="Blockchain.info Home">Home</a></li>
                     <li><a href="https://blockchain.info/charts" title="Bitcoin Charts">Charts</a></li>
                     <li><a href="https://blockchain.info/stats" title="Bitcoin Stats">Stats</a></li>
+                    <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Markets">Markets</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Developer Tools">Developers</a></li>
                     <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin Wallet">Wallet</a></li>
                 </ul>
@@ -52,8 +50,8 @@
 
                 
                     <div class="hidden-phone pull-right" style="padding-top:9px">
-                        <img src="/Resources/refresh.png" id="refresh">
-                        <img src="/Resources/logout.png" id="logout" style="padding-left:9px">
+                        <img src="Resources/refresh.png" id="refresh">
+                        <img src="Resources/logout.png" id="logout" style="padding-left:9px">
                     </div>
                 
             </div>
@@ -87,7 +85,7 @@
                 </ul>
 
                 <h6 class="pull-right" id="status-container">
-                    <span style="display: none" class="loading-indicator"><span class="loading-text">Loading</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Loading</span> <img style="vertical-align:middle" src="Resources/ajax-loader.gif"></span>
                 </h6>
             </div>
         </div>
@@ -348,7 +346,11 @@
                 <input placeholder="Http URL" id="wallet-http-url" type="text"/>
             </div>
 
+            <input type="checkbox" value="128"> <b>Android Notifications</b><br/>
 
+            <div class="well type-128" style="display:none">
+                <p>You will receive notifications to your android device once paired.</p>
+            </div>
 
         </div>
 
@@ -557,6 +559,28 @@
             </div>
         </div>
     </div>
+
+    <div class="page-header hidden">
+        <h3>PBKDF2 Iterations</h3>
+
+        <p>PBKDF2 is a function which stretches your password increasing the effort required to bruteforce it. A higher number of iterations is better however you may notice a slow down of your browser.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iterations:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-security">
@@ -673,6 +697,22 @@
     </div>
 
     <div class="page-header">
+        <h3>Block TOR ip addresses</h3>
+
+        <p>
+            Enable the following option to prevent ip addresses part of the TOR anonymizing network from accessing your wallet.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Enable / Disable:</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
         <h3>Restrict To IP</h3>
 
         <p>
@@ -736,7 +776,7 @@
                     <td><span id="summary-n-tx">0</span></td>
                     <td>
                         <div class="img">
-                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                            <img src="Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
                         </div>
                     </td>
                 </tr>
@@ -745,7 +785,7 @@
                     <td><span id="summary-received">0</span></td>
                     <td>
                         <div class="img">
-                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                            <img src="Resources/chart_bar.png" id="summary-received-chart">
                         </div>
                     </td>
                 </tr>
@@ -758,7 +798,7 @@
                     <td><span id="summary-balance">0</span></td>
                     <td>
                         <div class="img">
-                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                            <img src="Resources/chart_bar.png" id="summary-balance-chart">
                         </div>
                     </td>
                 </tr>
@@ -784,17 +824,16 @@
 
                 <div class="no-watch-only">
                     <ul id="myTab" class="nav nav-tabs">
-                        <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
-                        <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
+                        <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="Resources/flags/us.png"> US</a></li>
+                        <li ><a href="#deposit-uk" data-toggle="tab"><img src="Resources/flags/gb.png"> UK</a></li>
+                        <li ><a href="#deposit-eu" data-toggle="tab"><img src="Resources/flags/eu.png"> EU</a></li>
                         <li ><a href="#deposit-other" data-toggle="tab">Other</a></li>
-
-                        <h3 class="pull-right hidden-phone">Deposit & Withdraw</h3>
                     </ul>
 
                     <div class="tab-content page-header">
                         <p>The quickest and easiest way to deposit bitcoins into your account is to use the services below.</p>
 
-                        <div class="tab-pane active" id="deposit-us" style="text-align:right">
+                        <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
                                 <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Cash Deposit</button>
                             
@@ -806,22 +845,23 @@
                             
                         </div>
 
-                        <div class="tab-pane" id="deposit-uk" style="text-align:right">
-                            
-                                <button class="btn btn-primary deposit-btn" data-type="sofort" data-title="Deposit Using Sofort Banking" data-link="https://blockchain.info/wallet/deposit-sofort-banking">Sofort Banking</button>
+                        <div class="tab-pane" style="text-align:right" id="deposit-uk">
                             
                             
-                                <button class="btn btn-primary deposit-btn" data-type="uk_bank" data-title="Deposit Using Faster Payments" data-link="https://blockchain.info/wallet/deposit-bank-transfer">Bank Transfer</button>
-                            
-                            
-                                <button class="btn btn-primary deposit-btn" data-type="pingit" data-title="Deposit Using Barclays Pingit" data-link="https://blockchain.info/wallet/deposit-pingit">PingIt Deposit</button>
                             
                             
                                 
                             
                         </div>
 
-                        <div class="tab-pane" id="deposit-other" style="text-align:right">
+                        <div class="tab-pane" style="text-align:right" id="deposit-eu">
+                            
+                            
+                                <button class="btn btn-primary deposit-btn" data-type="sms" data-title="Deposit Using Phone/SMS" data-link="https://blockchain.info/wallet/sms-phone-deposits">Phone Deposit</button>
+                            
+                        </div>
+
+                        <div class="tab-pane" id="deposit-other">
                             
                                 <button class="btn btn-primary deposit-btn" data-type="sms" data-title="Deposit Using Phone/SMS" data-link="https://blockchain.info/wallet/sms-phone-deposits">Phone Deposit</button>
                             
@@ -861,7 +901,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Active</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Archived</a></li>
-        <li><a href="#anonymous-addresses" data-toggle="tab">Anonymous</a></li>
+        <li><a href="#shared-addresses" data-toggle="tab">Shared</a></li>
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -915,13 +955,13 @@
             </div>
         </div>
 
-        <div class="tab-pane" id="anonymous-addresses">
-            <h3>Anonymous Addresses</h3>
+        <div class="tab-pane" id="shared-addresses">
+            <h3>Shared Addresses</h3>
 
-            <p style="padding-top:10px">Payments received to anonymous addresses will be forwarded to another address in your wallet. Any payments received are sent through the a mixer isolating your personal wallet from the sender. Transactions received to anonymous addresses cannot be linked to your regular wallet. <a href="https://blockchain.info/wallet/send-anonymously" target="new">(More Info)</a></p>
+            <p style="padding-top:10px">Shared addresses are designed to receive payment you wish to keep private. Any payments received are sent through a shared wallet breaking the chain of transactions. <a href="https://blockchain.info/wallet/send-shared" target="new">(More Info)</a></p>
 
             <p class="well">
-                <b>Anonymous Addresses are valid for one transaction only and incur a 1.5% transaction fee.</b>
+                <b>Shared Addresses are valid for one transaction only and incur a 0.5% transaction fee.</b>
             </p>
 
             <table class="table table-striped">
@@ -934,7 +974,7 @@
                 <tbody></tbody>
                 </thead>
             </table>
-            <button class="btn btn-success pull-right" id="anonymous-address" style="margin:5px">New Anonymous Address</button>
+            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">New Shared Address</button>
         </div>
     </div>
 </div>
@@ -942,6 +982,7 @@
 <div style="display: none;" id="restore-wallet">
 
     
+
     
 
     
@@ -971,7 +1012,7 @@
                     <label class="control-label">Yubikey:</label>
 
                     <div class="controls">
-                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                        <input class="code yubikey" style=" background: white url(Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">Select the text box above and press the green LED light on your Yubikey.</p>
                     </div>
@@ -981,7 +1022,7 @@
                     <label class="control-label">Email Code:</label>
 
                     <div class="controls">
-                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                        <input class="code" style="background: white url(Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">An email containing a temporary confirmation code has been sent to your account.</p>
                     </div>
@@ -990,7 +1031,7 @@
                 <div class="control-group auth-4" style="display:none">
                     <label class="control-label">Google Authenticator:</label>
 
-                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    <div class="controls"><input class="code" style="background: white url(Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
 
                         <p class="help-block">Please open your Google Authenticator app and enter the code displayed.</p>
                     </div>
@@ -1000,7 +1041,7 @@
                     <label class="control-label">SMS Code:</label>
 
                     <div class="controls">
-                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                        <input class="code" style="background: white url(Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">A text message has been sent to your cell phone. Please enter the code in that message above.</p>
                     </div>
@@ -1053,7 +1094,7 @@
 
 
             <p align="right">
-                <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/reset-two-factor?guid=">Reset Two Factor Authentication</a>
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn" disabled="true">Reset Two Factor Authentication</a>
             </p>
 
             <h4>Lost Password</h4>
@@ -1061,7 +1102,7 @@
             <p>Your wallet is encrypted by your browser before it reaches us and for this reason we are unable to help recover lost passwords. To avoid any possible monetary loss due to forgotten passwords it is recommended you make a paper backup of your wallet's private keys.</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/forgot-password?guid=">Forgot Password</a>
+                <a class="btn btn-small btn-secondary" id="forgot-password-btn" disabled="true">Forgot Password</a>
             </p>
 
             <h4>Need Help?</h4>
@@ -1132,15 +1173,15 @@
             <li class="nav-header">Transaction Type</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Quick Send</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Custom</a></li>
-            <li><a href="#send-anonymous" data-toggle="tab"><i class="icon-random"></i> Anonymous</a></li>
+            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Shared Send</a></li>
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
 
             <li class="nav-header">Send Via</li>
             <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Email</a></li>
-            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS Message</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('Resources/sms.png');width:16px;background-position: 0px"></i> SMS Message</a></li>
 
             <li class="nav-header">Games</li>
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
             
 
             <li class="divider"></li>
@@ -1205,13 +1246,13 @@
 </div>
 
 <div class="tab-pane well" id="send-sms">
-    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="Resources/info.png"></a>
 
     <h4 class="page-header">Send Via SMS<br/><small>Use the form below to send bitcoin's via SMS.</small></h4>
 
     <div class="form-horizontal">
         <div class="controls">
-            <img src="/Resources/phone.png" style="padding-bottom:25px">
+            <img src="Resources/phone.png" style="padding-bottom:25px">
         </div>
 
         <div class="recipient-container">
@@ -1251,13 +1292,13 @@
 </div>
 
 <div class="tab-pane well" id="send-email">
-    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="Resources/info.png"></a>
 
     <h4 class="page-header">Send Via Email<br/><small>Use the form below to send bitcoin's to an email address.</small></h4>
 
     <div class="form-horizontal">
         <div class="controls">
-            <img src="/Resources/email.png" style="padding-bottom:25px">
+            <img src="Resources/email.png" style="padding-bottom:25px">
         </div>
 
         <div class="recipient-container">
@@ -1295,17 +1336,13 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-anonymous">
+<div class="tab-pane" id="send-shared">
     <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-anonymously" target="blank"><img src="/Resources/info.png"></a>
+        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="Resources/info.png"></a>
 
-        <h4 class="page-header">Send Anonymously<br/><small>Use Send Anonymously to guarantee the transaction cannot be traced between sender and receiver.</small></h4>
+        <h4 class="page-header">Send Shared<br/><small>Send shared routes transactions through a shared wallet for increased privacy.</small></h4>
 
         <div class="form-horizontal">
-            <div class="controls">
-                <img src="/Resources/anon-man.png" style="padding-bottom:25px">
-            </div>
-
             <div class="recipient-container">
                 <div class="recipient">
                     <div class="control-group">
@@ -1327,11 +1364,11 @@
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
-                            <p class="help-block fees"> Including fees the total of this transaction is <span class="anonymous-fees">0.00</span></p>
+                            <p class="help-block fees"> Including fees the total of this transaction is <span class="shared-fees">0.00</span></p>
 
-                            <p class="help-block bonus">The mixer is currently paying a bonus for fresh coins. There will be no fees for this transaction and a bonus of <span class="bonus-value">0.00</span> BTC will be paid.</p>
+                            <p class="help-block bonus">There will be no fees for this transaction and a bonus of <span class="bonus-value">0.00</span> BTC will be paid.</p>
 
-                            <p class="help-block free">The mixer is currently free of charge.</p>
+                            <p class="help-block free">Shared send is currently free of charge.</p>
                         </div>
                     </div>
                 </div>
@@ -1340,7 +1377,7 @@
             <div class="form-actions">
                 <button class="send btn btn-primary pop" title="Review Payment" data-content="Click Here to review payment. You will be able to confirm or cancel the transaction.">Review Payment</button>
 
-                <p class="help-block fees">All Anonymous transactions incur a <span class="mixer_fee">1.5</span>% Fee.</p>
+                <p class="help-block fees">All shared transactions incur a <span class="mixer_fee">0.5</span>% Fee.</p>
 
                 <div class="progress" style="display:none;">
                     <div class="bar" style="width:10%"></div>
@@ -1383,7 +1420,7 @@
                 </div>
 
                 <div style="float:right;padding-right:20px">
-                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Remove Recipient" data-content="Remove the last recipient."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Add Recipient" data-content="If you want to send bitcoins to multiple recipients at once click here to add another address"/>
+                    <img src="Resources/remove.png" class="pop remove-recipient" style="display:none" title="Remove Recipient" data-content="Remove the last recipient."/> &nbsp; <img src="Resources/add.png" class="pop add-recipient" title="Add Recipient" data-content="If you want to send bitcoins to multiple recipients at once click here to add another address"/>
                 </div>
             </div>
         </div>
@@ -1430,7 +1467,7 @@
 
             <div class="form-horizontal">
                 <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
+                    <img src="Resources/satoshi_dice.png" style="padding-bottom:25px">
                 </div>
 
                 <div class="recipient-container"></div>
@@ -1644,7 +1681,7 @@
         <h3>Step 1. Install The Browser Extension</h3>
 
         <p>
-            Please install the <a href="https://blockchain.info/r?url=https://chrome.google.com/webstore/detail/nknfighfndfaahebfedlkgfifjfjgbjk">My Wallet RPC Extension</a> available for Google Chrome or the <a href="https://blockchain.info/wallet/verifier" target="new">My Wallet Verifier Extension</a> available for Mozilla Firefox and Apple Safari (V >= 1.9 required).
+            Please install the <a href="https://blockchain.info/r?url=https://chrome.google.com/webstore/detail/nknfighfndfaahebfedlkgfifjfjgbjk">My Wallet RPC Extension</a> available for Google Chrome.
         </p>
 
         <p> Once installed please refresh this page.</p>
@@ -2070,12 +2107,10 @@ rpcssl=0
 <div id="not-synced-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Address Not Saved</h3>
+        <h3 style="color:red;">Address Not Saved</h3>
     </div>
     <div class="modal-body">
-        <p>This Address has not been saved on our servers yet and may be lost after leaving this page.</p>
-
-        <p><b>This Address has not been saved on our servers yet and may be lost after leaving this page.</b></p>
+        <p>A newly generated address has not been saved on our servers yet. <span style="color:red;font-weight:bold;">Unless the private key is saved elsewhere any coins sent to un-synced addresses will be permanently lost after logout</span></p>
     </div>
 
     <div class="modal-footer">
@@ -2088,7 +2123,7 @@ rpcssl=0
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Watch Only Address Warning</h3>
+        <h3 style="color:red;">Watch Only Address Warning</h3>
     </div>
     <div class="modal-body">
         <p>You are receiving this warning because you have copied a <font color="red">Watch Only</font> address to the clipboard.</p>
@@ -2157,23 +2192,44 @@ rpcssl=0
 </div>
 
 
-<div id="ask-for-anonymous" class="modal hide">
+<div id="ask-for-shared" class="modal hide">
     <div class="modal-header">
-        <h3>Send Anonymously?</h3>
+        <h3>Send Shared?</h3>
     </div>
     <div class="modal-body">
-        <p>Our bitcoin mixer needs your coins. Send this transaction anonymously and get a<span class="bonus-percent"></span>% bonus</b> (<span class="bonus-value"></span> BTC will be sent back to the sending address). The transaction will incur a delay of approximately <span class="delay"></span>.</p>
+        <p>Send this transaction through the shared wallet and get a<span class="bonus-percent"></span>% bonus</b> (<span class="bonus-value"></span> BTC will be sent back to the sending address). The transaction will incur a delay of approximately <span class="delay"></span>.</p>
 
         <div class="alert alert-block alert-error" style="margin: 10px;">
-            Do not accept if you expect to receive payment back to the sending address. Anonymous transactions are incompatible with SatoshiDICE, BitLotto and many other bitcoin games.
+            Do not accept if you expect to receive payment back to the sending address. Shared transactions are incompatible with SatoshiDICE, BitLotto and many other bitcoin games.
         </div>
     </div>
     <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="anonymous-never-ask">Never ask me again.</div>
+        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Never ask me again.</div>
 
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Continue Without</button>
-            <button class="btn btn-primary">Send Anonymously?</button>
+            <button class="btn btn-primary">Send Shared?</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>Insufficient Funds</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>This transaction cannot be sent because there are insufficent funds available. This may be due to additional miners fees or unconfirmed transactions.</p>
+
+        <p>The transaction can either be cancelled. Or the amount to send can be adjusted to match the maximum amount available to send.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">Required: <span class="amount-required"></span> BTC (Available: <span class="amount-available"></span> BTC)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Cancel Transaction</button>
+            <button class="btn btn-primary">Adjust Amount</button>
         </div>
     </div>
 </div>
@@ -2194,6 +2250,7 @@ rpcssl=0
     </div>
 </div>
 
+
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
         <h3>Creating Transaction</h3>
@@ -2202,7 +2259,7 @@ rpcssl=0
     <div class="modal-body">
 
         <p align="center" class="loading-indicator" style="display:none;">
-            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+            <img src="Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
         </p>
 
         <div class="offline-transaction" style="display:none">
@@ -2350,7 +2407,7 @@ rpcssl=0
 
         <p>
            <ul>
-              <li>Download the <a href="https://blockchain.info/r?https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
               <li>Launch the application. Choose Tools -> Import Private Keys.</li>
               <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
               <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
