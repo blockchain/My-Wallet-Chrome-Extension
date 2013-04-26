@@ -438,7 +438,13 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <div id="device-qr-code"></div>
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -471,7 +477,7 @@
                             <h5 class="page-header">Main Password Mnemonic</h5>
 
                             <span style="font-size:14px"></span>
-                       </div>
+                        </div>
 
                         <div id="password_mnemonic2">
                             <h5 class="page-header">Second Password Mnemonic</h5>
@@ -607,9 +613,11 @@
         <div class="well two-factor t1 t3" style="display:none">
             <b>Yubikey</b> <br/> To pair your key with your account select the text box below and press the green LED button on your yubikey device.
 
-            <p>
-                <input class="yubikey" id="wallet-yubikey" type="text"/>
-            </p>
+            <div class="controls">
+                <input class="code yubikey" style=" background: white url(Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">Select the text box above and press the green LED light on your Yubikey.</p>
+            </div>
         </div>
 
         <div class="well two-factor t2" style="display:none">
@@ -617,17 +625,25 @@
         </div>
 
         <div class="two-factor t4" style="display:none">
-            <b>Google Authenticator</b>
-
-            <p>
-                Open the Google Authenticator app and scan the QR code below to complete the pairing process.
+            <p class="well">
+                Google Authenticator is enabled
             </p>
 
-            <div class="alert alert-block alert-error">
-                You may be locked out of your account if you leave this page without pairing with the mobile app or disabling Google Authenticator.
-            </div>
+            <div style="display:none">
+                <p>
+                    Open the Google Authenticator app and scan the QR code below to complete the pairing process.
+                </p>
 
-            <div id="wallet-google-qr"></div>
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>After scanning the above QR code with the google authenticator app enter the authentication code below:</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="two-factor t5 well" style="display:none">
@@ -857,13 +873,9 @@
                         <div class="tab-pane" style="text-align:right" id="deposit-eu">
                             
                             
-                                <button class="btn btn-primary deposit-btn" data-type="sms" data-title="Deposit Using Phone/SMS" data-link="https://blockchain.info/wallet/sms-phone-deposits">Phone Deposit</button>
-                            
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
-                            
-                                <button class="btn btn-primary deposit-btn" data-type="sms" data-title="Deposit Using Phone/SMS" data-link="https://blockchain.info/wallet/sms-phone-deposits">Phone Deposit</button>
                             
                         </div>
                     </div>
