@@ -101,7 +101,7 @@ cp $RESOURCE_DIR/wallet/chrome.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/country_codes.html ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/anonymous-addresses.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/dicegames.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/mnemonic.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/mnemonic.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jsuri-1.1.1.min.js ./Resources/wallet/
 
 
