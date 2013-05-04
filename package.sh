@@ -10,7 +10,7 @@ WEB_CONTENT="../../website/WebContent"
 
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
-wget --no-check-certificate -O wallet.html 'https://blockchain.info/wallet/extension-template?resource_relative=true&type=chrome'
+wget --no-check-certificate -O wallet.html 'https://blockchain.info/wallet/extension-template?resource_relative=false&type=chrome'
 
 #Copy Favicon
 cp $WEB_CONTENT/favicon.ico ./

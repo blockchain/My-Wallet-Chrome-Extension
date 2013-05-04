@@ -6,11 +6,11 @@
     <title>My Wallet - Be Your Own Bank - Blockchain.info</title>
     <meta name="robots" content="noindex">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="Resources/bootstrap.min.css"><link rel="stylesheet" href="Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="Resources/overrides.min.css?"><script src="Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="Resources/wallet/bootstrap.min.js"></script><script src="Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-    <link rel="stylesheet" href="Resources/app-overrides.css?" type="text/css">
-    <link rel="stylesheet" href="Resources/print.css?" type="text/css" media="print"/>
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
 
     <style type="text/css">
         .navbar {
@@ -18,22 +18,22 @@
         }
     </style>
 
-    <script type="text/javascript" src="Resources/wallet/bitcoinjs.min.js?" async></script>
-    <script type="text/javascript" src="Resources/wallet/blockchainapi.min.js?" async></script>
-    <script type="text/javascript" src="Resources/wallet/wallet.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?" async></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?" async></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
-    <script type="text/javascript" src="Resources/wallet/chrome.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
     
 </head>
 
-<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="Resources/">
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/">
 
     <div class="navbar" style="height:40px;overflow:visible">
         <div class="navbar-inner" style="height:43px;">
             <div class="container">
-                <div class="logo hidden-phone hidden-tablet"><a href="https://blockchain.info/"><img border="0" src="Resources/logo_new.png" alt="Bitcoin block explorer and currency statistics"/></a></div>
+                <div class="logo hidden-phone hidden-tablet"><a href="https://blockchain.info/"><img border="0" src="/Resources/logo_new.png" alt="Bitcoin block explorer and currency statistics"/></a></div>
 
                 <ul class="nav">
                     <li><a href="https://blockchain.info/" title="Blockchain.info Home">Home</a></li>
@@ -50,8 +50,8 @@
 
                 
                     <div class="hidden-phone pull-right" style="padding-top:9px">
-                        <img src="Resources/refresh.png" id="refresh">
-                        <img src="Resources/logout.png" id="logout" style="padding-left:9px">
+                        <img src="/Resources/refresh.png" id="refresh">
+                        <img src="/Resources/logout.png" id="logout" style="padding-left:9px">
                     </div>
                 
             </div>
@@ -85,7 +85,7 @@
                 </ul>
 
                 <h6 class="pull-right" id="status-container">
-                    <span style="display: none" class="loading-indicator"><span class="loading-text">Loading</span> <img style="vertical-align:middle" src="Resources/ajax-loader.gif"></span>
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Loading</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
                 </h6>
             </div>
         </div>
@@ -149,11 +149,11 @@
             <input placeholder="Your Email" id="wallet-email" type="text"/>
         </p>
 
-        <p id="email-verified">
+        <p class="email-verified">
             <font color="green">Email Verified</font>
         </p>
 
-        <div id="verify-email">
+        <div class="email-unverified">
             <b>Email Verification Code:</b><br/><br/>
 
             <div class="form-inline">
@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    <div class="page-header">
+    <div class="page-header email-verified">
         <h3>Alias  <small>(Optional)</small></h3>
         <p>
             An alias is short link which can be memorized for quick access to your account without needing to remember an identifier<br/>
@@ -614,7 +614,7 @@
             <b>Yubikey</b> <br/> To pair your key with your account select the text box below and press the green LED button on your yubikey device.
 
             <div class="controls">
-                <input class="code yubikey" style=" background: white url(Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                 <p class="help-block">Select the text box above and press the green LED light on your Yubikey.</p>
             </div>
@@ -640,7 +640,7 @@
                     <p>After scanning the above QR code with the google authenticator app enter the authentication code below:</p>
 
                     <div class="controls">
-                        <input id="wallet-google-qr-code" style="background: white url(Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
                     </div>
                 </div>
             </div>
@@ -792,7 +792,7 @@
                     <td><span id="summary-n-tx">0</span></td>
                     <td>
                         <div class="img">
-                            <img src="Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
                         </div>
                     </td>
                 </tr>
@@ -801,7 +801,7 @@
                     <td><span id="summary-received">0</span></td>
                     <td>
                         <div class="img">
-                            <img src="Resources/chart_bar.png" id="summary-received-chart">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
                         </div>
                     </td>
                 </tr>
@@ -814,16 +814,16 @@
                     <td><span id="summary-balance">0</span></td>
                     <td>
                         <div class="img">
-                            <img src="Resources/chart_bar.png" id="summary-balance-chart">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
                         </div>
                     </td>
                 </tr>
             </table>
 
-            <div style="text-align:center;padding-top:10px;overflow:hidden" class="no-watch-only">
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
                 <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
 
-                <div style="display:inline-block;vertical-align:middle;margin-top:5px" class="well">
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
                     <small>This Is Your Bitcoin Address</small>
 
                     <p class="primary-address" id="my-primary-address"></p>
@@ -836,6 +836,50 @@
         </div>
 
         <div class="span6">
+            
+
+                <div class="no-watch-only">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
+                        <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
+                        <li ><a href="#deposit-eu" data-toggle="tab"><img src="/Resources/flags/eu.png"> EU</a></li>
+                        <li ><a href="#deposit-other" data-toggle="tab">Other</a></li>
+                    </ul>
+
+                    <div class="tab-content page-header">
+                        <p>The quickest and easiest way to deposit bitcoins into your account is to use the services below.</p>
+
+                        <div class="tab-pane active" style="text-align:right" id="deposit-us">
+                            
+                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Cash Deposit</button>
+                            
+
+                            
+                                
+                                    <button class="btn btn-primary withdraw-btn" data-type="btcpak" data-title="Withdraw Via BTCPak">BTCPak Withdraw</button>
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-uk">
+                            
+                            
+                            
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-eu">
+                            
+                            
+                        </div>
+
+                        <div class="tab-pane" id="deposit-other">
+                            
+                        </div>
+                    </div>
+                </div>
             
 
             <div class="page-header">
@@ -980,7 +1024,7 @@
                     <label class="control-label">Yubikey:</label>
 
                     <div class="controls">
-                        <input class="code yubikey" style=" background: white url(Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">Select the text box above and press the green LED light on your Yubikey.</p>
                     </div>
@@ -990,7 +1034,7 @@
                     <label class="control-label">Email Code:</label>
 
                     <div class="controls">
-                        <input class="code" style="background: white url(Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">An email containing a temporary confirmation code has been sent to your account.</p>
                     </div>
@@ -999,7 +1043,7 @@
                 <div class="control-group auth-4" style="display:none">
                     <label class="control-label">Google Authenticator:</label>
 
-                    <div class="controls"><input class="code" style="background: white url(Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
 
                         <p class="help-block">Please open your Google Authenticator app and enter the code displayed.</p>
                     </div>
@@ -1009,7 +1053,7 @@
                     <label class="control-label">SMS Code:</label>
 
                     <div class="controls">
-                        <input class="code" style="background: white url(Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                         <p class="help-block">A text message has been sent to your cell phone. Please enter the code in that message above.</p>
                     </div>
@@ -1146,10 +1190,10 @@
 
             <li class="nav-header">Send Via</li>
             <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Email</a></li>
-            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('Resources/sms.png');width:16px;background-position: 0px"></i> SMS Message</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS Message</a></li>
 
             <li class="nav-header">Games</li>
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
             
 
             <li class="divider"></li>
@@ -1214,13 +1258,13 @@
 </div>
 
 <div class="tab-pane well" id="send-sms">
-    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="Resources/info.png"></a>
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
 
     <h4 class="page-header">Send Via SMS<br/><small>Use the form below to send bitcoin's via SMS.</small></h4>
 
     <div class="form-horizontal">
         <div class="controls">
-            <img src="Resources/phone.png" style="padding-bottom:25px">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
         </div>
 
         <div class="recipient-container">
@@ -1260,13 +1304,13 @@
 </div>
 
 <div class="tab-pane well" id="send-email">
-    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="Resources/info.png"></a>
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
 
     <h4 class="page-header">Send Via Email<br/><small>Use the form below to send bitcoin's to an email address.</small></h4>
 
     <div class="form-horizontal">
         <div class="controls">
-            <img src="Resources/email.png" style="padding-bottom:25px">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
         </div>
 
         <div class="recipient-container">
@@ -1306,7 +1350,7 @@
 
 <div class="tab-pane" id="send-shared">
     <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="Resources/info.png"></a>
+        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
         <h4 class="page-header">Send Shared<br/><small>Send shared routes transactions through a shared wallet for increased privacy.</small></h4>
 
@@ -1388,7 +1432,7 @@
                 </div>
 
                 <div style="float:right;padding-right:20px">
-                    <img src="Resources/remove.png" class="pop remove-recipient" style="display:none" title="Remove Recipient" data-content="Remove the last recipient."/> &nbsp; <img src="Resources/add.png" class="pop add-recipient" title="Add Recipient" data-content="If you want to send bitcoins to multiple recipients at once click here to add another address"/>
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Remove Recipient" data-content="Remove the last recipient."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Add Recipient" data-content="If you want to send bitcoins to multiple recipients at once click here to add another address"/>
                 </div>
             </div>
         </div>
@@ -1435,7 +1479,7 @@
 
             <div class="form-horizontal">
                 <div class="controls">
-                    <img src="Resources/satoshi_dice.png" style="padding-bottom:25px">
+                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
                 </div>
 
                 <div class="recipient-container"></div>
@@ -1848,7 +1892,7 @@ rpcssl=0
     <div class="modal-body">
         <p>This action requires that you enter your second password which is needed fully decrypt your wallet. You should never enter your second password on an untrusted computer. Use the onscreen keyboard to provide some protection from keyloggers.</p>
 
-        <p align="center"><input placeholder="password" name="password" type="password"/></p>
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
 
         <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
             <ul class="vkeyboard">
@@ -2227,7 +2271,7 @@ rpcssl=0
     <div class="modal-body">
 
         <p align="center" class="loading-indicator" style="display:none;">
-            <img src="Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
         </p>
 
         <div class="offline-transaction" style="display:none">
