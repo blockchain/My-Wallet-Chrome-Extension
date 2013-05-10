@@ -86,7 +86,6 @@ cp $RESOURCE_DIR/wallet/shared.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/bitcoinjs.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/wallet.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/signer.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/electrum.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/llqrcode.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jquery.qrcode.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/qr.code.reader.js ./Resources/wallet/
@@ -94,11 +93,12 @@ cp $RESOURCE_DIR/wallet/import-export.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/account.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/frame-modal.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/address_modal.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/jquery.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/jquery-2.0.0.min.js ./Resources/wallet/jquery.min.js
 cp $RESOURCE_DIR/wallet/bootstrap.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/blockchainapi.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/chrome.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/country_codes.html ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/mnemonic_words_v3.html ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/anonymous-addresses.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/dicegames.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/mnemonic.min.js ./Resources/wallet/

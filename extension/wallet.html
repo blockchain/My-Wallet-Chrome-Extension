@@ -18,8 +18,8 @@
         }
     </style>
 
-    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?" async></script>
-    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?" async></script>
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
@@ -67,7 +67,7 @@
                     <span class="hidden-phone">My Wallet <small>Be Your Own Bank.</small></span>
 
                     <div style="display:none;" id="large-summary" class="pop pull-right" title="Your Balance" data-content="This shows the balance of your bitcoin wallet. You may not be able to spend this amount until all transactions are confirmed.">
-                        <span id="balance">0 BTC</span>
+                        <span id="balance"></span>
                         <small id="balance2">0</small>
                     </div>
                 </h1>
@@ -202,21 +202,6 @@
 </div>
 
 <div class="tab-pane" id="account-general">
-    <div class="page-header">
-        <h3>Automatic Email Backups</h3>
-        <p>
-            Check this to receive a new backup automatically when your wallet updates: <input id="auto-email-backup" type="checkbox"/>
-        </p>
-    </div>
-
-
-    <div class="page-header">
-        <h3>Local Currency</h3>
-
-        <p>You can quickly switch between bitcoins and your local currency by clicking your balance in the top right.</p>
-
-        <select id="local_currency"></select>
-    </div>
 
     <div class="page-header">
         <h3>Language</h3>
@@ -227,25 +212,20 @@
     </div>
 
     <div class="page-header">
-        <h3>Default Fee Policy</h3>
+        <h3>Local Currency</h3>
 
-        <p>
-            Blockchain.info transactions are free of charge. However the bitcoin network may require an additional Miners Fee which affects the speed your transactions are verified and helps support the network. Change the settings below to alter the default Miners Fee Policy.
-        </p>
+        <p>You can quickly switch between bitcoins and your local currency by clicking your balance in the top right.</p>
 
-        <p style="padding-left:10px">
-            <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="-1"><b>Frugal</b> - A Miners fee will not be included unless absolutely essential. <font color="red">Transactions will be significantly slower to confirm</font>.
-            </label>
-            <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="0"><b>Normal</b> - Follow the fee policy suggested by the mainline bitcoin client. <font color="green">Recommended</font>.
-            </label>
-            <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="1"><b>Generous</b> - Fees will be set to ensure transactions are high priority (0.001 BTC Base Fee).
-            </label>
-        </p>
+        <select id="local_currency"></select>
     </div>
 
+    <div class="page-header">
+        <h3>Bitcoin Display</h3>
+
+        <p>Adjust the precision you would prefer bitcoin values to be displayed in.</p>
+
+        <select id="btc_currency"></select>
+    </div>
 
     <div class="page-header">
         <h3>Inactivity Logout</h3>
@@ -270,13 +250,55 @@
         </p>
     </div>
 
-    <h3>Integrity Check</h3>
+    <div class="page-header">
+        <h3>Default Fee Policy</h3>
 
-    <p>Checks all keys in your wallet match the correct bitcoin address and re-encrypts your wallet. This may take a long time in some browsers.</p>
+        <p>
+            Blockchain.info transactions are free of charge. However the bitcoin network may require an additional Miners Fee which affects the speed your transactions are verified and helps support the network. Change the settings below to alter the default Miners Fee Policy.
+        </p>
 
-    <p>
-        <button class="btn" id="run-key-check">Run Check</button>
-    </p>
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>Frugal</b> - A Miners fee will not be included unless absolutely essential. <font color="red">Transactions will be significantly slower to confirm</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>Normal</b> - Follow the fee policy suggested by the mainline bitcoin client. <font color="green">Recommended</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>Generous</b> - Fees will be set to ensure transactions are high priority (0.001 BTC Base Fee).
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Automatic Email Backups</h3>
+        <p>
+            Check this to receive a new backup automatically when your wallet updates: <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    Advanced
+                </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div>
+                        <h3>Integrity Check</h3>
+
+                        <p>Checks all keys in your wallet match the correct bitcoin address and re-encrypts your wallet. This may take a long time in some browsers.</p>
+
+                        <p>
+                            <button class="btn" id="run-key-check">Run Check</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-notifications">
@@ -336,7 +358,6 @@
 
                 <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
             </div>
-
 
             <input type="checkbox" value="4"> <b>HTTP Notifications</b><br/>
 
@@ -856,8 +877,6 @@
 
                             
                                 
-                                    <button class="btn btn-primary withdraw-btn" data-type="btcpak" data-title="Withdraw Via BTCPak">BTCPak Withdraw</button>
-                                
                             
                         </div>
 
@@ -1097,7 +1116,7 @@
             <p> If you have lost your wallet identifier first check the confirmation email you received during sign up. Can't find the email? Click the button below and we can send you a new one.</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/forgot-identifier">Forgotten Identifier</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Import Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Import Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
             </p>
 
             <h4>Lost Two-factor Authentication Details.</h4>
@@ -1114,7 +1133,7 @@
             <p>Your wallet is encrypted by your browser before it reaches us and for this reason we are unable to help recover lost passwords. To avoid any possible monetary loss due to forgotten passwords it is recommended you make a paper backup of your wallet's private keys.</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary" id="forgot-password-btn" disabled="true">Forgot Password</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn" disabled="true">Recover Wallet</a>
             </p>
 
             <h4>Need Help?</h4>
@@ -1194,7 +1213,6 @@
 
             <li class="nav-header">Games</li>
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
-            
 
             <li class="divider"></li>
             <li class="nav-header">Tools</li>
@@ -1203,7 +1221,11 @@
     </div>
 
     <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
         <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
     </div>
 </div>
 <div class="span9">
@@ -1232,13 +1254,13 @@
                     <div class="controls">
 
                         <div class="input-prepend">
-                            <span class="add-on">BTC</span><input class="send-value span2" style="width:70px;" name="send-value" placeholder="0.0" type="text"/>
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
                         </div>
 
                         <b>=</b>
 
                         <div class="input-prepend">
-                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" style="width:70px;" placeholder="0.0" type="text"/>
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
                         </div>
 
                         <p class="help-block">Enter The Amount of Bitcoins to send</p>
@@ -1284,7 +1306,7 @@
 
                     <div class="controls">
                         <div class="input-prepend input-append">
-                            <span class="add-on">BTC</span><input class="send-value span2" style="width:50px;min-width:50px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                         </div>
 
                         <p class="help-block">Enter The Amount of Bitcoins to send</p>
@@ -1330,7 +1352,7 @@
 
                     <div class="controls">
                         <div class="input-prepend input-append">
-                            <span class="add-on">BTC</span><input class="send-value span2" style="width:50px;min-width:50px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
                         </div>
                         <p class="help-block">Enter The Amount of Bitcoins to send</p>
                     </div>
@@ -1372,13 +1394,13 @@
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on">BTC</span><input class="send-value span2" style="width:50px;min-width:50px;"  name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
                             <p class="help-block fees"> Including fees the total of this transaction is <span class="shared-fees">0.00</span></p>
 
-                            <p class="help-block bonus">There will be no fees for this transaction and a bonus of <span class="bonus-value">0.00</span> BTC will be paid.</p>
+                            <p class="help-block bonus">There will be no fees for this transaction and a bonus of <span class="bonus-value">0.00</span> will be paid.</p>
 
                             <p class="help-block free">Shared send is currently free of charge.</p>
                         </div>
@@ -1419,7 +1441,7 @@
                     <span class="qrcodeicon" /><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
-                        <span class="add-on">BTC</span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
                     </div>
                 </div>
             </div>
@@ -1428,7 +1450,7 @@
         <div class="control-group">
             <div class="controls">
                 <div style="float:left;padding-bottom:7px;padding-right:7px">
-                    <small>Total Value: <span class="amount-needed">0</span> BTC (Available: <span class="amount-available">0</span> BTC)</small>
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
                 </div>
 
                 <div style="float:right;padding-right:20px">
@@ -1442,7 +1464,7 @@
 
             <div class="controls">
                 <div class="input-prepend" style="width:220px">
-                    <span class="add-on">BTC</span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
                 </div>
             </div>
         </div>
@@ -1506,8 +1528,6 @@
     </div>
 
 
-
-
 <div class="tab-pane well" id="address-book">
 
     <h3>Address Book</h3>
@@ -1564,299 +1584,201 @@
             <li><a href="#import-wallet" data-toggle="tab">Import Wallet</a></li>
             <li><a href="#export-crypted" data-toggle="tab">Export Encrypted</a></li>
             <li><a href="#export-unencrypted" data-toggle="tab">Export Unencrypted</a></li>
-            <li><a href="#sync-bitcoind" data-toggle="tab">Desktop Sync</a></li>
             <li><a id="export-paper-btn">Paper Wallet</a></li>
         </ul>
     </div>
 </div>
 <div class="span10">
-<div class="tab-content">
-<div class="tab-pane active" id="import">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
 
-    
+            
 
-    <div class="page-header">
-        <h3>Add Watch Only Bitcoin Address</h3>
+            <div class="page-header">
+                <h3>Add Watch Only Bitcoin Address</h3>
 
-        <p>You may add a <font color="red">Watch Only</font> bitcoin address to your wallet. You will not be able to send bitcoins from this address without later providing the private key</p>
+                <p>You may add a <font color="red">Watch Only</font> bitcoin address to your wallet. You will not be able to send bitcoins from this address without later providing the private key</p>
 
-        <div class="form-inline">
-            <input placeholder="Bitcoin Address" id="import-address-address" type="text"/>
-            <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Add Watch Only Address</button>
-        </div>
-    </div>
-
-    <div class="page-header">
-        <h3>Import Private Key</h3>
-
-        <p>Import an existing private key below. All private key formats are supported.</p>
-
-        <div class="form-inline">
-            <input placeholder="Private Key" id="import-private-key" type="text"/>
-            <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Add Private Key</button>
-        </div>
-    </div>
-
-    <div class="page-header">
-        <h3>Brain Wallet</h3>
-
-        <p>A Brain Wallet is a private key seeded from a memorable pass-phrase. It is possible to memorize this password in order to restore the funds at this address without needing a wallet backup.</p>
-
-        <p>The minimum pass-phrase length is 15 characters. It is highly recommended you still keep regular wallet backups even with the pass-phrase memorized.</p>
-
-        <div class="form-inline">
-            <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-            <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Generate Key</button>
-        </div>
-    </div>
-
-    <div class="page-header">
-        <h3>Import Using Paper Wallet</h3>
-
-        <p>Use your Webcam to scan a QR code from a paper wallet</p>
-
-        <div class="form-inline">
-            <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Scan With Webcam</button>
-        </div>
-    </div>
-</div>
-
-<div class="tab-pane" id="import-backup">
-    <h3 class="page-header">Import Backup <small>A list of wallet backups available from our cloud storage server.</small></h3>
-
-    <table class="table table-striped well" style="margin-top:10px">
-        <thead>
-        <th>File Name</th>
-        <th>Last Modified</th>
-        <th>Size</th>
-        <th>Action</th>
-        </thead>
-        <tbody></tbody>
-    </table>
-</div>
-
-<div class="tab-pane" id="import-wallet">
-
-    <h3 class="page-header">Import Wallet</h3>
-
-    <p>You may import keys in several different formats.</p>
-    <ul>
-        <li>AES encrypted backup from blockchain.info. (Must be encrypted with the same password)</li>
-        <li>Plaintext JSON backup from blockchain.info</li>
-        <li>Output from <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
-        <li>Output from <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
-        <li>Output from <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
-    </ul>
-
-    <p>Please be aware there is currently a limit of 400 private keys per wallet. For large wallets your browser may become unresponsive for a few minutes.</p>
-
-    <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Copy And Paste your wallet data into this area"></textarea>
-
-    <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Import Wallet</button>
-</div>
-
-<div class="tab-pane" id="export-crypted">
-    <h3 class="page-header">Export <small>Below are your private keys AES encrypted.</small></h3>
-
-    <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
-
-    <p style="margin-top:10px">
-        <button class="btn btn-success download-backup-btn">Download Backup</button>
-    </p>
-</div>
-
-<div class="tab-pane" id="export-unencrypted">
-    <h3 class="page-header">Export Unencrypted <small>Below are your private keys in JSON format. Warning! This data is unencrypted keep it safe.</small></h3>
-
-    <h6>Select private key format:</h6>
-
-    <p>
-        <select id="export-priv-format">
-            <option value="base58">Base58</option>
-            <option value="sipa">Bitcoin-Qt Format</option>
-            <option value="base64">Base64</option>
-            <option value="hex">Hex</option>
-            <option value="">Leave Private Keys Encrypted</option>
-        </select>
-    </p>
-
-    <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
-</div>
-
-<div class="tab-pane" id="sync-bitcoind">
-
-    <h3 class="page-header">Desktop Client Sync</h3>
-
-    <p>This tool enables you to sync your wallet with the official desktop client available from bitcoin.org.</p>
-
-    <div class="page-header" id="rpc-step-1">
-        <h3>Step 1. Install The Browser Extension</h3>
-
-        <p>
-            Please install the <a href="https://blockchain.info/r?url=https://chrome.google.com/webstore/detail/nknfighfndfaahebfedlkgfifjfjgbjk">My Wallet RPC Extension</a> available for Google Chrome.
-        </p>
-
-        <p> Once installed please refresh this page.</p>
-    </div>
-
-    <div class="page-header" id="rpc-step-2">
-        <h3>Step 2. Enable Bitcoin RPC</h3>
-
-        <div class="padded">
-            <p> In order for your browser to talk to your desktop client your must enable the bitcoin RPC server in the bitcoin.conf file. If the file does not exist you must create it. For Example:</p>
-
-            <p>
-<pre>
-server=1
-rpcuser=username
-rpcpassword=password
-rpcport=8332
-rpcssl=0
-</pre>
-            <p>Change username and password to one of your own choice.</p>
-
-            <b>Windows XP:</b> C:\Documents and Settings\username\Application Data\Bitcoin\bitcoin.conf <br/>
-            <b>Windows Vista, 7</b> C:\Users\username\AppData\Roaming\Bitcoin\bitcoin.conf <br/>
-            <b>Linux</b> /home/username/.bitcoin/bitcoin.conc-address-taf <br/>
-            <b>Mac OSX</b> /Users/username/Library/Application Support/Bitcoin/bitcoin.conf <br/>
-            </p>
-
-            <p>
-                Once your have modified the file restart the Bitcoin application. For more information on enable the bitcoin RPC interface consult the <a href="https://blockchain.info/r?url=https://en.bitcoin.it/wiki/Running_Bitcoin">Bitcoin Wiki</a>
-            </p>
-        </div>
-
-        <p>
-            <button class="btn btn-primary pop" id="rpc-continue-btn">Continue</button>
-        </p>
-    </div>
-
-    <div id="rpc-body">
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">RPC Port:</label>
-
-                <div class="controls"><input name="rpc-port" value="8332"/></div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">RPC Username:</label>
-
-                <div class="controls"><input name="rpc-user" type="text"/></div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">RPC Password:</label>
-
-                <div class="controls"><input name="rpc-pass" type="password"/></div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">RPC SSL:</label>
-
-                <div class="controls">SSL is currently not supported</div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Wallet Password:</label>
-
-                <div class="controls">
-                    <input name="wallet-pass" type="password"/>
-
-                    <p class="help-block">If your Bitcoin-Qt Wallet is encrypted enter the password here.</p>
+                <div class="form-inline">
+                    <input placeholder="Bitcoin Address" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Add Watch Only Address</button>
                 </div>
             </div>
-            <div class="form-actions">
-                <button class="btn btn-primary pop" id="sync-bitcoind-btn">Download Address List</button>
+
+            <div class="page-header">
+                <h3>Import Private Key</h3>
+
+                <p>Import an existing private key below. All private key formats are supported.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Add Private Key</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Brain Wallet</h3>
+
+                <p>A Brain Wallet is a private key seeded from a memorable pass-phrase. It is possible to memorize this password in order to restore the funds at this address without needing a wallet backup.</p>
+
+                <p>The minimum pass-phrase length is 15 characters. It is highly recommended you still keep regular wallet backups even with the pass-phrase memorized.</p>
+
+                <div class="form-inline">
+                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Generate Key</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Import Using Paper Wallet</h3>
+
+                <p>Use your Webcam to scan a QR code from a paper wallet</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Scan With Webcam</button>
+                </div>
             </div>
         </div>
 
-        <table class="rpc-address-table table table-striped well" style="display:none">
-            <thead>
-            <th>Address</th>
-            <th>Label</th>
-            <th>Balance</th>
-            <th>Action</th>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">Import Backup <small>A list of wallet backups available from our cloud storage server.</small></h3>
 
-<div id="watch-only-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>File Name</th>
+                <th>Last Modified</th>
+                <th>Size</th>
+                <th>Action</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
 
-        <h3>Add Watch Only Bitcoin Address</h3>
-    </div>
-    <div class="modal-body">
-        <p>Please Confirm you would to add the <font color="red">Watch Only</font> address <span class="address"></span>.</p>
+        <div class="tab-pane" id="import-wallet">
 
-        <p>A <font color="red">Watch Only</font> address means you can only observe the transactions at this address. Unless you have the private key saved elsewhere then you do not own the funds at this address.</p>
+            <h3 class="page-header">Import Wallet</h3>
 
-        <p>If you do not have a paper wallet or other backup you should not withdraw coins to this address or instruct anyone to send you coins at this address</p>
-    </div>
+            <p>You may import keys in several different formats.</p>
+            <ul>
+                <li>AES encrypted backup from blockchain.info. (Must be encrypted with the same password)</li>
+                <li>Plaintext JSON backup from blockchain.info</li>
+                <li>Output from <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
+                <li>Output from <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
+                <li>Output from <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+            </ul>
 
-    <div class="modal-footer">
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Continue</button>
+            <p>Please be aware there is currently a limit of 400 private keys per wallet. For large wallets your browser may become unresponsive for a few minutes.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Copy And Paste your wallet data into this area"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Import Wallet</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">Export <small>Below are your private keys AES encrypted.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">Download Backup</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">Export Unencrypted <small>Below are your private keys in JSON format. Warning! This data is unencrypted keep it safe.</small></h3>
+
+            <h6>Select private key format:</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">Leave Private Keys Encrypted</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>Add Watch Only Bitcoin Address</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please Confirm you would to add the <font color="red">Watch Only</font> address <span class="address"></span>.</p>
+
+                <p>A <font color="red">Watch Only</font> address means you can only observe the transactions at this address. Unless you have the private key saved elsewhere then you do not own the funds at this address.</p>
+
+                <p>If you do not have a paper wallet or other backup you should not withdraw coins to this address or instruct anyone to send you coins at this address</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Second Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please enter the second password for this wallet.</p>
+                <p align="center">
+                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p align="center">
+                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Compressed Private Key Detected</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>Compressed private keys are currently not supported using the Android app, iPhone app or Merchant API. If you import a compressed private key directly you will not be able to spend the funds at that address using the previously listed devices.</p>
+
+                <p>The recommended solution is to sweep the funds into a existing bitcoin address. Would you like to sweep this private key instead?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Sweep Key</button>
+                    <button class="btn btn-secondary">Import Directly</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<div id="import-second-password-modal" class="modal hide">
-    <div class="modal-header">
-        <h3>Wallet Second Password</h3>
-    </div>
-    <div class="modal-body">
-        <p>Please enter the second password for this wallet.</p>
-        <p align="center">
-            <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-        </p>
-    </div>
-    <div class="modal-footer">
-        <div class="btn-group pull-right">
-            <button class="btn btn-primary">Continue</button>
-        </div>
-    </div>
-</div>
-
-<div id="import-password-modal" class="modal hide">
-    <div class="modal-header">
-        <h3>Wallet Password</h3>
-    </div>
-    <div class="modal-body">
-        <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
-        <p align="center">
-            <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-        </p>
-    </div>
-    <div class="modal-footer">
-        <div class="btn-group pull-right">
-            <button class="btn btn-primary">Continue</button>
-        </div>
-    </div>
-</div>
-
-<div id="compressed-private-key-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Compressed Private Key Detected</h3>
-    </div>
-
-    <div class="modal-body">
-        <p>Compressed private keys are currently not supported using the Android app, iPhone app or Merchant API. If you import a compressed private key directly you will not be able to spend the funds at that address using the previously listed devices.</p>
-
-        <p>The recommended solution is to sweep the funds into a existing bitcoin address. Would you like to sweep this private key instead?</p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="btn-group pull-right">
-            <button class="btn btn-primary">Sweep Key</button>
-            <button class="btn btn-secondary">Import Directly</button>
-        </div>
-    </div>
 </div></div>
 </div>
 
@@ -2126,8 +2048,9 @@ rpcssl=0
     </div>
 
     <div class="modal-footer">
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="pull-right">
+            <button class="btn btn-danger">Show Unsaved Address</button>
+            <button class="btn btn-primary" data-dismiss="modal">Close</button>
         </div>
     </div>
 </div>
@@ -2209,7 +2132,7 @@ rpcssl=0
         <h3>Send Shared?</h3>
     </div>
     <div class="modal-body">
-        <p>Send this transaction through the shared wallet and get a<span class="bonus-percent"></span>% bonus</b> (<span class="bonus-value"></span> BTC will be sent back to the sending address). The transaction will incur a delay of approximately <span class="delay"></span>.</p>
+        <p>Send this transaction through the shared wallet and get a<span class="bonus-percent"></span>% bonus</b> (<span class="bonus-value"></span> will be sent back to the sending address). The transaction will incur a delay of approximately <span class="delay"></span>.</p>
 
         <div class="alert alert-block alert-error" style="margin: 10px;">
             Do not accept if you expect to receive payment back to the sending address. Shared transactions are incompatible with SatoshiDICE, BitLotto and many other bitcoin games.
@@ -2236,7 +2159,7 @@ rpcssl=0
         <p>The transaction can either be cancelled. Or the amount to send can be adjusted to match the maximum amount available to send.</p>
     </div>
 
-    <h3 align="center" style="padding-bottom:10px">Required: <span class="amount-required"></span> BTC (Available: <span class="amount-available"></span> BTC)</h3>
+    <h3 align="center" style="padding-bottom:10px">Required: <span class="amount-required"></span> (Available: <span class="amount-available"></span>)</h3>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2313,15 +2236,15 @@ rpcssl=0
                     </tr>
                     <tr>
                         <td><b>Total Fees</b></td>
-                        <td id="rtc-fees">0 BTC</td>
+                        <td id="rtc-fees">0</td>
                     </tr>
                     <tr>
                         <td><b>Total Output Value</b></td>
-                        <td id="rtc-value">0 BTC</td>
+                        <td id="rtc-value">0</td>
                     </tr>
                     <tr>
                         <td><b>Leaving Wallet</b></td>
-                        <td id="rtc-effect" style="color: red">0 BTC</td>
+                        <td id="rtc-effect" style="color: red">0</td>
                     </tr>
                 </table>
             </div>
@@ -2345,7 +2268,7 @@ rpcssl=0
 
     <div class="modal-body">
         <h3 style="padding-bottom:25px">
-            Send <span class="amount"></span> BTC to <span class="email"></span> <br /> <small>The following message will be sent to the recipient.</small>
+            Send <span class="amount"></span> to <span class="email"></span> <br /> <small>The following message will be sent to the recipient.</small>
         </h3>
 
         <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
