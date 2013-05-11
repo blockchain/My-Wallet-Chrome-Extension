@@ -1,0 +1,2363 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Моят портфейл - Бъди своя собствена банка - Blockchain.info</title>
+    <meta name="robots" content="noindex">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+
+    <style type="text/css">
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
+
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
+    
+    
+    
+</head>
+
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/">
+
+    <div class="navbar" style="height:40px;overflow:visible">
+        <div class="navbar-inner" style="height:43px;">
+            <div class="container">
+                <div class="logo hidden-phone hidden-tablet"><a href="https://blockchain.info/"><img border="0" src="/Resources/logo_new.png" alt="Bitcoin блок изследовател и валутни статистиката"/></a></div>
+
+                <ul class="nav">
+                    <li><a href="https://blockchain.info/" title="Blockchain.info Начало">Дом</a></li>
+                    <li><a href="https://blockchain.info/charts" title="Bitcoin Графики">Графики</a></li>
+                    <li><a href="https://blockchain.info/stats" title="Bitcoin статистика">Статистика</a></li>
+                    <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin пазари">Пазари</a></li>
+                    <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Инструменти за разработчици">Разработчици</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin портфейла">Портфейл</a></li>
+                </ul>
+
+                
+
+                
+
+                
+                    <div class="hidden-phone pull-right" style="padding-top:9px">
+                        <img src="/Resources/refresh.png" id="refresh">
+                        <img src="/Resources/logout.png" id="logout" style="padding-left:9px">
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+<div class="quickstart">
+    <div class="container" id="new-wallet">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>
+                    <span class="hidden-phone">Моят портфейл <small>Бъди своя собствена банка.</small></span>
+
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Вашият баланс" data-content="Това показва баланса на bitcoin портфейла си. Може да не сте в състояние да прекарат тази сума, докато всички сделки се потвърждават.">
+                        <span id="balance"></span>
+                        <small id="balance2">0</small>
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid" style="margin-top:10px">
+            <div class="span12 no-print">
+                <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
+                    <li><a id="home-intro-btn">Портфейл Начало</a></li>
+                    <li><a id="my-transactions-btn">Моите Сделки</a></li>
+                    <li><a id="send-coins-btn">Изпрати пари</a></li>
+                    <li><a id="receive-coins-btn">Получаване на пари</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">Импорт / Експорт</a></li>
+                </ul>
+
+                <h6 class="pull-right" id="status-container">
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Товарене</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
+    <span id="notices" style="max-width: 600px; width:100%;"></span>
+</div>
+
+<div style="width:100%; float:left; clear:both"></div>
+
+<div class="container" style="margin-top:10px">
+
+<div id="my-account" style="display:none;">
+    <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
+        <h2>Чувствителни данни</h2>
+
+        <p>Настройки на профила показва чувствителни данни, които не трябва да бъдат показани на други хора. Препоръчително е да не отваряте този раздел на обществени места или да се скрийншотове на този раздел.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-account-settings">Продължи</button>
+        </p>
+    </div>
+
+    <div id="my-account-content" style="display:none">
+
+
+
+
+<h2>
+    Настройки на профила <small>Промяна на настройките на профила портфейла.</small>
+</h2>
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Информация за профила</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Личен</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Общ</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Известия</a></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Паролите</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Сигурност</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Влизане</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Устройства</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+<div class="tab-content">
+<div class="active tab-pane" id="account-information">
+    <div class="page-header">
+        <h3>Имейл <small style="color:green">(Препоръчва се)</small></h3>
+
+        <p>
+            Един имейл е необходимо, за да помогне за възстановяване на загубена идентификатор портфейла и за известията за плащане.<br/>
+        </p>
+
+        <p>
+            <input placeholder="Вашият email" id="wallet-email" type="text"/>
+        </p>
+
+        <p class="email-verified">
+            <font color="green">Имейлът е потвърден</font>
+        </p>
+
+        <div class="email-unverified">
+            <b>Email код за проверка:</b><br/><br/>
+
+            <div class="form-inline">
+                <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
+                <button class="btn">Проверете</button>
+                <button class="btn" id="wallet-email-send">Преизпрати Link</button>
+            </div>
+            <br/> <font color="red">Електронна поща, няма Verified</font>
+        </div>
+    </div>
+
+    <div class="page-header email-verified">
+        <h3>Псевдоним  <small>(По избор)</small></h3>
+        <p>
+            Псевдоним е кратък връзка, която може да бъде запаметена за бърз достъп до профила си, без да се налага да помните идентификатор<br/>
+        </p>
+
+        <p>
+            <input placeholder="Псевдоним или други лесно запомнящи дума" id="wallet-alias" type="text"/>
+        </p>
+
+        <pre class="alias" style="display:none"></pre>
+    </div>
+
+    <div class="page-header">
+        <h3>Мобилен номер <small>(По избор)</small>
+        </h3>
+
+        <p>
+            Моля, въведете номера на мобилния си телефон по-долу. Международната SMS съобщения понякога може да е ненадеждна и не може да бъде на разположение на някои страни и мрежи.
+        </p>
+
+        <p class="form-inline">
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Изпращане на SMS кодекс</button>
+        </p>
+
+        <p class="sms-verified">
+            <font color="green">Проверени SMS</font>
+        </p>
+
+        <div class="sms-unverified well">
+            <p>Въведете код, съдържащи се в рамките на проверка SMS съобщение.</p>
+            <p class="form-inline"><input placeholder="SMS код за проверка" class="wallet-sms-code" type="text"/> <button class="btn">Проверете</button> </p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-general">
+
+    <div class="page-header">
+        <h3>Език</h3>
+
+        <p>Предпочитания от вас език по-долу</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Местна валута</h3>
+
+        <p>, Като щракнете на баланса в горния десен ъгъл можете бързо да превключвате между bitcoins и местна валута.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Display</h3>
+
+        <p>Настройте прецизно предпочитате Bitcoin стойности да бъдат показани инча</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Бездействието Изход</h3>
+
+        <p>
+            По подразбиране ще бъде автоматично да влезете в сайта от портфейла си сметка след 10 минути бездействие. Можете да настроите времето за изчакване период по-долу.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 минути</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 минути</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 минути</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Никога</b>
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Политика неустойка</h3>
+
+        <p>
+            Blockchain.info сделки са безплатни. Мрежата bitcoin обаче може да изиска допълнителна такса миньори, които се отразява на скоростта вашите сделки са проверени и подпомага мрежата. Промяна на настройките по-долу, за да се промени по подразбиране миньори политика Такса.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>Пестелив</b> - На миньорите такса няма да бъдат включени, освен ако не е абсолютно необходимо. <font color="red">Сделки ще бъде значително по-бавно, за да потвърдите</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>Нормален</b> - Следвайте такса политика, предложено от главната клиент bitcoin. <font color="green">Препоръчва се</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>Щедър</b> - Таксите ще се определят, за да се гарантира сделки са висок приоритет (0,001 БТК Основна такса).
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Автоматично архивиране Email</h3>
+        <p>
+            Проверете това, за да получите нова архивиране автоматично, когато портфейла си актуализации: <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    Напреднал
+                </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div>
+                        <h3>Проверка на цялостта</h3>
+
+                        <p>Проверява всички ключове в портфейла си съответства на правилния адрес bitcoin и повторно криптира портфейла си. Това може да отнеме дълго време в някои браузъри.</p>
+
+                        <p>
+                            <button class="btn" id="run-key-check">Run Проверете</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-notifications">
+    <div class="page-header">
+        <h3>Известия</h3>
+
+        <p>Желание получавате известия, когато плащането е изпратено или получено от портфейла си.</p>
+
+        <div id="notifications-type">
+            <input type="checkbox" value="1"> <b>Известия по имейл</b><br/>
+
+            <div class="well type-1" style="display:none">
+                Вие ще получавате известия по имейл. Моля, потвърдете Вашия имейл адрес, ако вече не сте го.
+            </div>
+
+            <input type="checkbox" value="32"> <b>SMS Известия</b><br/>
+
+            <div class="well type-32" style="display:none">
+                <p>
+                    Моля, въведете номера на мобилния си телефон по-долу. Международната SMS съобщения понякога може да е ненадеждна и не може да бъде на разположение на някои страни и мрежи.
+                </p>
+
+                <p class="form-inline">
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Изпращане на SMS кодекс</button>
+                </p>
+
+                <p class="sms-verified">
+                    <font color="green">Проверени SMS</font>
+                </p>
+
+                <div class="sms-unverified">
+                    <p>Въведете код, съдържащи се в рамките на проверка SMS съобщение.</p>
+                    <p class="form-inline">
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Проверете</button>
+                    </p>
+                </div>
+            </div>
+
+            <input type="checkbox" value="2" /> <b>Google Talk</b><br/>
+
+            <div class="well type-2" style="display:none">
+                Вие ще получите уведомления чрез Google Talk.
+            </div>
+
+            <input type="checkbox" value="8"> <b>Skype</b><br/>
+
+            <div class="well type-8" style="display:none">
+                <p>Вие ще получавате известия чрез Skype потребителско име по-долу:</p>
+
+                <input placeholder="Skype Username" id="wallet-skype" type="text"/>
+            </div>
+
+            <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
+
+            <div class="well type-64" style="display:none">
+                <p>Моля, въведете вашето <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> имейл по-долу:</p>
+
+                <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
+            </div>
+
+            <input type="checkbox" value="4"> <b>HTTP Известия</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>HTTP Известия ще бъдат изпратени при сделки са изпратени или получени. Моля, вижте разработчиците раздел за ръководство за прилагане на обаждане.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+            <input type="checkbox" value="128"> <b>Android Известия</b><br/>
+
+            <div class="well type-128" style="display:none">
+                <p>Вие ще получавате известия за вашето устройство андроид веднъж двойка.</p>
+            </div>
+
+        </div>
+
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 Известия</b><br/>
+
+        <div class="well" style="display:none">
+            <p>HTML 5 Известия различен от редовните изскачащи прозорци в това, че те се нуждаят от разрешението на потребителя да се показват. Поддържа в Chrome и Safari.</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Когато портфейла си</h3>
+
+        <p>
+            <select id="notifications-on">
+                <option value="0">Изпраща или получава Bitcoins</option>
+                <option value="1">Изпраща Bitcoins</option>
+                <option value="2">Получава Bitcoins</option>
+            </select>
+        </p>
+    </div>
+
+    <h3>След Потвърждения</h3>
+
+    <p>
+        <select id="notifications-confirmations">
+            <option value="0">Незабавно</option>
+            <option value="1">1 Потвърждение</option>
+            <option value="2">2 Потвърждения</option>
+            <option value="3">3 Потвърждения</option>
+            <option value="4">4 Потвърждения</option>
+            <option value="5">5 Потвърждения</option>
+            <option value="6">6 Потвърждения</option>
+        </select>
+    </p>
+</div>
+
+
+<div class="tab-pane" id="account-logging">
+    <h3 class="page-header">Влизане Ниво</h3>
+
+    <p>Сеч контрол на нивото на какви данни се отчитат, когато се предприемат действия с портфейла си. По подразбиране сеч е изключена независимо от действията, предприети от администратори. Разрешаването тя осигурява по-голяма сигурност чрез предоставяне на повече информация върху потенциалния неоторизиран достъп до портфейла си, но някои по защита на личните данни може да бъде принесен в жертва.</p>
+
+    <p>
+        <select id="logging-level">
+            <option value="0">Влизане с увреждания</option>
+            <option value="1">Вход Действия с хеширани IP адреси</option>
+            <option value="2">Вход Действия с IP адрес и User Agent</option>
+        </select>
+    </p>
+
+    <p class="well">
+        Промяната влезете ниво не се изтриват съществуващи трупи. Дневник изтича след 2 седмици.
+    </p>
+
+    <div class="logl l2 l1">
+        <table class="table table-striped well" style="margin-top:10px;display:none;">
+            <thead>
+            <th>Време</th>
+            <th>Действие</th>
+            <th>IP адрес</th>
+            <th>User Agent</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p class="logl l0" style="display:none;">
+        <font color="green">Влизане с увреждания</font>
+    </p>
+</div>
+
+<div class="tab-pane" id="account-devices">
+    <h3>Свързване на устройството</h3>
+
+    <p>Сканирайте кода по-долу с вашия iPhone или Android устройство, за да го свържете с вашия акаунт.</p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
+                    Показване / скриване на кода за сдвояване.
+                </a>
+            </div>
+
+            <div id="pairing_code" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-passwords">
+    <div class="alert alert-block alert-error"><B>Внимание!</B> Всички забравени пароли ще доведе в портфейла си ООН достъпна. Налице е процес на възстановяване на паролата!</div>
+
+    <p>
+        Вашата парола никога не се споделя с нашите сървъри в никаква форма. Това означава, портфейла си, все още ще бъде на сигурно място в случай, нашите сървъри са били компрометирани. Въпреки това означава, че не е функция за нулиране на паролата.
+    </p>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Парола Мнемоник</h3>
+
+        <p>Парола мнемоника може да се използва, за да възстановите паролата си портфейл, ако сме я забравили. Без мнемоничен няма начин можем да помогнем за възстановяване на забравена парола. При смяна на пароли на портфейла мнемоничен ще се промени.</p>
+
+        <div id="accordion1">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
+                        Покажи / скрий парола Мнемоничен
+                    </a>
+                </div>
+
+                <div id="password_mnemonic" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="password_mnemonic1">
+                            <h5 class="page-header">Main Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+
+                        <div id="password_mnemonic2">
+                            <h5 class="page-header">Second Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Главна парола</h3>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Парола:</label>
+
+                <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Потвърждаване на паролата:</label>
+
+                <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+        </div>
+
+        <p>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Актуализиране на Главна парола</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Втората парола</h3>
+
+        <div class="double-encryption-off">
+            <p>Като опция можете да зададете вторият парола, която ще се изисква, когато Ви изпратим средства от Вашата сметка. За по-големи портфейли вашия браузър може да стане студен в продължение на няколко минути, когато се променя тази опция.</p>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Парола:</label>
+
+                    <div class="controls"><input id="double-password" type="password"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Потвърждаване на паролата:</label>
+
+                    <div class="controls"><input id="double-password2" type="password"/></div>
+                </div>
+            </div>
+
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">Активирайте Двойна Encryption</button>
+        </div>
+
+        <div class="double-encryption-on">
+            <p>Двойна криптиране е активирана. Вторият парола ще се изисква, преди да можете да изпратите средства.</p>
+
+            <p>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">Изключване Двойна Encryption</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Парола Съвети</h3>
+
+        <p>Ако сте забравили паролата си (а), намеци може да бъде полезно, за да бутам с памет. Ако има имейл адреса, свързан с профила си, намеци може да бъде изпращана към вас. Ако не имейл е свързан с вашия акаунт, намеци са на разположение на всеки, който знае портфейла си идентификатор.</p>
+
+        <p class="well">
+            <b>Например:</b> Ако портфейла си парола: HorseBatteryStaple е добър намек парола ще бъде: Electric кон?
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Основна парола Съвет:</label>
+
+                <div class="controls"><input id="password-hint1" type="text"/></div>
+            </div>
+
+            <div class="control-group double-encryption-on">
+                <label class="control-label">Втората парола Съвет:</label>
+
+                <div class="controls"><input id="password-hint2" type="text"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header hidden">
+        <h3>PBKDF2 Итерации</h3>
+
+        <p>PBKDF2 е функция, която се простира парола увеличаване на усилието, необходимо за това BruteForce. По-висок брой повторения е по-добре все пак може да забележите забавяне на вашия браузър.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Итерации:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-security">
+    <div class="page-header">
+        <h3>Двуфакторна Authentication</h3>
+
+        <p>Двуфакторна автентификация добавя допълнителен слой на сигурност на върха на вашата парола.</p>
+
+        <p>
+            <select id="two-factor-select">
+                <option value="0">Никой</option>
+                <option value="5">SMS съобщение</option>
+                <option value="1">Yubikey</option>
+                <option value="2">Имейл</option>
+                <!--<option value="3">Mt Gox Yubikey</option>-->
+                <option value="4">Google Authenticator</option>
+            </select>
+        </p>
+
+        <div class="well two-factor t0" style="display:none">
+            Двуфакторна автентификация не е активиран в профила си
+        </div>
+
+        <div class="well two-factor t1 t3" style="display:none">
+            <b>Yubikey</b> <br/> За да свържете вашия ключ с вашия акаунт, изберете текстовото поле по-долу и натиснете зеления светодиод бутон на вашето устройство yubikey.
+
+            <div class="controls">
+                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">Изберете текстовото поле по-горе и натиснете зелената LED светлина на вашия Yubikey.</p>
+            </div>
+        </div>
+
+        <div class="well two-factor t2" style="display:none">
+            <b>Имейл</b> <br/> Удостоверяване кодове ще получите по електронната поща.
+        </div>
+
+        <div class="two-factor t4" style="display:none">
+            <p class="well">
+                Google Удостоверител е включен
+            </p>
+
+            <div style="display:none">
+                <p>
+                    Отворете Google Удостоверител приложения и сканиране на QR кода по-долу, за да завършите процеса на свързване.
+                </p>
+
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>След сканиране на QR кода по-горе с Удостоверител приложението Google въведете кода за удостоверяване по-долу:</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-factor t5 well" style="display:none">
+            <b>SMS съобщение</b>
+
+            <p>
+                Моля, въведете номера на мобилния си телефон по-долу. Международната SMS съобщения понякога може да е ненадеждна и не може да бъде на разположение на някои страни и мрежи.
+            </p>
+
+            <p class="form-inline">
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Изпращане на SMS кодекс</button>
+            </p>
+
+            <p class="sms-verified" style="color:green">
+                Проверени SMS
+            </p>
+
+            <div class="sms-unverified well">
+                <p>Въведете код, съдържащи се в рамките на проверка SMS съобщение.</p>
+                <p class="form-inline"><input placeholder="SMS код за проверка" class="wallet-sms-code" type="text"/> <button class="btn">Проверете</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Винаги дръжте Backup Browser</h3>
+
+        <p>Активирайте тази опция, за да принуди архивиране на портфейла, които да се съхраняват в своите браузъри локално съхранение, дори когато двуфакторна автентификация е активирана. Ако позволи на нападателя с достъп до вашия браузър ще бъде в състояние да се заобиколят две удостоверяване фактор, но ако портфейла е достъпна чрез всеки друг компютър или браузър се все още са защитени от двуфакторна автентификация.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Винаги дръжте:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Тайна фраза</h3>
+
+        <p>Тайна фраза може да се използва, за да ни помогне да потвърди самоличността си, в случай на изгубен портфейл идентификатор или yubikey. Тя може да бъде една дума или изречение с дължина до 255 знака.</p>
+
+        <p>
+            <input id="wallet-phrase" type="text"/>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Никога не помнят две Factor Вход</h3>
+
+        <p>
+            По подразбиране, след като влезете с двуфакторна автентификация вашия браузър ще бъде запомнен за кратък период от време, което ви позволява да влезете отново, без да се налага повторно удостоверяване. Поставете отметка в квадратчето по-долу, ако искате да деактивирате това поведение и изискват пълно удостоверяване всеки път.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Никога не забравяйте,:</label>
+
+                <div class="controls">
+                    <input id="never-save-auth-type" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Блокиране на ТСР адреси</h3>
+
+        <p>
+            Разрешаване на следния вариант за предотвратяване на IP адреси част на TOR мрежа анонимни от достъп до портфейла си.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Включване / Изключване:</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Ограничи до IP</h3>
+
+        <p>
+            Активирайте тази опция, за да се ограничи достъп до портфейла си до конкретен адрес или множество IP адреси, разделени със запетая. Само позволи това, ако имате статичен IP адрес. Вие няма да можете да влезете или достъп до всяка API от всички компютри не на мрежата обаче мобилните приложения ще продължи да функционира веднъж двойка.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Включване / Изключване:</label>
+
+                <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Заключване, за да IP:</label>
+
+                <div class="controls">
+                    <input id="ip-lock" type="text"/>
+
+                    <p class="help-block">Множество адреси IP следва да бъдат разделени със запетая.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Текуща IP:</label>
+
+                <div class="controls"><span id="my-ip"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="update-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Потвърдете Промяна на паролата</h3>
+    </div>
+    <div class="modal-body">
+        <p>Вашата парола ще се актуализира веднага. Бъдете сигурни, да се направи забележка на нова парола, тъй като не могат да бъдат възстановени, ако сме я забравили! Ако имате някакви криптирани архиви портфейла ще бъде възможно да декриптира ги използват старата си парола, се препоръчва да свалите някой от тези архиви.</p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Актуализация на парола</button>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div id="home-intro" style="display:none;">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="well table table-striped">
+                <tr>
+                    <td>Общо сделки</td>
+                    <td><span id="summary-n-tx">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Общо информация</td>
+                    <td><span id="summary-received">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Изпратени Общо</td>
+                    <td colspan="2"><span id="summary-sent">0</span></td>
+                </tr>
+                <tr>
+                    <td>Крайното салдо</td>
+                    <td><span id="summary-balance">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
+
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
+                    <small>This Is Your Bitcoin Адрес</small>
+
+                    <p class="primary-address" id="my-primary-address"></p>
+
+                    <small>Сподели това с никого и те могат да ви изпращат плащания.</small>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="span6">
+            
+
+                <div class="no-watch-only">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
+                        <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
+                        <li ><a href="#deposit-eu" data-toggle="tab"><img src="/Resources/flags/eu.png"> EU</a></li>
+                        <li ><a href="#deposit-other" data-toggle="tab">Other</a></li>
+                    </ul>
+
+                    <div class="tab-content page-header">
+                        <p>Най-бързият и най-лесният начин да депозира bitcoins в профила си е да се използват услугите по-долу.</p>
+
+                        <div class="tab-pane active" style="text-align:right" id="deposit-us">
+                            
+                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Внасяне</button>
+                            
+
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-uk">
+                            
+                            
+                            
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-eu">
+                            
+                            
+                        </div>
+
+                        <div class="tab-pane" id="deposit-other">
+                            
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="page-header">
+                <h3>Настройки на профила</h3>
+
+                <p>Редактиране на настройките на акаунта си, включително имейл адрес, парола и настройките си за известяване.</p>
+
+                <p align="right">
+                    <button class="btn" id="my-account-btn">Настройки на профила</button>
+                </p>
+            </div>
+
+            <h3>Архивиране</h3>
+
+            <p>Създаване на резервно копие на вашия портфейл е важна стъпка, която е лесно да се забрави. Blockchain.info взема всички предпазни мерки, за да се запази портфейла си, но тя винаги е по-добре да се съхранява локално копие за всеки случай.</p>
+
+            <div class="pull-right btn-group">
+                <a class="btn download-backup-btn">Download</a>
+                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
+                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
+                <a class="btn" id="email-backup-btn">Имейл</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="receive-coins" style="display:none;">
+
+    <h2>Адреси <small>Вашите адреси bitcoin</small></h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#active-addresses" data-toggle="tab">Активен</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">Архив</a></li>
+        <li><a href="#shared-addresses" data-toggle="tab">Споделени</a></li>
+    </ul>
+
+    <div id="receive-content" class="tab-content">
+        <div class="active tab-pane" id="active-addresses" style="margin-bottom:200px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Адрес</th>
+                    <th>Баланс</th>
+                    <th></th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Нов адрес" data-content="Щракнете тук, за да се генерира нов адрес bitcoin. Можете да започнете да получавате bitcoins в този адрес веднага">Нов адрес</button>
+
+            <div class="btn-group pull-right" style="margin:5px">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Още действия <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="chord-diagram">Диаграма запознанства</a></li>
+                    <li><a id="group-received" title="Taint Grouping">Група се занимава с оцветяване</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">Проверете съобщение</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="archived-addresses">
+            <h3>Архив адреси</h3>
+
+            <p>Архивните адресите са адресите, които не могат да се нуждаят от повече, които са скрити от основния екран, но все още е част от портфейла си. Можете ООН архив тях по всяко време, като кликнете върху синята икона.</p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th>Bitcoin Адрес</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="pull-right btn-group">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Почистване ключове" data-content="Преместване на всички bitcoins в избрани ключове на друг адрес bitcoin.">Почистване ключове
+                </button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Изтриване Keys" data-content="Изтриване на избрани частни ключове.">Изтриване Keys
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="shared-addresses">
+            <h3>Споделени адреси</h3>
+
+            <p style="padding-top:10px">Плащания, получени до споделени адреси ще бъдат изпратени на друг адрес в портфейла си. Всички получени плащания са изпратени чрез споделена портфейла нарушаване на веригата на сделките. <a href="https://blockchain.info/wallet/send-shared" target="new">(Още по темата)</a></p>
+
+            <p class="well">
+                <b>Споделени адреси са валидни единствено за една операция и се наложи с 0,5% такса за транзакция.</b>
+            </p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Адрес</th>
+                    <th class="hidden-phone">С нетърпение</th>
+                    <th>Изтича В</th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Нов споделената адресна</button>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;" id="restore-wallet">
+
+    
+
+    
+
+    
+
+    <div class="row-fluid page-header">
+        <div class="span6">
+            <div class="page-header">
+                <h3>Добре дошли отново </h3>
+                <small>Моля, въведете данните си за вход по-долу:</small>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Идентификатор:</label>
+
+                    <div class="controls"><input id="restore-guid" placeholder="Идентификатор или Alias" value="" type="text"/></div>
+                </div>
+
+                <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
+                    <label class="control-label">Парола:</label>
+
+                    <div class="controls"><input id="restore-password" type="password"/></div>
+                </div>
+
+
+                <div class="control-group auth-1 auth-3" style="display:none">
+                    <label class="control-label">Yubikey:</label>
+
+                    <div class="controls">
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Изберете текстовото поле по-горе и натиснете зелената LED светлина на вашия Yubikey.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-2" style="display:none">
+                    <label class="control-label">Email Код:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Имейл, съдържащ временен код за потвърждение е изпратена в профила си.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-4" style="display:none">
+                    <label class="control-label">Google Удостоверител:</label>
+
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+
+                        <p class="help-block">Моля, отворете Google App Удостоверител и въведете показания код.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-5" style="display:none">
+                    <label class="control-label">SMS Код:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Текстово съобщение е изпратено на вашия мобилен телефон. Моля, въведете кода в това съобщение по-горе.</p>
+                    </div>
+                </div>
+
+                <div style="padding-left: 160px;padding-bottom:20px">
+                    <button class="btn btn-primary" id="restore-wallet-continue">Отвори портфейла</button>
+                </div>
+
+                <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Не можете да намерите Вашият email кодекс?</h5>
+
+                    <p>За електронна поща ще бъде изпратено от wallet@blockchain.info. Не забравяйте да проверите папката за спам. Ако все още не можете да намерите имейл щракнете върху бутона по-долу, за да го изпрати отново.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Преизпрати Link</a>
+                    </p>
+                </div>
+
+                <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Не получите код за SMS?</h5>
+
+                    <p>Моля, проверете мрежовия сигнал. Съобщения може да отнеме до 10 минути, за да бъдат доставени, ако тя е била в продължение на 10 минути, щракнете върху бутона по-долу, за да изпрати съобщението.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Преизпрати съобщение</a>
+                    </p>
+                </div>
+
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">Вашата парола никога не се споделя с нашите сървъри и не могат да бъдат възстановени, ако сме я забравили!</div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="page-header">
+                <h3>Забравил нещо?</h3> <small>Помощ! Съм се заключих на моя акаунт</small>
+            </div>
+
+            <h4>Забравена идентификатор или Alias</h4>
+
+            <p> Ако сте забравили портфейла си идентификатор първо проверете имейл за потвърждение, който сте получили по време на регистрацията. Не можахте да намерите имейл? Щракнете върху бутона по-долу и ние ще Ви изпратим нова.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Възстановяване Wallet</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Внос Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Изтегляне на Backup</a>
+            </p>
+
+            <h4>Забравена Подробна информация за двуфакторна автентикация.</h4>
+
+            <p>Ако сте забравили две подробности фактор удостоверяване портфейла си, все още е напълно възстановима. Всичко, от което се нуждаем, е достатъчно доказателство, че сте собственик на сметката, която може да бъде предоставена чрез попълване на формуляр, свързан по-долу.</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn" disabled="true">Reset Две удостоверяване фактор</a>
+            </p>
+
+            <h4>Забравена парола</h4>
+
+            <p>Портфейла ви се криптира от вашия браузър, преди да достигне до нас и поради тази причина не сме в състояние да помогне за възстановяване на изгубени пароли. Да се ​​избегнат евентуални парична загуба поради забравени пароли, се препоръчва да направите резервно копие на хартия частни ключове на портфейла си.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn" disabled="true">Възстановяване Wallet</a>
+            </p>
+
+            <h4>Нуждаете се от помощ?</h4>
+
+            <p>
+                Прочети нас в <a href="https://blockchain.info/wallet/support-pages">Страниците за поддръжка</a>
+            </p>
+        </div>
+    </div>
+
+    
+
+    
+</div>
+
+<div id="my-transactions" style="display:none;">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 style="display:inline-block">Сделки <small>Обобщение на вашите скорошни сделки</small></h2>
+
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> Преглед</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> Компактен</a></li>
+                        <li><a href="#" data-value="1"> Подробен</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> Export История</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> Филтър</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> Всички</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Изпратени</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Приет</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> Ескроу</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
+        </div>
+    </div>
+
+    <p class="padded well" id="no-transactions" align="center">Обикновено bitcoin сделки ще бъдат изброени тук, но не са направили все още.</p>
+
+    <table id="transactions-compact" class="table table-striped table-condensed table-hover">
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="transactions-detailed"></div>
+
+    <div class="pagination" align="center" style="clear:both;float:none">
+        <ul></ul>
+    </div>
+</div>
+
+<div id="send-coins" style="display: none;">
+<div class="row-fluid">
+<div class="span3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Тип на транзакцията</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Бързо Изпрати</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Обичай</a></li>
+            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Споделени Изпрати</a></li>
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Ескроу</a></li>
+
+            <li class="nav-header">Изпращане чрез</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Имейл</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS съобщение</a></li>
+
+            <li class="nav-header">Игри</li>
+            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            <li class="divider"></li>
+            <li class="nav-header">Инструменти</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Адресна книга</a></li>
+        </ul>
+    </div>
+
+    <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
+        <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
+    </div>
+</div>
+<div class="span9">
+<div class="tab-content">
+<div class="active tab-pane well" id="send-quick">
+    <h4 class="page-header">Бързо Изпрати<br/>
+        <small>Използвайте формата по-долу, за да изпратите плащане на bitcoin адрес.</small>
+    </h4>
+
+    <div class="form-horizontal">
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="На адрес" data-content="Това е Bitcoin адреса на получателя.">До:</label>
+
+                    <div class="controls">
+                        <span class="qrcodeicon" /><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
+
+                        <p class="help-block">Въведете Bitcoin адреса на получателя</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Размер" data-content="Сума в Bitcoins Изпрати">Размер:</label>
+
+                    <div class="controls">
+
+                        <div class="input-prepend">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <b>=</b>
+
+                        <div class="input-prepend">
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <p class="help-block">Въведете сумата на Bitcoins, за да изпратите</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Изпрати на плащане" data-content="Щракнете тук, за да изпратите плащане. Вие няма да бъдете помолени да преразгледа сделката.">Изпрати на плащане</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-sms">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Изпращане чрез SMS<br/><small>Използвайте формата по-долу, за да изпратите bitcoin чрез SMS.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="SMS номер" data-content="Въведете кода SMS на човека, с когото искате да изпратите bitcoins.">До:</label>
+
+                    <div class="controls">
+                        <select name="sms-country-code"></select> <br/> <input placeholder="SMS номер" name="send-to-sms" type="text" style="margin-top:5px"/>
+
+                        <p class="help-block">Въведете номера на SMS на Получателя.</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Размер" data-content="Сума в Bitcoins Изпрати">Размер:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+
+                        <p class="help-block">Въведете сумата на Bitcoins, за да изпратите</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Изпрати на плащане" data-content="Щракнете тук, за да изпратите плащане. Вие няма да бъдете помолени да преразгледа сделката.">Изпрати на плащане</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-email">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Изпрати по имейл<br/><small>Използвайте формата по-долу, за да изпратите bitcoin имейл адрес.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="E-mail Адрес" data-content="Това е имейл адреса на лицето, на което искате да изпратите bitcoins.">До:</label>
+
+                    <div class="controls">
+                        <input placeholder="E-mail Адрес" name="send-to-email" type="text"/>
+
+                        <p class="help-block">Въведете имейл адреса на получателя</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Размер" data-content="Сума в Bitcoins Изпрати">Размер:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+                        <p class="help-block">Въведете сумата на Bitcoins, за да изпратите</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Изпрати на плащане" data-content="Щракнете тук, за да изпратите плащане. Вие няма да бъдете помолени да преразгледа сделката.">Изпрати на плащане</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="send-shared">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Изпрати Споделени<br/><small>Изпрати споделя с почивките по веригата на сделки между портфейла си и адреса на получателя.</small></h4>
+
+        <div class="form-horizontal">
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="На адрес" data-content="Това е Bitcoin адреса на получателя.">До:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
+
+                            <p class="help-block">Въведете Bitcoin адреса на получателя</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                    class="add-on send-value-usd">$0</span>
+                            </div>
+
+                            <p class="help-block fees"> Включително възнаграждения общо на тази сделка е <span class="shared-fees">0.00</span></p>
+
+                            <p class="help-block bonus">Няма да има такса за тази сделка и бонус от <span class="bonus-value">0.00</span> ще бъдат платени.</p>
+
+                            <p class="help-block free">Споделен изпращане в момента е безплатно.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Мнение плащане" data-content="Щракнете тук, за да преразгледа плащане. Вие ще бъдете в състояние да потвърди или отмени сделката.">Мнение плащане</button>
+
+                <p class="help-block fees">Всички споделени сделки дължи <span class="mixer_fee">0.5</span>% такса.</p>
+
+                <div class="progress" style="display:none;">
+                    <div class="bar" style="width:10%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-custom">
+    <h4 class="page-header">Митническо Transaction<br/><small>Използвайте формата по-долу, за да изпратите плащане на една или повече bitcoin адреси. Вие ще бъдете помолени да преразгледа сделката преди подаване.</small></h4>
+
+    <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
+        <div class="control-group">
+            <label class="control-label pop" title="От Адрес" data-content="Ако е необходимо, можете да изберете да изпратите монети от конкретен адрес в портфейла си.">От:</label>
+
+            <div class="controls">
+                <select name="from" multiple="multiple"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">До:</label>
+
+            <div class="controls recipient-container">
+                <div class="recipient" style="margin-bottom:5px">
+                    <span class="qrcodeicon" /><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
+
+                    <div class="input-prepend input-append">
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left;padding-bottom:7px;padding-right:7px">
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
+                </div>
+
+                <div style="float:right;padding-right:20px">
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Махни Получател" data-content="Свалете последния получател."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Добавяне на получател" data-content="Ако искате да изпратите bitcoins до множество получатели наведнъж, щракнете тук, за да добавите друг адрес"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Миньорите Такса" data-content="Тази такса ще бъдат изпратени на миньорите bitcoin и може да помогне сделката да се обработват по-бързо">Миньорите Такса:</label>
+
+            <div class="controls">
+                <div class="input-prepend" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Промени адрес" data-content="Всяка промяна в резултат на сделката ще бъде изпратено на този адрес">Промени адрес:</label>
+
+            <div class="controls">
+                <select name="change"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Бележка," data-content="Добавяне на бележка към тази сделка, която ще се виждат на blockchain.info.">Бележка,:</label>
+
+            <div class="controls">
+                <textarea name="public-note" placeholder="Това съобщение ще бъде трайно вградени в blockchain. Всеки може да го прочете." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="reset btn">Начално състояние на формуляр</button>
+            <button class="send btn btn-primary pop" title="Мнение плащане" data-content="Щракнете тук, за да преразгледа плащане. Вие ще бъдете в състояние да потвърди или отмени сделката.">Мнение плащане</button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
+        <div class="well">
+            <h4 class="page-header">Залог с SatoshiDICE<br/>
+                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> е най-популярният bitcoin залагания игра. Спечелете до 64 000 х залога си, мигновено. Всички ролки могат да бъдат проверени с помощта на blockchain.</small>
+            </h4>
+
+            <div class="form-horizontal">
+                <div class="controls">
+                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
+                </div>
+
+                <div class="recipient-container"></div>
+
+                <div class="form-actions">
+                    <button class="send btn btn-success pop" data-repeat="1">Поставете залог!</button> <button class="send btn pop" data-repeat="5">Повторете x5</button> <button class="send btn pop" data-repeat="10">Повторете x10</button>
+
+                    <p class="help-block">Blockchain.info не е свързана с satoshidice.com.</p>
+
+                    <div class="progress" style="display:none;margin-top:10px">
+                        <div class="bar" style="width:10%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="well profit-loss" style="display:none">
+            <p><b>Резюме:</b> <a href="#" class="refresh">(Обнови)</a></p>
+
+            <p><b>Брой залози:</b> <span class="n-bets"></span></p>
+
+            <p><b>Печалби:</b> <span class="winnings"></span></p>
+        </div>
+    </div>
+
+
+<div class="tab-pane well" id="address-book">
+
+    <h3>Адресна книга</h3>
+
+    <p>Адресната книга съдържа списък на изпращане на адреси. Можете да го използвате за съхранение на bitcoin адресите на хора, които познавате или търговци, които използвате често.</p>
+
+    <table class="table table-striped" id="address-book-tbl">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Bitcoin Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockchain.info</td>
+            <td class="addr-book-entry">1JArS6jzE3AJ9sZ3aFij1BmTcpFGgN86hA</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <button id="add-address-book-entry-btn" class="btn btn-primary">Добави навлизането на нови участници на пазара</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="import-export" style="display: none;">
+    <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
+        <h2>Разширено Внимание!</h2>
+
+        <p>Този раздел ви позволява да направите промени в портфейла си, които могат да бъдат сложни и объркващи. Препоръчва се само от опитни потребители Bitcoin се процедира от тук. Трябва да има разбиране на това, което са частни ключове и как те се отнасят до bitcoin адреси.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-import-export">Разбирам</button>
+        </p>
+    </div>
+
+    <div id="import-export-content" style="display:none;">
+
+
+
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Импорт / Експорт</li>
+            <li class="active"><a href="#import" data-toggle="tab">Внос</a></li>
+            <li><a href="#import-backup" data-toggle="tab">Внос Backup</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">Внос Wallet</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">Износ Encrypted</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">Износ се шифроват</a></li>
+            <li><a id="export-paper-btn">Книга Wallet</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
+
+            
+
+            <div class="page-header">
+                <h3>Добави гледате само Bitcoin Адрес</h3>
+
+                <p>Можете да добавите <font color="red">Watch Only</font> bitcoin адрес за портфейла ви. Вие не ще бъде в състояние да изпрати bitcoins от този адрес, без по-късно предоставяне на частния ключ</p>
+
+                <div class="form-inline">
+                    <input placeholder="Bitcoin Адрес" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Добави гледате само Адрес</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Импортиране на частния ключ</h3>
+
+                <p>Импортирате съществуващ частен ключ по-долу. Всички частни основни формати се поддържат.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Добави частен ключ</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Мозъчен Wallet</h3>
+
+                <p>Портфейл на мозъка е частен ключ със семена от едно незабравимо преминаване фраза. Възможно е да запомните тази парола, за да възстанови средствата на този адрес, без да е необходимо архивиране на портфейла.</p>
+
+                <p>Минималната преминаване фраза дължина е 15 символа. Тя е силно препоръчително, все още се водят редовно архивиране портфейла дори и с преминаване фраза запаметява.</p>
+
+                <div class="form-inline">
+                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Генериране на ключ</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Внос Използването на хартия Wallet</h3>
+
+                <p>Използвайте вашата уеб камера за сканиране на QR кода от портфейла на хартия</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Сканиране с уеб камера</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">Внос Backup <small>Списък на портфейла архиви от нашия сървър сторидж облак.</small></h3>
+
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>Име на файла</th>
+                <th>Последна промяна на</th>
+                <th>Размер</th>
+                <th>Действие</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="import-wallet">
+
+            <h3 class="page-header">Внос Wallet</h3>
+
+            <p>Може да импортирате ключовете в няколко различни формата.</p>
+            <ul>
+                <li>AES криптиран бекъп от blockchain.info. (Трябва да се криптира с една и съща парола)</li>
+                <li>Прав текст JSON гръб от blockchain.info</li>
+                <li>Изход от <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
+                <li>Изход от <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
+                <li>Изход от <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+            </ul>
+
+            <p>Моля, бъдете наясно, че в момента е ограничение от 400 частни ключове на портфейла. За по-големи портфейли вашия браузър може да стане студен в продължение на няколко минути.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Копирате и поставите вашите данни за портфейла в тази област"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Внос Wallet</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">Износ <small>По-долу са си частни ключове, AES шифровани.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">Изтегляне на Backup</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">Износ се шифроват <small>По-долу са си частни ключове във формат JSON. Внимание! Тези данни се декриптира я дръжте на сигурно.</small></h3>
+
+            <h6>Изберете частен ключ формат:</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">Оставете частни ключове Encrypted</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>Добави гледате само Bitcoin Адрес</h3>
+            </div>
+            <div class="modal-body">
+                <p>Моля, потвърдете, можете да добавите <font color="red">Watch Only</font> адрес <span class="address"></span>.</p>
+
+                <p><font color="red">Watch Only</font> адрес означава, че може само да наблюдават сделките на този адрес. Ако имате частния ключ, записан другаде тогава не притежават средствата на този адрес.</p>
+
+                <p>Ако не разполагате с хартия портфейла или друг гръб не трябва да оттегли монети на този адрес или възлага на някой да ви изпрати монети на този адрес</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Отказ</button>
+                    <button class="btn btn-primary">Продължи</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Second Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please enter the second password for this wallet.</p>
+                <p align="center">
+                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p align="center">
+                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Сгъстен частния ключ компютър</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>Сгъстен частни ключове, които в момента не се поддържат с помощта на Android App, iPhone App или търговец API. Ако внасяте компресиран частен ключ директно до вас не ще бъде в състояние да прекарват средствата на този адрес с помощта на предварително посочените устройства.</p>
+
+                <p>Препоръчителната решение е да се почистват средствата в съществуващ адрес bitcoin. Бихте ли искали да помете този частен ключ, вместо?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Sweep ключ</button>
+                    <button class="btn btn-secondary">Внасяме директно</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div></div>
+</div>
+
+
+
+<div id="main-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Главна парола, необходими</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Това действие изисква да въведете отново вашата основна парола. Моля, въведете го внимателно или може да бъде записано.</p>
+
+        <div style="width:290px;margin: 0 auto;">
+            <p><b>Главна парола:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button> <button class="btn btn-primary">Продължи</button>
+        </div>
+    </div>
+</div>
+
+<div id="second-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Втори парола, необходими</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Това действие изисква да въведете вашия втора парола, която е необходима напълно декриптира портфейла си. Никога не трябва да въведете парола за ненадежден компютър. Използване на екранната клавиатура, за да осигури известна защита от кийлогъри.</p>
+
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
+
+        <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
+            <ul class="vkeyboard">
+                <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                <li class="delete lastitem">delete</li>
+                <li class="tab">tab</li>
+                <li class="letter">q</li>
+                <li class="letter">w</li>
+                <li class="letter">e</li>
+                <li class="letter">r</li>
+                <li class="letter">t</li>
+                <li class="letter">y</li>
+                <li class="letter">u</li>
+                <li class="letter">i</li>
+                <li class="letter">o</li>
+                <li class="letter">p</li>
+                <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                <li class="capslock">caps lock</li>
+                <li class="letter">a</li>
+                <li class="letter">s</li>
+                <li class="letter">d</li>
+                <li class="letter">f</li>
+                <li class="letter">g</li>
+                <li class="letter">h</li>
+                <li class="letter">j</li>
+                <li class="letter">k</li>
+                <li class="letter">l</li>
+                <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                <li class="return lastitem">return</li>
+                <li class="left-shift">shift</li>
+                <li class="letter">z</li>
+                <li class="letter">x</li>
+                <li class="letter">c</li>
+                <li class="letter">v</li>
+                <li class="letter">b</li>
+                <li class="letter">n</li>
+                <li class="letter">m</li>
+                <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                <li class="right-shift lastitem">shift</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button> <button class="btn btn-primary">Продължи</button>
+        </div>
+    </div>
+</div>
+
+<div id="label-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Label Адрес</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Моля, въведете етикет за адреса <span class="address"></span></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Издател:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Label напр. Спестявания" type="text" /><p class="help-block">Се използва етикет, за да ви помогне да запомни какво е този адрес. Тя може да бъде на името на лице или фирма.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button> <button class="btn btn-primary">Спасяване</button>
+        </div>
+    </div>
+</div>
+
+<div id="sign-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Вход съобщение</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Използвайте този инструмент, за да подпише съобщение, което доказва, че притежава адрес. Само Вход подробни съобщения сте напълно съгласни с, никога не подпише неясни послания. Натискането Вход съобщение може да доведе до браузъра си, за да стане студен за няколко секунди.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Адрес:</label>
+                <div class="controls">
+                    <p class="address"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Съобщение:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Въведете съобщението, което искате да се регистрирате"></textarea>
+                </div>
+            </div>
+            <div class="control-group signature" style="display:none">
+                <label class="control-label">Подпис:</label>
+                <div class="controls">
+                    <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Вход съобщение</button>
+        </div>
+    </div>
+</div>
+
+<div id="verify-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Проверете съобщение</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Използвайте този инструмент, за да провери съобщение, подписано от собственика на определен адрес bitcoin</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Адрес:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin Адрес" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Съобщение:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Въведете ми, за да се провери"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Подпис:</label>
+                <div class="controls">
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="Въведете Подпис, за да се провери"></textarea>
+                </div>
+            </div>
+            <div class="control-group address-result" style="display:none">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <span class="address-result-txt"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Проверете съобщение</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>Адрес QR Code <small class="address"></small></h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Близо</button>
+        </div>
+    </div>
+</div>
+
+<div id="add-address-book-entry-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Добавяне на запис адресната книга</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Адрес:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin Адрес" type="text">
+                    <p class="help-block">Въведете Bitcoin адрес, който искате да добавите към вашата адресна книга.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Издател:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Име на лице или търговец" type="text" />
+                    <p class="help-block">Въведете Етикет за този адрес. например името на лицето или името на фирмата.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Добавяне на адрес</button>
+        </div>
+    </div>
+</div>
+
+<div id="not-synced-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Адрес няма Запазени</h3>
+    </div>
+    <div class="modal-body">
+        <p>Новосъздадения адрес не е записан на нашите сървъри. <span style="color:red;font-weight:bold;">Освен частния ключ се записва другаде всички монети, изпратени до Несинхронизираните адреси ще бъдат загубени след излизане</span></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-danger">Покажи Незапаметената Адрес</button>
+            <button class="btn btn-primary" data-dismiss="modal">Близо</button>
+        </div>
+    </div>
+</div>
+
+<div id="watch-only-copy-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Гледате само Внимание Адрес</h3>
+    </div>
+    <div class="modal-body">
+        <p>Вие получавате това предупреждение, защото сте копирали <font color="red">Watch Only</font> адреса в клипборда.</p>
+
+        <p><font color="red">Watch Only</font> адрес означава, че може само да наблюдават сделките на този адрес. Ако имате частния ключ, записан другаде тогава не притежават средствата на този адрес.</p>
+
+        <p><b>Ако не разполагате с хартия портфейла или друг гръб не трябва да оттегли монети на този адрес или възлага на някой да ви изпрати монети на този адрес</b></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary" data-dismiss="modal">Близо</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Потвърждаване на изтриването</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">Изтриване на погрешен адрес ще доведе до финансови загуби. Ако не сте сигурни в това, което правиш натиснете "Отказ" сега</div>
+
+        <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
+
+        <p>
+            Ли сте, че искате да премахнете адреса? Вече няма да може да изпращате или получавате bitcoins от този адрес. Балансът на този адрес е:
+        </p>
+
+        <h2 align="center" id="delete-balance"></h2>
+
+        <h2 id="change-mind" style="display:none;text-align:center">Имате <span id="change-mind-time">5</span> секунди, за да промените мнението си ...</h2>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Само Изтриване на частния ключ</button>
+            <button class="btn btn-danger">Изтриване на Адрес и частен ключ</button>
+        </div>
+    </div>
+</div>
+
+<div id="sweep-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Почистване ключове</h3>
+    </div>
+    <div class="modal-body">
+        <p>Sweep означава да преместите всички налични средства в една или повече адреси на друг адрес. Моля, изберете адреса, където бихте желали да почистват избрани адреси (Баланс <span class="balance"></span>).</p>
+
+        <p align="center">
+        <div class="form-inline">
+            <label class="control-label">Омитай До:</label> <br /><select name="change"></select>
+        </div>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Продължи</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="ask-for-shared" class="modal hide">
+    <div class="modal-header">
+        <h3>Изпрати споделено?</h3>
+    </div>
+    <div class="modal-body">
+        <p>Изпрати тази сделка чрез споделената портфейла и получи <span class="bonus-percent"></span>% бонус (<span class="bonus-value"></span> ще бъдат изпратени обратно в изпращащата адрес). Сделката ще понесат закъснение от около <span class="delay"></span>.</p>
+
+        <div class="alert alert-block alert-error" style="margin: 10px;">
+            Да не се приема, ако очаквате да получите на плащане на изпращащата адрес. Споделени сделки са несъвместими с SatoshiDICE, BitLotto и много други игри bitcoin.
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Никога не ме питай отново.</div>
+
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Продължи без</button>
+            <button class="btn btn-primary">Изпрати споделено?</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>Недостатъчни фондове</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Тази сделка не може да бъде изпратено, защото има insufficent налични средства. Това може да се дължи на допълнителни такси миньори или непотвърдени сделки.</p>
+
+        <p>Сделката може да бъде отменена. Или сумата да изпратите могат да бъдат коригирани, за да съответства на максималната сума на разположение, за да изпратите.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">Задължително: <span class="amount-required"></span> (На разположение: <span class="amount-available"></span>)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ Transaction</button>
+            <button class="btn btn-primary">Настройте Размер</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-for-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Миньорите Такса Рекомендуем</h3>
+    </div>
+    <div class="modal-body">
+        <p>Тази сделка е с нисък приоритет. Препоръчително е да включват най-малко 0.0005 БТК такса за сделка, за да се гарантира миньори я обработва.</p>
+        <div class="alert alert-block alert-error" style="margin: 10px;">Ако не включва такса тази сделка може да отнеме дълго време, за да се потвърди. Всички средства ще бъдат върнати в около 24 часа.</div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Продължете без такса</button>
+            <button class="btn btn-primary">Добави Такса</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="new-transaction-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Създаване на транзакция</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center" class="loading-indicator" style="display:none;">
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+        </p>
+
+        <div class="offline-transaction" style="display:none">
+            <p>Транзакцията е създаден успешно, но все още не е излъчен на p2p мрежа. </p>
+
+            За да завършите сделката се отварят <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>. Копирайте и поставете текста по-долу в текстовото поле и натиснете представят за завършване на сделката. </ P>
+
+            <textarea name="data" style="width: 100%; height:100px;"></textarea>
+        </div>
+
+        <div id="tx-sign-progress" style="display:none">
+            <h4>Моля, изчакайте. Подписване въведете номера <span class="n">0</span> от <span class="t"></span> ...</h4>
+        </div>
+
+        <div id="review-tx" style="display:none">
+            <div class="basic">
+                <p>Моля, потвърдете, бихте искали да <span id="rtc-basic-summary"></span></p>
+            </div>
+
+            <div class="adv">
+                <p>Моля, проверете данните по-долу:</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td width="110px;"><b>Хашиш</b></td>
+                        <td id="rtc-hash"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Версия</b></td>
+                        <td id="rtc-version">1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Входове</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Изходи</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Общо Такси</b></td>
+                        <td id="rtc-fees">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Обща изходна стойност</b></td>
+                        <td id="rtc-value">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Оставянето Wallet</b></td>
+                        <td id="rtc-effect" style="color: red">0</td>
+                    </tr>
+                </table>
+            </div>
+            <p align="right"><a class="show_adv"></a></p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Изпрати Transaction</button>
+        </div>
+    </div>
+</div>
+
+<div id="send-email-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Изпрати по имейл</h3>
+    </div>
+
+    <div class="modal-body">
+        <h3 style="padding-bottom:25px">
+            Изпрати <span class="amount"></span> до <span class="email"></span> <br /> <small>Следното съобщение ще бъде изпратено до получателя.</small>
+        </h3>
+
+        <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Изпрати на плащане</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="private-key-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Лично Нужда ключ</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Това действие изисква частния ключ на адрес bitcoin <span class="address" style="font-weight:bold"></span>. Моля въведете частния ключ по-долу.</p>
+
+        <div style="margin:0 auto;width:400px">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+            <button class="btn btn-primary">Въведете частен ключ</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-reader-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Сканирайте QR Code</h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div class="qr-code-reader" style="width:320px;height:240px;margin:0 auto;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Възстановете архивните Инструкции</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+           <ul>
+              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

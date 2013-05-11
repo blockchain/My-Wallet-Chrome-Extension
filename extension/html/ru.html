@@ -1,0 +1,2363 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой кошелек - Будь сам себе банком - Blockchain.info</title>
+    <meta name="robots" content="noindex">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+
+    <style type="text/css">
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
+
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
+    
+    
+    
+</head>
+
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/">
+
+    <div class="navbar" style="height:40px;overflow:visible">
+        <div class="navbar-inner" style="height:43px;">
+            <div class="container">
+                <div class="logo hidden-phone hidden-tablet"><a href="https://blockchain.info/"><img border="0" src="/Resources/logo_new.png" alt="Обозреватель блоков и статистика валюты Bitcoin"/></a></div>
+
+                <ul class="nav">
+                    <li><a href="https://blockchain.info/" title="Blockchain.info">Главная</a></li>
+                    <li><a href="https://blockchain.info/charts" title="Графики Bitcoin">Графики</a></li>
+                    <li><a href="https://blockchain.info/stats" title="Статистика Bitcoin">Статистика</a></li>
+                    <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin рынки">Рынки</a></li>
+                    <li class="hidden-phone"><a href="https://blockchain.info/api" title="Инструменты для разработчиков">Разработчикам</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet/" title="Кошелек Bitcoin">Кошелек</a></li>
+                </ul>
+
+                
+
+                
+
+                
+                    <div class="hidden-phone pull-right" style="padding-top:9px">
+                        <img src="/Resources/refresh.png" id="refresh">
+                        <img src="/Resources/logout.png" id="logout" style="padding-left:9px">
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+<div class="quickstart">
+    <div class="container" id="new-wallet">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>
+                    <span class="hidden-phone">Мой кошелек <small>Будь сам себе банком.</small></span>
+
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Ваш баланс" data-content="Здесь показан баланс вашего кошелька Bitcoin. Вы можете не суметь потратить эту сумму, пока все транзакции не будут подтверждены.">
+                        <span id="balance"></span>
+                        <small id="balance2">0</small>
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid" style="margin-top:10px">
+            <div class="span12 no-print">
+                <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
+                    <li><a id="home-intro-btn">Кошелек: Главная</a></li>
+                    <li><a id="my-transactions-btn">Мои транзакции</a></li>
+                    <li><a id="send-coins-btn">Отправить деньги</a></li>
+                    <li><a id="receive-coins-btn">Получить деньги</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">Импорт / Экспорт</a></li>
+                </ul>
+
+                <h6 class="pull-right" id="status-container">
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Загрузка</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
+    <span id="notices" style="max-width: 600px; width:100%;"></span>
+</div>
+
+<div style="width:100%; float:left; clear:both"></div>
+
+<div class="container" style="margin-top:10px">
+
+<div id="my-account" style="display:none;">
+    <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
+        <h2>Конфиденциальных данных</h2>
+
+        <p>Настройка учетных записей отображаются важные данные, которые не должны быть показаны другим людям. Это рекомендуется не открывать этот раздел в общественных местах или делать скриншоты из этого раздела.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-account-settings">Продолжать</button>
+        </p>
+    </div>
+
+    <div id="my-account-content" style="display:none">
+
+
+
+
+<h2>
+    Настройки аккаунта <small>Изменить настройки моего кошелька.</small>
+</h2>
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Информация об учетной записи</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Личный</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Общее</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Уведомления</a></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Пароли</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Безопасность</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Каротаж</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Устройства</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+<div class="tab-content">
+<div class="active tab-pane" id="account-information">
+    <div class="page-header">
+        <h3>E-mail <small style="color:green">(Рекомендованно)</small></h3>
+
+        <p>
+            Электронная почта необходима, чтобы помочь восстановить потерянный бумажник идентификатор и для оплаты уведомлений.<br/>
+        </p>
+
+        <p>
+            <input placeholder="Ваш e-mail" id="wallet-email" type="text"/>
+        </p>
+
+        <p class="email-verified">
+            <font color="green">Email подтвержден</font>
+        </p>
+
+        <div class="email-unverified">
+            <b>E-mail код подтверждения:</b><br/><br/>
+
+            <div class="form-inline">
+                <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
+                <button class="btn">Проверить</button>
+                <button class="btn" id="wallet-email-send">Послать ссылку повторно</button>
+            </div>
+            <br/> <font color="red">Email не подтвержден</font>
+        </div>
+    </div>
+
+    <div class="page-header email-verified">
+        <h3>Псевдоним  <small>(Необязательно)</small></h3>
+        <p>
+            Псевдоним - это короткая ссылка, которую можно запомнить для быстрого доступа к вашему счету, без необходимости помнить идентификатор<br/>
+        </p>
+
+        <p>
+            <input placeholder="Ник или другие памятные слова" id="wallet-alias" type="text"/>
+        </p>
+
+        <pre class="alias" style="display:none"></pre>
+    </div>
+
+    <div class="page-header">
+        <h3>Номер мобильного <small>(Необязательно)</small>
+        </h3>
+
+        <p>
+            Пожалуйста, введите номер вашего мобильного телефона ниже. Международные SMS-сообщения могут быть ненадежны и могут быть недоступны в некоторых странах и сетях.
+        </p>
+
+        <p class="form-inline">
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Отправьте SMS с кодом</button>
+        </p>
+
+        <p class="sms-verified">
+            <font color="green">Проверено с помощью SMS</font>
+        </p>
+
+        <div class="sms-unverified well">
+            <p>Введите код, содержащийся в сообщении проверки смс.</p>
+            <p class="form-inline"><input placeholder="Верификационный код СМС" class="wallet-sms-code" type="text"/> <button class="btn">Проверить</button> </p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-general">
+
+    <div class="page-header">
+        <h3>Язык</h3>
+
+        <p>Установите нужный язык ниже</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Местная валюта</h3>
+
+        <p>Вы можете быстро переключаться между биткойнами и местной валютой, нажав на свой баланс в правом верхнем углу.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin дисплей</h3>
+
+        <p>Регулировка точности вы предпочитаете Bitcoin значений, которые отображаются дюйма</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Бездействие Выйти</h3>
+
+        <p>
+            По умолчанию вы будете автоматически авторизованы из вашего кошелька после 10 минут бездействия. Вы можете настроить тайм-аут ниже.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 минут</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 минут</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 минут</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Никогда</b>
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Политика шахтерских сборов по умолчанию</h3>
+
+        <p>
+            Транзакции Blockchain.info являются бесплатными. Однако сеть Bitcoin может потребовать дополнительной платы шахтерам, которая влияет на то, как быстро ваши транзакции будут проверены, и помогает поддерживать сеть. Измените параметры ниже, чтобы изменить политику шахтерских сборов по умолчанию.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>Скромно</b> - Плата шахтерам будет включена только если абсолютно необходимо. <font color="red">Транзакции будут подтверждаться значительно медленнее</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>Нормальный</b> - Следовать политике сборов, предложенной основным клиентом Bitcoin. <font color="green">Рекомендованно</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>Щедро</b> - Сборы будут установлены так чтобы ваши транзакции имели высокий приоритет (базовые сборы 0.001 BTC).
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Автоматическое резервное копирование на электронную почту</h3>
+        <p>
+            Получать новую резервную копию автоматически, когда ваш бумажник обновляется: <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    Передовой
+                </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div>
+                        <h3>Проверка целостности</h3>
+
+                        <p>Проверяет, что все ключи в кошельке соответствуют своему адресу Bitcoin и повторно шифрует ваш кошелек. В некоторых браузерах это может занять много времени.</p>
+
+                        <p>
+                            <button class="btn" id="run-key-check">Выполнить проверку</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-notifications">
+    <div class="page-header">
+        <h3>Уведомления</h3>
+
+        <p>Получайте уведомления при отправке или получении средств на ваш кошелек.</p>
+
+        <div id="notifications-type">
+            <input type="checkbox" value="1"> <b>Уведомления по электронной почте</b><br/>
+
+            <div class="well type-1" style="display:none">
+                Вы будете получать уведомления по электронной почте. Пожалуйста, подтвердите свой адрес электронной почты, если вы еще не сделали этого.
+            </div>
+
+            <input type="checkbox" value="32"> <b>SMS-уведомления</b><br/>
+
+            <div class="well type-32" style="display:none">
+                <p>
+                    Пожалуйста, введите номер вашего мобильного телефона ниже. Международные SMS-сообщения могут быть ненадежны и могут быть недоступны в некоторых странах и сетях.
+                </p>
+
+                <p class="form-inline">
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Отправьте SMS с кодом</button>
+                </p>
+
+                <p class="sms-verified">
+                    <font color="green">Проверено с помощью SMS</font>
+                </p>
+
+                <div class="sms-unverified">
+                    <p>Введите код, содержащийся в сообщении проверки смс.</p>
+                    <p class="form-inline">
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Проверить</button>
+                    </p>
+                </div>
+            </div>
+
+            <input type="checkbox" value="2" /> <b>Google Talk</b><br/>
+
+            <div class="well type-2" style="display:none">
+                Вы будете получать уведомления посредством Google Talk.
+            </div>
+
+            <input type="checkbox" value="8"> <b>Skype</b><br/>
+
+            <div class="well type-8" style="display:none">
+                <p>Вы будете получать уведомления по Skype с именем пользователя указанным ниже:</p>
+
+                <input placeholder="Skype Username" id="wallet-skype" type="text"/>
+            </div>
+
+            <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
+
+            <div class="well type-64" style="display:none">
+                <p>Пожалуйста, введите свой <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> email ниже:</p>
+
+                <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
+            </div>
+
+            <input type="checkbox" value="4"> <b>HTTP Уведомления</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>Http будут отправляться уведомления, когда операции отправлено или получено. Пожалуйста, см. раздел для разработчиков руководство по реализации обратного вызова.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+            <input type="checkbox" value="128"> <b>Android Уведомления</b><br/>
+
+            <div class="well type-128" style="display:none">
+                <p>Вы получите уведомление на ваш Android устройство раз пару.</p>
+            </div>
+
+        </div>
+
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 Уведомления</b><br/>
+
+        <div class="well" style="display:none">
+            <p>HTML 5 Уведомления отличаются от обычных всплывающих окон в том, что они требуют разрешения пользователя и требовалось доказать. В настоящее время поддерживаются в Chrome и Safari.</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Когда мой кошелек</h3>
+
+        <p>
+            <select id="notifications-on">
+                <option value="0">Отправляет или получает Bitcoins</option>
+                <option value="1">Отправляет биткойны</option>
+                <option value="2">Получает биткойны</option>
+            </select>
+        </p>
+    </div>
+
+    <h3>После подтверждения</h3>
+
+    <p>
+        <select id="notifications-confirmations">
+            <option value="0">Немедленно</option>
+            <option value="1">1 Подтверждение</option>
+            <option value="2">2 Подтверждения</option>
+            <option value="3">3 Подтверждения</option>
+            <option value="4">4 Подтверждения</option>
+            <option value="5">5 Подтверждений</option>
+            <option value="6">6 Подтверждений</option>
+        </select>
+    </p>
+</div>
+
+
+<div class="tab-pane" id="account-logging">
+    <h3 class="page-header">Уровень регистрации</h3>
+
+    <p>Вход регуляторы уровня, что данные записаны, когда действия выполняются с использованием Вашего бумажника. По умолчанию ведение журнала выключено отдельно от мер, принятых администрацией. Включение она обеспечивает более высокий уровень безопасности, предоставляя больше информации о потенциальных несанкционированного доступа к вашему бумажник однако некоторые конфиденциальности может быть принесен в жертву.</p>
+
+    <p>
+        <select id="logging-level">
+            <option value="0">Вход инвалидов</option>
+            <option value="1">Вход Действия с Hashed IP-адреса</option>
+            <option value="2">Вход Действия с IP-адреса и User Agent</option>
+        </select>
+    </p>
+
+    <p class="well">
+        Изменение уровня ведения журнала не удаляет существующие журналы. Журналы истекает через 2 недели.
+    </p>
+
+    <div class="logl l2 l1">
+        <table class="table table-striped well" style="margin-top:10px;display:none;">
+            <thead>
+            <th>Время</th>
+            <th>Действие</th>
+            <th>IP-адрес</th>
+            <th>Агент пользователя</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p class="logl l0" style="display:none;">
+        <font color="green">Вход инвалидов</font>
+    </p>
+</div>
+
+<div class="tab-pane" id="account-devices">
+    <h3>Сопряжение с мобильным устройством</h3>
+
+    <p>Просканируйте код с вашего iPhone или Android устройства, чтобы синхронизировать его с вашим аккаунтом.</p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
+                    Показать / Скрыть код спаривания.
+                </a>
+            </div>
+
+            <div id="pairing_code" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-passwords">
+    <div class="alert alert-block alert-error"><B>Внимание!</B> Забытый пароль приведет к потере доступа к вашему кошельку. Пароль восстановить невозможно!</div>
+
+    <p>
+        Ваш пароль никогда не становится известен нашим серверам в каком-либо виде или форме. Это означает, что ваш кошелек будет в безопасности в случае взлома наших серверов. Это также не позволяет нам видеть баланс счета и историю транзакций.
+    </p>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Пароль Mnemonic</h3>
+
+        <p>Пароль Мнемоника может быть использован для восстановления вашего бумажника пароль, если забыли. Без мнемонические нет никакого способа, мы можем помочь восстановить забытый пароль. При изменении бумажник пароли мнемонические изменится.</p>
+
+        <div id="accordion1">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
+                        Показать / Скрыть Пароль Mnemonic
+                    </a>
+                </div>
+
+                <div id="password_mnemonic" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="password_mnemonic1">
+                            <h5 class="page-header">Main Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+
+                        <div id="password_mnemonic2">
+                            <h5 class="page-header">Second Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Главный пароль</h3>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Пароль:</label>
+
+                <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Подтвердите пароль:</label>
+
+                <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+        </div>
+
+        <p>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Обновление главного пароля</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Второй пароль</h3>
+
+        <div class="double-encryption-off">
+            <p>Вы можете дополнительно установить второй пароль, который будет необходим при отправке средств с вашего счета. Для больших кошельков ваш браузер может не реагировать несколько минут при изменении этого параметра.</p>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Пароль:</label>
+
+                    <div class="controls"><input id="double-password" type="password"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Подтвердите пароль:</label>
+
+                    <div class="controls"><input id="double-password2" type="password"/></div>
+                </div>
+            </div>
+
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">Включить двойное шифрование</button>
+        </div>
+
+        <div class="double-encryption-on">
+            <p>Двойное шифрование включено. Второй пароль будет требоваться при отправке средств.</p>
+
+            <p>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">Отключить двойное шифрование</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Подсказки пароля</h3>
+
+        <p>Если вы забыли свой пароль подсказки могут быть полезны, чтобы помочь вашей памяти. Если к вашему кошельку привязан адрес электронной почты, подсказки будут отправлены туда. Иначе, подсказки доступны любому, кто знает идентификатор вашего кошелька.</p>
+
+        <p class="well">
+            <b>Например:</b> Если пароль на ваш кошелек был HorseBatteryStaple, хорошая подсказка пароля будет: электрическая лошадь?
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Подсказка для главного пароля:</label>
+
+                <div class="controls"><input id="password-hint1" type="text"/></div>
+            </div>
+
+            <div class="control-group double-encryption-on">
+                <label class="control-label">Вторая подсказка пароля:</label>
+
+                <div class="controls"><input id="password-hint2" type="text"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header hidden">
+        <h3>PBKDF2 итераций</h3>
+
+        <p>PBKDF2 это функция, которая тянется пароль увеличения усилий, необходимых для BruteForce его. Более высокое число итераций лучше, однако, вы можете заметить замедление вашего браузера.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Итерации:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-security">
+    <div class="page-header">
+        <h3>Двухфакторная аутентификация</h3>
+
+        <p>Двухфакторная аутентификация добавляет дополнительный уровень безопасности в дополнение к вашему паролю.</p>
+
+        <p>
+            <select id="two-factor-select">
+                <option value="0">Никакой</option>
+                <option value="5">SMS-сообщения</option>
+                <option value="1">Yubikey</option>
+                <option value="2">E-mail</option>
+                <!--<option value="3">Mt Gox Yubikey</option>-->
+                <option value="4">Google Authenticator</option>
+            </select>
+        </p>
+
+        <div class="well two-factor t0" style="display:none">
+            Двухфакторная аутентификация не включена для вашего кошелька
+        </div>
+
+        <div class="well two-factor t1 t3" style="display:none">
+            <b>Yubikey</b> <br/> Для сопряжения ключа с вашим счетом выберите текстовое поле ниже и нажмите кнопку с зеленым светодиодом на устройстве Yubikey.
+
+            <div class="controls">
+                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">Выберите текстовое поле выше и нажмите на зеленый светодиод на Yubikey.</p>
+            </div>
+        </div>
+
+        <div class="well two-factor t2" style="display:none">
+            <b>E-mail</b> <br/> Двухфакторная аутентификация по электронной почте включена для вашего кошелька. На адрес <span class="my-email"></span> будет отправлено письмо содержащее код подтверждения, который необходимо будет предоставить при входе.
+        </div>
+
+        <div class="two-factor t4" style="display:none">
+            <p class="well">
+                Google Authenticator включена
+            </p>
+
+            <div style="display:none">
+                <p>
+                    Откройте приложение Google Authenticator и просканируйте QR-код, чтобы завершить процесс сопряжения.
+                </p>
+
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>После сканирования выше QR Code с приложением аутентификации Google Введите код аутентификации ниже:</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-factor t5 well" style="display:none">
+            <b>SMS-сообщения</b>
+
+            <p>
+                Пожалуйста, введите номер вашего мобильного телефона ниже. Международные SMS-сообщения могут быть ненадежны и могут быть недоступны в некоторых странах и сетях.
+            </p>
+
+            <p class="form-inline">
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Отправьте SMS с кодом</button>
+            </p>
+
+            <p class="sms-verified" style="color:green">
+                Проверено с помощью SMS
+            </p>
+
+            <div class="sms-unverified well">
+                <p>Введите код, содержащийся в сообщении проверки смс.</p>
+                <p class="form-inline"><input placeholder="Верификационный код СМС" class="wallet-sms-code" type="text"/> <button class="btn">Проверить</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Всегда держите Browser резервного копирования</h3>
+
+        <p>Включите эту опцию, чтобы заставить бумажник резервного копирования будут храниться в вашем браузере локальное хранилище, даже если двухфакторная аутентификация включена. Если включен злоумышленник имеет доступ к вашему браузеру сможет обойти два фактора аутентификации, поэтому если кошелька доступен с помощью любого другого компьютера или браузера она по-прежнему защищен двухфакторной аутентификации.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Всегда держите:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Секретная фраза</h3>
+
+        <p>Тайные фразы могут быть использованы, чтобы помочь нам проверить вашу личность в случае утери идентификатора кошелька или Yubikey. Это может быть одно слово или предложение до 255 символов в длину.</p>
+
+        <p>
+            <input id="wallet-phrase" type="text"/>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Никогда не запоминать двух-факторную аутентификацию</h3>
+
+        <p>
+            По умолчанию после входа в систему с двухфакторной аутентификацей ваш браузер будет запомнен на небольшое время, что позволит войти снова без необходимости повторной аутентификации. Установите этот флаг, если вы хотите отключить это поведение и требовать полной идентификации каждый раз.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Не помню:</label>
+
+                <div class="controls">
+                    <input id="never-save-auth-type" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Блок IP адресов TOR</h3>
+
+        <p>
+            Включите следующие опции для предотвращения часть IP адреса сети TOR анонимизирующая доступ к вашему кошельку.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Включение / выключение:</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Ограничить IP</h3>
+
+        <p>
+            Включите эту опцию чтобы позволить доступ к вашему кошельку только с определенного IP-адрес или нескольких IP-адресов, указанных через запятую. Включайте это только если у вас статический IP-адрес. Вы не сможете войти в систему или получить доступ к API с компьютера вне указанной сети, однако привязанные мобильные приложения будут продолжать функционировать.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Включение / выключение:</label>
+
+                <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Блокировка IP:</label>
+
+                <div class="controls">
+                    <input id="ip-lock" type="text"/>
+
+                    <p class="help-block">Несколько адресов должны быть разделены запятой.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Текущий IP:</label>
+
+                <div class="controls"><span id="my-ip"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="update-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Подтвердить смену пароля</h3>
+    </div>
+    <div class="modal-body">
+        <p>Ваш пароль будет обновлен сразу. Обязательно запишите новый пароль, он не может быть восстановлен, если вы его забудете! Если у вас есть зашифрованные резервные копии кошелька, их можно будет расшифровать при помощи старого пароля. Мы рекомендуем вам удалить все такие резервные копии.</p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Обновить пароль</button>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div id="home-intro" style="display:none;">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="well table table-striped">
+                <tr>
+                    <td>Всего транзакций</td>
+                    <td><span id="summary-n-tx">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Всего получено</td>
+                    <td><span id="summary-received">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Всего отправлено</td>
+                    <td colspan="2"><span id="summary-sent">0</span></td>
+                </tr>
+                <tr>
+                    <td>Заключительный баланс</td>
+                    <td><span id="summary-balance">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
+
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
+                    <small>Это ваш Bitcoin-адрес</small>
+
+                    <p class="primary-address" id="my-primary-address"></p>
+
+                    <small>Отправьте это кому угодно, и они смогут отправлять вам платежи.</small>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="span6">
+            
+
+                <div class="no-watch-only">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
+                        <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
+                        <li ><a href="#deposit-eu" data-toggle="tab"><img src="/Resources/flags/eu.png"> EU</a></li>
+                        <li ><a href="#deposit-other" data-toggle="tab">Other</a></li>
+                    </ul>
+
+                    <div class="tab-content page-header">
+                        <p>Самый быстрый и простой способ внесения биткойнов на ваш счет - воспользоваться следующими услугами.</p>
+
+                        <div class="tab-pane active" style="text-align:right" id="deposit-us">
+                            
+                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Взнос наличных</button>
+                            
+
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-uk">
+                            
+                            
+                            
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-eu">
+                            
+                            
+                        </div>
+
+                        <div class="tab-pane" id="deposit-other">
+                            
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="page-header">
+                <h3>Настройки аккаунта</h3>
+
+                <p>Изменить настройки учетной записи, включая адрес электронной почты, пароль и параметры уведомлений.</p>
+
+                <p align="right">
+                    <button class="btn" id="my-account-btn">Настройки кошелька</button>
+                </p>
+            </div>
+
+            <h3>Резервное копирование</h3>
+
+            <p>Резервное копирование вашего бумажника является важным шагом, который легко забыть. Blockchain.info принимает все меры предосторожности, чтобы сохранить ваш кошелек безопасно, но всегда лучше держать локальную копию на всякий случай.</p>
+
+            <div class="pull-right btn-group">
+                <a class="btn download-backup-btn">Download</a>
+                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
+                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
+                <a class="btn" id="email-backup-btn">E-mail</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="receive-coins" style="display:none;">
+
+    <h2>Адреса <small>Ваши адреса для получения биткойнов</small></h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#active-addresses" data-toggle="tab">Активный</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">Архив</a></li>
+        <li><a href="#shared-addresses" data-toggle="tab">Общие</a></li>
+    </ul>
+
+    <div id="receive-content" class="tab-content">
+        <div class="active tab-pane" id="active-addresses" style="margin-bottom:200px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Адрес</th>
+                    <th>Баланс</th>
+                    <th></th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Новый адрес" data-content="Щелкните здесь, чтобы создать новый адрес Bitcoin. Вы можете начать получать биткойны на этот адрес немедленно">Новый адрес</button>
+
+            <div class="btn-group pull-right" style="margin:5px">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Дополнительные действия <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="chord-diagram">Посмотреть схему отношений</a></li>
+                    <li><a id="group-received" title="Taint Grouping">Группировать по запачканности</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">Проверить сообщение</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="archived-addresses">
+            <h3>Архив адресов</h3>
+
+            <p>Архивные адреса - это адреса, которые вам вряд ли понадобятся. Такие адреса скрыты с основной страницы, но всё ещё являются частью вашего кошелька. Вы можете разархивировать их в любое время, нажав на синий значок.</p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th>Bitcoin адрес</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="pull-right btn-group">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Опустошить ключи" data-content="Перенести все биткойны с выбранного ключа на другой адрес Bitcoin.">Опустошить ключи
+                </button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Удалить ключи" data-content="Удалить выбранные закрытые ключи.">Удалить ключи
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="shared-addresses">
+            <h3>Общий Адреса</h3>
+
+            <p style="padding-top:10px">Общий адреса предназначены для приема платежей вы хотите сохранить частных. Любые выплаты, полученные посылаются через общий кошелек разорвать цепь операций. <a href="https://blockchain.info/wallet/send-shared" target="new">(Подробнее)</a></p>
+
+            <p class="well">
+                <b>Общий адреса действительны в течение одного сделки только и нести на 0,5% за операцию.</b>
+            </p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Адрес</th>
+                    <th class="hidden-phone">Направить в</th>
+                    <th>Истекает через</th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Новый общей адресной</button>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;" id="restore-wallet">
+
+    
+
+    
+
+    
+
+    <div class="row-fluid page-header">
+        <div class="span6">
+            <div class="page-header">
+                <h3>Добро пожаловать назад </h3>
+                <small>Пожалуйста, введите свои регистрационные данные ниже:</small>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Идентификатор:</label>
+
+                    <div class="controls"><input id="restore-guid" placeholder="Идентификатор или псевдоним" value="" type="text"/></div>
+                </div>
+
+                <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
+                    <label class="control-label">Пароль:</label>
+
+                    <div class="controls"><input id="restore-password" type="password"/></div>
+                </div>
+
+
+                <div class="control-group auth-1 auth-3" style="display:none">
+                    <label class="control-label">Yubikey:</label>
+
+                    <div class="controls">
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Выберите текстовое поле выше и нажмите на зеленый светодиод на Yubikey.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-2" style="display:none">
+                    <label class="control-label">E-mail код:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Письмо, содержащее временный код подтверждения, было отправлено на ваш счет.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-4" style="display:none">
+                    <label class="control-label">Google Authenticator:</label>
+
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+
+                        <p class="help-block">Пожалуйста, откройте приложение Google Authenticator и введите показанный код.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-5" style="display:none">
+                    <label class="control-label">SMS код:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Текстовое сообщение было отправлено на ваш мобильный телефон. Пожалуйста, введите код из этого сообщения выше.</p>
+                    </div>
+                </div>
+
+                <div style="padding-left: 160px;padding-bottom:20px">
+                    <button class="btn btn-primary" id="restore-wallet-continue">Открыть кошелек</button>
+                </div>
+
+                <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Не можете найти свой код подтверждения email?</h5>
+
+                    <p>Письмо будет отправлено от wallet@blockchain.info. Обязательно проверьте папку со спамом. Если вы все еще не можете найти письмо нажмите на кнопку ниже, чтобы отправить его снова.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Отправить ссылку повторно</a>
+                    </p>
+                </div>
+
+                <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Не получили код SMS?</h5>
+
+                    <p>Пожалуйста, проверьте сигнала сети. Сообщения могут занять до 10 минут, чтобы быть доставлено, если он был в течение 10 минут нажмите на кнопку ниже, чтобы отправить сообщение.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Выслать сообщение</a>
+                    </p>
+                </div>
+
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">Ваш пароль никогда не становится известен нашими серверам и не может быть восстановлен, если забыт!</div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="page-header">
+                <h3>Что-то забыли?</h3> <small>Помогите! Я не могу открыть свой кошелек</small>
+            </div>
+
+            <h4>Забыли идентификатор или псевдоним</h4>
+
+            <p>Если вы потеряли идентификатор вашего кошелька в первую очередь проверьте подтверждение по электронной почте, которое вы получили при регистрации. Не можете найти письмо? Нажмите на кнопку ниже, и мы можем отправить вам новое.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Восстановление Wallet</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Импорт резервной копии</a> <a class="btn btn-small btn-secondary download-backup-btn">Скачать резервного копирования</a>
+            </p>
+
+            <h4>Забыли детали двухфакторной аутентификации.</h4>
+
+            <p>Если вы потеряли детали двухфакторной аутентификации ваш кошелек еще полностью восстановим. Все, что нам нужно, это разумное доказательство что вы владелец учетной записи. Для этого вам нужно заполнить следующую форму.</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn" disabled="true">Сброс двухфакторной аутентификации</a>
+            </p>
+
+            <h4>Забыли пароль?</h4>
+
+            <p>Ваш кошелек шифруется в вашем браузере перед отправкой на наш сервер. Поэтому мы не можем помочь восстановить утерянные пароли. Чтобы избежать денежных потерь из-за забытых паролей мы рекомендуем вам сделать бумажную резервную копию закрытых ключей вашего кошелька.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn" disabled="true">Восстановление Wallet</a>
+            </p>
+
+            <h4>Нужна помощь?</h4>
+
+            <p>
+                Прочтите наши <a href="https://blockchain.info/wallet/support-pages">Страницы поддержки</a>
+            </p>
+        </div>
+    </div>
+
+    
+
+    
+</div>
+
+<div id="my-transactions" style="display:none;">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 style="display:inline-block">Транзакции <small>Краткая информация о ваших последних транзакциях</small></h2>
+
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> Смотреть</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> Компактный</a></li>
+                        <li><a href="#" data-value="1"> Подробно</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> Экспорт истории</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> Фильтр</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> Все</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Отправлено</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Получено</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> Эскроу</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
+        </div>
+    </div>
+
+    <p class="padded well" id="no-transactions" align="center">Обычно здесь перечислены ваши Bitcoin транзакции, но вы пока не сделали ни одной.</p>
+
+    <table id="transactions-compact" class="table table-striped table-condensed table-hover">
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="transactions-detailed"></div>
+
+    <div class="pagination" align="center" style="clear:both;float:none">
+        <ul></ul>
+    </div>
+</div>
+
+<div id="send-coins" style="display: none;">
+<div class="row-fluid">
+<div class="span3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Тип транзакции</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Быстро отправить</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Пользовательская</a></li>
+            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Общий Отправить</a></li>
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Эскроу</a></li>
+
+            <li class="nav-header">Отправить через</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> E-mail</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS-сообщение</a></li>
+
+            <li class="nav-header">Игры</li>
+            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            <li class="divider"></li>
+            <li class="nav-header">Инструменты</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Адресная книга</a></li>
+        </ul>
+    </div>
+
+    <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
+        <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
+    </div>
+</div>
+<div class="span9">
+<div class="tab-content">
+<div class="active tab-pane well" id="send-quick">
+    <h4 class="page-header">Быстро отправить<br/>
+        <small>Используйте эту форму, чтобы отправить платеж по адресу Bitcoin.</small>
+    </h4>
+
+    <div class="form-horizontal">
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Адрес получателя" data-content="Это bitcoin-адрес получателя.">Кому:</label>
+
+                    <div class="controls">
+                        <span class="qrcodeicon" /><input placeholder="Bitcoin адрес" name="send-to-address" type="text"/><span></span></span>
+
+                        <p class="help-block">Введите bitcoin-адрес получателя</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Количество" data-content="Сумма биткойнов для отправки">Количество:</label>
+
+                    <div class="controls">
+
+                        <div class="input-prepend">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <b>=</b>
+
+                        <div class="input-prepend">
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <p class="help-block">Введите сумму биткойнов для отправки</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Отправить платеж" data-content="Нажмите здесь, чтобы отправить платеж. Вам не будет предложено пересмотреть сделку.">Отправить платеж</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-sms">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Отправить по SMS<br/><small>Используйте форму ниже, чтобы отправить биткойны с помощью SMS.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Количество SMS" data-content="Введите номер SMS человека, которому вы хотите отправить биткойны.">Кому:</label>
+
+                    <div class="controls">
+                        <select name="sms-country-code"></select> <br/> <input placeholder="Количество SMS" name="send-to-sms" type="text" style="margin-top:5px"/>
+
+                        <p class="help-block">Введите номер SMS получателя.</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Количество" data-content="Сумма биткойнов для отправки">Количество:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+
+                        <p class="help-block">Введите сумму биткойнов для отправки</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Отправить платеж" data-content="Нажмите здесь, чтобы отправить платеж. Вам не будет предложено пересмотреть сделку.">Отправить платеж</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-email">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Отправить по e-mail<br/><small>Используйте форму ниже, чтобы отправить биткойны на адрес электронной почты.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Адрес электронной почты" data-content="Это адрес электронной почты человека, которому вы хотите отправить биткойны.">Кому:</label>
+
+                    <div class="controls">
+                        <input placeholder="Адрес электронной почты" name="send-to-email" type="text"/>
+
+                        <p class="help-block">Введите адрес электронной почты получателя</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Количество" data-content="Сумма биткойнов для отправки">Количество:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+                        <p class="help-block">Введите сумму биткойнов для отправки</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Отправить платеж" data-content="Нажмите здесь, чтобы отправить платеж. Вам не будет предложено пересмотреть сделку.">Отправить платеж</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="send-shared">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Отправить Общие<br/><small>Отправить общих операций маршруты через общий кошелек для повышения конфиденциальности.</small></h4>
+
+        <div class="form-horizontal">
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Адрес получателя" data-content="Это bitcoin-адрес получателя.">Кому:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin адрес" name="send-to-address" type="text"/><span></span></span>
+
+                            <p class="help-block">Введите bitcoin-адрес получателя</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                    class="add-on send-value-usd">$0</span>
+                            </div>
+
+                            <p class="help-block fees"> В том числе сборы сумма этой сделки <span class="shared-fees">0.00</span></p>
+
+                            <p class="help-block bonus">Там не будет никакой платы за эту сделку и бонус <span class="bonus-value">0.00</span> будет платным.</p>
+
+                            <p class="help-block free">Общие отправки в настоящее время бесплатны.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Обзор оплаты" data-content="Нажмите, чтобы просмотреть детали оплаты. Вы сможете подтвердить или отменить операцию перед отправкой.">Обзор оплаты</button>
+
+                <p class="help-block fees">Все общие операции влечет за собой <span class="mixer_fee">0.5</span>% Плата.</p>
+
+                <div class="progress" style="display:none;">
+                    <div class="bar" style="width:10%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-custom">
+    <h4 class="page-header">Пользовательская транзакция<br/><small>Используйте форму ниже, чтобы отправить платеж на один или несколько адресов Bitcoin. Вам будет предложено повторно просмотреть транзакцию перед отправкой.</small></h4>
+
+    <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
+        <div class="control-group">
+            <label class="control-label pop" title="Адрес отправителя" data-content="При необходимости вы можете отправить биткойны с определенного адреса в вашем кошельке.">От:</label>
+
+            <div class="controls">
+                <select name="from" multiple="multiple"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Кому:</label>
+
+            <div class="controls recipient-container">
+                <div class="recipient" style="margin-bottom:5px">
+                    <span class="qrcodeicon" /><input placeholder="Bitcoin адрес" name="send-to-address" type="text"/><span></span></span>
+
+                    <div class="input-prepend input-append">
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left;padding-bottom:7px;padding-right:7px">
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
+                </div>
+
+                <div style="float:right;padding-right:20px">
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Удалить получателя" data-content="Удалить последнего получателя."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Добавить получателя" data-content="Если вы хотите отправить биткойны нескольким адресатам одновременно нажмите сюда, чтобы добавить еще один адрес"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Оплата шахтерам" data-content="Эта оплата будет отправлена шахтерам и может помочь вашей транзакции обрабататься быстрее">Оплата шахтерам:</label>
+
+            <div class="controls">
+                <div class="input-prepend" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Изменить адрес" data-content="Вся сдача транзакции будет отправлена обратно на этот адрес">Изменить адрес:</label>
+
+            <div class="controls">
+                <select name="change"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Публичное примечание" data-content="Добавить примечание к этой транзакции, которое можно будет посмотреть на сайте blockchain.info.">Публичное примечание:</label>
+
+            <div class="controls">
+                <textarea name="public-note" placeholder="Это сообщение будет навсегда вложено в цепочку блоков. Любой человек может прочитать его." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="reset btn">Очистить форму</button>
+            <button class="send btn btn-primary pop" title="Обзор оплаты" data-content="Нажмите, чтобы просмотреть детали оплаты. Вы сможете подтвердить или отменить операцию перед отправкой.">Обзор оплаты</button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
+        <div class="well">
+            <h4 class="page-header">Сделать ставку с SatoshiDICE<br/>
+                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> является самой популярной азартной игрой Bitcoin. Мгновенно выиграй сумму до 64000 раз превосходящую вашу ставку. Все ставки поддаются проверке с использованием цепочки блоков.</small>
+            </h4>
+
+            <div class="form-horizontal">
+                <div class="controls">
+                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
+                </div>
+
+                <div class="recipient-container"></div>
+
+                <div class="form-actions">
+                    <button class="send btn btn-success pop" data-repeat="1">Сделать ставку!</button> <button class="send btn pop" data-repeat="5">Повторите x5</button> <button class="send btn pop" data-repeat="10">Повторите x10</button>
+
+                    <p class="help-block">Blockchain.info не связан с satoshidice.com.</p>
+
+                    <div class="progress" style="display:none;margin-top:10px">
+                        <div class="bar" style="width:10%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="well profit-loss" style="display:none">
+            <p><b>Сводка:</b> <a href="#" class="refresh">(Обновить)</a></p>
+
+            <p><b>Количество ставок:</b> <span class="n-bets"></span></p>
+
+            <p><b>Выигрыш:</b> <span class="winnings"></span></p>
+        </div>
+    </div>
+
+
+<div class="tab-pane well" id="address-book">
+
+    <h3>Адресная книга</h3>
+
+    <p>Адресная книга содержит список адресов отправки. Вы можете использовать его для хранения Bitcoin-адресов людей, которых вы знаете, или продавцов, услуги которых вы часто используете.</p>
+
+    <table class="table table-striped" id="address-book-tbl">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Bitcoin Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockchain.info</td>
+            <td class="addr-book-entry">1JArS6jzE3AJ9sZ3aFij1BmTcpFGgN86hA</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <button id="add-address-book-entry-btn" class="btn btn-primary">Добавить новую запись</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="import-export" style="display: none;">
+    <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
+        <h2>Продвинутый пользователь!</h2>
+
+        <p>В этом разделе можно внести изменения в ваш кошелек, которые могут быть сложны и запутанны. Рекомендуется только опытным пользователям Bitcoin. Вы должны понимать, что такое закрытые ключи и как они относятся к Bitcoin-адресам.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-import-export">Понимаю</button>
+        </p>
+    </div>
+
+    <div id="import-export-content" style="display:none;">
+
+
+
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Импорт / Экспорт</li>
+            <li class="active"><a href="#import" data-toggle="tab">Импорт</a></li>
+            <li><a href="#import-backup" data-toggle="tab">Импорт резервной копии</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">Импорт Wallet</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">Экспорт зашифрованного кошелька</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">Экспорт незашифрованного кошелька</a></li>
+            <li><a id="export-paper-btn">Бумажный кошелек</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
+
+            
+
+            <div class="page-header">
+                <h3>Добавить смотреть только Bitcoin адреса</h3>
+
+                <p>Вы можете добавить <font color="red">Watch Only</font> Bitcoin адреса для вашего кошелька. Вы не сможете отправить bitcoins с этого адреса без последующего предоставления секретного ключа</p>
+
+                <div class="form-inline">
+                    <input placeholder="Bitcoin адрес" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Добавить смотреть только адрес</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Импорт закрытого ключа</h3>
+
+                <p>Импорт существующего секретного ключа ниже. Все закрытого ключа форматы.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Добавить Private Key</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Мозг Wallet</h3>
+
+                <p>Мозг Wallet представляет собой закрытый ключ высевают с памятной фразы прохода. Можно запомнить этот пароль в целях восстановления средств по этому адресу, не нуждаясь в бумажнике резервного копирования.</p>
+
+                <p>Минимальная фразу прохода длиной 15 символов. Настоятельно рекомендуется вы до сих пор регулярно создавать резервные копии кошелек даже с идентификационной фразы запоминаются.</p>
+
+                <div class="form-inline">
+                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Генерация ключа</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Импорт Использование бумаги кошелек</h3>
+
+                <p>Использовать веб-камеру для сканирования QR-код из бумаги кошелек</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Сканирование с веб-камерой</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">Импорт резервной копии <small>Список бумажник резервного копирования доступны с нашего сервера хранения облака.</small></h3>
+
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>Имя файла</th>
+                <th>Последнее изменение</th>
+                <th>Размер</th>
+                <th>Действие</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="import-wallet">
+
+            <h3 class="page-header">Импорт Wallet</h3>
+
+            <p>Вы можете импортировать ключи в нескольких различных форматах.</p>
+            <ul>
+                <li>AES зашифрованные резервные копии с blockchain.info. (Должно быть зашифрован с тем же паролем)</li>
+                <li>Plaintext JSON резервного копирования с blockchain.info</li>
+                <li>Выход из <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
+                <li>Выход из <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
+                <li>Выход из <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+            </ul>
+
+            <p>Имейте в виду, что в настоящее время предел 400 частных ключей в бумажнике. Для больших кошельков ваш браузер может перестать отвечать на запросы в течение нескольких минут.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Скопируйте и вставьте данные кошелька в этой области"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Импорт Wallet</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">Экспорт <small>Ниже приведены личные ключи AES зашифрованы.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">Скачать резервного копирования</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">Экспорт Незашифрованные <small>Ниже приведены личные ключи в формате JSON. Внимание! Эти данные не шифруются держать его в безопасности.</small></h3>
+
+            <h6>Выберите закрытый ключ формате:</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">Оставьте частных ключей зашифрованных</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>Добавить Bitcoin адреса только для просмотра</h3>
+            </div>
+            <div class="modal-body">
+                <p>Пожалуйста, подтвердите что вы хотите добавить <font color="red">Watch Only</font> адрес <span class="address"></span>.</p>
+
+                <p>Адрес <font color="red">Watch Only</font> означает, что вы можете только наблюдать операции по этому адресу. Если у вас нет личного ключа для этого адреса, сохраненного в другом месте, то вы не владеете деньгами на этом адресе.</p>
+
+                <p>Если у Вас нет бумажного кошелька или других резервных копий личного ключа для этого адреса, не принимайте деньги на этот адрес.</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Отменить</button>
+                    <button class="btn btn-primary">Продолжить</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Second Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please enter the second password for this wallet.</p>
+                <p align="center">
+                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p align="center">
+                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Обнаружен сжатый закрытый ключ</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>Сжатые закрытые ключи в настоящее время не поддерживаются Android приложением, iPhone приложением или Merchant API. При импорте сжатого закрытого ключа непосредственно вы не сможете потратить средства на том адресе, используя перечисленные выше устройства.</p>
+
+                <p>Рекомендуется опустошить этот ключ и перенести средства в существующий адрес Bitcoin. Хотите ли вы опустошить ключ, или импортировать его?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Опустошить ключ</button>
+                    <button class="btn btn-secondary">Импорт напрямую</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div></div>
+</div>
+
+
+
+<div id="main-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Главный пароль, необходимый</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Это действие требует заново ввести ваш главный пароль. Пожалуйста, введите его в тайне, иначе может быть выход из системы.</p>
+
+        <div style="width:290px;margin: 0 auto;">
+            <p><b>Главный пароль:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button> <button class="btn btn-primary">Продолжить</button>
+        </div>
+    </div>
+</div>
+
+<div id="second-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Требуется второй пароль</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Это действие требует ввести второй пароль, который необходим чтобы полностью расшифровать ваш кошелек. Не вводите второй пароль на компьютере, которому вы не доверяете. Используйте экранную клавиатуру для обеспечения защиты от клавиатурных шпионов.</p>
+
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
+
+        <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
+            <ul class="vkeyboard">
+                <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                <li class="delete lastitem">delete</li>
+                <li class="tab">tab</li>
+                <li class="letter">q</li>
+                <li class="letter">w</li>
+                <li class="letter">e</li>
+                <li class="letter">r</li>
+                <li class="letter">t</li>
+                <li class="letter">y</li>
+                <li class="letter">u</li>
+                <li class="letter">i</li>
+                <li class="letter">o</li>
+                <li class="letter">p</li>
+                <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                <li class="capslock">caps lock</li>
+                <li class="letter">a</li>
+                <li class="letter">s</li>
+                <li class="letter">d</li>
+                <li class="letter">f</li>
+                <li class="letter">g</li>
+                <li class="letter">h</li>
+                <li class="letter">j</li>
+                <li class="letter">k</li>
+                <li class="letter">l</li>
+                <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                <li class="return lastitem">return</li>
+                <li class="left-shift">shift</li>
+                <li class="letter">z</li>
+                <li class="letter">x</li>
+                <li class="letter">c</li>
+                <li class="letter">v</li>
+                <li class="letter">b</li>
+                <li class="letter">n</li>
+                <li class="letter">m</li>
+                <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                <li class="right-shift lastitem">shift</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button> <button class="btn btn-primary">Продолжить</button>
+        </div>
+    </div>
+</div>
+
+<div id="label-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Пометить адрес</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Пожалуйста, введите этикетку для адреса <span class="address"></span></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Этикетка:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Этикетка, например 'Запас'" type="text" /><p class="help-block">Этикетка используется, чтобы помочь вам вспомнить, для чего нужен этот адрес. Это может быть имя человека или компании.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button> <button class="btn btn-primary">Сохранить</button>
+        </div>
+    </div>
+</div>
+
+<div id="sign-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Подписать сообщение</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Используйте этот инструмент, чтобы подписать сообщение, которое доказывает, что вы владелец адреса. Подписывайте только подробные сообщения, с которыми вы полностью согласны, и никогда не подписывайте расплывчатые сообщения. Нажатие 'Подписать сообщение' может заставить ваш браузер перестать реагировать в течение нескольких секунд.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Адрес:</label>
+                <div class="controls">
+                    <p class="address"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Сообщение:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Введите сообщение, которое вы хотите подписать"></textarea>
+                </div>
+            </div>
+            <div class="control-group signature" style="display:none">
+                <label class="control-label">Подпись:</label>
+                <div class="controls">
+                    <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Подписать сообщение</button>
+        </div>
+    </div>
+</div>
+
+<div id="verify-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Проверьте сообщение</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Используйте этот инструмент для проверки сообщения, подписанного владельцем конкретного адреса Bitcoin</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Адрес:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin адрес" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Сообщение:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Введите сообщение для проверки"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Подпись:</label>
+                <div class="controls">
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="Введите подпись для проверки"></textarea>
+                </div>
+            </div>
+            <div class="control-group address-result" style="display:none">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <span class="address-result-txt"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Проверьте сообщение</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>QR-код адреса <small class="address"></small></h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<div id="add-address-book-entry-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Добавить в адресную книгу</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Адрес:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin адрес" type="text">
+                    <p class="help-block">Введите адрес Bitcoin, который вы хотите добавить в адресную книгу.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Этикетка:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Имя лица или торговца" type="text" />
+                    <p class="help-block">Введите метки для этого адреса. например имя человека или название компании.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Добавить адрес</button>
+        </div>
+    </div>
+</div>
+
+<div id="not-synced-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Адрес не сохранен</h3>
+    </div>
+    <div class="modal-body">
+        <p>Этот адрес ещё не был сохранен на наших серверах, и может быть потерян после выхода с этой страницы. <span style="color:red;font-weight:bold;">Если закрытый ключ сохраняется в другом месте любой монеты направлены не синхронизированные адреса будут безвозвратно утеряны после выхода</span></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-danger">Показать Несохраненный адрес</button>
+            <button class="btn btn-primary" data-dismiss="modal">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<div id="watch-only-copy-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Предупреждение об адресе только для наблюдения</h3>
+    </div>
+    <div class="modal-body">
+        <p>Вы получили это предупреждение, потому что вы скопировали адрес <font color="red">Watch Only</font> в буфер обмена.</p>
+
+        <p>Адрес <font color="red">Watch Only</font> означает, что вы можете только наблюдать операции по этому адресу. Если у вас нет личного ключа для этого адреса, сохраненного в другом месте, то вы не владеете деньгами на этом адресе.</p>
+
+        <p><b>Если у Вас нет бумажного кошелька или других резервных копий личного ключа для этого адреса, не принимайте деньги на этот адрес.</b></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Подтвердить удаление</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">Ошибочное удаление адреса приведет к финансовым потерям. Если вы не знаете что делаете, нажмите 'Отмена'</div>
+
+        <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
+
+        <p>
+            Вы уверены, что хотите удалить адрес? Вы больше не сможете отправлять или получать биткойны с этого адреса. Баланс этого адреса:
+        </p>
+
+        <h2 align="center" id="delete-balance"></h2>
+
+        <h2 id="change-mind" style="display:none;text-align:center">У вас есть <span id="change-mind-time">5</span> секунд, чтобы изменить свое мнение ...</h2>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Удалить только закрытый ключ</button>
+            <button class="btn btn-danger">Удалить адрес и закрытый ключ</button>
+        </div>
+    </div>
+</div>
+
+<div id="sweep-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Опустошить ключи</h3>
+    </div>
+    <div class="modal-body">
+        <p>Опустошить означает переместить все доступные средства в одном или более адресов на другой адрес. Пожалуйста, выберите адрес, куда бы вы хотели отправить средства из выбранных адресов (Баланс <span class="balance"></span>).</p>
+
+        <p align="center">
+        <div class="form-inline">
+            <label class="control-label">Опустошить в:</label> <br /><select name="change"></select>
+        </div>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Продолжить</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="ask-for-shared" class="modal hide">
+    <div class="modal-header">
+        <h3>Отправить общего?</h3>
+    </div>
+    <div class="modal-body">
+        <p>Отправить эту сделку до конца общий кошелек и получить <span class="bonus-percent"></span>% бонус (<span class="bonus-value"></span>, будут отправлены обратно на адрес отправителя). Сделка будет нести с задержкой около <span class="delay"></span>.</p>
+
+        <div class="alert alert-block alert-error" style="margin: 10px;">
+            Не принимайте, если вы ожидаете получить оплату обратно на адрес отправителя. Общие операции, несовместимые с SatoshiDICE, BitLotto и многие другие игры Bitcoin.
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Никогда не спрашивайте меня снова.</div>
+
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Продолжить без</button>
+            <button class="btn btn-primary">Отправить общего?</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>Недостаток средств</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Эта сделка не может быть отправлено, потому что есть Недостаточно средств. Это может быть связано с дополнительной платы шахтерам или неподтвержденных операций.</p>
+
+        <p>Сделка может быть либо отменен. Или сумма для отправки могут быть скорректированы в соответствии с максимальным количеством доступных для отправки.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">Требуется: <span class="amount-required"></span> (В наличии: <span class="amount-available"></span>)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отмена транзакции</button>
+            <button class="btn btn-primary">Отрегулируйте количество</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-for-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Рекомендуемые сборы шахтерам</h3>
+    </div>
+    <div class="modal-body">
+        <p>Эта транзакция имеет низкий приоритет. Рекомендуется включить оплату транзакции, по меньшей мере 0.0005 BTC, для того чтобы шахтеры захотели её обработать.</p>
+        <div class="alert alert-block alert-error" style="margin: 10px;">Если вы не включите шахтерские сборы, подтверждение этой транзакции может занять много времени. Средства будут возвращены вам примерно через 24 часа.</div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Продолжить без оплаты шахтерам</button>
+            <button class="btn btn-primary">Добавить оплату шахтерам</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="new-transaction-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Создание транзакции</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center" class="loading-indicator" style="display:none;">
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+        </p>
+
+        <div class="offline-transaction" style="display:none">
+            <p>Ваша транзакция была успешно создана, но еще не опубликована. </p>
+
+            Для завершения транзакции откройте <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>. Скопируйте и вставьте нижеприведенный текст в текстовое поле и нажмите кнопку Отправить для завершения сделки. </p>
+
+            <textarea name="data" style="width: 100%; height:100px;"></textarea>
+        </div>
+
+        <div id="tx-sign-progress" style="display:none">
+            <h4>Пожалуйста, подождите. Подписание входа номер <span class="n">0</span> из <span class="t"></span> ...</h4>
+        </div>
+
+        <div id="review-tx" style="display:none">
+            <div class="basic">
+                <p>Пожалуйста, подтвердите, что вы бы хотели <span id="rtc-basic-summary"></span></p>
+            </div>
+
+            <div class="adv">
+                <p>Пожалуйста, проверьте информацию ниже:</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td width="110px;"><b>Хэш</b></td>
+                        <td id="rtc-hash"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Версия</b></td>
+                        <td id="rtc-version">1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Входы</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Выходы</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Шахтерские сборы</b></td>
+                        <td id="rtc-fees">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Общий объем выходов</b></td>
+                        <td id="rtc-value">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Покидает кошелек</b></td>
+                        <td id="rtc-effect" style="color: red">0</td>
+                    </tr>
+                </table>
+            </div>
+            <p align="right"><a class="show_adv"></a></p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Отправить транзакцию</button>
+        </div>
+    </div>
+</div>
+
+<div id="send-email-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Отправить по e-mail</h3>
+    </div>
+
+    <div class="modal-body">
+        <h3 style="padding-bottom:25px">
+            Отправить <span class="amount"></span> BTC к <span class="email"></span> <br /> <small>Следующее сообщение будет отправлено получателю.</small>
+        </h3>
+
+        <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Отправить оплату</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="private-key-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Необходим закрытый ключ</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Это действие требует закрытый ключ для адреса <span class="address" style="font-weight:bold"></span>. Пожалуйста, введите секретный ключ ниже.</p>
+
+        <div style="margin:0 auto;width:400px">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+            <button class="btn btn-primary">Введите закрытый ключ</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-reader-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Сканирования QR-код</h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div class="qr-code-reader" style="width:320px;height:240px;margin:0 auto;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Восстановление резервного копирования инструкций</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+           <ul>
+              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отменить</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,2363 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>내 지갑 - 나만의 은행 수 - Blockchain.info</title>
+    <meta name="robots" content="noindex">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+
+    <style type="text/css">
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
+
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
+    
+    
+    
+</head>
+
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/">
+
+    <div class="navbar" style="height:40px;overflow:visible">
+        <div class="navbar-inner" style="height:43px;">
+            <div class="container">
+                <div class="logo hidden-phone hidden-tablet"><a href="https://blockchain.info/"><img border="0" src="/Resources/logo_new.png" alt="Bitcoin 블록 탐색기 및 통화 통계"/></a></div>
+
+                <ul class="nav">
+                    <li><a href="https://blockchain.info/" title="Blockchain.info 홈">집</a></li>
+                    <li><a href="https://blockchain.info/charts" title="Bitcoin 차트">차트</a></li>
+                    <li><a href="https://blockchain.info/stats" title="Bitcoin 통계">통계</a></li>
+                    <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin 시장">시장</a></li>
+                    <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain 개발자 도구">개발자</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin 지갑">지갑</a></li>
+                </ul>
+
+                
+
+                
+
+                
+                    <div class="hidden-phone pull-right" style="padding-top:9px">
+                        <img src="/Resources/refresh.png" id="refresh">
+                        <img src="/Resources/logout.png" id="logout" style="padding-left:9px">
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+<div class="quickstart">
+    <div class="container" id="new-wallet">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>
+                    <span class="hidden-phone">내 지갑 <small>나만의 은행 수.</small></span>
+
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="잔액" data-content="이렇게하면 bitcoin 지갑의 균형을 보여줍니다. 당신은 모든 트랜잭션이 확정 될 때까지이 금액을 지출하지 못할 수 있습니다.">
+                        <span id="balance"></span>
+                        <small id="balance2">0</small>
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid" style="margin-top:10px">
+            <div class="span12 no-print">
+                <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
+                    <li><a id="home-intro-btn">지갑 홈</a></li>
+                    <li><a id="my-transactions-btn">내 거래</a></li>
+                    <li><a id="send-coins-btn">돈을 보내기</a></li>
+                    <li><a id="receive-coins-btn">돈을받을 수</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">가져 오기 / 내보내기</a></li>
+                </ul>
+
+                <h6 class="pull-right" id="status-container">
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">로드</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
+    <span id="notices" style="max-width: 600px; width:100%;"></span>
+</div>
+
+<div style="width:100%; float:left; clear:both"></div>
+
+<div class="container" style="margin-top:10px">
+
+<div id="my-account" style="display:none;">
+    <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
+        <h2>민감한 데이터</h2>
+
+        <p>계정 설정은 다른 사람들에게 표시되어서는 안됩니다 민감한 데이터를 표시합니다. 그것은 당신이 공공 장소에서이 섹션을 열거 나이 섹션의 스크린 샷을하지 않는 것이 좋습니다.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-account-settings">계속</button>
+        </p>
+    </div>
+
+    <div id="my-account-content" style="display:none">
+
+
+
+
+<h2>
+    계정 설정 <small>내 지갑 계정 설정을 변경합니다.</small>
+</h2>
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">계정 정보</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> 개인의</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> 일반</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> 알림</a></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> 비밀번호</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> 보안</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> 로그인</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> 장치</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+<div class="tab-content">
+<div class="active tab-pane" id="account-information">
+    <div class="page-header">
+        <h3>이메일 <small style="color:green">(추천)</small></h3>
+
+        <p>
+            이메일 분실 지갑 식별자를 복구하는 데 필요한 및 결제 알림입니다.<br/>
+        </p>
+
+        <p>
+            <input placeholder="이메일" id="wallet-email" type="text"/>
+        </p>
+
+        <p class="email-verified">
+            <font color="green">확인 된 이메일</font>
+        </p>
+
+        <div class="email-unverified">
+            <b>이메일 확인 번호 :</b><br/><br/>
+
+            <div class="form-inline">
+                <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
+                <button class="btn">확인</button>
+                <button class="btn" id="wallet-email-send">링크 보내기</button>
+            </div>
+            <br/> <font color="red">이메일 확인되지 않음</font>
+        </div>
+    </div>
+
+    <div class="page-header email-verified">
+        <h3>별명  <small>(선택)</small></h3>
+        <p>
+            별칭은 식별자를 기억하지 않고도 귀하의 계정에 빠르게 액세스 기억할 수 짧은 링크입니다<br/>
+        </p>
+
+        <p>
+            <input placeholder="닉네임 또는 기타 기억에 남는 단어" id="wallet-alias" type="text"/>
+        </p>
+
+        <pre class="alias" style="display:none"></pre>
+    </div>
+
+    <div class="page-header">
+        <h3>휴대폰 번호 <small>(선택)</small>
+        </h3>
+
+        <p>
+            아래에 휴대 전화 번호를 입력하세요. 국제 SMS 메시지는 때때로 신뢰할 수 있으며 일부 국가와 네트워크를 사용할 수없는 경우가 있습니다.
+        </p>
+
+        <p class="form-inline">
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">SMS 코드를 보내기</button>
+        </p>
+
+        <p class="sms-verified">
+            <font color="green">확인 SMS</font>
+        </p>
+
+        <div class="sms-unverified well">
+            <p>확인 SMS 메시지에 포함 된 코드를 입력합니다.</p>
+            <p class="form-inline"><input placeholder="SMS 인증 코드" class="wallet-sms-code" type="text"/> <button class="btn">확인</button> </p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-general">
+
+    <div class="page-header">
+        <h3>언어</h3>
+
+        <p>원하는 언어 아래를 설정</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>지역 통화</h3>
+
+        <p>당신은 신속하게 오른쪽 상단에 잔고를 클릭하여 bitcoins 및 현지 통화 사이를 전환 할 수 있습니다.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>비트 코인 디스플레이</h3>
+
+        <p>당신이 안으로 표시 할 비트 코인 값을 선호하는 정밀도를 조정</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>비활성 로그 아웃</h3>
+
+        <p>
+            기본적으로 당신은 자동으로 비활성 10 분 후에 지갑 계정에서 로그 아웃 할 수 있습니다. 당신은 아래의 제한 시간을 조정할 수 있습니다.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 분</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 분</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 분</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>어머 놀랐다</b>
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>기본 요금 정책</h3>
+
+        <p>
+            Blockchain.info 거래는 무료입니다. 그러나 bitcoin 네트워크는 거래 확인하고 네트워크를 지원하는 데 도움이되는 속도에 영향을 미치는 추가 광부 요금을 요구할 수 있습니다. 기본 공병 요금 정책을 변경하려면 아래의 설정을 변경합니다.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>절약하는</b> - 절대적으로 중요하지 않는 광부 수수료가 포함되지 않습니다. <font color="red">거래 확인을 위해 상당히 느리게 될 것입니다</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>표준</b> - mainline bitcoin 클라이언트가 제안하는 요금 정책을 따릅니다. <font color="green">추천</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>관대 한</b> - 수수료는 거래 (0.001 BTC 자료의 요금) 높은 우선 순위가되도록 설정됩니다.
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>자동 이메일 백업</h3>
+        <p>
+            때 지갑 업데이트 자동으로 새로운 백업을받을하려면이 항목을 선택합니다 : <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    고급
+                </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div>
+                        <h3>무결성 검사</h3>
+
+                        <p>당신 지갑에서 수표 모든 키는 올바른 bitcoin 주소와 일치 지갑를 다시 암호화합니다. 이 경우 일부 브라우저에서 시간이 오래 걸릴 수 있습니다.</p>
+
+                        <p>
+                            <button class="btn" id="run-key-check">확인 실행</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-notifications">
+    <div class="page-header">
+        <h3>알림</h3>
+
+        <p>결제가 지갑에서 보내거나받은 경우 선택적으로 알림을받을 수 있습니다.</p>
+
+        <div id="notifications-type">
+            <input type="checkbox" value="1"> <b>이메일 알림</b><br/>
+
+            <div class="well type-1" style="display:none">
+                당신은 이메일을 통해 알림을 받게됩니다. 당신이 이미하지 않은 경우 귀하의 이메일 주소를 확인해 주시기 바랍니다.
+            </div>
+
+            <input type="checkbox" value="32"> <b>SMS 알림</b><br/>
+
+            <div class="well type-32" style="display:none">
+                <p>
+                    아래에 휴대 전화 번호를 입력하세요. 국제 SMS 메시지는 때때로 신뢰할 수 있으며 일부 국가와 네트워크를 사용할 수없는 경우가 있습니다.
+                </p>
+
+                <p class="form-inline">
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">SMS 코드를 보내기</button>
+                </p>
+
+                <p class="sms-verified">
+                    <font color="green">확인 SMS</font>
+                </p>
+
+                <div class="sms-unverified">
+                    <p>확인 SMS 메시지에 포함 된 코드를 입력합니다.</p>
+                    <p class="form-inline">
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">확인</button>
+                    </p>
+                </div>
+            </div>
+
+            <input type="checkbox" value="2" /> <b>Google 토크</b><br/>
+
+            <div class="well type-2" style="display:none">
+                귀하는 Google 토크를 통해 알림을 받게됩니다.
+            </div>
+
+            <input type="checkbox" value="8"> <b>스카이프 (Skype)</b><br/>
+
+            <div class="well type-8" style="display:none">
+                <p>당신은 아래의 사용자 이름과 스카이프를 통해 알림을 받게됩니다 :</p>
+
+                <input placeholder="Skype Username" id="wallet-skype" type="text"/>
+            </div>
+
+            <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
+
+            <div class="well type-64" style="display:none">
+                <p>귀하의을 입력하십시오 <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> 아래 이메일 :</p>
+
+                <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
+            </div>
+
+            <input type="checkbox" value="4"> <b>HTTP 알림</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>트랜잭션이 보내거나받을 때 HTTP 알림이​​ 전송됩니다. 콜백을 구현하는 가이드에 대한 개발자 섹션을 참조하십시오.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+            <input type="checkbox" value="128"> <b>안드로이드 알림</b><br/>
+
+            <div class="well type-128" style="display:none">
+                <p>당신이 한번 페어링 Android 기기에 알림을 받게됩니다.</p>
+            </div>
+
+        </div>
+
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 알림</b><br/>
+
+        <div class="well" style="display:none">
+            <p>HTML 5 알림들이 표시 할 수있는 사용자의 권한을 필요로한다는 점에서 일반 팝업 다릅니다. 현재 크롬 및 Safari에서 지원됩니다.</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>언제 지갑</h3>
+
+        <p>
+            <select id="notifications-on">
+                <option value="0">보내거나 Bitcoins 수상</option>
+                <option value="1">Bitcoins를 보냅니다</option>
+                <option value="2">Bitcoins를받습니다</option>
+            </select>
+        </p>
+    </div>
+
+    <h3>주문 확인 후</h3>
+
+    <p>
+        <select id="notifications-confirmations">
+            <option value="0">곧</option>
+            <option value="1">한 확인</option>
+            <option value="2">이 주문 확인</option>
+            <option value="3">3 주문 확인</option>
+            <option value="4">네 주문 확인</option>
+            <option value="5">5 주문 확인</option>
+            <option value="6">6 주문 확인</option>
+        </select>
+    </p>
+</div>
+
+
+<div class="tab-pane" id="account-logging">
+    <h3 class="page-header">레벨 로깅</h3>
+
+    <p>작업이 지갑을 사용하여 촬영하는 경우 로깅 수준 컨트롤은 어떤 데이터가 기록됩니다. 기본적으로 로깅은 관리자에 의해 수행 한 작업을 제외하고 전원이 꺼집니다. 사용은 당신 지갑에 잠재적 인 무단 접근하지만 일부 개인 정보가 희생 될 수도 있습니다에 대한 자세한 정보를 제공하여 더 나은 보안을 제공합니다.</p>
+
+    <p>
+        <select id="logging-level">
+            <option value="0">비활성화 로그인</option>
+            <option value="1">해시 IP 주소와 작업 로그</option>
+            <option value="2">IP 주소 및 사용자 에이전트와 함께 작업 로그</option>
+        </select>
+    </p>
+
+    <p class="well">
+        로깅 수준을 변경하는 것은 기존의 로그는 삭제되지 않습니다. 로그는 2 주 후에 만​​료됩니다.
+    </p>
+
+    <div class="logl l2 l1">
+        <table class="table table-striped well" style="margin-top:10px;display:none;">
+            <thead>
+            <th>시간</th>
+            <th>행동</th>
+            <th>IP 주소</th>
+            <th>사용자 에이전트</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p class="logl l0" style="display:none;">
+        <font color="green">비활성화 로그인</font>
+    </p>
+</div>
+
+<div class="tab-pane" id="account-devices">
+    <h3>장치 페어링</h3>
+
+    <p>귀하의 계정을 페어링하려면 iPhone 또는 Android 장치와 아래 코드를 검사합니다.</p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
+                    코드를 페어링 표시 / 숨기기.
+                </a>
+            </div>
+
+            <div id="pairing_code" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-passwords">
+    <div class="alert alert-block alert-error"><B>경고!</B> 모든 잊어 버린 비밀번호이 해제 액세스되는 지갑 될 것이다. 더 비밀번호 복구 프로세스가 없습니다!</div>
+
+    <p>
+        비밀번호는 어떠한 형태 나 형식의 서버와 공유되지 않습니다. 이 지갑이 아직 서버에 문제가 된 경우에 안전하다고 의미합니다. 그러나이 더 암호 재설정 기능이 없음을 의미합니다.
+    </p>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">비밀번호 기억을 돕는</h3>
+
+        <p>비밀번호 연상 기호는 잊어 경우 지갑 암호를 복구하는 데 사용할 수 있습니다. 기억을 돕는 없이는 우리가 잊어 버린 비밀번호를 복구 할 수있는 방법은 없습니다. 지갑 암호를 변경할 때 기억하는가 변경됩니다.</p>
+
+        <div id="accordion1">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
+                        표시 / 숨기기 암호 기억을 돕는
+                    </a>
+                </div>
+
+                <div id="password_mnemonic" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="password_mnemonic1">
+                            <h5 class="page-header">Main Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+
+                        <div id="password_mnemonic2">
+                            <h5 class="page-header">Second Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">메인 비밀번호</h3>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">비밀번호 :</label>
+
+                <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">비밀번호 확인 :</label>
+
+                <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+        </div>
+
+        <p>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">주요 암호를 업데이트</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">두 번째 비밀번호</h3>
+
+        <div class="double-encryption-off">
+            <p>당신은 선택적으로 귀하의 계좌에서 금액을 보낼 때 필요합니다 두 번째 암호를 설정할 수 있습니다. 이 옵션을 변경할 때 큰 지갑을 보려면 브라우저가 몇 분 동안 응답하지 않을 수도 있습니다.</p>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">비밀번호 :</label>
+
+                    <div class="controls"><input id="double-password" type="password"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">비밀번호 확인 :</label>
+
+                    <div class="controls"><input id="double-password2" type="password"/></div>
+                </div>
+            </div>
+
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">더블 암호화 사용</button>
+        </div>
+
+        <div class="double-encryption-on">
+            <p>더블 암호화를 사용할 수 있습니다. 당신이 자금을 보내기 전에 두 번째 비밀번호가 필요합니다.</p>
+
+            <p>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">더블 암호화를 해제</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>비밀번호 힌트</h3>
+
+        <p>귀하의 암호 (들)을 잊어 버린 경우, 힌트는 기억을 좀 되살려 도움을 유용 할 수 있습니다. 귀하의 계정과 연결된 이메일 주소가있는 경우, 힌트는 이메일로 전송 될 수 있습니다. 더 이메일 귀하의 계정과 연결되지 않은 경우, 힌트는 지갑 식별자를 아는 사용자는 누구나 사용할 수 있습니다.</p>
+
+        <p class="well">
+            <b>예를 들면 다음과 같습니다</b> 지갑 암호가 있으면 : HorseBatteryStaple 좋은 비밀번호 힌트는 다음과 같습니다 전기 말?
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">메인 비밀번호 힌트 :</label>
+
+                <div class="controls"><input id="password-hint1" type="text"/></div>
+            </div>
+
+            <div class="control-group double-encryption-on">
+                <label class="control-label">두 번째 비밀번호 힌트 :</label>
+
+                <div class="controls"><input id="password-hint2" type="text"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header hidden">
+        <h3>PBKDF2 반복</h3>
+
+        <p>PBKDF2는 브 루트 포스 공격을하는데 필요한 작업량을 증가 비밀번호를 뻗어 기능입니다. 반복의 숫자가 높을 그러나 당신은 브라우저의 감속을 알 수 있습니다 낫다.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">반복:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-security">
+    <div class="page-header">
+        <h3>두 팩터 인증</h3>
+
+        <p>두 요소 인증 비밀번호의 상단에 보안의 추가 계층을 추가합니다.</p>
+
+        <p>
+            <select id="two-factor-select">
+                <option value="0">...의 어느 조금도 ... 않다</option>
+                <option value="5">SMS 메시지</option>
+                <option value="1">Yubikey</option>
+                <option value="2">이메일</option>
+                <!--<option value="3">Mt Gox Yubikey</option>-->
+                <option value="4">Google Authenticator</option>
+            </select>
+        </p>
+
+        <div class="well two-factor t0" style="display:none">
+            두 요소 인증 계정에서 사용할 수 없습니다
+        </div>
+
+        <div class="well two-factor t1 t3" style="display:none">
+            <b>Yubikey</b> <br/> 귀하의 계정과 키를 페어링하려면 아래의 텍스트 상자를 선택하고 yu​​bikey 장치의 녹색 LED 버튼을 누르십시오.
+
+            <div class="controls">
+                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">위의 텍스트 상자를 선택하고 Yubikey에 녹색 LED 빛을 누르십시오.</p>
+            </div>
+        </div>
+
+        <div class="well two-factor t2" style="display:none">
+            <b>이메일</b> <br/> 당신은 이메일을 통해 인증 코드를 받게됩니다.
+        </div>
+
+        <div class="two-factor t4" style="display:none">
+            <p class="well">
+                구글 인증 자를 사용할 수 있습니다
+            </p>
+
+            <div style="display:none">
+                <p>
+                    Google OTP 앱을 열고 페어링 과정을 완료하려면 아래 QR 코드를 스캔.
+                </p>
+
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>구글 인증 자 응용 프로그램과 함께 위의 QR 코드를 스캔 한 후 아래의 인증 코드를 입력 :</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-factor t5 well" style="display:none">
+            <b>SMS 메시지</b>
+
+            <p>
+                아래에 휴대 전화 번호를 입력하세요. 국제 SMS 메시지는 때때로 신뢰할 수 있으며 일부 국가와 네트워크를 사용할 수없는 경우가 있습니다.
+            </p>
+
+            <p class="form-inline">
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">SMS 코드를 보내기</button>
+            </p>
+
+            <p class="sms-verified" style="color:green">
+                확인 SMS
+            </p>
+
+            <div class="sms-unverified well">
+                <p>확인 SMS 메시지에 포함 된 코드를 입력합니다.</p>
+                <p class="form-inline"><input placeholder="SMS 인증 코드" class="wallet-sms-code" type="text"/> <button class="btn">확인</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>항상 브라우저 백업을 유지</h3>
+
+        <p>두 요소 인증이 활성화되어 경우에도 지갑 백업 귀하의 브라우저에서 로컬 저장을 저장하도록하려면이 옵션을 사용하도록 설정합니다. 사용하도록 설정 한 경우 브라우저에 액세스 할 수있는 공격자는 지갑이이 여전히 두 개의 요소 인증에 의해 보호되는 다른 PC 나 브라우저를 사용하여 액세스 할 수 있습니다하지만 경우 두 요소 인증을 우회 할 수있을 것입니다.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">항상 유지:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>비밀 구문</h3>
+
+        <p>비밀 문구는 우리가 잃어버린 지갑 식별자 또는 yubikey의 경우에는 귀하의 신원을 확인하는 데 도움이 될 수 있습니다. 그것은 하나의 단어 또는 최대 255 자까지 선고 할 수 있습니다.</p>
+
+        <p>
+            <input id="wallet-phrase" type="text"/>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>두 팩터 로그인을 기억하지 마십시오</h3>
+
+        <p>
+            기본적으로 브라우저가 다시 인증 할 필요없이 다시 로그인 할 수 있도록 시간의 짧은 기간 동안 기억 될 두 가지 요소 인증으로 로그인 한 후. 이 동작을 중지하고 전체 인증 할 때마다 시간을 요구하려면 아래의 확인란을 선택합니다.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">기억하지 않을:</label>
+
+                <div class="controls">
+                    <input id="never-save-auth-type" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>TOR IP 주소를 차단</h3>
+
+        <p>
+            당신의 지갑을 액세스 TOR 익명화 네트워크의 IP 주소 부분을 방지하기 위해 다음과 같은 옵션을 사용합니다.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">사용 / 사용 안함 :</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>IP로 제한</h3>
+
+        <p>
+            이 분리 된 특정 IP 주소 또는 여러 개의 IP 주소를 쉼표로 지갑에 대한 액세스를 제한 할 수 있습니다. 당신은 정적 IP 주소가있는 경우에만이 할 수 있습니다. 당신은 그러나 모바일 앱 한 번 짝을 계속 작동합니다 지정된 네트워크에있는 모든 컴퓨터에서 모든 API의 로그인 또는 액세스 할 수 없습니다.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">사용 / 사용 안함 :</label>
+
+                <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">IP로 잠금 :</label>
+
+                <div class="controls">
+                    <input id="ip-lock" type="text"/>
+
+                    <p class="help-block">여러 IP 주소는 쉼표로 구분해야합니다.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">현재 IP :</label>
+
+                <div class="controls"><span id="my-ip"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="update-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>암호 변경을 확인</h3>
+    </div>
+    <div class="modal-body">
+        <p>귀하의 비밀번호가 즉시 업데이트됩니다. 잊어 버린 경우 복구 할 수 없으므로 새 암호를 기록해해야합니다! 어떤 암호화 지갑 백업이있는 경우는 이전 암호를 사용하여 암호를 해독 그들에게 가능합니다, 그것은 당신이 이러한 백업 중 하나를 제거하는 것이 좋습니다.</p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">업데이트 비밀번호</button>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div id="home-intro" style="display:none;">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="well table table-striped">
+                <tr>
+                    <td>총 거래</td>
+                    <td><span id="summary-n-tx">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>총 수신</td>
+                    <td><span id="summary-received">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>보낸 총</td>
+                    <td colspan="2"><span id="summary-sent">0</span></td>
+                </tr>
+                <tr>
+                    <td>최종 잔액</td>
+                    <td><span id="summary-balance">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
+
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
+                    <small>이렇게하면 Bitcoin 주소입니다</small>
+
+                    <p class="primary-address" id="my-primary-address"></p>
+
+                    <small>사람과이 공유하고 그들은 당신에게 지불을 보낼 수 있습니다.</small>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="span6">
+            
+
+                <div class="no-watch-only">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
+                        <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
+                        <li ><a href="#deposit-eu" data-toggle="tab"><img src="/Resources/flags/eu.png"> EU</a></li>
+                        <li ><a href="#deposit-other" data-toggle="tab">Other</a></li>
+                    </ul>
+
+                    <div class="tab-content page-header">
+                        <p>귀하의 계정에 bitcoins을 입금하는 가장 빠른 및 쉬운 방법은 아래의 서비스를 사용하는 것입니다.</p>
+
+                        <div class="tab-pane active" style="text-align:right" id="deposit-us">
+                            
+                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">현금 보증금</button>
+                            
+
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-uk">
+                            
+                            
+                            
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-eu">
+                            
+                            
+                        </div>
+
+                        <div class="tab-pane" id="deposit-other">
+                            
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="page-header">
+                <h3>계정 설정</h3>
+
+                <p>이메일 주소, 비밀번호 및 알림 설정 등의 환경 설정을 수정합니다.</p>
+
+                <p align="right">
+                    <button class="btn" id="my-account-btn">계정 설정</button>
+                </p>
+            </div>
+
+            <h3>백업</h3>
+
+            <p>지갑을 백업하는 것은 잊지하기 쉬운 중요한 단계입니다. Blockchain.info는 지갑을 안전하게 유지하기 위해 모든주의를 필요하지만 경우를 대비해서 로컬 복사본을 유지하는 것이 좋습니다.</p>
+
+            <div class="pull-right btn-group">
+                <a class="btn download-backup-btn">Download</a>
+                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
+                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
+                <a class="btn" id="email-backup-btn">이메일</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="receive-coins" style="display:none;">
+
+    <h2>주소 <small>귀하의 수신 bitcoin 주소</small></h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#active-addresses" data-toggle="tab">활동적인</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">보관</a></li>
+        <li><a href="#shared-addresses" data-toggle="tab">공유</a></li>
+    </ul>
+
+    <div id="receive-content" class="tab-content">
+        <div class="active tab-pane" id="active-addresses" style="margin-bottom:200px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>주소</th>
+                    <th>잔액</th>
+                    <th></th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="새 주소" data-content="새로운 bitcoin 주소를 생성하기 위해 여기를 클릭하십시오. 당신은 즉시이 주소에 bitcoins을 받고 시작할 수 있습니다">새 주소</button>
+
+            <div class="btn-group pull-right" style="margin:5px">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    추가 작업 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="chord-diagram">관계 다이어그램보기</a></li>
+                    <li><a id="group-received" title="Taint Grouping">그룹은 더러운하면 주소</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">메시지 확인</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="archived-addresses">
+            <h3>보관 주소</h3>
+
+            <p>보관 된 주소는 기본보기에서 숨겨져 있지만 여전히 지갑의 일부입니다 더이상 필요하지 않을 수 있습니다 주소입니다. 당신은 파란색 아이콘을 클릭하여 언제든지 취소 - 아카이브들을 수 있습니다.</p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th>Bitcoin 주소</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="pull-right btn-group">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="스위프 키" data-content="다른 bitcoin 주소로 선택된 키에 bitcoins 이동합니다.">스위프 키
+                </button>
+                <button class="btn btn-danger pop" id="archived-delete" title="키를 삭제" data-content="선택한 개인 키를 삭제합니다.">키를 삭제
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="shared-addresses">
+            <h3>공유 주소</h3>
+
+            <p style="padding-top:10px">공유 주소는 비공개로 유지하고자하는 지불을받을 수 있도록 설계되었습니다. 받은 결제는 거래의 사슬을 깨는 공유 지갑을 통해 발송됩니다. <a href="https://blockchain.info/wallet/send-shared" target="new">(추가 정보)</a></p>
+
+            <p class="well">
+                <b>공유 주소는 하나의 거래 만 유효하며 0.5 % 수수료가 부과됩니다.</b>
+            </p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>주소</th>
+                    <th class="hidden-phone">전달하려면</th>
+                    <th>년 만기</th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">새 공유 주소</button>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;" id="restore-wallet">
+
+    
+
+    
+
+    
+
+    <div class="row-fluid page-header">
+        <div class="span6">
+            <div class="page-header">
+                <h3>돌아 오신 것을 환영합니다 </h3>
+                <small>아래의 로그인 세부 정보를 입력 해주십시오 :</small>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">식별자 :</label>
+
+                    <div class="controls"><input id="restore-guid" placeholder="식별자 또는 별칭" value="" type="text"/></div>
+                </div>
+
+                <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
+                    <label class="control-label">비밀번호 :</label>
+
+                    <div class="controls"><input id="restore-password" type="password"/></div>
+                </div>
+
+
+                <div class="control-group auth-1 auth-3" style="display:none">
+                    <label class="control-label">Yubikey:</label>
+
+                    <div class="controls">
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">위의 텍스트 상자를 선택하고 Yubikey에 녹색 LED 빛을 누르십시오.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-2" style="display:none">
+                    <label class="control-label">이메일 코드 :</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">임시 확인 코드가 포함 된 이메일이 귀하의 계정에 보냈습니다.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-4" style="display:none">
+                    <label class="control-label">Google은 OTP가 :</label>
+
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+
+                        <p class="help-block">귀하의 Google OTP 앱을 열고 표시된 코드를 입력하세요.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-5" style="display:none">
+                    <label class="control-label">SMS 번호 :</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">문자 메시지가 휴대 전화로 전송되었습니다. 위의 해당 메시지에 코드를 입력하세요.</p>
+                    </div>
+                </div>
+
+                <div style="padding-left: 160px;padding-bottom:20px">
+                    <button class="btn btn-primary" id="restore-wallet-continue">오픈 지갑</button>
+                </div>
+
+                <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>이메일 코드를 찾을 수없는 이유는 무엇입니까?</h5>
+
+                    <p>이메일 wallet@blockchain.info에서 전송됩니다. 스팸 폴더를 확인하시기 바랍니다. 그래도 찾을 수없는 경우 이메일을 다시 보내려면 아래 버튼을 클릭하십시오.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">링크 보내기</a>
+                    </p>
+                </div>
+
+                <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>SMS 코드를받지 못하셨습니까?</h5>
+
+                    <p>네트워크 신호를 확인하시기 바랍니다. 메시지는 메시지를 다시 보내려면 아래 버튼을 클릭 십분 이상 된 경우 전달되는 데는 최대 10 분이 걸릴 수 있습니다.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">메시지를 다시 보내</a>
+                    </p>
+                </div>
+
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">귀하의 암호는 서버와 공유되지 않습니다 잊혀진 경우에는 복구 할 수 없습니다!</div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="page-header">
+                <h3>뭔가를 잊어 버렸습니까?</h3> <small>도와주세요! 내 계정에 같혀 한</small>
+            </div>
+
+            <h4>분실 식별자 또는 별칭</h4>
+
+            <p> 당신의 지갑 식별자를 분실 한 경우에는 첫번째 가입시받은 확인 이메일을 확인합니다. 이메일을 찾을 수없는 이유는 무엇입니까? 아래의 버튼을 클릭하고 우리는 당신에게 새로운 하나를 보낼 수 있습니다.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn">지갑을 복구</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">가져 오기 백업</a> <a class="btn btn-small btn-secondary download-backup-btn">백업을 다운로드</a>
+            </p>
+
+            <h4>이중 인증 세부 끊어졌습니다.</h4>
+
+            <p>이 두 요소 인증 정보를 분실 한 경우 지갑은 아직 완전히 복구됩니다. 우리가 필요한 건은 아래 링크 된 양식을 작성하여 제공 할 수있는 계정 소유자 합리적인 증거입니다.</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn" disabled="true">두 팩터 인증을 재설정</a>
+            </p>
+
+            <h4>비밀번호 분실</h4>
+
+            <p>그게 우리에 도달 이런 이유로 우리가 잃어버린 암호를 복구하는 데 도움이 할 수없는 전에 지갑이 브라우저에 의해 암호화됩니다. 이 당신의 지갑의 비공개 키의 종이 백업을 권장합니다 잊어 버린 비밀번호에 의해 가능한 모든 금전적 손실을 방지 할 수 있습니다.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn" disabled="true">지갑을 복구</a>
+            </p>
+
+            <h4>도움이 필요하십니까?</h4>
+
+            <p>
+                우리의 <a href="https://blockchain.info/wallet/support-pages">지원 페이지</a>을 (를) 읽기
+            </p>
+        </div>
+    </div>
+
+    
+
+    
+</div>
+
+<div id="my-transactions" style="display:none;">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 style="display:inline-block">업무 <small>최근 거래의 요약</small></h2>
+
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> 전망</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> 콤팩트</a></li>
+                        <li><a href="#" data-value="1"> 상세한</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> 수출 역사</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> 필터</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> 모든</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> 보낸</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> 수상</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> 조건부 날인 증서</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
+        </div>
+    </div>
+
+    <p class="padded well" id="no-transactions" align="center">일반적으로 bitcoin 거래는 여기에 나열됩니다하지만 아직 만들지 못했어요.</p>
+
+    <table id="transactions-compact" class="table table-striped table-condensed table-hover">
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="transactions-detailed"></div>
+
+    <div class="pagination" align="center" style="clear:both;float:none">
+        <ul></ul>
+    </div>
+</div>
+
+<div id="send-coins" style="display: none;">
+<div class="row-fluid">
+<div class="span3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">거래 유형</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> 빠른 보내기</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> 관습</a></li>
+            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> 보내기 공유</a></li>
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> 조건부 날인 증서</a></li>
+
+            <li class="nav-header">통해 보내기</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> 이메일</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS 메시지</a></li>
+
+            <li class="nav-header">게임</li>
+            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            <li class="divider"></li>
+            <li class="nav-header">도구</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> 주소록</a></li>
+        </ul>
+    </div>
+
+    <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
+        <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
+    </div>
+</div>
+<div class="span9">
+<div class="tab-content">
+<div class="active tab-pane well" id="send-quick">
+    <h4 class="page-header">빠른 보내기<br/>
+        <small>bitcoin 주소로 지불을 보내 시려면 아래 양식을 사용하십시오.</small>
+    </h4>
+
+    <div class="form-horizontal">
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="주소로" data-content="이 사람의 Bitcoin 주소입니다.">받는 사람 :</label>
+
+                    <div class="controls">
+                        <span class="qrcodeicon" /><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
+
+                        <p class="help-block">받는 사람의 Bitcoin 주소를 입력</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="양" data-content="보내기 Bitcoins의 금액">양:</label>
+
+                    <div class="controls">
+
+                        <div class="input-prepend">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <b>=</b>
+
+                        <div class="input-prepend">
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <p class="help-block">보낼 Bitcoins의 금액을 입력하십시오</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="결제 보내기" data-content="결제를 보내려면 여기를 클릭하세요. 당신은 트랜잭션을 검토하도록 요청되지 않습니다.">결제 보내기</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-sms">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">SMS를 통해 전송<br/><small>bitcoin의를 통해 SMS를 보내 시려면 아래 양식을 사용하십시오.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="SMS 번호" data-content="당신이 bitcoins를 보낼 사람의 SMS 번호를 입력합니다.">받는 사람 :</label>
+
+                    <div class="controls">
+                        <select name="sms-country-code"></select> <br/> <input placeholder="SMS 번호" name="send-to-sms" type="text" style="margin-top:5px"/>
+
+                        <p class="help-block">받는 사람의 SMS 번호를 입력합니다.</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="양" data-content="보내기 Bitcoins의 금액">양:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+
+                        <p class="help-block">보낼 Bitcoins의 금액을 입력하십시오</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="결제 보내기" data-content="결제를 보내려면 여기를 클릭하세요. 당신은 트랜잭션을 검토하도록 요청되지 않습니다.">결제 보내기</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-email">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">이메일로 보내기<br/><small>이메일 주소로 bitcoin의를 보내 시려면 아래 양식을 사용하십시오.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="이메일 주소" data-content="이 당신이 bitcoins을 보내하고자하는 사람의 이메일 주소입니다.">받는 사람 :</label>
+
+                    <div class="controls">
+                        <input placeholder="이메일 주소" name="send-to-email" type="text"/>
+
+                        <p class="help-block">받는 사람의 이메일 주소를 입력</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="양" data-content="보내기 Bitcoins의 금액">양:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+                        <p class="help-block">보낼 Bitcoins의 금액을 입력하십시오</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="결제 보내기" data-content="결제를 보내려면 여기를 클릭하세요. 당신은 트랜잭션을 검토하도록 요청되지 않습니다.">결제 보내기</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="send-shared">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">공유 보내기<br/><small>증가 개인 정보 보호를 위해 공유 지갑을 통해 공유 경로 거래를 보낼 수 있습니다.</small></h4>
+
+        <div class="form-horizontal">
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="주소로" data-content="이 사람의 Bitcoin 주소입니다.">받는 사람 :</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
+
+                            <p class="help-block">받는 사람의 Bitcoin 주소를 입력</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                    class="add-on send-value-usd">$0</span>
+                            </div>
+
+                            <p class="help-block fees"> 비용에게이 거래의 총을 포함하여 <span class="shared-fees">0.00</span></p>
+
+                            <p class="help-block bonus"><span class="bonus-value">0.00</span> 지급됩니다이 트랜잭션의 보너스에 대한 요금이 없을 것입니다.</p>
+
+                            <p class="help-block free">공유 전송은 현재 무료입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="검토 지급" data-content="지불을 검토하려면 여기를 클릭하십시오. 당신은 거래를 확인하거나 취소 할 수 있습니다.">검토 지급</button>
+
+                <p class="help-block fees">모든 공유 거래는 <span class="mixer_fee">0.5</span> %의 수수료가 부과됩니다.</p>
+
+                <div class="progress" style="display:none;">
+                    <div class="bar" style="width:10%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-custom">
+    <h4 class="page-header">사용자 정의 트랜잭션<br/><small>하나 이상의 bitcoin 주소로 결제를 보내 시려면 아래 양식을 사용하십시오. 당신은 제출하기 전에 거래를 검토해야합니다.</small></h4>
+
+    <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
+        <div class="control-group">
+            <label class="control-label pop" title="주소에서" data-content="필요한 경우 당신 지갑에서 특정 주소에서 동전을 보낼 수 있습니다.">보낸 사람 :</label>
+
+            <div class="controls">
+                <select name="from" multiple="multiple"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">받는 사람 :</label>
+
+            <div class="controls recipient-container">
+                <div class="recipient" style="margin-bottom:5px">
+                    <span class="qrcodeicon" /><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
+
+                    <div class="input-prepend input-append">
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left;padding-bottom:7px;padding-right:7px">
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
+                </div>
+
+                <div style="float:right;padding-right:20px">
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="받는 사람을 제거" data-content="마지막으로 수신자를 제거합니다."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="받는 사람을 추가" data-content="당신은 여러 수신자에게 bitcoins를 보내려면 한 번에 다른 주소를 추가하려면 여기를 클릭"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="광부 요금" data-content="이 요금은 bitcoin의 광부로 전송되고 트랜잭션이 빠르게 처리 될 수 있습니다">광부 요금:</label>
+
+            <div class="controls">
+                <div class="input-prepend" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="주소 변경" data-content="거래에서 모든 변경 사항은이 주소로 발송됩니다">주소 변경:</label>
+
+            <div class="controls">
+                <select name="change"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="공공 참고" data-content="blockchain.info에 볼 수 있습니다이 거래에 메모를 추가 할 수 있습니다.">공공 참고:</label>
+
+            <div class="controls">
+                <textarea name="public-note" placeholder="이 메시지는 영구적으로 blockchain에 포함됩니다. 모든 사용자가 읽을 수 있습니다." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="reset btn">양식 재설정</button>
+            <button class="send btn btn-primary pop" title="검토 지급" data-content="지불을 검토하려면 여기를 클릭하십시오. 당신은 거래를 확인하거나 취소 할 수 있습니다.">검토 지급</button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
+        <div class="well">
+            <h4 class="page-header">SatoshiDICE으로 걸어<br/>
+                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> 가장 인기있는 bitcoin 베팅 게임이다. 즉시 64,000 X 내기, 최대 이겼다. 모든 롤 blockchain를 사용하여 검증합니다.</small>
+            </h4>
+
+            <div class="form-horizontal">
+                <div class="controls">
+                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
+                </div>
+
+                <div class="recipient-container"></div>
+
+                <div class="form-actions">
+                    <button class="send btn btn-success pop" data-repeat="1">베팅!</button> <button class="send btn pop" data-repeat="5">X5를 반복</button> <button class="send btn pop" data-repeat="10">X10을 반복</button>
+
+                    <p class="help-block">Blockchain.info는 satoshidice.com와 제휴 관계에 있지 않습니다.</p>
+
+                    <div class="progress" style="display:none;margin-top:10px">
+                        <div class="bar" style="width:10%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="well profit-loss" style="display:none">
+            <p><b>요약 :</b> <a href="#" class="refresh">(새롭게하다)</a></p>
+
+            <p><b>베팅 수 :</b> <span class="n-bets"></span></p>
+
+            <p><b>위닝 :</b> <span class="winnings"></span></p>
+        </div>
+    </div>
+
+
+<div class="tab-pane well" id="address-book">
+
+    <h3>주소록</h3>
+
+    <p>주소록의 주소를 보내는의 목록이 포함되어 있습니다. 당신이 아는 사람이나 자주 사용 상인의 bitcoin 주소를 저장하는 데 사용할 수 있습니다.</p>
+
+    <table class="table table-striped" id="address-book-tbl">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Bitcoin Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockchain.info</td>
+            <td class="addr-book-entry">1JArS6jzE3AJ9sZ3aFij1BmTcpFGgN86hA</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <button id="add-address-book-entry-btn" class="btn btn-primary">새 항목을 추가</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="import-export" style="display: none;">
+    <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
+        <h2>고급 경고!</h2>
+
+        <p>이 섹션에서는 복잡하고 혼동을 줄 수 지갑을 변경할 수 있습니다. 그것은 여기에서 계속에서만 경험 Bitcoin 사용자를 권장합니다. 당신은 개인 키가 무엇인지에 대한 이해를해야하고 어떻게 주소를 bitcoin에 관한 것이다.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-import-export">이해</button>
+        </p>
+    </div>
+
+    <div id="import-export-content" style="display:none;">
+
+
+
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">가져 오기 / 내보내기</li>
+            <li class="active"><a href="#import" data-toggle="tab">수입</a></li>
+            <li><a href="#import-backup" data-toggle="tab">가져 오기 백업</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">가져 오기 지갑</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">암호화 된 내보내기</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">내보내기 암호화되지 않은</a></li>
+            <li><a id="export-paper-btn">종이 지갑</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
+
+            
+
+            <div class="page-header">
+                <h3>만 Bitcoin 주소보기 추가</h3>
+
+                <p>당신은 당신 지갑에 <font color="red">Watch Only</font> bitcoin 주소를 추가 할 수 있습니다. 나중에 개인 키를 제공하지 않고이 주소에서 bitcoins을 보낼 수 없습니다</p>
+
+                <div class="form-inline">
+                    <input placeholder="Bitcoin 주소" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">만 주소보기 추가</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>개인 키 가져 오기</h3>
+
+                <p>아래의 기존 개인 키를 가져옵니다. 모든 개인 키 형식이 지원됩니다.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">개인 키 추가</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>뇌 지갑</h3>
+
+                <p>뇌 지갑 패스 - 문구 기억에 남는에서 놓는 개인 키입니다. 이 지갑 백업을 필요하지 않고이 주소로 자금을 복원하기 위해이 암호를 기억 할 수 있습니다.</p>
+
+                <p>최소 패스 - 구문 길이는 15 자입니다. 그것은 매우 당신이 아직까지 패스 - 문구 기억와 함께 정기적으로 지갑 백업을 유지하는 것이 좋습니다.</p>
+
+                <div class="form-inline">
+                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">키를 생성</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>종이 지갑을 사용하여 가져 오기</h3>
+
+                <p>종이 지갑에서 QR 코드를 스캔하여 웹캠을 사용하여</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">웹캠으로 스캔</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">가져 오기 백업 <small>우리의 클라우드 스토리지 서버에서 제공 지갑 백업의 목록입니다.</small></h3>
+
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>파일 이름</th>
+                <th>최종 수정</th>
+                <th>크기</th>
+                <th>행동</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="import-wallet">
+
+            <h3 class="page-header">가져 오기 지갑</h3>
+
+            <p>당신은 몇 가지 다른 형식으로 키를 가져올 수 있습니다.</p>
+            <ul>
+                <li>blockchain.info에서 AES 암호화 백업. (같은 암호를 사용하여 암호화해야 함)</li>
+                <li>blockchain.info에서 일반 텍스트 JSON 백업</li>
+                <li><a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet의 출력</li>
+                <li><a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key의 출력</li>
+                <li><a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a>의 출력</li>
+            </ul>
+
+            <p>지갑 당 400 개인 키의 한계는 현재이 양해 해 주시기 바랍니다. 큰 지갑을 보려면 브라우저가 몇 분 동안 응답하지 않을 수도 있습니다.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="이 지역에 지갑 데이터를 복사 및 붙여 넣기"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">가져 오기 지갑</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">수출 <small>아래 AES 암호화 개인 키입니다.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">백업을 다운로드</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">내보내기 암호화되지 않은 <small>다음은 JSON 형식의 개인 키가 있습니다. 경고! 이 데이터는이 안전하게 보관 암호화되지 않은 있습니다.</small></h3>
+
+            <h6>개인 키 형식을 선택합니다 :</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">개인 키는 암호화 남겨</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>만 Bitcoin 주소보기 추가</h3>
+            </div>
+            <div class="modal-body">
+                <p><font color="red">Watch Only</font> 주소 <span class="address"></span>을 (를) 추가 할 그러 확인하시기 바랍니다.</p>
+
+                <p><font color="red">Watch Only</font> 주소 만이 주소에서 트랜잭션을 관찰 할 수 있습니다. 당신이 어디 다른 곳에 저장 한 개인 키가 없으면 다음이 주소로 자금을 소유하지 않습니다.</p>
+
+                <p>당신은 종이 지갑이나 다른 백업이없는 경우이 주소로 동전을 철회하거나이 주소로 당신에게 동전을 보내 사람을 지시해서는 안됩니다</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">취소</button>
+                    <button class="btn btn-primary">계속</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Second Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please enter the second password for this wallet.</p>
+                <p align="center">
+                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Password</h3>
+            </div>
+            <div class="modal-body">
+                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p align="center">
+                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>압축 개인 키가 감지</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>압축 된 개인 키는 현재 안드로이드 앱, 아이폰 앱 또는 판매자 API를 사용하여 지원되지 않습니다. 당신은 압축 된 개인 키를 가져 오는 경우 직접 당신은 이전에 나열된 장치를 사용하여 해당 주소에서 기금을 지출 할 수 없습니다.</p>
+
+                <p>권장 솔루션은 기존의 bitcoin 주소로 자금을 청소하는 것입니다. 대신이 개인 키를 쓸어 하시겠습니까?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">스윕 키</button>
+                    <button class="btn btn-secondary">직접 가져 오기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div></div>
+</div>
+
+
+
+<div id="main-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>주요 암호 필요</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>이 작업을 수행하면 기본 암호를 다시 입력해야합니다. 주의 깊게을 입력하세요하거나이 로그 아웃 될 수 있습니다.</p>
+
+        <div style="width:290px;margin: 0 auto;">
+            <p><b>메인 비밀번호:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button> <button class="btn btn-primary">계속</button>
+        </div>
+    </div>
+</div>
+
+<div id="second-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>두 번째 비밀번호 필요</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>이 작업은 완전히 해독에게 지갑을 필요한 두 번째 암호를 입력해야합니다. 당신은 신뢰할 수없는 컴퓨터에 두 번째 암호를 입력하지 않습니다. 키로거의 일부 보호를 제공하기 위해 화면 키보드를 사용합니다.</p>
+
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
+
+        <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
+            <ul class="vkeyboard">
+                <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                <li class="delete lastitem">delete</li>
+                <li class="tab">tab</li>
+                <li class="letter">q</li>
+                <li class="letter">w</li>
+                <li class="letter">e</li>
+                <li class="letter">r</li>
+                <li class="letter">t</li>
+                <li class="letter">y</li>
+                <li class="letter">u</li>
+                <li class="letter">i</li>
+                <li class="letter">o</li>
+                <li class="letter">p</li>
+                <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                <li class="capslock">caps lock</li>
+                <li class="letter">a</li>
+                <li class="letter">s</li>
+                <li class="letter">d</li>
+                <li class="letter">f</li>
+                <li class="letter">g</li>
+                <li class="letter">h</li>
+                <li class="letter">j</li>
+                <li class="letter">k</li>
+                <li class="letter">l</li>
+                <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                <li class="return lastitem">return</li>
+                <li class="left-shift">shift</li>
+                <li class="letter">z</li>
+                <li class="letter">x</li>
+                <li class="letter">c</li>
+                <li class="letter">v</li>
+                <li class="letter">b</li>
+                <li class="letter">n</li>
+                <li class="letter">m</li>
+                <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                <li class="right-shift lastitem">shift</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button> <button class="btn btn-primary">계속</button>
+        </div>
+    </div>
+</div>
+
+<div id="label-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>라벨 주소</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>주소 <span class="address"></span>에 대한 레이블을 입력하십시오</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">레이블 :</label>
+                <div class="controls">
+                    <input name="label" placeholder="라벨 예 저금" type="text" /><p class="help-block">라벨은이 주소입니다 기억하는 데 사용됩니다. 이 개인이나 기업의 이름이 사용될 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button> <button class="btn btn-primary">저장</button>
+        </div>
+    </div>
+</div>
+
+<div id="sign-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>메시지에 서명</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>당신이 주소를 소유했는지 증명하는 메시지에 서명이 도구를 사용합니다. 만, 당신이 완전히에 동의 상세 메시지를 로그인 모호한 메시지를 서명하지 않습니다. 로그인 메시지를 누르면 몇 초 동안 응답하기 위해 브라우저의 원인이 될 수 있습니다.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">주소 :</label>
+                <div class="controls">
+                    <p class="address"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">메시지 :</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="당신이 로그인 할 메시지를 입력합니다"></textarea>
+                </div>
+            </div>
+            <div class="control-group signature" style="display:none">
+                <label class="control-label">서명 :</label>
+                <div class="controls">
+                    <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">메시지에 서명</button>
+        </div>
+    </div>
+</div>
+
+<div id="verify-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>메시지 확인</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>이 도구는 특정 bitcoin 주소의 소유자가 서명 한 메시지를 확인 사용</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">주소 :</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin 주소" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">메시지 :</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="확인하려면 메시지를 입력"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">서명 :</label>
+                <div class="controls">
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="확인하려면 서명을 입력합니다"></textarea>
+                </div>
+            </div>
+            <div class="control-group address-result" style="display:none">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <span class="address-result-txt"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">메시지 확인</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>QR 코드 주소 <small class="address"></small></h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">가까운</button>
+        </div>
+    </div>
+</div>
+
+<div id="add-address-book-entry-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>주소록 항목을 추가</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">주소 :</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin 주소" type="text">
+                    <p class="help-block">귀하의 주소록에 추가 할 Bitcoin 주소를 입력합니다.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">레이블 :</label>
+                <div class="controls">
+                    <input name="label" placeholder="사람이나 상인의 이름" type="text" />
+                    <p class="help-block">이 주소에 대한 레이블을 입력합니다. 예를 들면 사람 또는 회사 이름의 이름입니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">주소를 추가</button>
+        </div>
+    </div>
+</div>
+
+<div id="not-synced-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">주소 저장되지</h3>
+    </div>
+    <div class="modal-body">
+        <p>새로 생성 된 주소가 아직 서버에 저장되지 않았습니다. <span style="color:red;font-weight:bold;">개인 키가 저장되어 있지 않으면 로그 아웃 한 후 다른 곳에서 동기화되지 않은 주소로 보내지는 모든 동전이 영구적으로 손실됩니다</span></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-danger">저장되지 않은 주소 표시</button>
+            <button class="btn btn-primary" data-dismiss="modal">가까운</button>
+        </div>
+    </div>
+</div>
+
+<div id="watch-only-copy-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">만 주소 경고보기</h3>
+    </div>
+    <div class="modal-body">
+        <p>당신이 클립 보드에 <font color="red">Watch Only</font> 주소를 복사 한 때문에이 경고를 받고 있습니다.</p>
+
+        <p><font color="red">Watch Only</font> 주소 만이 주소에서 트랜잭션을 관찰 할 수 있습니다. 당신이 어디 다른 곳에 저장 한 개인 키가 없으면 다음이 주소로 자금을 소유하지 않습니다.</p>
+
+        <p><b>당신은 종이 지갑이나 다른 백업이없는 경우이 주소로 동전을 철회하거나이 주소로 당신에게 동전을 보내 사람을 지시해서는 안됩니다</b></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary" data-dismiss="modal">가까운</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>삭제 확인</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">잘못된 주소를 삭제하면 재정 손실을 초래하게됩니다. 당신이 언론을하는 일 확실하지 않은 경우 지금 취소</div>
+
+        <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
+
+        <p>
+            확실 주소를 제거하려는 건가요? 당신은 더 이상이 주소에서 bitcoins을 보내거나받을 수 없게됩니다. 이 주소의 균형은 다음과 같습니다 :
+        </p>
+
+        <h2 align="center" id="delete-balance"></h2>
+
+        <h2 id="change-mind" style="display:none;text-align:center">당신의 마음을 바꿀 <span id="change-mind-time">5</span> 초를 ...</h2>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">개인 키를 삭제 만</button>
+            <button class="btn btn-danger">주소 및 개인 키를 삭제</button>
+        </div>
+    </div>
+</div>
+
+<div id="sweep-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>스위프 키</h3>
+    </div>
+    <div class="modal-body">
+        <p>쓸어 다른 주소로 하나 이상의 주소에서 사용할 수있는 모든 자금을 이동하는 것을 의미합니다. 선택한 주소를 (밸런스 <span class="balance"></span>) 청소하고자하는 주소를 선택하십시오.</p>
+
+        <p align="center">
+        <div class="form-inline">
+            <label class="control-label">받는 사람 청소 :</label> <br /><select name="change"></select>
+        </div>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">계속</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="ask-for-shared" class="modal hide">
+    <div class="modal-header">
+        <h3>공유 보내시겠습니까?</h3>
+    </div>
+    <div class="modal-body">
+        <p>공유 지갑 통해 트랜잭션을 보내고 <span class="bonus-percent"></span> % 보너스 (<span class="bonus-value"></span> 보내는 주소로 전송됩니다)를 얻을. 거래는 약 <span class="delay"></span>의 지연이 발생합니다.</p>
+
+        <div class="alert alert-block alert-error" style="margin: 10px;">
+            당신이 보내는 주소로 지불을받을 것으로 예상하는 경우 허용되지 않습니다. 공유 거래 SatoshiDICE, BitLotto 및 다른 많은 bitcoin 게임과 호환됩니다.
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left"><input type="checkbox" id="shared-never-ask">다시 묻지 마십시오.</div>
+
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">없이 계속</button>
+            <button class="btn btn-primary">공유 보내시겠습니까?</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>부족 자금</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>insufficent 자금을 사용할 수 있기 때문에이 트랜잭션이 전송 될 수 없습니다. 이 추가 광부 수수료 또는 확인되지 않은 거래로 인해 수 있습니다.</p>
+
+        <p>거래는 어느 취소 할 수 있습니다. 또는 보낼 수있는 금액이 전송에 사용할 수있는 최대 금액과 일치하도록 조정할 수 있습니다.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">필수 : <span class="amount-required"></span> (가능 : <span class="amount-available"></span>)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">거래 취소</button>
+            <button class="btn btn-primary">금액을 조정</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-for-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>광부 요금 추천</h3>
+    </div>
+    <div class="modal-body">
+        <p>이 거래는 낮은 우선 순위입니다. 그것은 당신이 광부가 처리되도록하려면 최소 0.0005 BTC 수수료를 포함하는 것이 좋습니다.</p>
+        <div class="alert alert-block alert-error" style="margin: 10px;">당신이 요금을 포함하지 않는 경우이 거래 확인하려면 시간이 오래 걸릴 수 있습니다. 모든 기금은 약 24 시간에서 당신에게 반환됩니다.</div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">요금없이 계속</button>
+            <button class="btn btn-primary">요금을 추가</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="new-transaction-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>거래를 만들기</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center" class="loading-indicator" style="display:none;">
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+        </p>
+
+        <div class="offline-transaction" style="display:none">
+            <p>거래를 성공적으로 생성되었지만 아직 P2P 네트워크에 브로드 캐스트되지 않았습니다. </p>
+
+            거래 열린 <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>을 (를) 완료합니다. 거래를 완료하기 위해 제출합니다. </ P> 텍스트 영역하고 Enter 키를 누릅니다에 아래의 텍스트를 복사하여 붙여 넣기
+
+            <textarea name="data" style="width: 100%; height:100px;"></textarea>
+        </div>
+
+        <div id="tx-sign-progress" style="display:none">
+            <h4>기다려주세요. <span class="t"></span>에서 로그 아웃 입력 번호 <span class="n">0</span> ...</h4>
+        </div>
+
+        <div id="review-tx" style="display:none">
+            <div class="basic">
+                <p>당신은 <span id="rtc-basic-summary"></span> 싶습니다 확인해주십시오</p>
+            </div>
+
+            <div class="adv">
+                <p>아래의 세부 정보를 확인하십시오 :</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td width="110px;"><b>해시시</b></td>
+                        <td id="rtc-hash"></td>
+                    </tr>
+                    <tr>
+                        <td><b>버전</b></td>
+                        <td id="rtc-version">1</td>
+                    </tr>
+                    <tr>
+                        <td><b>입력</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>출력</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>총 비용</b></td>
+                        <td id="rtc-fees">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>총 출력 값</b></td>
+                        <td id="rtc-value">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>지갑을 떠나</b></td>
+                        <td id="rtc-effect" style="color: red">0</td>
+                    </tr>
+                </table>
+            </div>
+            <p align="right"><a class="show_adv"></a></p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">거래 보내기</button>
+        </div>
+    </div>
+</div>
+
+<div id="send-email-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>이메일로 보내기</h3>
+    </div>
+
+    <div class="modal-body">
+        <h3 style="padding-bottom:25px">
+            <span class="amount"></span> <span class="email"></span>에 보내기 <br /> <small>다음과 같은 메시지가받는 사람에게 전송됩니다.</small>
+        </h3>
+
+        <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">결제 보내기</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="private-key-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>필요한 개인 키</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>이 작업은 bitcoin 주소 <span class="address" style="font-weight:bold"></span>의 개인 키가 필요합니다. 아래의 개인 키를 입력하십시오.</p>
+
+        <div style="margin:0 auto;width:400px">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-primary">개인 키를 입력</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-reader-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>QR 코드를 스캔</h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div class="qr-code-reader" style="width:320px;height:240px;margin:0 auto;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>백업 지침 복원</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+           <ul>
+              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

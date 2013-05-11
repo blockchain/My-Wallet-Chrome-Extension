@@ -10,7 +10,15 @@ WEB_CONTENT="../../website/WebContent"
 
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
-wget --no-check-certificate -O wallet.html 'https://blockchain.info/wallet/extension-template?resource_relative=false&type=chrome'
+rm -r ./html/
+mkdir ./html/
+
+array=( fr da de ko hi th it nl es ja pl pt sv ru en el zh-cn ro bg vi id tr sl no hu )
+for i in "${array[@]}"
+do
+	echo $i
+	wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&type=chrome"
+done
 
 #Copy Favicon
 cp $WEB_CONTENT/favicon.ico ./
@@ -91,7 +99,7 @@ cp $RESOURCE_DIR/wallet/jquery.qrcode.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/qr.code.reader.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/import-export.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/account.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/frame-modal.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/frame-modal.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/address_modal.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jquery-2.0.0.min.js ./Resources/wallet/jquery.min.js
 cp $RESOURCE_DIR/wallet/bootstrap.min.js ./Resources/wallet/
