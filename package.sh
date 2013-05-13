@@ -10,8 +10,8 @@ WEB_CONTENT="../../website/WebContent"
 
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
-#rm -r ./html/
-#mkdir ./html/
+rm -r ./html/
+mkdir ./html/
 
 array=( fr da de ko hi th it nl es ja pl pt sv ru en el zh-cn ro bg vi id tr sl no hu )
 for i in "${array[@]}"
