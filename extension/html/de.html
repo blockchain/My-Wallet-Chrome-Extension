@@ -915,12 +915,13 @@
 
             <p>Die Sicherung Ihres My Wallet ist ein wichtiger Schritt der viel zu einfach vergessen werden kann. Blockchain.info trifft jede Vorsichtsmaßnahme, um Ihre My Wallet sicher zu verwahren. Aber es ist immer besser eine lokale Kopie für etwaige Zwischenfälle zu halten.</p>
 
-            <div class="pull-right btn-group">
-                <a class="btn download-backup-btn">Download</a>
-                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
-                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
-                <a class="btn" id="email-backup-btn">E-Mail</a>
+            <div class="btn-group" align="right">
+                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">E-Mail</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
             </div>
+
+            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
+                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
+            </p>
         </div>
     </div>
 </div>
@@ -955,6 +956,7 @@
                     Weitere Aktionen <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">New Cold Storage Adresse</a></li>
                     <li><a id="chord-diagram">Beziehungs-Diagramm anzeigen </a></li>
                     <li><a id="group-received" title="Taint Grouping">Gruppiere Adressen nach Taint</a></li>
                     <li><a class="hidden-phone" id="verify-message" title="Verify Message">Nachicht überprüfen</a></li>
@@ -1584,7 +1586,7 @@
             <li><a href="#import-wallet" data-toggle="tab">Wallet importieren</a></li>
             <li><a href="#export-crypted" data-toggle="tab">Verschlüsselt exportieren</a></li>
             <li><a href="#export-unencrypted" data-toggle="tab">Unverschlüsselt exportieren</a></li>
-            <li><a id="export-paper-btn">Paper Wallet</a></li>
+            <li><a class="paper-wallet-btn">Paper Wallet</a></li>
         </ul>
     </div>
 </div>

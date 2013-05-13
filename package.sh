@@ -10,8 +10,8 @@ WEB_CONTENT="../../website/WebContent"
 
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
-rm -r ./html/
-mkdir ./html/
+#rm -r ./html/
+#mkdir ./html/
 
 array=( fr da de ko hi th it nl es ja pl pt sv ru en el zh-cn ro bg vi id tr sl no hu )
 for i in "${array[@]}"
@@ -73,6 +73,7 @@ cp $RESOURCE_DIR/yubikey_16.gif ./Resources/
 cp $RESOURCE_DIR/email_16.gif ./Resources/
 cp $RESOURCE_DIR/sms_16.png ./Resources/
 cp $RESOURCE_DIR/google_16.png ./Resources/
+cp $RESOURCE_DIR/paper-wallet-reminder.png ./Resources/
 
 cp $RESOURCE_DIR/bootstrap-responsive.min.css ./Resources/
 cp $RESOURCE_DIR/bootstrap.min.css ./Resources/
@@ -94,9 +95,9 @@ cp $RESOURCE_DIR/wallet/shared.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/bitcoinjs.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/wallet.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/signer.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/llqrcode.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/llqrcode.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jquery.qrcode.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/qr.code.reader.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/qr.code.reader.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/import-export.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/account.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/frame-modal.min.js ./Resources/wallet/
@@ -111,7 +112,8 @@ cp $RESOURCE_DIR/wallet/anonymous-addresses.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/dicegames.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/mnemonic.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jsuri-1.1.1.min.js ./Resources/wallet/
-
+cp $RESOURCE_DIR/wallet/paper-wallet.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/jspdf.min.js ./Resources/wallet/
 
 #icons
 cp $RESOURCE_DIR/cube48.png ./Resources/

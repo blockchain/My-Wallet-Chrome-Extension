@@ -915,12 +915,13 @@
 
             <p>Sao lưu ví của bạn là 1 bước quan trọng mà bạn dễ quên. Blockchain.info tận dụng mọi biện pháp phòng ngừa để ví của bạn được an toàn nhưng sẽ luôn luôn luôn tốt hơn nếu có 1 bản sao .</p>
 
-            <div class="pull-right btn-group">
-                <a class="btn download-backup-btn">Download</a>
-                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
-                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
-                <a class="btn" id="email-backup-btn">Hòm thư</a>
+            <div class="btn-group" align="right">
+                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Hòm thư</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
             </div>
+
+            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
+                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
+            </p>
         </div>
     </div>
 </div>
@@ -955,6 +956,7 @@
                     Những tùy chọn khác <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">Mới lạnh Địa chỉ lưu trữ</a></li>
                     <li><a id="chord-diagram">Xem biểu đồ quan hệ</a></li>
                     <li><a id="group-received" title="Taint Grouping">Nhóm địa chỉ theo độ xấu</a></li>
                     <li><a class="hidden-phone" id="verify-message" title="Verify Message">Xác thực tin nhắn</a></li>
@@ -1584,7 +1586,7 @@
             <li><a href="#import-wallet" data-toggle="tab">Nhập khẩu Wallet</a></li>
             <li><a href="#export-crypted" data-toggle="tab">Xuất mã hoá</a></li>
             <li><a href="#export-unencrypted" data-toggle="tab">Xuất không mã hoá</a></li>
-            <li><a id="export-paper-btn">Ví giấy</a></li>
+            <li><a class="paper-wallet-btn">Ví giấy</a></li>
         </ul>
     </div>
 </div>

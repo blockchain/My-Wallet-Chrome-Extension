@@ -915,12 +915,13 @@
 
             <p>La sauvegarde de votre porte-monnaie est une étape importante et facile à oublier. Blockchain.info prend toutes les précautions pour garder votre portefeuille en toute sécurité, mais il est toujours préférable de garder une copie locale juste au cas où.</p>
 
-            <div class="pull-right btn-group">
-                <a class="btn download-backup-btn">Download</a>
-                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
-                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
-                <a class="btn" id="email-backup-btn">Messagerie</a>
+            <div class="btn-group" align="right">
+                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Messagerie</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
             </div>
+
+            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
+                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
+            </p>
         </div>
     </div>
 </div>
@@ -955,6 +956,7 @@
                     Plus d'actions <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">New froid adresse de stockage</a></li>
                     <li><a id="chord-diagram">Voir le diagramme de relation</a></li>
                     <li><a id="group-received" title="Taint Grouping">Regroupez les adresses par Taint</a></li>
                     <li><a class="hidden-phone" id="verify-message" title="Verify Message">Vérifiez le message</a></li>
@@ -1584,7 +1586,7 @@
             <li><a href="#import-wallet" data-toggle="tab">Porte-monnaie importation</a></li>
             <li><a href="#export-crypted" data-toggle="tab">Exporter de manière chiffrée</a></li>
             <li><a href="#export-unencrypted" data-toggle="tab">Exportation de manière non chiffrée</a></li>
-            <li><a id="export-paper-btn">Portefeuille sur papier</a></li>
+            <li><a class="paper-wallet-btn">Portefeuille sur papier</a></li>
         </ul>
     </div>
 </div>

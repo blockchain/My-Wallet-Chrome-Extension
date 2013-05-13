@@ -915,12 +915,13 @@
 
             <p>Säkerhetskopiera din plånbok är ett viktigt steg som är lätt att glömma. Blockchain.info tar alla försiktighetsåtgärder för att hålla din plånbok säker men det är alltid bättre att hålla en lokal kopia för säkerhets skull.</p>
 
-            <div class="pull-right btn-group">
-                <a class="btn download-backup-btn">Download</a>
-                <a class="btn" id="dropbox-backup-btn">Dropbox</a>
-                <a class="btn" id="gdrive-backup-btn">Google Drive</a>
-                <a class="btn" id="email-backup-btn">E</a>
+            <div class="btn-group" align="right">
+                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">E</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
             </div>
+
+            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
+                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
+            </p>
         </div>
     </div>
 </div>
@@ -955,6 +956,7 @@
                     Fler åtgärder <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">New Cold Storage Adress</a></li>
                     <li><a id="chord-diagram">Visa förhållandet diagram</a></li>
                     <li><a id="group-received" title="Taint Grouping">Gruppadresser Genom Taint</a></li>
                     <li><a class="hidden-phone" id="verify-message" title="Verify Message">Verifiera meddelande</a></li>
@@ -1584,7 +1586,7 @@
             <li><a href="#import-wallet" data-toggle="tab">Importera Plånbok</a></li>
             <li><a href="#export-crypted" data-toggle="tab">Exportera Krypterad</a></li>
             <li><a href="#export-unencrypted" data-toggle="tab">Export Okrypterade</a></li>
-            <li><a id="export-paper-btn">Papper Plånbok</a></li>
+            <li><a class="paper-wallet-btn">Papper Plånbok</a></li>
         </ul>
     </div>
 </div>
