@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
     <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
 
     <style type="text/css">
         .navbar {
@@ -60,7 +61,7 @@
 
     
 <div class="quickstart">
-    <div class="container" id="new-wallet">
+    <div class="container">
         <div class="row-fluid">
             <div class="span12">
                 <h1>
@@ -128,10 +129,13 @@
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> General</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notificaciones</a></li>
+            <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Contraseñas</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Seguridad</a></li>
             <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Registro</a></li>
             <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Dispositivos</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Depuración</a></li>
         </ul>
     </div>
 </div>
@@ -198,6 +202,27 @@
             <p>Introduce el código de verificación que figura en el mensaje SMS.</p>
             <p class="form-inline"><input placeholder="Código de Confirmación SMS" class="wallet-sms-code" type="text"/> <button class="btn">Verificar</button> </p>
         </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Comprobación de Integridad</h3>
+
+        <p>Verifica que todas las claves de tu monedero coincidan con las direcciones de Bitcoin correspondientes además de volver a cifrarlo. Este proceso puede demorar un tiempo prolongado en algunos navegadores.</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Ejecutar</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Compruebe comprimido</h3>
+
+        <p>Verifica el saldo de las versiones comprimidas y sin comprimir de todas las claves privadas para comprobar que no hay transacciones que pueden ser redimidos no muestran en el balance principal de Monedero.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Ejecutar</button>
+        </p>
     </div>
 </div>
 
@@ -277,29 +302,6 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
         <p>
             Marca esta casilla si quieres recibir nuevas copias de seguridad de manera automática cada vez que tu monedero se actualice: <input id="auto-email-backup" type="checkbox"/>
         </p>
-    </div>
-
-    <div class="accordion">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    Avanzado
-                </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <div>
-                        <h3>Comprobación de Integridad</h3>
-
-                        <p>Verifica que todas las claves de tu monedero coincidan con las direcciones de Bitcoin correspondientes además de volver a cifrarlo. Este proceso puede demorar un tiempo prolongado en algunos navegadores.</p>
-
-                        <p>
-                            <button class="btn" id="run-key-check">Ejecuta una Comprobación de Integridad</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -637,7 +639,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             <b>Yubikey</b> <br/> Selecciona la casilla de texto a continuación y pulsa el botón LED verde en tu dispositivo Yubikey para emparejarlo con tu cuenta.
 
             <div class="controls">
-                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                 <p class="help-block">Selecciona la casilla de texto de arriba y pulsa el indicador LED verde de tu Yubikey.</p>
             </div>
@@ -860,8 +862,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 
         <div class="span6">
             
-
-                <div class="no-watch-only">
+                <div class="no-watch-only" id="home-deposit-container">
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
                         <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
@@ -874,7 +875,9 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
-                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Depósito en efectivo</button>
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp fuerte</button>
                             
 
                             
@@ -886,6 +889,11 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                             
                             
                             
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp fuerte</button>
+                            
+
                             
                                 
                             
@@ -893,6 +901,10 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 
                         <div class="tab-pane" style="text-align:right" id="deposit-eu">
                             
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp fuerte</button>
                             
                         </div>
 
@@ -903,7 +915,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                 </div>
             
 
-            <div class="page-header">
+            <div class="page-header" id="home-account-container">
                 <h3>Configuración de la Cuenta</h3>
 
                 <p>Edita la configuración de tu cuenta, incluyendo la dirección de correo electrónico, la contraseña y  la configuración de las notificaciones.</p>
@@ -913,17 +925,18 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                 </p>
             </div>
 
-            <h3>Copia de Seguridad</h3>
 
-            <p>Hacer una copia de seguridad de tu monedero es un paso importante y fácil de olvidar. Blockchain.info toma todas las medidas necesarias para mantener seguro tu monedero, sin embargo es mejor mantener una copia local por si acaso.</p>
+            <div id="home-backup-container">
+                <h3>Copia de Seguridad</h3>
 
-            <div class="btn-group" align="right">
-                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Correo electrónico</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                <p>Hacer una copia de seguridad de tu monedero es un paso importante y fácil de olvidar. Blockchain.info toma todas las medidas necesarias para mantener seguro tu monedero, sin embargo es mejor mantener una copia local por si acaso.</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Correo electrónico</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
             </div>
-
-            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
-                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
-            </p>
         </div>
     </div>
 </div>
@@ -1022,7 +1035,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 
     
 
-    <div class="row-fluid page-header">
+    <div class="row-fluid page-header" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Bienvenido </h3>
@@ -1110,7 +1123,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             </div>
         </div>
 
-        <div class="span6">
+        <div class="span6" id="forgotten-something-container">
             <div class="page-header">
                 <h3>¿Has olvidado algo?</h3> <small>¡Ayuda! Me he quedado fuera de mi cuenta</small>
             </div>
@@ -1189,7 +1202,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     <p class="padded well" id="no-transactions" align="center">Aquí se enumeran las transacciones Bitcoin que has realizado. No has realizado ninguna transacción.</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
-        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
         <tbody></tbody>
     </table>
 
@@ -1728,36 +1741,52 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
+        <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Second Password</h3>
+                <h3>Importar clave privada Advertencia</h3>
             </div>
             <div class="modal-body">
-                <p>Please enter the second password for this wallet.</p>
+                <p><b>Nunca importar una clave privada de una fuente pública o no es de confianza.</b> Esto incluye carteras cerebrales comunes, concursos y claves privadas comprados. En su lugar se recomienda para barrer la llave, lo que significa que para enviar todos los fondos a una de las direcciones existentes en lugar de tener que añadir una nueva dirección a su cartera.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Importar directamente</button>
+                    <button class="btn btn-primary">Barrer la clave</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Monedero Segunda Contraseña</h3>
+            </div>
+            <div class="modal-body">
+                <p>Por favor introduce el segundo contraseña de esta cartera.</p>
                 <p align="center">
-                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>En segundo lugar contraseña:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Continuar</button>
                 </div>
             </div>
         </div>
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>Monedero Contraseña</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>Si se cifra esta cartera introduzca la contraseña a continuación. De lo contrario dejarlo en blanco.</p>
                 <p align="center">
-                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>Monedero Contraseña:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Continuar</button>
                 </div>
             </div>
         </div>
@@ -1776,8 +1805,8 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Barrer la clave</button>
                     <button class="btn btn-secondary">Importar directamente</button>
+                    <button class="btn btn-primary">Barrer la clave</button>
                 </div>
             </div>
         </div>

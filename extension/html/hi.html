@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
     <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
 
     <style type="text/css">
         .navbar {
@@ -60,7 +61,7 @@
 
     
 <div class="quickstart">
-    <div class="container" id="new-wallet">
+    <div class="container">
         <div class="row-fluid">
             <div class="span12">
                 <h1>
@@ -128,10 +129,13 @@
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> व्यक्तिगत</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> सामान्य</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> अधिसूचनाएं</a></li>
+            <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> पासवर्डों</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> सुरक्षा</a></li>
             <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> लॉगिंग</a></li>
             <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> उपकरणों</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> डीबगिंग</a></li>
         </ul>
     </div>
 </div>
@@ -198,6 +202,27 @@
             <p>पाठ संदेश से कोड दर्ज करें.</p>
             <p class="form-inline"><input placeholder="SMS सत्यापन कोड" class="wallet-sms-code" type="text"/> <button class="btn">सत्यापित करना</button> </p>
         </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>वफ़ादारी की जाँच</h3>
+
+        <p>सत्यापित करें कि अपने बटुए में सभी पते सही bitcoin पते के मैच और अपने बटुए recodes. यह कुछ ब्राउज़रों में एक लंबा समय लग सकता है.</p>
+
+        <p>
+            <button class="btn" id="run-key-check">चलाना</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>संपीडित जाँच करें</h3>
+
+        <p>भुनाया मुख्य बटुआ संतुलन में नहीं दिखाया जा सकता है जो कोई लेनदेन नहीं है सत्यापित करने के लिए सभी निजी कुंजी की संकुचित और असम्पीडित दोनों संस्करणों के संतुलन की जाँच करता है.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">चलाना</button>
+        </p>
     </div>
 </div>
 
@@ -275,29 +300,6 @@
         <p>
             एक नया बैकअप के लिए यह जांच स्वतः अपडेट प्राप्त जब अपने बटुए: <input id="auto-email-backup" type="checkbox"/>
         </p>
-    </div>
-
-    <div class="accordion">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    उन्नत
-                </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <div>
-                        <h3>वफ़ादारी की जाँच</h3>
-
-                        <p>सत्यापित करें कि अपने बटुए में सभी पते सही bitcoin पते के मैच और अपने बटुए recodes. यह कुछ ब्राउज़रों में एक लंबा समय लग सकता है.</p>
-
-                        <p>
-                            <button class="btn" id="run-key-check">चेकआउट दर्ज</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -635,7 +637,7 @@
             <b>Yubikey</b> <br/> आपके खाते से अपनी चाबी जोड़ी नीचे पाठ बॉक्स का चयन करें और अपने yubikey डिवाइस पर हरी एलईडी बटन दबाएँ.
 
             <div class="controls">
-                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                 <p class="help-block">टेक्स्ट बॉक्स के ऊपर से चुनें और अपने Yubikey पर हरी एलईडी प्रकाश प्रेस.</p>
             </div>
@@ -858,8 +860,7 @@
 
         <div class="span6">
             
-
-                <div class="no-watch-only">
+                <div class="no-watch-only" id="home-deposit-container">
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
                         <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
@@ -872,7 +873,9 @@
 
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
-                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">जमा फंड</button>
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">जमा Bitstamp</button>
                             
 
                             
@@ -884,6 +887,11 @@
                             
                             
                             
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">जमा Bitstamp</button>
+                            
+
                             
                                 
                             
@@ -891,6 +899,10 @@
 
                         <div class="tab-pane" style="text-align:right" id="deposit-eu">
                             
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">जमा Bitstamp</button>
                             
                         </div>
 
@@ -901,7 +913,7 @@
                 </div>
             
 
-            <div class="page-header">
+            <div class="page-header" id="home-account-container">
                 <h3>खाता सेटिंग्स</h3>
 
                 <p>ईमेल पते, पासवर्ड, और सूचनाओं के लिए सेटिंग्स के रूप में अपने खाते की सेटिंग्स संपादित करें.</p>
@@ -911,17 +923,18 @@
                 </p>
             </div>
 
-            <h3>बैकअप</h3>
 
-            <p>अपने बटुए का एक बैकअप एक महत्वपूर्ण कदम है कि अक्सर भूल जाता है. Blockchain.info अपने बटुए को सुरक्षित रखने के लिए हर एहतियात लेता है, लेकिन यह हमेशा बेहतर करने के लिए सुरक्षा के लिए एक स्थानीय प्रतिलिपि है.</p>
+            <div id="home-backup-container">
+                <h3>बैकअप</h3>
 
-            <div class="btn-group" align="right">
-                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">ईमेल</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                <p>अपने बटुए का एक बैकअप एक महत्वपूर्ण कदम है कि अक्सर भूल जाता है. Blockchain.info अपने बटुए को सुरक्षित रखने के लिए हर एहतियात लेता है, लेकिन यह हमेशा बेहतर करने के लिए सुरक्षा के लिए एक स्थानीय प्रतिलिपि है.</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">ईमेल</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
             </div>
-
-            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
-                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
-            </p>
         </div>
     </div>
 </div>
@@ -1020,7 +1033,7 @@
 
     
 
-    <div class="row-fluid page-header">
+    <div class="row-fluid page-header" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>वापस स्वागत है </h3>
@@ -1108,7 +1121,7 @@
             </div>
         </div>
 
-        <div class="span6">
+        <div class="span6" id="forgotten-something-container">
             <div class="page-header">
                 <h3>कुछ भूल?</h3> <small>मदद करो! मैं अपने आप को बंद कर दिया है मेरे खाते से बाहर</small>
             </div>
@@ -1187,7 +1200,7 @@
     <p class="padded well" id="no-transactions" align="center">आम तौर पर w Bitcoin लेनदेन यहाँ सूचीबद्ध किया जाएगा, लेकिन तुम नहीं.</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
-        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
         <tbody></tbody>
     </table>
 
@@ -1726,36 +1739,52 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
+        <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Second Password</h3>
+                <h3>निजी कुंजी चेतावनी आयात</h3>
             </div>
             <div class="modal-body">
-                <p>Please enter the second password for this wallet.</p>
+                <p><b>एक सार्वजनिक या अविश्वस्त स्रोत से एक निजी कुंजी आयात न करें.</b> यह आम मस्तिष्क पर्स, प्रतियोगिताओं और खरीदा निजी चाबियाँ शामिल हैं. इसके बजाय हम वास्तव में अपने बटुए के लिए एक नया पता जोड़ने के अलावा अपने मौजूदा पतों के बजाय एक के लिए सब धन भेजने के लिए इसका मतलब है जो कुंजी, स्वीप करने की सलाह देते हैं.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">सीधे आयात</button>
+                    <button class="btn btn-primary">वाइप कुंजी</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>वॉलेट दूसरा पासवर्ड</h3>
+            </div>
+            <div class="modal-body">
+                <p>इस बटुए के लिए दूसरा पासवर्ड दर्ज करें.</p>
                 <p align="center">
-                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>दूसरा पासवर्ड:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">जारी रखें</button>
                 </div>
             </div>
         </div>
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>वॉलेट पासवर्ड</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>इस बटुए एन्क्रिप्टेड है तो नीचे पासवर्ड दर्ज करें. अन्यथा इसे खाली छोड़ दें.</p>
                 <p align="center">
-                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>वॉलेट पासवर्ड:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">जारी रखें</button>
                 </div>
             </div>
         </div>
@@ -1774,8 +1803,8 @@
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">वाइप कुंजी</button>
                     <button class="btn btn-secondary">सीधे आयात</button>
+                    <button class="btn btn-primary">वाइप कुंजी</button>
                 </div>
             </div>
         </div>

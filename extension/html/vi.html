@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
     <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
 
     <style type="text/css">
         .navbar {
@@ -60,7 +61,7 @@
 
     
 <div class="quickstart">
-    <div class="container" id="new-wallet">
+    <div class="container">
         <div class="row-fluid">
             <div class="span12">
                 <h1>
@@ -128,10 +129,13 @@
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Riêng</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Chung</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Thông báo</a></li>
+            <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Mật khẩu</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Bảo mật</a></li>
             <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Đăng nhập</a></li>
             <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Thiết bị</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Gỡ lỗi</a></li>
         </ul>
     </div>
 </div>
@@ -198,6 +202,27 @@
             <p>Nhập mã có trong tin SMS mà chúng tôi đã gửi.</p>
             <p class="form-inline"><input placeholder="Mã xác thực SMS" class="wallet-sms-code" type="text"/> <button class="btn">Xác thực</button> </p>
         </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Kiểm tra tính toàn vẹn</h3>
+
+        <p>Kiểm tra tất cả các khóa trong ví của bạn phù hợp với địa chỉ và tái mã hóa ví của bạn. Điều này có thể sẽ mất thời gian với một số trình duyệt</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Chạy</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Kiểm tra nén</h3>
+
+        <p>Kiểm tra sự cân bằng của cả hai phiên bản nén và không nén của tất cả các khóa riêng để xác minh không có giao dịch có thể được mua lại không được thể hiện trong sự cân bằng ví chính.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Chạy</button>
+        </p>
     </div>
 </div>
 
@@ -275,29 +300,6 @@
         <p>
             Đánh dấu vào nó để nhận những bản sao tự động mỗi khi ví của bạn được cập nhật: <input id="auto-email-backup" type="checkbox"/>
         </p>
-    </div>
-
-    <div class="accordion">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    Tiên tiến
-                </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <div>
-                        <h3>Kiểm tra tính toàn vẹn</h3>
-
-                        <p>Kiểm tra tất cả các khóa trong ví của bạn phù hợp với địa chỉ và tái mã hóa ví của bạn. Điều này có thể sẽ mất thời gian với một số trình duyệt</p>
-
-                        <p>
-                            <button class="btn" id="run-key-check">Chạy kiểm tra</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -635,7 +637,7 @@
             <b>Yubikey</b> <br/> Để ghép khóa của bạn với tài khoản, chọn hộp hội thoại dưới đây và ấn nút led xanh trên yubikey của bạn.
 
             <div class="controls">
-                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                 <p class="help-block">Chọn hộp thoại ở trên và nhấn vào đèn led màu xanh trên Yubikey của bạn.</p>
             </div>
@@ -858,8 +860,7 @@
 
         <div class="span6">
             
-
-                <div class="no-watch-only">
+                <div class="no-watch-only" id="home-deposit-container">
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
                         <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
@@ -872,7 +873,9 @@
 
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
-                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Gửi tiền mặt</button>
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Tiền gửi</button>
                             
 
                             
@@ -884,6 +887,11 @@
                             
                             
                             
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Tiền gửi</button>
+                            
+
                             
                                 
                             
@@ -891,6 +899,10 @@
 
                         <div class="tab-pane" style="text-align:right" id="deposit-eu">
                             
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Tiền gửi</button>
                             
                         </div>
 
@@ -901,7 +913,7 @@
                 </div>
             
 
-            <div class="page-header">
+            <div class="page-header" id="home-account-container">
                 <h3>Cài đặt tài khoản</h3>
 
                 <p>Chỉnh sửa cài đặt tài khoản của bạn bao gồm địa chỉ hòm thư, mật khẩu và cài đặt thông báo.</p>
@@ -911,17 +923,18 @@
                 </p>
             </div>
 
-            <h3>Sao lưu</h3>
 
-            <p>Sao lưu ví của bạn là 1 bước quan trọng mà bạn dễ quên. Blockchain.info tận dụng mọi biện pháp phòng ngừa để ví của bạn được an toàn nhưng sẽ luôn luôn luôn tốt hơn nếu có 1 bản sao .</p>
+            <div id="home-backup-container">
+                <h3>Sao lưu</h3>
 
-            <div class="btn-group" align="right">
-                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Hòm thư</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                <p>Sao lưu ví của bạn là 1 bước quan trọng mà bạn dễ quên. Blockchain.info tận dụng mọi biện pháp phòng ngừa để ví của bạn được an toàn nhưng sẽ luôn luôn luôn tốt hơn nếu có 1 bản sao .</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Hòm thư</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
             </div>
-
-            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
-                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
-            </p>
         </div>
     </div>
 </div>
@@ -1020,7 +1033,7 @@
 
     
 
-    <div class="row-fluid page-header">
+    <div class="row-fluid page-header" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Chào mừng quay trở lại </h3>
@@ -1108,7 +1121,7 @@
             </div>
         </div>
 
-        <div class="span6">
+        <div class="span6" id="forgotten-something-container">
             <div class="page-header">
                 <h3>Quên gì đó?</h3> <small>Cần giúp đỡ! Tôi bị khóa mất tài khoản</small>
             </div>
@@ -1187,7 +1200,7 @@
     <p class="padded well" id="no-transactions" align="center">Bình thường thì giao dịch bitcoin của bạn được nêu ở đây nhưng có thể bạn vẫn chưa làm nó.</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
-        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
         <tbody></tbody>
     </table>
 
@@ -1726,36 +1739,52 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
+        <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Second Password</h3>
+                <h3>Cảnh báo nhập khẩu Tin chính</h3>
             </div>
             <div class="modal-body">
-                <p>Please enter the second password for this wallet.</p>
+                <p><b>Không bao giờ nhập một khóa bí mật từ một nguồn công cộng hoặc không đáng tin cậy.</b> Điều này bao gồm ví não chung, các cuộc thi và mua khóa riêng. Thay vào đó, chúng tôi khuyên bạn nên quét quan trọng, có nghĩa là để gửi tất cả các khoản tiền cho một trong những địa chỉ hiện tại của bạn chứ không phải là thực sự thêm một địa chỉ mới để ví của bạn.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Nhập vào trực tiếp</button>
+                    <button class="btn btn-primary">Quét khóa</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Thứ hai ví Mật khẩu</h3>
+            </div>
+            <div class="modal-body">
+                <p>Xin vui lòng nhập mật khẩu thứ hai cho ví này.</p>
                 <p align="center">
-                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>Mật khẩu thứ hai:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Tiếp tục</button>
                 </div>
             </div>
         </div>
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>Ví Mật khẩu</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>Nếu ví này được mã hóa xin vui lòng nhập mật khẩu dưới đây. Nếu không để trống.</p>
                 <p align="center">
-                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>Ví Mật khẩu:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Tiếp tục</button>
                 </div>
             </div>
         </div>
@@ -1774,8 +1803,8 @@
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Quét khóa</button>
                     <button class="btn btn-secondary">Nhập vào trực tiếp</button>
+                    <button class="btn btn-primary">Quét khóa</button>
                 </div>
             </div>
         </div>

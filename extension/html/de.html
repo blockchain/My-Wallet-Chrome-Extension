@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
     <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
 
     <style type="text/css">
         .navbar {
@@ -60,7 +61,7 @@
 
     
 <div class="quickstart">
-    <div class="container" id="new-wallet">
+    <div class="container">
         <div class="row-fluid">
             <div class="span12">
                 <h1>
@@ -128,10 +129,13 @@
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Persönlich</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Allgemein</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Benachrichtigungen</a></li>
+            <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Passwörter</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Sicherheit</a></li>
             <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Protokollierung</a></li>
             <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Geräte</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Debuggen</a></li>
         </ul>
     </div>
 </div>
@@ -198,6 +202,27 @@
             <p>Geben Sie den Code aus der SMS-Nachricht ein.</p>
             <p class="form-inline"><input placeholder="SMS Bestätigungscode" class="wallet-sms-code" type="text"/> <button class="btn">Überprüfen</button> </p>
         </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Integritätsprüfung</h3>
+
+        <p>Überprüft alle Schlüssel in Ihrem Wallet ob diese mit den jeweiligen Bitcoin-Adressen übereinstimmen und verschlüsselt Ihre Brieftasche. Je nach Browser kann dies eine längere Zeit in Anspruch nehmen.</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Führen</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Prüfen Compressed</h3>
+
+        <p>Prüft das Gleichgewicht sowohl komprimierte und unkomprimierte Versionen aller privaten Schlüssel, um zu überprüfen gibt es keine Geschäfte, die eingelöst nicht in der Haupt-Wallet Balance gezeigt werden kann.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Führen</button>
+        </p>
     </div>
 </div>
 
@@ -275,29 +300,6 @@
         <p>
             Aktivieren Sie diese Option, um automatisch ein neues Backup zu erhalten, wenn es Änderungen bei Ihre Wallet gibt: <input id="auto-email-backup" type="checkbox"/>
         </p>
-    </div>
-
-    <div class="accordion">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    Fortgeschritten
-                </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <div>
-                        <h3>Integritätsprüfung</h3>
-
-                        <p>Überprüft alle Schlüssel in Ihrem Wallet ob diese mit den jeweiligen Bitcoin-Adressen übereinstimmen und verschlüsselt Ihre Brieftasche. Je nach Browser kann dies eine längere Zeit in Anspruch nehmen.</p>
-
-                        <p>
-                            <button class="btn" id="run-key-check">Check durchführen</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -635,7 +637,7 @@
             <b>Yubikey</b> <br/> Um Ihren Schlüssel mit Ihrem Account zu verbinden, wählen Sie das Textfeld unten und drücken Sie die grüne LED-Taste auf Ihrem Yubikey.
 
             <div class="controls">
-                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                 <p class="help-block">Wählen Sie das Textfeld oben aus und drücken Sie die grüne LED auf Ihrem Yubikey.</p>
             </div>
@@ -858,8 +860,7 @@
 
         <div class="span6">
             
-
-                <div class="no-watch-only">
+                <div class="no-watch-only" id="home-deposit-container">
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
                         <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
@@ -872,7 +873,9 @@
 
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
-                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Bar Einzahlung</button>
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Kaution</button>
                             
 
                             
@@ -884,6 +887,11 @@
                             
                             
                             
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Kaution</button>
+                            
+
                             
                                 
                             
@@ -891,6 +899,10 @@
 
                         <div class="tab-pane" style="text-align:right" id="deposit-eu">
                             
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Kaution</button>
                             
                         </div>
 
@@ -901,7 +913,7 @@
                 </div>
             
 
-            <div class="page-header">
+            <div class="page-header" id="home-account-container">
                 <h3>Account-Einstellungen</h3>
 
                 <p>Verwalten Sie Ihre My Wallet Einstellungen. Einschließlich E-Mail-Adresse, Passwort und Benachrichtigungs-Einstellungen.</p>
@@ -911,17 +923,18 @@
                 </p>
             </div>
 
-            <h3>Backup</h3>
 
-            <p>Die Sicherung Ihres My Wallet ist ein wichtiger Schritt der viel zu einfach vergessen werden kann. Blockchain.info trifft jede Vorsichtsmaßnahme, um Ihre My Wallet sicher zu verwahren. Aber es ist immer besser eine lokale Kopie für etwaige Zwischenfälle zu halten.</p>
+            <div id="home-backup-container">
+                <h3>Backup</h3>
 
-            <div class="btn-group" align="right">
-                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">E-Mail</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                <p>Die Sicherung Ihres My Wallet ist ein wichtiger Schritt der viel zu einfach vergessen werden kann. Blockchain.info trifft jede Vorsichtsmaßnahme, um Ihre My Wallet sicher zu verwahren. Aber es ist immer besser eine lokale Kopie für etwaige Zwischenfälle zu halten.</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">E-Mail</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
             </div>
-
-            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
-                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
-            </p>
         </div>
     </div>
 </div>
@@ -1020,7 +1033,7 @@
 
     
 
-    <div class="row-fluid page-header">
+    <div class="row-fluid page-header" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Willkommen zurück </h3>
@@ -1108,7 +1121,7 @@
             </div>
         </div>
 
-        <div class="span6">
+        <div class="span6" id="forgotten-something-container">
             <div class="page-header">
                 <h3>Etwas vergessen?</h3> <small>Hilfe! Ich habe mich von meinem Konto ausgesperrt</small>
             </div>
@@ -1187,7 +1200,7 @@
     <p class="padded well" id="no-transactions" align="center">Normalerweise würden Ihre Bitcoin Transaktionen hier aufgelistet werden, aber Sie haben noch keine durchgeführt.</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
-        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
         <tbody></tbody>
     </table>
 
@@ -1726,36 +1739,52 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
+        <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Second Password</h3>
+                <h3>Importieren privaten Schlüssel Warnung</h3>
             </div>
             <div class="modal-body">
-                <p>Please enter the second password for this wallet.</p>
+                <p><b>Nie importieren einen privaten Schlüssel von einem öffentlichen oder nicht vertrauenswürdigen Quelle.</b> Dazu gehören gemeinsame Gehirn Brieftaschen, Wettbewerbe und gekauft privaten Schlüsseln. Stattdessen empfehlen wir, den Schlüssel, der alle Mittel für eine der vorhandenen Adressen schicken, statt tatsächlich um eine neue Adresse für Ihren Geldbeutel bedeutet fegen.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Direkt importieren</button>
+                    <button class="btn btn-primary">Schlüssel übernehmen</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet Second Passwort</h3>
+            </div>
+            <div class="modal-body">
+                <p>Bitte geben Sie das zweite Passwort für diese Brieftasche.</p>
                 <p align="center">
-                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>Zweites Passwort:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Weiter</button>
                 </div>
             </div>
         </div>
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>Wallet Passwort</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>Wenn diese Brieftasche verschlüsselt bitte geben Sie das Passwort ein. Ansonsten lassen Sie es leer.</p>
                 <p align="center">
-                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>Wallet Passwort:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Weiter</button>
                 </div>
             </div>
         </div>
@@ -1774,8 +1803,8 @@
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Schlüssel übernehmen</button>
                     <button class="btn btn-secondary">Direkt importieren</button>
+                    <button class="btn btn-primary">Schlüssel übernehmen</button>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
     <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
 
     <style type="text/css">
         .navbar {
@@ -60,7 +61,7 @@
 
     
 <div class="quickstart">
-    <div class="container" id="new-wallet">
+    <div class="container">
         <div class="row-fluid">
             <div class="span12">
                 <h1>
@@ -128,10 +129,13 @@
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> 个人</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> 一般</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> 通知</a></li>
+            <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> 密码</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> 安全</a></li>
             <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> 记录</a></li>
             <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> 设备</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> 调试</a></li>
         </ul>
     </div>
 </div>
@@ -198,6 +202,27 @@
             <p>输入验证短信消息内包含的代码。</p>
             <p class="form-inline"><input placeholder="短信验证码" class="wallet-sms-code" type="text"/> <button class="btn">确认</button> </p>
         </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>完整性检查</h3>
+
+        <p>检查所有的钥匙在您的钱包匹配正确的比特币地址，并重新加密您的钱包。在某些浏览器中，这可能需要很长的时间。</p>
+
+        <p>
+            <button class="btn" id="run-key-check">运行</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>检查压缩</h3>
+
+        <p>检查所有私人密钥验证压缩和未压缩的版本的平衡也没有赎回的交易，可以不显示在主钱包的余额。</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">运行</button>
+        </p>
     </div>
 </div>
 
@@ -275,29 +300,6 @@
         <p>
             收到一个新的备份您的钱包更新时自动： <input id="auto-email-backup" type="checkbox"/>
         </p>
-    </div>
-
-    <div class="accordion">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    先进
-                </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <div>
-                        <h3>完整性检查</h3>
-
-                        <p>检查所有的钥匙在您的钱包匹配正确的比特币地址，并重新加密您的钱包。在某些浏览器中，这可能需要很长的时间。</p>
-
-                        <p>
-                            <button class="btn" id="run-key-check">运行检查</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -635,7 +637,7 @@
             <b>Yubikey</b> <br/> 在您的帐户中选择下面的文本框中后，按您的yubikey设备上的绿色LED按钮。
 
             <div class="controls">
-                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                 <p class="help-block">选择上面的文本框中，按下绿色的LED指示灯您的Yubikey。</p>
             </div>
@@ -858,8 +860,7 @@
 
         <div class="span6">
             
-
-                <div class="no-watch-only">
+                <div class="no-watch-only" id="home-deposit-container">
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
                         <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
@@ -872,7 +873,9 @@
 
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
-                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">现金存款</button>
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp存款</button>
                             
 
                             
@@ -884,6 +887,11 @@
                             
                             
                             
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp存款</button>
+                            
+
                             
                                 
                             
@@ -891,6 +899,10 @@
 
                         <div class="tab-pane" style="text-align:right" id="deposit-eu">
                             
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp存款</button>
                             
                         </div>
 
@@ -901,7 +913,7 @@
                 </div>
             
 
-            <div class="page-header">
+            <div class="page-header" id="home-account-container">
                 <h3>帐户设置</h3>
 
                 <p>编辑您的帐户设置，包括电子邮件地址，密码和通知设置。</p>
@@ -911,17 +923,18 @@
                 </p>
             </div>
 
-            <h3>备份</h3>
 
-            <p>备份您的钱包是一个很重要和容易忘记的一步。 Blockchain.info采取了一切预防措施，以保持您的钱包的安全，但您还是最好保留一个本地副本，以防万一。</p>
+            <div id="home-backup-container">
+                <h3>备份</h3>
 
-            <div class="btn-group" align="right">
-                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">电子邮件</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                <p>备份您的钱包是一个很重要和容易忘记的一步。 Blockchain.info采取了一切预防措施，以保持您的钱包的安全，但您还是最好保留一个本地副本，以防万一。</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">电子邮件</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
             </div>
-
-            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
-                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
-            </p>
         </div>
     </div>
 </div>
@@ -1020,7 +1033,7 @@
 
     
 
-    <div class="row-fluid page-header">
+    <div class="row-fluid page-header" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>欢迎您回来 </h3>
@@ -1108,7 +1121,7 @@
             </div>
         </div>
 
-        <div class="span6">
+        <div class="span6" id="forgotten-something-container">
             <div class="page-header">
                 <h3>忘记了什么？</h3> <small>请帮助我！我的账户被锁！</small>
             </div>
@@ -1187,7 +1200,7 @@
     <p class="padded well" id="no-transactions" align="center">通常您的比特币交易会被列在这里，但您还没有作出任何交易。</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
-        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
         <tbody></tbody>
     </table>
 
@@ -1726,36 +1739,52 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
+        <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Second Password</h3>
+                <h3>导入私密金钥警告</h3>
             </div>
             <div class="modal-body">
-                <p>Please enter the second password for this wallet.</p>
+                <p><b>决不导入私钥从公众或不可信的来源，这</b>包括常见的脑钱包，比赛和购买的私钥。相反，我们建议扫的关键，这意味着发送到您现有的地址，而不是所有的资金实际增加一个新的地址到你的钱包。</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">直接导入</button>
+                    <button class="btn btn-primary">收纳私钥中所有的比特币</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>钱包第二个密码</h3>
+            </div>
+            <div class="modal-body">
+                <p>这个钱包，请输入第二个密码。</p>
                 <p align="center">
-                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>第二个密码:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">继续</button>
                 </div>
             </div>
         </div>
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>钱包密码</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>如果加密了这个钱包，请在下面输入密码。否则，让它空白。</p>
                 <p align="center">
-                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>钱包密码:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">继续</button>
                 </div>
             </div>
         </div>
@@ -1774,8 +1803,8 @@
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">收纳私钥中所有的比特币</button>
                     <button class="btn btn-secondary">直接导入</button>
+                    <button class="btn btn-primary">收纳私钥中所有的比特币</button>
                 </div>
             </div>
         </div>

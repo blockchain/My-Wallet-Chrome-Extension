@@ -7,18 +7,20 @@ cd ../
 cd ./My-Wallet-Chrome-Extension/extension
 
 WEB_CONTENT="../../website/WebContent"
-
+DOWNLOAD_HTML=false;
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
-rm -r ./html/
-mkdir ./html/
+if $DOWNLOAD_HTML ; then
+	rm -r ./html/
+	mkdir ./html/
 
-array=( fr da de ko hi th it nl es ja pl pt sv ru en el zh-cn ro bg vi id tr sl no hu )
-for i in "${array[@]}"
-do
-	echo $i
-	wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&type=chrome"
-done
+	array=( fr da de ko hi th it nl es ja pl pt sv ru en el zh-cn ro bg vi id tr sl no hu )
+	for i in "${array[@]}"
+	do
+		echo $i
+		wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&type=chrome"
+	done
+fi
 
 #Copy Favicon
 cp $WEB_CONTENT/favicon.ico ./
@@ -31,6 +33,7 @@ cp $WEB_CONTENT/img/glyphicons-halflings.png ./img/
 #Copy Resources
 rm -r ./Resources/
 mkdir ./Resources/
+cp $RESOURCE_DIR/bug-16.png ./Resources/
 cp $RESOURCE_DIR/facebook.png ./Resources/
 cp $RESOURCE_DIR/facebook14.png ./Resources/
 cp $RESOURCE_DIR/bitcoin-wallet-app.png ./Resources/
@@ -108,12 +111,13 @@ cp $RESOURCE_DIR/wallet/blockchainapi.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/chrome.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/country_codes.html ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/mnemonic_words_v3.html ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/anonymous-addresses.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/shared-addresses.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/dicegames.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/mnemonic.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jsuri-1.1.1.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/paper-wallet.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jspdf.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/taint_grouping.min.js ./Resources/wallet/
 
 #icons
 cp $RESOURCE_DIR/cube48.png ./Resources/

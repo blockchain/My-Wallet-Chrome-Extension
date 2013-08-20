@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
     <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
 
     <style type="text/css">
         .navbar {
@@ -60,7 +61,7 @@
 
     
 <div class="quickstart">
-    <div class="container" id="new-wallet">
+    <div class="container">
         <div class="row-fluid">
             <div class="span12">
                 <h1>
@@ -128,10 +129,13 @@
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Generale</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notificari</a></li>
+            <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Parole</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Securitate</a></li>
             <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Logging</a></li>
             <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Dispozitive</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Depanarea</a></li>
         </ul>
     </div>
 </div>
@@ -198,6 +202,27 @@
             <p>Introduceti codul de verificare cuprinse în mesajul SMS.</p>
             <p class="form-inline"><input placeholder="SMS Cod de verificare" class="wallet-sms-code" type="text"/> <button class="btn">Verifica</button> </p>
         </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Verificati integritatea</h3>
+
+        <p>Verifica toate cheile din portofelul tau, gases-te adresa pe care o cauti si apoi recripteaza portofelul. Acest lucru poate dura o lunga perioada de timp, în unele browsere.</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Alerga</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Verifica comprimat</h3>
+
+        <p>Verifică echilibrul de ambele versiuni comprimat și necomprimate a tuturor chei private pentru a verifica dacă nu există tranzacții care pot fi răscumpărate nu afișate în echilibru principal al portofelului.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Alerga</button>
+        </p>
     </div>
 </div>
 
@@ -275,29 +300,6 @@
         <p>
             Verificati acest lucru pentru a primi o copie de rezerva nou mod automat atunci când actualiza-ti portofelul dvs: <input id="auto-email-backup" type="checkbox"/>
         </p>
-    </div>
-
-    <div class="accordion">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    Avansat
-                </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <div>
-                        <h3>Verificati integritatea</h3>
-
-                        <p>Verifica toate cheile din portofelul tau, gases-te adresa pe care o cauti si apoi recripteaza portofelul. Acest lucru poate dura o lunga perioada de timp, în unele browsere.</p>
-
-                        <p>
-                            <button class="btn" id="run-key-check">Verificati</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -635,7 +637,7 @@
             <b>Yubikey</b> <br/> Pentru a asocia cheia cu contul dvs. selectati caseta text de mai jos si apasati butonul verde, LED-ul de pe aparat yubikey.
 
             <div class="controls">
-                <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
                 <p class="help-block">Selectati caseta de text de mai sus si apasati lumina verde LED de pe Yubikey-ul dumneavoastra.</p>
             </div>
@@ -858,8 +860,7 @@
 
         <div class="span6">
             
-
-                <div class="no-watch-only">
+                <div class="no-watch-only" id="home-deposit-container">
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
                         <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
@@ -872,7 +873,9 @@
 
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
-                                <button class="btn btn-primary deposit-btn" data-type="bitinstant" data-title="Deposit Using Cash" data-link="https://blockchain.info/wallet/deposit-cash">Depozit în numerar</button>
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp depozit</button>
                             
 
                             
@@ -884,6 +887,11 @@
                             
                             
                             
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp depozit</button>
+                            
+
                             
                                 
                             
@@ -891,6 +899,10 @@
 
                         <div class="tab-pane" style="text-align:right" id="deposit-eu">
                             
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp depozit</button>
                             
                         </div>
 
@@ -901,7 +913,7 @@
                 </div>
             
 
-            <div class="page-header">
+            <div class="page-header" id="home-account-container">
                 <h3>Setarile contului</h3>
 
                 <p>Edita-ti setarile contului dvs., inclusiv adresa de e-mail, parola si setarile de notificare.</p>
@@ -911,17 +923,18 @@
                 </p>
             </div>
 
-            <h3>Copie de rezerva</h3>
 
-            <p>Back-up portofelul tau este un pas important, care este usor de uitat. Blockchain.info ia toate masurile de precautie pentru a pastra în conditii de siguranta portofelul dumneavoastra, dar este întotdeauna mai bine sa pastra-ti o copie locala doar în cazul de necesitate.</p>
+            <div id="home-backup-container">
+                <h3>Copie de rezerva</h3>
 
-            <div class="btn-group" align="right">
-                <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Trimiteti e-mail</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                <p>Back-up portofelul tau este un pas important, care este usor de uitat. Blockchain.info ia toate masurile de precautie pentru a pastra în conditii de siguranta portofelul dumneavoastra, dar este întotdeauna mai bine sa pastra-ti o copie locala doar în cazul de necesitate.</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Trimiteti e-mail</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
             </div>
-
-            <p align="center" style="margin-top:40px" class="hidden-phone hidden-phone hidden-tablet paper-wallet-btn">
-                <a href="#"><img src="/Resources/paper-wallet-reminder.png"></a>
-            </p>
         </div>
     </div>
 </div>
@@ -1020,7 +1033,7 @@
 
     
 
-    <div class="row-fluid page-header">
+    <div class="row-fluid page-header" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Bine ai revenit </h3>
@@ -1108,7 +1121,7 @@
             </div>
         </div>
 
-        <div class="span6">
+        <div class="span6" id="forgotten-something-container">
             <div class="page-header">
                 <h3>Am uitat ceva?</h3> <small>Ajutor! Mi-am blocat contul</small>
             </div>
@@ -1187,7 +1200,7 @@
     <p class="padded well" id="no-transactions" align="center">În mod normal, tranzactiile bitcoin ar fi enumerate aici, dar nu ati facut nici una inca.</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
-        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th>Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
         <tbody></tbody>
     </table>
 
@@ -1726,36 +1739,52 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
+        <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Second Password</h3>
+                <h3>Import Private Atenție cheie</h3>
             </div>
             <div class="modal-body">
-                <p>Please enter the second password for this wallet.</p>
+                <p><b>Nu importa o cheie privată de o sursă publică sau care nu prezintă încredere.</b> Aceasta include portofele creierului comune, concursuri și chei private achiziționate. În schimb, vă recomandăm să măture cheie, ceea ce înseamnă că pentru a trimite toate fondurile la una dintre adresele existente, mai degrabă decât adăugarea de fapt o nouă adresă la portofel.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Importul direct</button>
+                    <button class="btn btn-primary">Sweep cheie</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Portofel În al doilea rând Parola</h3>
+            </div>
+            <div class="modal-body">
+                <p>Va rugam sa introduceti a doua parola pentru acest portofel.</p>
                 <p align="center">
-                    <b>Second password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>În al doilea rând parolă:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Continua</button>
                 </div>
             </div>
         </div>
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>Portofel Parola</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>Dacă acest portofel este criptat va rugam sa introduceti parola de mai jos. În caz contrar, lăsați-l gol.</p>
                 <p align="center">
-                    <b>Wallet password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>Portofel Parola:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">Continua</button>
                 </div>
             </div>
         </div>
@@ -1774,8 +1803,8 @@
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Sweep cheie</button>
                     <button class="btn btn-secondary">Importul direct</button>
+                    <button class="btn btn-primary">Sweep cheie</button>
                 </div>
             </div>
         </div>
