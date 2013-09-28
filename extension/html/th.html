@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="สถิติ Bitcoin">สถิติ</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="ตลาด Bitcoin">ตลาด</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="เครื่องมือสำหรับนักพัฒนา Blockchain">นักพัฒนา</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="กระเป๋าสตางค์ Bitcoin">กระเป๋าสตางค์</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="กระเป๋าสตางค์ Bitcoin">กระเป๋าสตางค์</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">วิ่ง</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 ซ้ำ</h3>
+
+        <p>PBKDF2 เป็นฟังก์ชันซึ่งทอดตัวรหัสผ่านของคุณที่เพิ่มขึ้นความจำเป็นในการ BruteForce มัน จำนวนที่สูงขึ้นของการทำซ้ำจะดีกว่า แต่คุณอาจสังเกตเห็นการชะลอตัวของเบราว์เซอร์ของคุณ</p>
+
+        <p><b>การเปลี่ยนค่านี้อาจทำให้เกิดปัญหาความเข้ากันได้ระหว่างลูกค้าเก่าที่ไม่สนับสนุนรูปแบบใหม่กระเป๋าสตางค์เข้ารหัส</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">ซ้ำ:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>คุณได้อย่างรวดเร็วสามารถสลับระหว่าง Bitcoins และสกุลเงินท้องถิ่นของคุณโดยคลิกสมดุลของคุณในด้านบนขวา</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>จัดการลิงค์ Bitcoin</h3>
+
+        <p>คุณต้องการที่จะตั้งเป็น blockchain.info ดำเนินการเริ่มต้นของการเชื่อมโยง Bitcoin? bitcoin เชื่อมโยง (ยูริ) ถูกนำมาใช้โดยอัตโนมัติป้อนที่อยู่ Bitcoin ของผู้รับและส่งค่าเมื่อมีการคลิก</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">ลงทะเบียนจัดการ URI</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">คำใบ้รหัสผ่านที่สอง:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 ซ้ำ</h3>
-
-        <p>PBKDF2 เป็นฟังก์ชันซึ่งทอดตัวรหัสผ่านของคุณที่เพิ่มขึ้นความจำเป็นในการ BruteForce มัน จำนวนที่สูงขึ้นของการทำซ้ำจะดีกว่า แต่คุณอาจสังเกตเห็นการชะลอตัวของเบราว์เซอร์ของคุณ</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">ซ้ำ:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>กุญแจส่วนตัวที่เข้ารหัส</h3>
+            </div>
+            <div class="modal-body">
+                <p>กุญแจส่วนตัวที่เข้ารหัสได้รับการตรวจ กรุณากรอกรหัสผ่านการเข้ารหัสลับด้านล่าง:</p>
+                <p align="center">
+                    <b>รหัสผ่าน::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">ดำเนินการต่อไป</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>รหัสผ่านกระเป๋าสตางค์</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">ยกเลิก</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>กรุณารอ ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            กุญแจสำคัญในการยืด โปรดรอสักครู่ ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

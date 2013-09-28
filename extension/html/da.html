@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin Stats">Stats</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Markets">Markeder</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Udvikler Værktøj">Udviklere</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin Tegnebog">Tegnebog</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin Tegnebog">Tegnebog</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Kør</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Gentagelser</h3>
+
+        <p>PBKDF2 er en funktion, som strækker din adgangskode øger indsats, der kræves for at bruteforce den. Et højere antal gentagelser er bedre men du kan bemærke en bremse i din browser.</p>
+
+        <p><b>Ændrer denne værdi, kan forårsage kompatibilitetsproblemer mellem gamle kunder, som ikke understøtter den nye tegnebog kryptering format.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Gentagelser:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Du kan hurtigt skifte mellem bitcoins og din lokale valuta ved at klikke på din saldo i øverste højre.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Håndtag Bitcoin Links</h3>
+
+        <p>Kunne du tænke dig at indstille blockchain.info som standard handleren af ​​Bitcoin links? Bitcoin links (URI&#39;er) bruges til automatisk at angive en modtagers Bitcoin adresse og send værdi, når der klikkes.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Registrer URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Anden adgangskode-tip:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Gentagelser</h3>
-
-        <p>PBKDF2 er en funktion, som strækker din adgangskode øger indsats, der kræves for at bruteforce den. Et højere antal gentagelser er bedre men du kan bemærke en bremse i din browser.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Gentagelser:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Krypteret private nøgle</h3>
+            </div>
+            <div class="modal-body">
+                <p>En krypteret privat nøgle er blevet opdaget. Indtast krypteringskoden nedenfor:</p>
+                <p align="center">
+                    <b>Adgangssætning::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Fortsæt</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Wallet Password</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Annuller</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Vent venligst ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key stretching. Vent venligst ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

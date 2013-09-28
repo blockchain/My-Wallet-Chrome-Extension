@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin Stats">Stats</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Markets">Markets</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Utviklerverktøy">Utviklere</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin Wallet">Pengebok</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin Wallet">Pengebok</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Kjør</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 gjentakelser</h3>
+
+        <p>PBKDF2 er en funksjon som strekker passordet øke innsatsen som kreves for å bruteforce det. Et høyere antall gjentakelser er bedre men du kan merke en langsom ned av nettleseren din.</p>
+
+        <p><b>Endre denne verdien kan føre til kompatibilitetsproblemer mellom gamle kunder som ikke støtter den nye lommeboken kryptering format.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iterasjoner:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Du kan raskt bytte mellom Bitcoins og din lokale valuta ved å klikke på balanse i øverst til høyre.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Håndtak Bitcoin Lenker</h3>
+
+        <p>Har du lyst til å sette blockchain.info som standard behandlingsprogram for Bitcoin koblinger? Bitcoin lenker (URI) brukes for å automatisk bli en mottaker bitcoin adresse og send verdi når den klikkes.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Registrer URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Second Passord hint:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 gjentakelser</h3>
-
-        <p>PBKDF2 er en funksjon som strekker passordet øke innsatsen som kreves for å bruteforce det. Et høyere antall gjentakelser er bedre men du kan merke en langsom ned av nettleseren din.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Iterasjoner:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Kryptert, privat nøkkel</h3>
+            </div>
+            <div class="modal-body">
+                <p>En kryptert privat nøkkel er oppdaget. Vennligst skriv inn kryptering passord nedenfor:</p>
+                <p align="center">
+                    <b>Passordfrase::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Fortsett</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Lommebok passord</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Avbryt</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Vennligst vent ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key stretching. Vennligst vent ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

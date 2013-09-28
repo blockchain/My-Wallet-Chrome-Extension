@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin Statistik">Statistik</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Pasar">Pasar</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Developer Tools">Pengembang</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin Dompet">Dompet</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin Dompet">Dompet</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Menjalankan</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Iterasi</h3>
+
+        <p>PBKDF2 adalah fungsi yang membentang sandi Anda meningkatkan upaya yang diperlukan untuk bruteforce itu. Sebuah jumlah yang lebih tinggi iterasi lebih baik namun Anda mungkin akan melihat perlambatan pada browser Anda.</p>
+
+        <p><b>Mengubah nilai ini dapat menyebabkan masalah kompatibilitas antara klien lama yang tidak mendukung format enkripsi dompet yang baru.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iterasi:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Anda dapat dengan cepat beralih antara bitcoins dan mata uang lokal Anda dengan mengklik neraca di kanan atas.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Menangani Bitcoin Links</h3>
+
+        <p>Apakah Anda ingin mengatur blockchain.info sebagai penangan default bitcoin link? Bitcoin link (URI) digunakan untuk secara otomatis masukkan alamat bitcoin penerima dan mengirim nilai saat diklik.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Daftar URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Petunjuk kata sandi Kedua:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Iterasi</h3>
-
-        <p>PBKDF2 adalah fungsi yang membentang sandi Anda meningkatkan upaya yang diperlukan untuk bruteforce itu. Sebuah jumlah yang lebih tinggi iterasi lebih baik namun Anda mungkin akan melihat perlambatan pada browser Anda.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Iterasi:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Dienkripsi Kunci Privat</h3>
+            </div>
+            <div class="modal-body">
+                <p>Sebuah kunci pribadi dienkripsi telah terdeteksi. Masukkan enkripsi passphrase berikut:</p>
+                <p align="center">
+                    <b>Passphrase::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Terus</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Dompet Sandi</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Membatalkan</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Harap Tunggu ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key peregangan. Please wait ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

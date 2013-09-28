@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin Στατιστικά">Στατιστικά</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Αγορές">Αγορές</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Εργαλεία για προγραμματιστές">Προγραμματιστές</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin Πορτοφόλι">Πορτοφόλι</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin Πορτοφόλι">Πορτοφόλι</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Εκτέλεση</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Επαναλήψεις</h3>
+
+        <p>PBKDF2 είναι μια λειτουργία που απλώνεται κωδικό σας αυξάνοντας την προσπάθεια που απαιτείται για την ωμής βίας. Ένας μεγαλύτερος αριθμός των επαναλήψεων είναι καλύτερα, ωστόσο μπορεί να παρατηρήσετε μια επιβράδυνση του browser σας.</p>
+
+        <p><b>Η αλλαγή αυτής της τιμής μπορεί να προκαλέσει προβλήματα συμβατότητας μεταξύ των παλαιών πελατών που δεν υποστηρίζουν τη νέα μορφή κρυπτογράφησης πορτοφόλι.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Επαναλήψεις:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Μπορείτε να αλλάξετε γρήγορα ανάμεσα bitcoins και τοπικό νόμισμα κάνοντας κλικ στο πάνω δεξιά ισορροπία.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Χειριστείτε Bitcoin Links</h3>
+
+        <p>Θα θέλατε να ορίσετε blockchain.info ως το προεπιλεγμένο πρόγραμμα χειρισμού του Bitcoin συνδέσμους; Bitcoin σύνδεσμοι (URIs) χρησιμοποιούνται για να εισάγετε αυτόματα μια διεύθυνση Bitcoin παραλήπτη και στείλτε αξία όταν πατηθεί.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Εγγραφή Handler URI</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Δεύτερη Συμβουλή Κωδικός:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Επαναλήψεις</h3>
-
-        <p>PBKDF2 είναι μια λειτουργία που απλώνεται κωδικό σας αυξάνοντας την προσπάθεια που απαιτείται για την ωμής βίας. Ένας μεγαλύτερος αριθμός των επαναλήψεων είναι καλύτερα, ωστόσο μπορεί να παρατηρήσετε μια επιβράδυνση του browser σας.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Επαναλήψεις:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Κρυπτογραφημένο ιδιωτικό κλειδί</h3>
+            </div>
+            <div class="modal-body">
+                <p>Ένα κρυπτογραφημένο ιδιωτικό κλειδί έχει εντοπιστεί. Παρακαλώ εισάγετε την κωδική φράση κρυπτογράφησης παρακάτω:</p>
+                <p align="center">
+                    <b>Φράση κλειδί::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Συνεχίστε</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Πορτοφόλι Κωδικός</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Ακύρωση</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Παρακαλώ περιμένετε ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Βασικά τέντωμα. Παρακαλώ περιμένετε ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

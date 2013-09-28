@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin आँकड़े">आँकड़े</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin बाजार">बाजार</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="ब्लॉक चेन डेवलपर्स उपकरण">डेवलपर्स</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin बटुआ">बटुआ</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin बटुआ">बटुआ</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">चलाना</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 पुनरूक्तियाँ</h3>
+
+        <p>PBKDF2 यह bruteforce के लिए आवश्यक प्रयास बढ़ती अपना पासवर्ड फैला है जो एक समारोह है. पुनरावृत्तियों की संख्या जितनी अधिक होगी लेकिन आप अपने ब्राउज़र के एक धीमा नोटिस कर सकते हैं बेहतर है.</p>
+
+        <p><b>इस मान को बदलने से नया बटुआ एन्क्रिप्शन प्रारूप का समर्थन नहीं करते जो पुराने ग्राहकों के बीच संगतता मुद्दों पैदा कर सकता है.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">पुनरूक्तियाँ:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>तुम जल्दी से सही शीर्ष पर अपने संतुलन पर क्लिक करके Bitcoins और अपने स्थानीय मुद्रा के बीच स्विच कर सकते हैं.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin लिंक संभाल</h3>
+
+        <p>आप bitcoin लिंक का डिफ़ॉल्ट हैंडलर के रूप में blockchain.info सेट करना चाहेंगे? Bitcoin लिंक (यूआरआई) स्वचालित रूप से एक प्राप्तकर्ता bitcoin पता दर्ज करें और क्लिक करने पर मूल्य भेजने के लिए इस्तेमाल कर रहे हैं.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">यूआरआइ हैंडलर रजिस्टर</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">दूसरा पासवर्ड संकेत:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 पुनरूक्तियाँ</h3>
-
-        <p>PBKDF2 यह bruteforce के लिए आवश्यक प्रयास बढ़ती अपना पासवर्ड फैला है जो एक समारोह है. पुनरावृत्तियों की संख्या जितनी अधिक होगी लेकिन आप अपने ब्राउज़र के एक धीमा नोटिस कर सकते हैं बेहतर है.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">पुनरूक्तियाँ:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>एनक्रिप्टेड निजी कुंजी</h3>
+            </div>
+            <div class="modal-body">
+                <p>एक एन्क्रिप्टेड निजी कुंजी पाया गया है. एन्क्रिप्शन नीचे पदबंध दर्ज करें:</p>
+                <p align="center">
+                    <b>कूटशब्द::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">जारी रखें</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>वॉलेट पासवर्ड</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">रद्द करें</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>कृपया प्रतीक्षा करें ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            कुंजी खींच. कृपया प्रतीक्षा करें ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

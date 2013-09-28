@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin İstatistikleri">İstatistikleri</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Piyasalar">Piyasalar</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Geliştirici Araçları">Geliştiriciler</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin Cüzdan">Cüzdan</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin Cüzdan">Cüzdan</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Çalıştırmak</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 tekrarlamalar</h3>
+
+        <p>PBKDF2 bu Bruteforce için gereken çabayı artan Şifrenizi uzanan bir fonksiyonudur. Yineleme sayısı arttıkça, ancak tarayıcınızın bir yavaşlama fark edebilirsiniz daha iyidir.</p>
+
+        <p><b>Bu değeri değiştirmek yeni cüzdan şifreleme biçimini desteklemeyen eski müşterileri arasında uyumluluk sorunlarına neden olabilir.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Yineleme:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Hızla sağ üst dengenizi tıklayarak bitcoins ve yerel para birimi arasında geçiş yapabilirsiniz.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Linkler Kolu</h3>
+
+        <p>Eğer bitcoin bağlantıların varsayılan işleyici olarak blockchain.info ayarlamak ister misiniz? Bitcoin bağlantılar (URI) otomatik olarak alıcı bitcoin adresinizi girin ve tıklandığında değer göndermek için kullanılır.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">URI Handler Kayıt</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">İkinci Şifre İpucu:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 tekrarlamalar</h3>
-
-        <p>PBKDF2 bu Bruteforce için gereken çabayı artan Şifrenizi uzanan bir fonksiyonudur. Yineleme sayısı arttıkça, ancak tarayıcınızın bir yavaşlama fark edebilirsiniz daha iyidir.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Yineleme:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Şifreli Özel Anahtar</h3>
+            </div>
+            <div class="modal-body">
+                <p>Şifreli özel anahtar tespit edildi. Şifreleme parolanızı aşağıya girin:</p>
+                <p align="center">
+                    <b>Parola::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Devam etmek</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Cüzdan Şifre</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Iptal</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Lütfen Bekleyin ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Anahtar germe. Lütfen bekleyin ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

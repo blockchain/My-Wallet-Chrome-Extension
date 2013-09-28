@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin статистика">Статистика</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin пазари">Пазари</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Инструменти за разработчици">Разработчици</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin портфейла">Портфейл</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin портфейла">Портфейл</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Тичам</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Итерации</h3>
+
+        <p>PBKDF2 е функция, която се простира парола увеличаване на усилието, необходимо за това BruteForce. По-висок брой повторения е по-добре все пак може да забележите забавяне на вашия браузър.</p>
+
+        <p><b>Промяната на тази стойност може да предизвика проблеми със съвместимостта между стари клиенти, които не поддържат новия формат криптиране портфейла.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Итерации:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>, Като щракнете на баланса в горния десен ъгъл можете бързо да превключвате между bitcoins и местна валута.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Работете Bitcoin Връзки</h3>
+
+        <p>Бихте ли искали да зададете blockchain.info като основен посредник на връзки Bitcoin? Bitcoin връзки (URI адреси) се използват за автоматично въведете адрес на Bitcoin получателя и изпратете стойност, когато се натисне.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Регистрирайте Handler URI</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Втората парола Съвет:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Итерации</h3>
-
-        <p>PBKDF2 е функция, която се простира парола увеличаване на усилието, необходимо за това BruteForce. По-висок брой повторения е по-добре все пак може да забележите забавяне на вашия браузър.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Итерации:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Encrypted частен ключ</h3>
+            </div>
+            <div class="modal-body">
+                <p>Един криптирана частният ключ е бил открит. Моля, въведете криптиране парола по-долу:</p>
+                <p align="center">
+                    <b>Фраза за достъп::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Продължи</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Wallet парола</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Отказ</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Моля, изчакайте ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key разтягане. Моля, изчакайте ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

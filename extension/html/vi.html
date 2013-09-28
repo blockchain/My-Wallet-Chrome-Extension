@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Dữ liệu thống kê Bitcoin">Số liệu thống kê</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Thị trường">Thị trường</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Công cụ của nhà phát triển Blockchain">Những người phát triển</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Ví Bitcoin">Ví</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Ví Bitcoin">Ví</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Chạy</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Interactions</h3>
+
+        <p>PBKDF2 là một chức năng mà trải dài mật khẩu của bạn tăng các nỗ lực cần thiết để bruteforce nó. Một số cao lặp đi lặp lại là tốt hơn tuy nhiên bạn có thể nhận thấy một sự xuống chậm của trình duyệt của bạn.</p>
+
+        <p><b>Thay đổi giá trị này có thể gây ra vấn đề tương thích giữa các khách hàng cũ mà không hỗ trợ các định dạng mã hóa ví mới.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Lặp đi lặp lại:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Bạn có thể thay đổi giữa bitcoin và tiền tệ địa phương bạn bằng cách nhấn vào số dư của bạn ở trên cùng bên phải.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Xử lý Liên kết Bitcoin</h3>
+
+        <p>Bạn có muốn thiết lập blockchain.info như xử lý mặc định của liên kết Bitcoin? Bitcoin liên kết (URI) được sử dụng để tự động nhập địa chỉ Bitcoin người nhận và gửi giá trị khi nhấp vào.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Đăng ký URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Gợi ý mật khẩu phụ:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Interactions</h3>
-
-        <p>PBKDF2 là một chức năng mà trải dài mật khẩu của bạn tăng các nỗ lực cần thiết để bruteforce nó. Một số cao lặp đi lặp lại là tốt hơn tuy nhiên bạn có thể nhận thấy một sự xuống chậm của trình duyệt của bạn.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Lặp đi lặp lại:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Mã hóa khóa riêng</h3>
+            </div>
+            <div class="modal-body">
+                <p>Một khóa bí mật được mã hóa đã được phát hiện. Xin vui lòng nhập vào mã hóa mật khẩu dưới đây:</p>
+                <p align="center">
+                    <b>Mật khẩu::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Tiếp tục</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Ví Mật khẩu</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Huỷ bỏ</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Vui lòng đợi ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Chính kéo dài. Xin vui lòng chờ đợi ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

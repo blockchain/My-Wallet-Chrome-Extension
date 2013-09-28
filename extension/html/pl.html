@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Statystyki Bitcoin">Statystyki</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Rynki Bitcoin">Rynki</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Narzędzia dla programistów">Programiści</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Portfel Bitcoin">Portfel</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Portfel Bitcoin">Portfel</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Run</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Powtórzenia</h3>
+
+        <p>PBKDF2 jest funkcją, która rozciąga hasła zwiększenie wysiłku potrzebnego do Bruteforce go. Większa liczba iteracji jest lepiej jednak można zauważyć spowolnienie przeglądarce.</p>
+
+        <p><b>Zmiana tej wartości może spowodować problemy kompatybilności pomiędzy starszych klientów, które nie obsługują nowy format szyfrowania portfela.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Powtórzenia:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Można szybko przełączać bitcoins i Twojej walucie lokalnej, klikając saldo w prawym górnym rogu.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Uchwyt linki Bitcoin</h3>
+
+        <p>Chcesz ustawić blockchain.info jako domyślnego programu obsługi linków Bitcoin? Bitcoin linki (URI) są używane do automatycznego wpisać adres Bitcoin odbiorcy i wysłać wartość po kliknięciu.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Zarejestruj URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Druga wskazówka Hasło:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Powtórzenia</h3>
-
-        <p>PBKDF2 jest funkcją, która rozciąga hasła zwiększenie wysiłku potrzebnego do Bruteforce go. Większa liczba iteracji jest lepiej jednak można zauważyć spowolnienie przeglądarce.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Powtórzenia:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Encrypted Private Key</h3>
+            </div>
+            <div class="modal-body">
+                <p>Zaszyfrowany klucz prywatny został wykryty. Wprowadź przepustkę szyfrowania poniżej:</p>
+                <p align="center">
+                    <b>Hasło::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Kontynuować</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Portfel Hasło</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Anulować</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Proszę czekać ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key rozciągania. Proszę czekać ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

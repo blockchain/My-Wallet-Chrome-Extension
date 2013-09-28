@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="比特币的统计资料">统计资料</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin的市场">市场</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain开发工具">开发人员</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="比特币钱包">钱包</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="比特币钱包">钱包</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">运行</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2迭代</h3>
+
+        <p>PBKDF2是一种功能延伸所需的努力来猜解密码增加。较高的迭代次数为更好然而，您可能会注意到您的浏览器放缓。</p>
+
+        <p><b>更改此值会引起老客户，不支持新的电子钱包加密格式之间的兼容性问题。</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">迭代:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>您可以通过点击右上角的平衡称快速切换比特币和您的当地货币，。</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>处理Bitcoin的链接</h3>
+
+        <p>你想作为默认的处理程序设置blockchain.info的bitcoin的链接？ Bitcoin的链接（URI）来自动输入一个收件人的Bitcoin地址及送价值点击时。</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">注册URI处理器</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">第二个密码提示：</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2迭代</h3>
-
-        <p>PBKDF2是一种功能延伸所需的努力来猜解密码增加。较高的迭代次数为更好然而，您可能会注意到您的浏览器放缓。</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">迭代:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>加密的私有密钥</h3>
+            </div>
+            <div class="modal-body">
+                <p>已检测到加密的私钥。请输入下面的加密密码：</p>
+                <p align="center">
+                    <b>通关密语：:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">继续</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>钱包密码</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">取消</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>请稍候...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            重点拉伸。请等候。
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

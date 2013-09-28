@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Statistiques Bitcoin">Statistiques</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Marchés Bitcoin">Marchés</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Outils pour développeurs Blockchain">Développeurs</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Portefeuille Bictoin">Portefeuille</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Portefeuille Bictoin">Portefeuille</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Exécuter</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 itérations</h3>
+
+        <p>PBKDF2 est une fonction qui s&#39;étend de passe augmentant l&#39;effort nécessaire pour bruteforcer il. Un plus grand nombre d&#39;itérations est meilleure mais vous remarquerez peut-être un ralentissement de votre navigateur.</p>
+
+        <p><b>La modification de cette valeur peut entraîner des problèmes de compatibilité entre les anciens clients qui ne prennent pas en charge le nouveau format de chiffrement de portefeuille.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Itérations:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Vous pouvez basculer rapidement entre les bitcoins et votre monnaie locale en cliquant sur votre solde en haut à droite.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Poignée Bitcoin Liens</h3>
+
+        <p>Voulez-vous mettre blockchain.info que le gestionnaire par défaut de liens bitcoin? Liens Bitcoin (URI) sont utilisés pour entrer automatiquement une adresse bitcoin destinataire et envoie une valeur lorsque vous cliquez dessus.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Inscription gestionnaire d&#39;URI</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Indice du second mot de passe :</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 itérations</h3>
-
-        <p>PBKDF2 est une fonction qui s&#39;étend de passe augmentant l&#39;effort nécessaire pour bruteforcer il. Un plus grand nombre d&#39;itérations est meilleure mais vous remarquerez peut-être un ralentissement de votre navigateur.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Itérations:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Crypté clé privée</h3>
+            </div>
+            <div class="modal-body">
+                <p>Une clé privée chiffrée a été détectée. Veuillez entrez le code de cryptage ci-dessous:</p>
+                <p align="center">
+                    <b>Phrase de passe::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continuer</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Porte-monnaie Mot de passe</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Annuler</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Attendez s&#39;il vous plaît ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key étirement. S&#39;il vous plaît attendre ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

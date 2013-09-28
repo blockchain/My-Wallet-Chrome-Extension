@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin 통계">통계</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin 시장">시장</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain 개발자 도구">개발자</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin 지갑">지갑</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin 지갑">지갑</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">실행</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 반복</h3>
+
+        <p>PBKDF2는 브 루트 포스 공격을하는데 필요한 작업량을 증가 비밀번호를 뻗어 기능입니다. 반복의 숫자가 높을 그러나 당신은 브라우저의 감속을 알 수 있습니다 낫다.</p>
+
+        <p><b>이 값을 변경하면 새 지갑 암호화 형식을 지원하지 않는 오래된 클라이언트 사이의 호환성 문제가 발생할 수 있습니다.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">반복:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>당신은 신속하게 오른쪽 상단에 잔고를 클릭하여 bitcoins 및 현지 통화 사이를 전환 할 수 있습니다.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>비트 코인 링크를 처리</h3>
+
+        <p>당신은 비트 코인 링크의 기본 처리기로 blockchain.info 설정 하시겠습니까? 비트 코인 링크 (URI는) 자동으로받는 비트 코인 주소를 입력하고 클릭하면 값을 전송하는 데 사용됩니다.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">URI 핸들러 등록</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">두 번째 비밀번호 힌트 :</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 반복</h3>
-
-        <p>PBKDF2는 브 루트 포스 공격을하는데 필요한 작업량을 증가 비밀번호를 뻗어 기능입니다. 반복의 숫자가 높을 그러나 당신은 브라우저의 감속을 알 수 있습니다 낫다.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">반복:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>암호화 된 개인 키</h3>
+            </div>
+            <div class="modal-body">
+                <p>암호화 된 개인 키가 감지되었습니다. 암호화 아래에 암호를 입력하십시오 :</p>
+                <p align="center">
+                    <b>암호 ::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">계속</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>지갑 암호</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">취소</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>잠시 기다려주세요 ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            키 스트레칭입니다. 잠시만 기다려주세요 ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

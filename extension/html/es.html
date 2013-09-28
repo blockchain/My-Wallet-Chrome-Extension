@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Estadísticas de Bitcoin">Estadísticas</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Mercados">Mercados</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="API de Bitcoin para desarrolladores">Desarrolladores</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Mi Monedero">Monedero</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Mi Monedero">Monedero</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Ejecutar</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 iteraciones</h3>
+
+        <p>PBKDF2 es una función que se extiende su contraseña cada vez mayor el esfuerzo necesario para Bruteforce ella. Un mayor número de iteraciones es mejor sin embargo es posible que observe una desaceleración de su navegador.</p>
+
+        <p><b>El cambio de este valor puede causar problemas de compatibilidad entre clientes antiguos que no soportan el nuevo formato cifrado cartera.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iteraciones:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -244,6 +269,14 @@
 Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo click en tu saldo en la esquina superior derecha</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Maneje Bitcoin Links</h3>
+
+        <p>¿Te gustaría crear blockchain.info como el controlador predeterminado de enlaces bitcoin? Bitcoin enlaces (URI) se utilizan para introducir automáticamente una dirección bitcoin destinatario y enviar el valor al hacer clic.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Registrarse controlador URI</button>
     </div>
 
     <div class="page-header">
@@ -587,28 +620,6 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                 <label class="control-label">Pista de la segunda contraseña:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 iteraciones</h3>
-
-        <p>PBKDF2 es una función que se extiende su contraseña cada vez mayor el esfuerzo necesario para Bruteforce ella. Un mayor número de iteraciones es mejor sin embargo es posible que observe una desaceleración de su navegador.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Iteraciones:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1774,6 +1785,23 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Clave privada cifrada</h3>
+            </div>
+            <div class="modal-body">
+                <p>Se ha detectado una clave privada encriptada. Por favor, introduzca la frase de cifrado a continuación:</p>
+                <p align="center">
+                    <b>Frase de contraseña::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continuar</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Monedero Contraseña</h3>
@@ -2350,6 +2378,23 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Espere por favor ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Estiramiento Key. Por favor espere ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

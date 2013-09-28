@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin Statistik">Statistik</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Markets">Marknader</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Utvecklarverktyg">Utvecklare</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin Wallet">Plånbok</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin Wallet">Plånbok</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Kör</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Iterationer</h3>
+
+        <p>PBKDF2 är en funktion som sträcker lösenordet öka den ansträngning som krävs för att Bruteforce den. Ett högre antal iterationer är bättre men du kan märka en avmattning i din webbläsare.</p>
+
+        <p><b>Ändra detta värde kan orsaka kompatibilitetsproblem mellan gamla klienter som inte stödjer det nya formatet plånboken kryptering.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iterationer:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>Du kan snabbt växla mellan bitcoins och din lokala valuta genom att klicka på ditt saldo i det övre högra hörnet.</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Handtag Bitcoin Länkar</h3>
+
+        <p>Vill du ställa blockchain.info som standardprogram för Bitcoin länkar? Bitcoin länkar (URIs) används för att automatiskt ange en adress mottagare Bitcoin och skicka värdet när du klickar.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Registrera URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Andra Lösenord Tips:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Iterationer</h3>
-
-        <p>PBKDF2 är en funktion som sträcker lösenordet öka den ansträngning som krävs för att Bruteforce den. Ett högre antal iterationer är bättre men du kan märka en avmattning i din webbläsare.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Iterationer:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Krypterad privat nyckel</h3>
+            </div>
+            <div class="modal-body">
+                <p>En krypterad privat nyckel har upptäckts. Ange krypteringsnyckeln lösenfras nedan:</p>
+                <p align="center">
+                    <b>Lösenordsfras::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Fortsätt</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Plånbok Lösenord</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Avbryt</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Vänta ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key stretching. Vänta ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>

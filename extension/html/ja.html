@@ -42,7 +42,7 @@
                     <li><a href="https://blockchain.info/stats" title="Bitcoin Stats">Stats</a></li>
                     <li><a  class="hidden-phone" href="http://markets.blockchain.info" title="Bitcoin Markets">Markets</a></li>
                     <li class="hidden-phone"><a href="https://blockchain.info/api" title="Blockchain Developer Tools">Developers</a></li>
-                    <li class="active"><a href="https://blockchain.info/wallet/" title="Bitcoin財布">Wallet</a></li>
+                    <li class="active"><a href="https://blockchain.info/wallet" title="Bitcoin財布">Wallet</a></li>
                 </ul>
 
                 
@@ -224,6 +224,31 @@
             <button class="btn" id="run-compressed-check">Run</button>
         </p>
     </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Iterations</h3>
+
+        <p>PBKDF2 is a function which stretches your password increasing the effort required to bruteforce it. A higher number of iterations is better however you may notice a slow down of your browser.</p>
+
+        <p><b>Changing this value can cause compatability issues between old clients which don't support the new wallet encryption format.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iterations:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="tab-pane" id="account-general">
@@ -242,6 +267,14 @@
         <p>右上の残高をクリックすることでビットコインおよび現地通貨間の表示を素早く切り替えることができます。</p>
 
         <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Handle Bitcoin Links</h3>
+
+        <p>Would you like to set blockchain.info as the default handler of bitcoin links? Bitcoin links (URIs) are used to automatically enter a recipient bitcoin address and send value when clicked.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Register URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -585,28 +618,6 @@
                 <label class="control-label">Second Password Hint:</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-header hidden">
-        <h3>PBKDF2 Iterations</h3>
-
-        <p>PBKDF2 is a function which stretches your password increasing the effort required to bruteforce it. A higher number of iterations is better however you may notice a slow down of your browser.</p>
-
-        <div class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Iterations:</label>
-
-                <div class="controls">
-                    <select id="pbkdf2-iterations">
-                        <option value="10">10 (Default)</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="10000">10000</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>
@@ -1772,6 +1783,23 @@
             </div>
         </div>
 
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Encrypted Private Key</h3>
+            </div>
+            <div class="modal-body">
+                <p>An encrypted private key has been detected. Please enter the encryption passphrase below:</p>
+                <p align="center">
+                    <b>Passphrase::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">続行</button>
+                </div>
+            </div>
+        </div>
+
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Wallet Password</h3>
@@ -2348,6 +2376,23 @@
     <div class="modal-footer">
         <div class="btn-group pull-right">
             <button class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+    <div class="modal-header">
+        <h3>Please Wait...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key stretching. Please wait..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
         </div>
     </div>
 </div>
