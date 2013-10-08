@@ -2050,7 +2050,7 @@
     </div>
 </div>
 
-<div id="qr-code-modal" class="modal hide" style="width:400px">
+<div id="qr-code-modal" class="modal hide" style="max-width:400px">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button> <h3>Adres QR Code <small class="address"></small></h3>
     </div>
@@ -2351,7 +2351,7 @@
     <div class="modal-body">
         <p>Ta czynność wymaga klucza prywatnego adresu Bitcoin <span class="address" style="font-weight:bold"></span>. Wpisz klucz prywatny poniżej.</p>
 
-        <div style="margin:0 auto;width:400px">
+        <div style="width:400px;padding-left:20px;">
             <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
         </div>
     </div>
@@ -2364,13 +2364,13 @@
     </div>
 </div>
 
-<div id="qr-code-reader-modal" class="modal hide" style="width:400px">
+<div id="qr-code-reader-modal" class="modal hide" style="max-width:400px">
     <div class="modal-header">
         <h3>Zeskanuj QR Code</h3>
     </div>
 
-    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;margin:0 auto;"></div>
+    <div class="modal-body" style="padding-left:20px;overflow:hidden;">
+        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
     </div>
 
     <div class="modal-footer">
@@ -2380,7 +2380,7 @@
     </div>
 </div>
 
-<div id="decrypting-progress-modal" class="modal hide" style="width:400px">
+<div id="decrypting-progress-modal" class="modal hide" style="max-width:400px">
     <div class="modal-header">
         <h3>Proszę czekać ...</h3>
     </div>

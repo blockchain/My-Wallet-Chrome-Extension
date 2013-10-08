@@ -118,6 +118,7 @@ cp $RESOURCE_DIR/wallet/jsuri-1.1.1.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/paper-wallet.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jspdf.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/taint_grouping.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/filesaver.min.js ./Resources/wallet/
 
 #icons
 cp $RESOURCE_DIR/cube48.png ./Resources/
