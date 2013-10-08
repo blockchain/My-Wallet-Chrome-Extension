@@ -7,7 +7,7 @@ cd ../
 cd ./My-Wallet-Chrome-Extension/extension
 
 WEB_CONTENT="../../website/WebContent"
-DOWNLOAD_HTML=true;
+DOWNLOAD_HTML=false;
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
 if $DOWNLOAD_HTML ; then
@@ -18,7 +18,7 @@ if $DOWNLOAD_HTML ; then
 	for i in "${array[@]}"
 	do
 		echo $i
-		wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&type=chrome"
+		wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&no_header=true&type=chrome"
 	done
 fi
 

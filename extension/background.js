@@ -1,4 +1,36 @@
 chrome.app.runtime.onLaunched.addListener(function() {
-    chrome.app.window.create('wallet.html',
-        {width: 1224, height: 800});
+
+    function url(language) {
+        return '/html/'+language+'.html'
+    }
+
+    function sendToLanguage(language) {
+        chrome.app.window.create(url(language),
+            {width: 1100, height: 725, id : "Blockchain", singleton: true});
+    }
+
+    function contains(a, obj) {
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] == obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    try {
+        chrome.storage.local.get('language', function(language){
+            var available = ['fr', 'da', 'de', 'ko', 'hi', 'th', 'it', 'nl', 'es', 'ja', 'pl', 'pt', 'sv', 'ru', 'en', 'el', 'zh-cn', 'ro', 'bg', 'vi', 'id', 'tr', 'sl', 'no', 'hu'];
+
+            if (language && contains(available, language)) {
+                sendToLanguage(language);
+            } else {
+                sendToLanguage('en');
+            }
+        });
+    } catch (e) {
+        console.log(e);
+
+        sendToLanguage('en');
+    }
 });

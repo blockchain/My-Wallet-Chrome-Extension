@@ -16,15 +16,15 @@
         "http://blockchain.info/",
         "*://*.blockchain.info/",
         "notifications",
-        "unlimitedStorage"
+        "unlimitedStorage",
+        "storage",
+        "webview",
+        "videoCapture",
+        "audioCapture"
     ],
     "app": {
-      "launch": {
-        "local_path": "index.html"
-      }
-    },
-    "web_accessible_resources": [
-      "/Resources/cube48.png"
-    ],
-    "homepage_url": "https://blockchain.info/"
+        "background": {
+            "scripts": ["background.js"]
+        }
+    }
 }
