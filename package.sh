@@ -7,7 +7,7 @@ cd ../
 cd ./My-Wallet-Chrome-Extension/extension
 
 WEB_CONTENT="../../website/WebContent"
-DOWNLOAD_HTML=false;
+DOWNLOAD_HTML=true;
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
 if $DOWNLOAD_HTML ; then
