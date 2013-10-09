@@ -6,7 +6,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
 
     function sendToLanguage(language) {
         chrome.app.window.create(url(language),
-            {width: 1100, height: 700, id : "Blockchain", singleton: true});
+            {width: 1100, height: 725, id : "Blockchain", singleton: true});
     }
 
     function contains(a, obj) {
