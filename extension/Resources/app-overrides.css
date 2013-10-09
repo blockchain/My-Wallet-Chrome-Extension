@@ -1,3 +1,7 @@
+body {
+    padding-bottom:0px;
+}
+
 .nav.secondary-nav input {
 	width:250px;
 }

@@ -6,7 +6,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
 
     function sendToLanguage(language) {
         chrome.app.window.create(url(language),
-            {width: 1100, height: 725, id : "Blockchain", singleton: true});
+            {width: 1100, height: 700, id : "Blockchain", singleton: true});
     }
 
     function contains(a, obj) {
@@ -19,7 +19,9 @@ chrome.app.runtime.onLaunched.addListener(function() {
     }
 
     try {
-        chrome.storage.local.get('language', function(language){
+        chrome.storage.local.get('language', function(result){
+            var language = result['language'];
+
             var available = ['fr', 'da', 'de', 'ko', 'hi', 'th', 'it', 'nl', 'es', 'ja', 'pl', 'pt', 'sv', 'ru', 'en', 'el', 'zh-cn', 'ro', 'bg', 'vi', 'id', 'tr', 'sl', 'no', 'hu'];
 
             if (language && contains(available, language)) {

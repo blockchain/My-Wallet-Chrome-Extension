@@ -986,7 +986,7 @@
         <div class="tab-pane" id="shared-addresses">
             <h3>Gemeinsame Adressen</h3>
 
-            <p style="padding-top:10px">Erhaltene Anzahlungen auf freigegebene Adressen werden an eine andere Adresse in Ihrer Brieftasche weitergeleitet werden. Sämtliche Zahlungen empfangen werden durch eine gemeinsame Geldbörse Brechen der Kette von Transaktionen gesendet. <a href="https://blockchain.info/wallet/send-shared" target="new">(Weitere Informationen)</a></p>
+            <p style="padding-top:10px">Erhaltene Anzahlungen auf freigegebene Adressen werden an eine andere Adresse in Ihrer Brieftasche weitergeleitet werden. Sämtliche Zahlungen empfangen werden durch eine gemeinsame Geldbörse Brechen der Kette von Transaktionen gesendet. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Weitere Informationen)</a></p>
 
             <p class="well">
                 <b>Gemeinsame Adressen sind für eine Transaktion gültig und verursachen eine 0,5% Transaktionsgebühr.</b>
@@ -1015,7 +1015,7 @@
 
     
 
-    <div class="row-fluid page-header" id="welcome_back_container">
+    <div class="row-fluid" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Willkommen zurück </h3>
@@ -1077,6 +1077,7 @@
 
                 <div style="padding-left: 160px;padding-bottom:20px">
                     <button class="btn btn-primary" id="restore-wallet-continue">Wallet öffnen</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Create New Wallet</a>
                 </div>
 
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
@@ -1113,7 +1114,7 @@
             <p>Wenn Sie Ihre Wallet-Bezeichnung verloren haben, suchen Sie zuerst die Bestätigungsmail, die Sie während der Registrierung erhalten haben. Können Sie die E-Mail nicht finden? Klicken Sie auf die Schaltfläche unten und wir schicken Ihnen eine neue.</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Backup importieren</a> <a class="btn btn-small btn-secondary download-backup-btn">Backup herunterladen</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Backup importieren</a> <a class="btn btn-small btn-secondary download-backup-btn">Backup herunterladen</a>
             </p>
 
             <h4>Verlorene Zwei-Stufen-Authentifizierungs Details.</h4>
@@ -1125,23 +1126,13 @@
                 <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Zurücksetzen der Zwei-Stufen-Authentifizierung</a>
             </p>
 
-            <h4>Passwort vergessen</h4>
-
-            <p>Bevor Ihr Bitcoin-Wallet zu unsere Server übertragen wird, wird es direkt im Browser verschlüsselt. Ihr Passwort wird nie zu uns übertragen - dadurch haben wir keine Möglichkeit dieses wiederherzustellen. Um etwaigen Verlust durch vergessene Passwörter vorzubeugen, sollten Sie ein sogenanntes Paper-Backup ihrer Private-Keys machen.</p>
-
-            <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a>
-            </p>
-
             <h4>Benötigen Sie Hilfe?</h4>
 
             <p>
-                Lesen Sie unsere <a href="https://blockchain.info/wallet/support-pages">Support-Seiten</a>
+                Lesen Sie unsere <a target="blank" href="https://blockchain.info/wallet/support-pages">Support-Seiten</a>
             </p>
         </div>
     </div>
-
-    
 
     
 </div>

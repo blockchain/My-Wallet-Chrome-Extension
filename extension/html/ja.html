@@ -986,7 +986,7 @@
         <div class="tab-pane" id="shared-addresses">
             <h3>Shared Addresses</h3>
 
-            <p style="padding-top:10px">Shared addresses are designed to receive payment you wish to keep private. Any payments received are sent through a shared wallet breaking the chain of transactions. <a href="https://blockchain.info/wallet/send-shared" target="new">(More Info)</a></p>
+            <p style="padding-top:10px">Shared addresses are designed to receive payment you wish to keep private. Any payments received are sent through a shared wallet breaking the chain of transactions. <a href="https://blockchain.info/wallet/send-shared" target="blank">(More Info)</a></p>
 
             <p class="well">
                 <b>Shared Addresses are valid for one transaction only and incur a 0.5% transaction fee.</b>
@@ -1015,7 +1015,7 @@
 
     
 
-    <div class="row-fluid page-header" id="welcome_back_container">
+    <div class="row-fluid" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Welcome Back </h3>
@@ -1077,6 +1077,7 @@
 
                 <div style="padding-left: 160px;padding-bottom:20px">
                     <button class="btn btn-primary" id="restore-wallet-continue">Open Wallet</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Create New Wallet</a>
                 </div>
 
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
@@ -1113,7 +1114,7 @@
             <p>?お客様の財布の識別子を紛失した場合は、最初の登録時に受け取った確認メールを確認してください。電子メールを見つけることができませんか？下のボタンをクリックして、我々はお客様に新しいものを送ることができます。</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">インポートのバックアップ</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">インポートのバックアップ</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
             </p>
 
             <h4>二要素認証詳細の紛失。</h4>
@@ -1125,23 +1126,13 @@
                 <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">二要素認証のリセット</a>
             </p>
 
-            <h4>パスワードの紛失</h4>
-
-            <p>紛失したパスワードを復元できない理由はパスワードが我々に到達する前にご使用ののブラウザによって暗号化されるためです。パスワード紛失による金銭的損失を避けるためにも、ウォレットプライベートキーを紙にメモすることをお勧めします。</p>
-
-            <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a>
-            </p>
-
             <h4>Need Help?</h4>
 
             <p>
-                Read our <a href="https://blockchain.info/wallet/support-pages">Support Pages</a>
+                Read our <a target="blank" href="https://blockchain.info/wallet/support-pages">Support Pages</a>
             </p>
         </div>
     </div>
-
-    
 
     
 </div>

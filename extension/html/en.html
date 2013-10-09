@@ -986,7 +986,7 @@
         <div class="tab-pane" id="shared-addresses">
             <h3>Shared Addresses</h3>
 
-            <p style="padding-top:10px">Shared addresses are designed to receive payment you wish to keep private. Any payments received are sent through a shared wallet breaking the chain of transactions. <a href="https://blockchain.info/wallet/send-shared" target="new">(More Info)</a></p>
+            <p style="padding-top:10px">Shared addresses are designed to receive payment you wish to keep private. Any payments received are sent through a shared wallet breaking the chain of transactions. <a href="https://blockchain.info/wallet/send-shared" target="blank">(More Info)</a></p>
 
             <p class="well">
                 <b>Shared Addresses are valid for one transaction only and incur a 0.5% transaction fee.</b>
@@ -1015,7 +1015,7 @@
 
     
 
-    <div class="row-fluid page-header" id="welcome_back_container">
+    <div class="row-fluid" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Welcome Back </h3>
@@ -1077,6 +1077,7 @@
 
                 <div style="padding-left: 160px;padding-bottom:20px">
                     <button class="btn btn-primary" id="restore-wallet-continue">Open Wallet</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Create New Wallet</a>
                 </div>
 
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
@@ -1113,7 +1114,7 @@
             <p> If you have lost your wallet identifier first check the confirmation email you received during sign up. Can't find the email? Click the button below and we can send you a new one.</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Import Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Import Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
             </p>
 
             <h4>Lost Two-factor Authentication Details.</h4>
@@ -1125,23 +1126,13 @@
                 <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Reset Two Factor Authentication</a>
             </p>
 
-            <h4>Lost Password</h4>
-
-            <p>Your wallet is encrypted by your browser before it reaches us and for this reason we are unable to help recover lost passwords. To avoid any possible monetary loss due to forgotten passwords it is recommended you make a paper backup of your wallet's private keys.</p>
-
-            <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a>
-            </p>
-
             <h4>Need Help?</h4>
 
             <p>
-                Read our <a href="https://blockchain.info/wallet/support-pages">Support Pages</a>
+                Read our <a target="blank" href="https://blockchain.info/wallet/support-pages">Support Pages</a>
             </p>
         </div>
     </div>
-
-    
 
     
 </div>

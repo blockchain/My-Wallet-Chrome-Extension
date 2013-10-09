@@ -986,7 +986,7 @@
         <div class="tab-pane" id="shared-addresses">
             <h3>Deljeni naslovi</h3>
 
-            <p style="padding-top:10px">Deljeni naslovi so namenjeni prejemanju plačil, ki jih želite ohraniti zasebna. Vsa prejeta plačila gredo skozi skupno denarnico, s čimer se prekine veriga transakcij med virom in ciljem novcev. <a href="https://blockchain.info/wallet/send-shared" target="new">(Več informacij)</a></p>
+            <p style="padding-top:10px">Deljeni naslovi so namenjeni prejemanju plačil, ki jih želite ohraniti zasebna. Vsa prejeta plačila gredo skozi skupno denarnico, s čimer se prekine veriga transakcij med virom in ciljem novcev. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Več informacij)</a></p>
 
             <p class="well">
                 <b>Deljeni naslovi veljajo samo za eno transakcijo, za katero velja 1.5% provizija.</b>
@@ -1015,7 +1015,7 @@
 
     
 
-    <div class="row-fluid page-header" id="welcome_back_container">
+    <div class="row-fluid" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
                 <h3>Dobrodošli nazaj </h3>
@@ -1077,6 +1077,7 @@
 
                 <div style="padding-left: 160px;padding-bottom:20px">
                     <button class="btn btn-primary" id="restore-wallet-continue">Odpri denarnico</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Create New Wallet</a>
                 </div>
 
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
@@ -1113,7 +1114,7 @@
             <p> Če ste pozabili ID vaše denarnice, najprej preverite potrditveno elektronsko sporočilo, ki ste ga prejeli ob registraciji. Ne najdete sporočila? Kliknite na gumb spodaj in poslali vam ga bomo ponovno.</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" href="https://blockchain.info/wallet/import-wallet">Uvoz varnostne kopije</a> <a class="btn btn-small btn-secondary download-backup-btn">Prenesi varnostno kopijo</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Uvoz varnostne kopije</a> <a class="btn btn-small btn-secondary download-backup-btn">Prenesi varnostno kopijo</a>
             </p>
 
             <h4>Pozabljeni podatki za dvostopenjsko overitev</h4>
@@ -1125,23 +1126,13 @@
                 <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Ponastavi dvostopenjsko overitev</a>
             </p>
 
-            <h4>Pozabljeno geslo</h4>
-
-            <p>Vaša denarnica se šifrira v brskalniku, preden podatki prispejo do nas, zato vam ne moremo pomagati pri povrnitvi pozabljenih gesel. Da bi se izognili izgubi finančnih sredstev zaradi izgubljenih gesel, priporočamo, da si naredite papirnate varnostne kopije zasebnih ključev svoje denarnice.</p>
-
-            <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a>
-            </p>
-
             <h4>Need Help?</h4>
 
             <p>
-                Preberite <a href="https://blockchain.info/wallet/support-pages">Strani za podporo</a>
+                Preberite <a target="blank" href="https://blockchain.info/wallet/support-pages">Strani za podporo</a>
             </p>
         </div>
     </div>
-
-    
 
     
 </div>
