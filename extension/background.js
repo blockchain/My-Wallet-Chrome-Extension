@@ -20,13 +20,16 @@ chrome.app.runtime.onLaunched.addListener(function() {
 
     try {
         chrome.storage.local.get('language', function(result){
-            var language = result['language'];
+
+            var language = result.language;
 
             var available = ['fr', 'da', 'de', 'ko', 'hi', 'th', 'it', 'nl', 'es', 'ja', 'pl', 'pt', 'sv', 'ru', 'en', 'el', 'zh-cn', 'ro', 'bg', 'vi', 'id', 'tr', 'sl', 'no', 'hu'];
 
             if (language && contains(available, language)) {
                 sendToLanguage(language);
             } else {
+                chrome.storage.local.remove('language');
+
                 sendToLanguage('en');
             }
         });

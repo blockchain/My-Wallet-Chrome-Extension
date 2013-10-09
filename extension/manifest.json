@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
-    "name": "My Wallet",
-    "description": "Blockchain.info My Wallet service packaged in a Chrome Extension!",
+    "name": "Blockchain",
+    "description": "A Bitcoin wallet which runs in your browser.",
     "container" : "GOOGLE_DRIVE",
     "api_console_project_id" : "789483738880",
-    "version": "3.1.2",
+    "version": "3.1.3",
     "icons": {
         "16": "favicon.ico",
         "48": "cube48.png",

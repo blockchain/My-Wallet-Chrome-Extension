@@ -1,0 +1,2401 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Wallet - Soyez votre propre banque - Blockchain.info</title>
+    <meta name="robots" content="noindex">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
+
+    <style type="text/css">
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
+
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
+    
+    
+    
+</head>
+
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/" data-language="fr">
+
+<div class="quickstart">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>
+                    <span class="hidden-phone">My Wallet <small>Soyez votre propre banque.</small></span>
+
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Votre solde" data-content="Cela montre le solde actuel de votre portefeuille bitcoin. Vous n'êtes pas en mesure de dépenser cette somme jusqu'à ce que toutes les transactions soient confirmées.">
+                        <span id="balance"></span>
+                        <small id="balance2">0</small>
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid" style="margin-top:10px">
+            <div class="span12 no-print">
+                <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
+                    <li><a id="home-intro-btn">Accueil portefeuille</a></li>
+                    <li><a id="my-transactions-btn">Mes transactions</a></li>
+                    <li><a id="send-coins-btn">Envoyer de l'argent</a></li>
+                    <li><a id="receive-coins-btn">Recevoir de l'argent</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">Import / Export</a></li>
+                </ul>
+
+                <h6 class="pull-right" id="status-container">
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Chargement</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
+    <span id="notices" style="max-width: 600px; width:100%;"></span>
+</div>
+
+<div style="width:100%; float:left; clear:both"></div>
+
+<div class="container" style="margin-top:10px">
+
+<div id="my-account" style="display:none;">
+    <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
+        <h2>Données sensibles</h2>
+
+        <p>Paramètres du compte affiche les données sensibles qui ne doivent pas être montrées à d&#39;autres personnes. Il est recommandé de ne pas ouvrir cette partie dans des lieux publics ou des captures d&#39;écran de cette section.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-account-settings">Continuer</button>
+        </p>
+    </div>
+
+    <div id="my-account-content" style="display:none">
+
+
+
+
+<h2>
+    Paramètres du compte <small>Modifier les paramètres de votre compte My Wallet.</small>
+</h2>
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Informations du compte</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personnel</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Général</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notifications</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Mots de passe</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Sécurité</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Enregistrement</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Périphériques</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Débogage</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+<div class="tab-content">
+<div class="active tab-pane" id="account-information">
+    <div class="page-header">
+        <h3>Messagerie <small style="color:green">(Recommandé)</small></h3>
+
+        <p>
+            Un e-mail est nécessaire pour aider à récupérer un identifiant portefeuille perdu et pour les notifications de paiement.<br/>
+        </p>
+
+        <p>
+            <input placeholder="Votre e-mail" id="wallet-email" type="text"/>
+        </p>
+
+        <p class="email-verified">
+            <font color="green">E-mail vérifié</font>
+        </p>
+
+        <div class="email-unverified">
+            <b>Code de vérification e-mail:</b><br/><br/>
+
+            <div class="form-inline">
+                <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
+                <button class="btn">Vérifier</button>
+                <button class="btn" id="wallet-email-send">Renvoyer le lien</button>
+            </div>
+            <br/> <font color="red">E-mail non vérifié</font>
+        </div>
+    </div>
+
+    <div class="page-header email-verified">
+        <h3>Alias  <small>(En option)</small></h3>
+        <p>
+            Un alias est un lien court qui peut être mémorisé pour un accès rapide à votre compte sans avoir à vous souvenir d'un identifiant<br/>
+        </p>
+
+        <p>
+            <input placeholder="Mot mémorable ou pseudo" id="wallet-alias" type="text"/>
+        </p>
+
+        <pre class="alias" style="display:none"></pre>
+    </div>
+
+    <div class="page-header">
+        <h3>Numéro de mobile <small>(En option)</small>
+        </h3>
+
+        <p>
+            Entrez votre numéro de téléphone ci-dessous. L'envoi de SMS à l'international peut parfois être peu fiable et ne pas être disponible dans certains pays ou réseaux.
+        </p>
+
+        <p class="form-inline">
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Envoyer un code par SMS</button>
+        </p>
+
+        <p class="sms-verified">
+            <font color="green">SMS vérifiés</font>
+        </p>
+
+        <div class="sms-unverified well">
+            <p>Entrez le code de vérification contenu dans le SMS.</p>
+            <p class="form-inline"><input placeholder="Code de vérification par SMS" class="wallet-sms-code" type="text"/> <button class="btn">Vérifier</button> </p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Vérification d'intégrité</h3>
+
+        <p>Vérifie que toutes les clés dans votre portefeuille correspondent à la bonne adresse bitcoin et re-chiffre votre porte-monnaie. Cela peut prendre un certain temps avec certains navigateurs.</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Exécuter</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Vérifiez comprimé</h3>
+
+        <p>Vérifie l&#39;équilibre des versions compressées et non compressées de toutes les clés privées pour vérifier qu&#39;il n&#39;ya pas de transactions qui peuvent être rachetées ne figurent pas dans le solde principal du portefeuille.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Exécuter</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 itérations</h3>
+
+        <p>PBKDF2 est une fonction qui s&#39;étend de passe augmentant l&#39;effort nécessaire pour bruteforcer il. Un plus grand nombre d&#39;itérations est meilleure mais vous remarquerez peut-être un ralentissement de votre navigateur.</p>
+
+        <p><b>La modification de cette valeur peut entraîner des problèmes de compatibilité entre les anciens clients qui ne prennent pas en charge le nouveau format de chiffrement de portefeuille.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Itérations:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-general">
+
+    <div class="page-header">
+        <h3>Langue</h3>
+
+        <p>Définissez votre langue préférée ci-dessous</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Monnaie locale</h3>
+
+        <p>Vous pouvez basculer rapidement entre les bitcoins et votre monnaie locale en cliquant sur votre solde en haut à droite.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Poignée Bitcoin Liens</h3>
+
+        <p>Voulez-vous mettre blockchain.info que le gestionnaire par défaut de liens bitcoin? Liens Bitcoin (URI) sont utilisés pour entrer automatiquement une adresse bitcoin destinataire et envoie une valeur lorsque vous cliquez dessus.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Inscription gestionnaire d&#39;URI</button>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin affichage</h3>
+
+        <p>Ajustez la précision que vous préférez valeurs de bitcoin à afficher po</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>L&#39;inactivité Déconnexion</h3>
+
+        <p>
+            Par défaut, vous serez automatiquement déconnecté de votre compte portefeuille après 10 minutes d&#39;inactivité. Vous pouvez régler le délai d&#39;attente ci-dessous.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 Minutes</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 Minutes</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 Minutes</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Jamais</b>
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Politique de tarification par défaut</h3>
+
+        <p>
+            Les transactions de Blockchain.info sont gratuites. Toutefois, le réseau bitcoin peut exiger un supplément mineur qui affectera la vitesse à laquelle vos transactions seront vérifiées, et contribuera à soutenir le réseau. Modifiez les paramètres ci-dessous pour modifier la politique des frais de mineurs par défaut.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>Frugal</b> - Aucun frais de minage ne sera inclus sauf si c'est absolument essentiel. <font color="red">Les transactions seront confirmées nettement plus lentement</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>Normal</b> - Suivez la politique de tarification proposée par le principal client bitcoin. <font color="green">Recommandé</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>Généreux</b> - Les frais seront établis pour assurer que les transactions seront de haute priorité (0,001 frais de base BTC).
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Sauvegardes automatiques par e-mail</h3>
+        <p>
+            Cochez cette case pour recevoir une nouvelle sauvegarde automatiquement lorsque votre porte-monnaie se met à jour : <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-notifications">
+    <div class="page-header">
+        <h3>Notifications</h3>
+
+        <p>Recevoir optionellement des notifications quand un paiement est envoyé ou reçu par votre porte-monnaie.</p>
+
+        <div id="notifications-type">
+            <input type="checkbox" value="1"> <b>Notifications par courriel</b><br/>
+
+            <div class="well type-1" style="display:none">
+                Vous recevrez des notifications par e-mail. Veuillez confirmer votre adresse e-mail si vous n'en avez pas déjà une.
+            </div>
+
+            <input type="checkbox" value="32"> <b>Notifications par SMS</b><br/>
+
+            <div class="well type-32" style="display:none">
+                <p>
+                    Entrez votre numéro de téléphone ci-dessous. L'envoi de SMS à l'international peut parfois être peu fiable et ne pas être disponible dans certains pays ou réseaux.
+                </p>
+
+                <p class="form-inline">
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Envoyer un code par SMS</button>
+                </p>
+
+                <p class="sms-verified">
+                    <font color="green">SMS vérifiés</font>
+                </p>
+
+                <div class="sms-unverified">
+                    <p>Entrez le code de vérification contenu dans le SMS.</p>
+                    <p class="form-inline">
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Vérifier</button>
+                    </p>
+                </div>
+            </div>
+
+            <input type="checkbox" value="2" /> <b>Google Talk</b><br/>
+
+            <div class="well type-2" style="display:none">
+                Vous recevrez des notifications via Google Talk.
+            </div>
+
+            <input type="checkbox" value="8"> <b>Skype</b><br/>
+
+            <div class="well type-8" style="display:none">
+                <p>Vous recevrez des notifications via Skype pour le nom d'utilisateur ci-dessous:</p>
+
+                <input placeholder="Skype Username" id="wallet-skype" type="text"/>
+            </div>
+
+            <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
+
+            <div class="well type-64" style="display:none">
+                <p>Veuillez entrer votre <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> e-mail ci-dessous:</p>
+
+                <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
+            </div>
+
+            <input type="checkbox" value="4"> <b>Notifications HTTP</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>Notifications http sera envoyé lorsque les transactions sont envoyées ou reçues. S&#39;il vous plaît voir la section développeurs un guide pour la mise en œuvre du rappel.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+            <input type="checkbox" value="128"> <b>Notifications Android</b><br/>
+
+            <div class="well type-128" style="display:none">
+                <p>Vous recevrez des notifications sur votre appareil Android fois apparié.</p>
+            </div>
+
+        </div>
+
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 notifications</b><br/>
+
+        <div class="well" style="display:none">
+            <p>HTML 5 Les notifications sont différents de pop-ups réguliers en ce qu&#39;ils nécessitent l&#39;autorisation de l&#39;utilisateur à afficher. Actuellement pris en charge dans Chrome et Safari.</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Lorsque mon portefeuille</h3>
+
+        <p>
+            <select id="notifications-on">
+                <option value="0">Envoyer ou recevoir des Bitcoins</option>
+                <option value="1">Envoyer des Bitcoins</option>
+                <option value="2">Recevoir des Bitcoins</option>
+            </select>
+        </p>
+    </div>
+
+    <h3>Après les confirmations</h3>
+
+    <p>
+        <select id="notifications-confirmations">
+            <option value="0">Immédiatement</option>
+            <option value="1">1 Confirmation</option>
+            <option value="2">2 confirmations</option>
+            <option value="3">3 confirmations</option>
+            <option value="4">4 Confirmations</option>
+            <option value="5">5 Confirmations</option>
+            <option value="6">6 Confirmations</option>
+        </select>
+    </p>
+</div>
+
+
+<div class="tab-pane" id="account-logging">
+    <h3 class="page-header">Niveau de journalisation</h3>
+
+    <p>Les contrôles de niveau de journalisation ce que les données sont enregistrées lorsque des actions sont prises en utilisant votre porte-monnaie. Par défaut, la journalisation est désactivée en dehors des actions prises par les administrateurs. Activation il offre une meilleure sécurité en fournissant plus d&#39;informations sur l&#39;accès non autorisée potentielle de votre portefeuille mais un peu d&#39;intimité peut être sacrifié.</p>
+
+    <p>
+        <select id="logging-level">
+            <option value="0">Connexion Désactivé</option>
+            <option value="1">Journalisation des actions avec des adresses IP hachées</option>
+            <option value="2">Journalisation des actions avec l&#39;adresse IP et le User Agent</option>
+        </select>
+    </p>
+
+    <p class="well">
+        Modification du niveau de consignation ne supprime pas les fichiers journaux existants. Journaux expire au bout de 2 semaines.
+    </p>
+
+    <div class="logl l2 l1">
+        <table class="table table-striped well" style="margin-top:10px;display:none;">
+            <thead>
+            <th>Temps</th>
+            <th>Action</th>
+            <th>Adresse IP</th>
+            <th>Agent utilisateur</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p class="logl l0" style="display:none;">
+        <font color="green">Connexion Désactivé</font>
+    </p>
+</div>
+
+<div class="tab-pane" id="account-devices">
+    <h3>Couplage de périphériques</h3>
+
+    <p>Scannez le code ci-dessous avec votre iPhone ou votre Android pour le synchroniser avec votre compte.</p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
+                    Afficher / Masquer code d&#39;appairage.
+                </a>
+            </div>
+
+            <div id="pairing_code" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-passwords">
+    <div class="alert alert-block alert-error"><B>Attention!</B> Chaque mot de passe oublié rendra votre portefeuille non-accessible. Il n'existe pas de processus de récupération de mot de passe !</div>
+
+    <p>
+        Votre mot de passe ne sont jamais partagés avec nos serveurs de n&#39;importe quelle forme. Cela signifie que votre porte-monnaie serait toujours en sécurité en cas nos serveurs ont été compromis. Cependant cela signifie qu&#39;il n&#39;existe aucune fonctionnalité de réinitialisation de mot.
+    </p>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Mot de passe Mnémonique</h3>
+
+        <p>Mnémoniques mot de passe peuvent être utilisés pour récupérer votre mot de passe en cas d&#39;oubli portefeuille. Sans le mnémonique il n&#39;existe aucun moyen nous pouvons vous aider à récupérer un mot de passe oublié. Lors de la modification des mots de passe portefeuille le mnémonique va changer.</p>
+
+        <div id="accordion1">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
+                        Mot de passe Mnémonique Afficher / Masquer
+                    </a>
+                </div>
+
+                <div id="password_mnemonic" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="password_mnemonic1">
+                            <h5 class="page-header">Main Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+
+                        <div id="password_mnemonic2">
+                            <h5 class="page-header">Second Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Mot de passe principal</h3>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Mot de passe:</label>
+
+                <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Confirmer le mot de passe:</label>
+
+                <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+        </div>
+
+        <p>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Mise à jour du mot de passe principal</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Second mot de passe</h3>
+
+        <div class="double-encryption-off">
+            <p>Vous pouvez également définir un deuxième mot de passe qui sera demandé lors de l'envoi de fonds à votre compte. Pour les portefeuilles de haute capacité, votre navigateur peut cesser de répondre pendant quelques minutes lors de la modification de cette option.</p>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Mot de passe:</label>
+
+                    <div class="controls"><input id="double-password" type="password"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Confirmer le mot de passe:</label>
+
+                    <div class="controls"><input id="double-password2" type="password"/></div>
+                </div>
+            </div>
+
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">Activer le double chiffrement</button>
+        </div>
+
+        <div class="double-encryption-on">
+            <p>Le double chiffrement est activé. Un second mot de passe sera nécessaire avant de pouvoir envoyer des fonds.</p>
+
+            <p>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">Désactiver le double-chiffrement</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Indices pour le mot de passe</h3>
+
+        <p> Si vous avez oublié votre mot de passe, un ou plusieurs indices peuvent être utiles pour vous aider à rafraîchir votre mémoire. S'il y a une adresse e-mail associée à votre compte, ces indices peuvent vous être envoyés par email. Si aucun e-mail est associé à votre compte, ces indices sont disponibles pour quiconque connait l'identifiant de votre portefeuille.</p>
+
+        <p class="well">
+            <b>Par exemple:</b> Si le mot de passe de votre portefeuille était ChevalBatterie, un bon indice serait : cheval électrique
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Indice mot de passe principal :</label>
+
+                <div class="controls"><input id="password-hint1" type="text"/></div>
+            </div>
+
+            <div class="control-group double-encryption-on">
+                <label class="control-label">Indice du second mot de passe :</label>
+
+                <div class="controls"><input id="password-hint2" type="text"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-security">
+    <div class="page-header">
+        <h3>Authentification à deux facteurs</h3>
+
+        <p>L'identification à deux facteurs ajoute une couche de sécurité supplémentaire en plus de votre mot de passe.</p>
+
+        <p>
+            <select id="two-factor-select">
+                <option value="0">Aucun</option>
+                <option value="5">Message SMS</option>
+                <option value="1">Yubikey</option>
+                <option value="2">Messagerie</option>
+                <!--<option value="3">Mt Gox Yubikey</option>-->
+                <option value="4">Google Authenticator</option>
+            </select>
+        </p>
+
+        <div class="well two-factor t0" style="display:none">
+            L'identification à deux facteurs n'est pas activée sur votre compte
+        </div>
+
+        <div class="well two-factor t1 t3" style="display:none">
+            <b>Yubikey</b> <br/> Pour synchroniser votre clé à votre compte, sélectionnez la zone de texte ci-dessous et appuyez sur le bouton vert LED de votre appareil Yubikey.
+
+            <div class="controls">
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">Sélectionnez la zone de texte ci-dessus et appuyez sur la lumière LED verte de votre Yubikey.</p>
+            </div>
+        </div>
+
+        <div class="well two-factor t2" style="display:none">
+            <b>Messagerie</b> <br/> L'identification à deux facteurs par e-mail est activée sur votre compte. Un e-mail sera envoyé à <span class="my-email"></span> contenant un code de confirmation qui devra être fourni lors de la connexion.
+        </div>
+
+        <div class="two-factor t4" style="display:none">
+            <p class="well">
+                Google Authenticator est activé
+            </p>
+
+            <div style="display:none">
+                <p>
+                    Ouvrez l'application Google Authenticator et scannez le QR code ci-dessous pour compléter le processus de synchronisation.
+                </p>
+
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>Après scannant le code QR ci-dessus avec l&#39;application Google Authenticator entrez le code d&#39;authentification ci-dessous:</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-factor t5 well" style="display:none">
+            <b>Message SMS</b>
+
+            <p>
+                Entrez votre numéro de téléphone ci-dessous. L'envoi de SMS à l'international peut parfois être peu fiable et ne pas être disponible dans certains pays ou réseaux.
+            </p>
+
+            <p class="form-inline">
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Envoyer un code par SMS</button>
+            </p>
+
+            <p class="sms-verified" style="color:green">
+                SMS vérifiés
+            </p>
+
+            <div class="sms-unverified well">
+                <p>Entrez le code de vérification contenu dans le SMS.</p>
+                <p class="form-inline"><input placeholder="Code de vérification par SMS" class="wallet-sms-code" type="text"/> <button class="btn">Vérifier</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Always Keep sauvegarde Navigateur</h3>
+
+        <p>Activer cette option pour forcer une sauvegarde portefeuille pour être stockées dans vos navigateurs stockage local, même lorsque l&#39;authentification à deux facteurs est activée. Si elle est activée un attaquant ayant accès à votre navigateur serait en mesure de contourner l&#39;authentification à deux facteurs, si le portefeuille est accessible via n&#39;importe quel autre PC ou navigateur, il est encore protégé par authentification à deux facteurs.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Gardez toujours:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Phrase secrète</h3>
+
+        <p>Une phrase secrète peut être utilisée pour nous aider à vérifier votre identité en cas de perte de l'identifiant de votre portefeuille ou de votre Yubikey. Ça peut être un seul mot ou une phrase jusqu'à 255 caractères de long.</p>
+
+        <p>
+            <input id="wallet-phrase" type="text"/>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Ne jamais se souvenir de l'identification à deux facteurs</h3>
+
+        <p>
+            Par défaut, après une connexion avec identification à deux facteurs, votre navigateur sera reconnu pendant une courte période de temps, ce qui vous permettera de vous connecter à nouveau sans avoir à ré-identifier. Cochez cette case si vous souhaitez désactiver ce comportement et ainsi avoir une identification complète à chaque fois.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Rappelez-vous jamais:</label>
+
+                <div class="controls">
+                    <input id="never-save-auth-type" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Bloquer les adresses IP TOR</h3>
+
+        <p>
+            Activez l&#39;option suivante pour empêcher les adresses IP partie du réseau d&#39;anonymisation TOR d&#39;accéder à votre portefeuille.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Activer / Désactiver:</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Restreindre l'IP</h3>
+
+        <p>
+            Activez cette option pour limiter l'accès à votre portefeuille à une adresse IP spécifique ou plusieurs adresses IP séparées par des virgules. N'activez cette option uniquement si vous avez une adresse IP statique. Vous ne serez pas capable de vous connecter ou d'accéder à toute l'API depuis un ordinateur qui ne serait pas sur le réseau spécifié, mais les applications mobiles vont continuer à fonctionner une fois synchronisées.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Activer / Désactiver:</label>
+
+                <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Verrouillage par IP :</label>
+
+                <div class="controls">
+                    <input id="ip-lock" type="text"/>
+
+                    <p class="help-block">Chaque adresse IP doit être séparée par une virgule.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">IP actuelle :</label>
+
+                <div class="controls"><span id="my-ip"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="update-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Confirmer le changement du mot de passe</h3>
+    </div>
+    <div class="modal-body">
+        <p>Votre mot de passe sera immédiatement mis à jour. Soyez sûr de noter votre nouveau mot de passe car il ne pourra pas être récupéré en cas d'oubli ! Si vous avez des sauvegardes chiffrées de votre portefeuille, il sera possible de les déchiffrer en utilisant votre ancien mot de passe ; il est recommandé de supprimer toutes ces sauvegardes.</p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Mise à jour du mot de passe</button>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div id="home-intro" style="display:none;">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="well table table-striped">
+                <tr>
+                    <td>Total des transactions</td>
+                    <td><span id="summary-n-tx">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total reçus</td>
+                    <td><span id="summary-received">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total émis</td>
+                    <td colspan="2"><span id="summary-sent">0</span></td>
+                </tr>
+                <tr>
+                    <td>Solde final</td>
+                    <td><span id="summary-balance">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
+
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
+                    <small>Ceci est votre adresse Bitcoin</small>
+
+                    <p class="primary-address" id="my-primary-address"></p>
+
+                    <small>Partager-la avec n'importe qui afin de recevoir des paiements.</small>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="span6">
+            
+                <div class="no-watch-only" id="home-deposit-container">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#deposit-us" data-toggle="tab"><img src="/Resources/flags/us.png"> US</a></li>
+                        <li ><a href="#deposit-uk" data-toggle="tab"><img src="/Resources/flags/gb.png"> UK</a></li>
+                        <li ><a href="#deposit-eu" data-toggle="tab"><img src="/Resources/flags/eu.png"> EU</a></li>
+                        <li ><a href="#deposit-other" data-toggle="tab">Other</a></li>
+                    </ul>
+
+                    <div class="tab-content page-header">
+                        <p>Le moyen le plus rapide et le plus facile pour déposer des bitcoins sur votre compte est d'utiliser les services ci-dessous.</p>
+
+                        <div class="tab-pane active" style="text-align:right" id="deposit-us">
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp dépôt</button>
+                            
+
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-uk">
+                            
+                            
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp dépôt</button>
+                            
+
+                            
+                                
+                            
+                        </div>
+
+                        <div class="tab-pane" style="text-align:right" id="deposit-eu">
+                            
+                            
+
+                            
+                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp dépôt</button>
+                            
+                        </div>
+
+                        <div class="tab-pane" id="deposit-other">
+                            
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="page-header" id="home-account-container">
+                <h3>Paramètres du compte</h3>
+
+                <p>Modifier vos paramètres de compte y compris l'adresse e-mail, mot de passe et les paramètres de notification.</p>
+
+                <p align="right">
+                    <button class="btn" id="my-account-btn">Paramètres du compte</button>
+                </p>
+            </div>
+
+
+            <div id="home-backup-container">
+                <h3>Sauvegarde</h3>
+
+                <p>La sauvegarde de votre porte-monnaie est une étape importante et facile à oublier. Blockchain.info prend toutes les précautions pour garder votre portefeuille en toute sécurité, mais il est toujours préférable de garder une copie locale juste au cas où.</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Messagerie</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="receive-coins" style="display:none;">
+
+    <h2>Adresses <small>Vos adresses Bitcoin de réception</small></h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#active-addresses" data-toggle="tab">Actif</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">Archivé</a></li>
+        <li><a href="#shared-addresses" data-toggle="tab">Commun</a></li>
+    </ul>
+
+    <div id="receive-content" class="tab-content">
+        <div class="active tab-pane" id="active-addresses" style="margin-bottom:200px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Adresse</th>
+                    <th>Solde</th>
+                    <th></th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Nouvelle adresse" data-content="Cliquez ici pour générer une nouvelle adresse bitcoin. Vous pouvez commencer à recevoir immédiatement des bitcoins à cette adresse">Nouvelle adresse</button>
+
+            <div class="btn-group pull-right" style="margin:5px">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Plus d'actions <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">New froid adresse de stockage</a></li>
+                    <li><a id="chord-diagram">Voir le diagramme de relation</a></li>
+                    <li><a id="group-received" title="Taint Grouping">Regroupez les adresses par Taint</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">Vérifiez le message</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="archived-addresses" style="margin-bottom:200px">
+            <h3>Adresses archivés</h3>
+
+            <p>Les adresses archivées sont des adresses dont vous n'avez plus besoin et qui sont cachées de la vue principale, mais qui font encore partie de votre portefeuille. Vous pouvez les des-archiver à tout moment en cliquant sur l'icône bleue.</p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th>Adresse Bitcoin</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="pull-right btn-group">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Touches de balayage" data-content="Déplacez les bitcoins depuis les clés sélectionnées vers une adresse bitcoin différente.">Touches de balayage
+                </button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Supprimer des clés" data-content="Supprimez les clés privées sélectionnées.">Supprimer des clés
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="shared-addresses">
+            <h3>Les adresses partagés</h3>
+
+            <p style="padding-top:10px">Les paiements reçus à des adresses partagées seront transmis à une autre adresse dans votre portefeuille. Tous les paiements reçus sont envoyés à travers un portefeuille partagé rompre la chaîne des transactions. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Plus d'infos)</a></p>
+
+            <p class="well">
+                <b>Les adresses partagés sont valables pour une seule transaction et d&#39;engager des frais de transaction de 0,5%.</b>
+            </p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Adresse</th>
+                    <th class="hidden-phone">Faire suivre à</th>
+                    <th>Expire dans</th>
+                </tr>
+                <tbody></tbody>
+                </thead>
+            </table>
+            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Nouvelle adresse partagée</button>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;" id="restore-wallet">
+
+    
+
+    
+
+    
+
+    <div class="row-fluid" id="welcome_back_container">
+        <div class="span6">
+            <div class="page-header">
+                <h3>Bienvenue </h3>
+                <small>Veuillez entrer vos informations de connexion ci-dessous :</small>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Identifiant :</label>
+
+                    <div class="controls"><input id="restore-guid" placeholder="Identifiant ou Alias" value="" type="text"/></div>
+                </div>
+
+                <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
+                    <label class="control-label">Mot de passe:</label>
+
+                    <div class="controls"><input id="restore-password" type="password"/></div>
+                </div>
+
+
+                <div class="control-group auth-1 auth-3" style="display:none">
+                    <label class="control-label">Yubikey:</label>
+
+                    <div class="controls">
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Sélectionnez la zone de texte ci-dessus et appuyez sur la lumière LED verte de votre Yubikey.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-2" style="display:none">
+                    <label class="control-label">Code e-mail :</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Un email contenant un code de confirmation temporaire a été envoyé à votre compte.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-4" style="display:none">
+                    <label class="control-label">Google Authenticator :</label>
+
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+
+                        <p class="help-block">Veuillez ouvrir votre application Google Authenticator et entrer le code affiché.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-5" style="display:none">
+                    <label class="control-label">Code SMS :</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Un SMS a été envoyé sur votre téléphone portable. Veuillez entrer le code dans ce message ci-dessus.</p>
+                    </div>
+                </div>
+
+                <div style="padding-left: 160px;padding-bottom:20px">
+                    <button class="btn btn-primary" id="restore-wallet-continue">Ouvrir portefeuille</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Créer une nouvelle monnaie</a>
+                </div>
+
+                <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Vous ne trouvez pas votre code reçu par e-mail ?</h5>
+
+                    <p>L'e-mail sera envoyé à partir de wallet@blockchain.info. Assurez-vous de vérifier votre dossier spam. Si vous ne trouvez toujours pas l'e-mail, cliquez sur le bouton ci-dessous pour le renvoyer.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Renvoyer le lien</a>
+                    </p>
+                </div>
+
+                <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Vous n&#39;avez pas reçu de code SMS?</h5>
+
+                    <p>S&#39;il vous plaît vérifier votre signal réseau. Les messages peuvent prendre jusqu&#39;à 10 minutes pour être livrés, si elle a été de 10 minutes cliquez sur le bouton ci-dessous pour renvoyer le message.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Renvoyer un message</a>
+                    </p>
+                </div>
+
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">Votre mot de passe n'est jamais partagé avec nos serveurs et ne peut être récupéré en cas d'oubli !</div>
+            </div>
+        </div>
+
+        <div class="span6" id="forgotten-something-container">
+            <div class="page-header">
+                <h3>Oublié quelque chose?</h3> <small>Au secours ! J'ai verouillé mon compte et je ne peux plus y accéder</small>
+            </div>
+
+            <h4>Alias ou identifiant oublié</h4>
+
+            <p> Si vous avez perdu votre identifiant portefeuille vérifiez d'abord l'email de confirmation que vous avez reçu lors de votre inscription. Vous ne trouvez pas l'e-mail? Cliquez sur le bouton ci-dessous et nous vous enverrons un nouveau.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Récupérer Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Importer une sauvegarde</a> <a class="btn btn-small btn-secondary download-backup-btn">Télécharger Backup</a>
+            </p>
+
+            <h4>Détails de l'identification à deux facteurs oubliés.</h4>
+
+            <p>Si vous avez perdu vos détails de l'identification à deux facteurs, votre portefeuille est toujours récuperable. Tout ce dont nous avons besoin est une preuve raisonnable que vous êtes le titulaire du compte qui peut être fournie en remplissant le formulaire lié ci-dessous</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Réinitialiser l'identification à deux facteurs</a>
+            </p>
+
+            <h4>Besoin d'aide?</h4>
+
+            <p>
+                Lisez nos <a target="blank" href="https://blockchain.info/wallet/support-pages">pages de support</a>
+            </p>
+        </div>
+    </div>
+
+    
+</div>
+
+<div id="my-transactions" style="display:none;">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 style="display:inline-block">Transactions <small>Résumé de vos transactions récentes</small></h2>
+
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> Voir</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> Compact</a></li>
+                        <li><a href="#" data-value="1"> Détaillé</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> Exporter l&#39;historique</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> Filtrer</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> Tous</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Expédié</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Reçu</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> Dépôt fiduciaire</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
+        </div>
+    </div>
+
+    <p class="padded well" id="no-transactions" align="center">Normalement vos transactions Bitcoin seraient énumérées ici, mais vous n'en avez fait aucune pour l'instant.</p>
+
+    <table id="transactions-compact" class="table table-striped table-condensed table-hover">
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="transactions-detailed"></div>
+
+    <div class="pagination" align="center" style="clear:both;float:none">
+        <ul></ul>
+    </div>
+</div>
+
+<div id="send-coins" style="display: none;">
+<div class="row-fluid">
+<div class="span3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Type de transaction</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Envoi rapide</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Personnalisé</a></li>
+            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Envoyer partagé</a></li>
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Dépôt fiduciaire</a></li>
+
+            <li class="nav-header">Envoyer via</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Messagerie</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> Message SMS</a></li>
+
+            <li class="nav-header">Jeux</li>
+            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            <li class="divider"></li>
+            <li class="nav-header">Outils</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Carnet d'adresses</a></li>
+        </ul>
+    </div>
+
+    <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
+        <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
+    </div>
+</div>
+<div class="span9">
+<div class="tab-content">
+<div class="active tab-pane well" id="send-quick">
+    <h4 class="page-header">Envoi rapide<br/>
+        <small>Utilisez le formulaire ci-dessous pour envoyer un paiement à une adresse bitcoin.</small>
+    </h4>
+
+    <div class="form-horizontal">
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Adresser à" data-content="Il s'agit de l'adresse Bitcoin du destinataire.">Pour:</label>
+
+                    <div class="controls">
+                        <span class="qrcodeicon" /><input placeholder="Adresse Bitcoin" name="send-to-address" type="text"/><span></span></span>
+
+                        <p class="help-block">Entrez l'adresse Bitcoin du destinataire</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Montant" data-content="Le montant de Bitcoins à envoyer">Montant:</label>
+
+                    <div class="controls">
+
+                        <div class="input-prepend">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <b>=</b>
+
+                        <div class="input-prepend">
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <p class="help-block">Entrez le montant de Bitcoins à envoyer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Envoyer le paiement" data-content="Cliquez ici pour envoyer le paiement. Vous ne serez pas invité à examiner la transaction.">Envoyer le paiement</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-sms">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Envoyer par SMS<br/><small>Utilisez le formulaire ci-dessous pour envoyer des bitcoin via SMS.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Nombre de SMS" data-content="Entrez le numéro de SMS de la personne à qui vous voulez envoyer des bitcoins.">Pour:</label>
+
+                    <div class="controls">
+                        <select name="sms-country-code"></select> <br/> <input placeholder="Nombre de SMS" name="send-to-sms" type="text" style="margin-top:5px"/>
+
+                        <p class="help-block">Entrez le numéro SMS du destinataire.</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Montant" data-content="Le montant de Bitcoins à envoyer">Montant:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+
+                        <p class="help-block">Entrez le montant de Bitcoins à envoyer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Envoyer le paiement" data-content="Cliquez ici pour envoyer le paiement. Vous ne serez pas invité à examiner la transaction.">Envoyer le paiement</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-email">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Envoyer par courriel<br/><small>Utilisez le formulaire ci-dessous pour envoyer bitcoin à une adresse e-mail.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Adresse e-mail" data-content="Ceci est l'adresse e-mail de la personne à qui vous souhaitez envoyer des bitcoins.">Pour:</label>
+
+                    <div class="controls">
+                        <input placeholder="Adresse e-mail" name="send-to-email" type="text"/>
+
+                        <p class="help-block">Entrez l'adresse e-mail du destinataire</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Montant" data-content="Le montant de Bitcoins à envoyer">Montant:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+                        <p class="help-block">Entrez le montant de Bitcoins à envoyer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Envoyer le paiement" data-content="Cliquez ici pour envoyer le paiement. Vous ne serez pas invité à examiner la transaction.">Envoyer le paiement</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="send-shared">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Envoyer partagée<br/><small>Envoyer partagé à des ruptures de la chaîne des transactions entre votre portefeuille et une adresse de destination.</small></h4>
+
+        <div class="form-horizontal">
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Adresser à" data-content="Il s'agit de l'adresse Bitcoin du destinataire.">Pour:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Adresse Bitcoin" name="send-to-address" type="text"/><span></span></span>
+
+                            <p class="help-block">Entrez l'adresse Bitcoin du destinataire</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                    class="add-on send-value-usd">$0</span>
+                            </div>
+
+                            <p class="help-block fees"> Y compris les honoraires du total de cette opération est <span class="shared-fees">0.00</span></p>
+
+                            <p class="help-block bonus">Il n&#39;y aura aucun frais pour cette transaction et un bonus de <span class="bonus-value">0.00</span> sera payé.</p>
+
+                            <p class="help-block free">Partagée d&#39;émission est actuellement gratuit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Revoir les paiements" data-content="Cliquez ici pour consulter le paiement. Vous serez en mesure de confirmer ou d'annuler la transaction.">Revoir les paiements</button>
+
+                <p class="help-block fees">Toutes les transactions partagées engager des frais% <span class="mixer_fee">0.5</span>.</p>
+
+                <div class="progress" style="display:none;">
+                    <div class="bar" style="width:10%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-custom">
+    <h4 class="page-header">Transaction personnalisée<br/><small>Utilisez le formulaire ci-dessous pour envoyer un paiement à une ou plusieurs adresses Bitcoin. Il vous sera demandé de revoir votre transaction avant de la soumettre.</small></h4>
+
+    <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
+        <div class="control-group">
+            <label class="control-label pop" title="De l'adresse" data-content="Si nécessaire, vous pouvez choisir d'envoyer de la monnaie à partir d'une adresse spécifique de votre portefeuille.">De:</label>
+
+            <div class="controls">
+                <select name="from" multiple="multiple"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Pour:</label>
+
+            <div class="controls recipient-container">
+                <div class="recipient" style="margin-bottom:5px">
+                    <span class="qrcodeicon" /><input placeholder="Adresse Bitcoin" name="send-to-address" type="text"/><span></span></span>
+
+                    <div class="input-prepend input-append">
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left;padding-bottom:7px;padding-right:7px">
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
+                </div>
+
+                <div style="float:right;padding-right:20px">
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Retirer un destinataire" data-content="Enlever le dernier destinataire."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Ajouter un destinataire" data-content="Si vous voulez envoyer des bitcoins à plusieurs destinataires à la fois, cliquez ici pour ajouter une autre adresse"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Frais de mineurs" data-content="Cette taxe sera envoyée aux mineurs Bitcoin et peut aider votre transaction à être traitée plus rapidement">Frais de mineurs:</label>
+
+            <div class="controls">
+                <div class="input-prepend" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Changement d'adresse" data-content="Tout changement de la transaction sera renvoyé à cette adresse">Changement d'adresse:</label>
+
+            <div class="controls">
+                <select name="change"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Remarque public" data-content="Ajouter une note à cette transaction. Cette note sera visible sur blockchain.info.">Remarque public:</label>
+
+            <div class="controls">
+                <textarea name="public-note" placeholder="Ce message sera intégré de manière permanente à la blockchain. N'importe qui pourra le lire." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="reset btn">Réinitialiser le formulaire</button>
+            <button class="send btn btn-primary pop" title="Revoir les paiements" data-content="Cliquez ici pour consulter le paiement. Vous serez en mesure de confirmer ou d'annuler la transaction.">Revoir les paiements</button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
+        <div class="well">
+            <h4 class="page-header">Pariez avec SatoshiDICE<br/>
+                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> est le plus populaire des jeux de pari avec Bitcoin. Gagnez jusqu'à 64 000 fois votre mise, instantanément. Chaque jet est vérifiable à l'aide de la blockchain.</small>
+            </h4>
+
+            <div class="form-horizontal">
+                <div class="controls">
+                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
+                </div>
+
+                <div class="recipient-container"></div>
+
+                <div class="form-actions">
+                    <button class="send btn btn-success pop" data-repeat="1">Placez un pari !</button> <button class="send btn pop" data-repeat="5">Répéter x5</button> <button class="send btn pop" data-repeat="10">Répétez x10</button>
+
+                    <p class="help-block">Blockchain.info n'est pas affilié à satoshidice.com.</p>
+
+                    <div class="progress" style="display:none;margin-top:10px">
+                        <div class="bar" style="width:10%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="well profit-loss" style="display:none">
+            <p><b>Résumé:</b> <a href="#" class="refresh">(Rafraîchir)</a></p>
+
+            <p><b>Nombre de paris:</b> <span class="n-bets"></span></p>
+
+            <p><b>Gains:</b> <span class="winnings"></span></p>
+        </div>
+    </div>
+
+
+<div class="tab-pane well" id="address-book">
+
+    <h3>Carnet d'adresses</h3>
+
+    <p>Le carnet d'adresses contient une liste d'adresses d'envoi. Vous pouvez l'utiliser pour stocker les adresses Bitcoin des personnes que vous connaissez ou des commerçants que vous utilisez fréquemment.</p>
+
+    <table class="table table-striped" id="address-book-tbl">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Bitcoin Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockchain.info</td>
+            <td class="addr-book-entry">1JArS6jzE3AJ9sZ3aFij1BmTcpFGgN86hA</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <button id="add-address-book-entry-btn" class="btn btn-primary">Ajouter une entrée</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="import-export" style="display: none;">
+    <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
+        <h2>Attention, niveau avancé requis !</h2>
+
+        <p>Cette section vous permet de faire des changements à votre portefeuille qui peuvent être compliqués et confus. Il est recommandé d'être un utilisateur avancé de Bitcoin avant de procéder. Vous devriez comprendre ce que les clés privées sont et leur rapport aux adresses Bitcoin.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-import-export">Je comprends</button>
+        </p>
+    </div>
+
+    <div id="import-export-content" style="display:none;">
+
+
+
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Import / Export</li>
+            <li class="active"><a href="#import" data-toggle="tab">Importer</a></li>
+            <li><a href="#import-backup" data-toggle="tab">Importer une sauvegarde</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">Porte-monnaie importation</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">Exporter de manière chiffrée</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">Exportation de manière non chiffrée</a></li>
+            <li><a class="paper-wallet-btn">Portefeuille sur papier</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
+
+            
+
+            <div class="page-header">
+                <h3>Ajouter Only Watch adresse Bitcoin</h3>
+
+                <p>Vous pouvez ajouter une adresse <font color="red">Watch Only</font> bitcoin à votre porte-monnaie. Vous ne serez pas en mesure d'envoyer bitcoins à partir de cette adresse, sans fournir plus tard la clé privée</p>
+
+                <div class="form-inline">
+                    <input placeholder="Adresse Bitcoin" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Ajouter Only Watch Adresse</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Importer une clé privée</h3>
+
+                <p>Importer une clé privée existante ci-dessous. Tous les formats de clés privées sont pris en charge.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Ajouter une clé privée</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Cerveau Porte-monnaie</h3>
+
+                <p>Un Porte-monnaie cerveau est une clé privée ensemencé à partir d'un mémorable phrase de passe. Il est possible de mémoriser ce mot de passe afin de rétablir les fonds à cette adresse sans avoir besoin d'une sauvegarde portefeuille.</p>
+
+                <p>Le minimum phrase de passe de longueur est de 15 caractères. Il est fortement recommandé de vous conservez des sauvegardes régulières de portefeuille, même avec la phrase de passe mémorisé.</p>
+
+                <div class="form-inline">
+                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Générer une clé</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Utilisation du papier-monnaie importer</h3>
+
+                <p>Utilisez votre webcam pour scanner un code QR à partir d'un porte-monnaie de papier</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Numérisation Avec Webcam</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">Importer une sauvegarde <small>Une liste de sauvegardes portefeuille disponibles à partir de notre serveur de stockage en nuage.</small></h3>
+
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>Nom du fichier</th>
+                <th>Dernière mise à jour</th>
+                <th>Taille</th>
+                <th>Action</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="import-wallet">
+
+            <h3 class="page-header">Porte-monnaie importation</h3>
+
+            <p>Vous pouvez importer les clés dans plusieurs formats différents.</p>
+            <ul>
+                <li>AES sauvegarde cryptée de blockchain.info. (Doit être chiffrés avec le même mot de passe)</li>
+                <li>Plaintext JSON sauvegarde de blockchain.info</li>
+                <li>Sortie de <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
+                <li>Sortie de <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
+                <li>Sortie de <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+            </ul>
+
+            <p>S'il vous plaît être conscient qu'il ya actuellement une limite de 400 clés privées par portefeuille. Pour les portefeuilles de grandes votre navigateur peut cesser de répondre pendant quelques minutes.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Copiez et collez votre porte-monnaie de données dans ce domaine"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Porte-monnaie importation</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">Exporter <small>Voici vos clés privées chiffrées AES.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">Télécharger Backup</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">Exportation et non chiffrées <small>Voici vos clés privées au format JSON. Attention! Ces données ne sont pas chiffrées garder en sécurité.</small></h3>
+
+            <h6>Sélectionnez privé format de la clé:</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">Laisser les clés privées crypté</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>Ajouter une adresse Bitcoin en lecture seule</h3>
+            </div>
+            <div class="modal-body">
+                <p>Confirmer que vous ajouterez le <font color="red">Watch Only</font> à l'adresse <span class="address"></span>.</p>
+
+                <p>Une adresse <font color="red">Watch Only</font> signifie que vous pouvez seulement observer les opérations à cette adresse. À moins que vous ne possédiez la clé privée quelque part ailleurs, les fonds de celle-ci ne vous appartiennent pas.</p>
+
+                <p>Si vous n'avez pas de paper wallet ou d'autre sauvegarde, vous ne devriez pas retirer d'argent à cette adresse ou demander à quelqu'un de vous envoyer de l'argent sur celle-ci</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Annuler</button>
+                    <button class="btn btn-primary">Continuer</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-private-key-warning-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Importer la clé privée Avertissement</h3>
+            </div>
+            <div class="modal-body">
+                <p><b>Jamais importer une clé privée à partir d&#39;une source publique ou non fiable.</b> Cela comprend les portefeuilles de cerveau communs, des concours et des clés privées achetés. Au lieu de cela nous vous recommandons de balayer la clé, ce qui signifie d&#39;envoyer tous les fonds à l&#39;un de vos adresses existantes plutôt que d&#39;ajouter réellement une nouvelle adresse à votre portefeuille.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Importation directe</button>
+                    <button class="btn btn-primary">Touche de balayage</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-second-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Porte-monnaie deuxième mot de passe</h3>
+            </div>
+            <div class="modal-body">
+                <p>S&#39;il vous plaît entrer le second mot de passe pour ce portefeuille.</p>
+                <p align="center">
+                    <b>Deuxième mot de passe:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continuer</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-private-key-password" class="modal hide">
+            <div class="modal-header">
+                <h3>Crypté clé privée</h3>
+            </div>
+            <div class="modal-body">
+                <p>Une clé privée chiffrée a été détectée. Veuillez entrez le code de cryptage ci-dessous:</p>
+                <p align="center">
+                    <b>Phrase de passe::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continuer</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Porte-monnaie Mot de passe</h3>
+            </div>
+            <div class="modal-body">
+                <p>Si ce portefeuille est chiffré s&#39;il vous plaît entrer le mot de passe ci-dessous. Sinon, laissez le champ vide.</p>
+                <p align="center">
+                    <b>Porte-monnaie Mot de passe:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continuer</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Clé privée compressée détectée</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>Les clés privées compressés ne sont pas actuellement priseq en charge par l'application Android, iPhone ou l'API Merchant. Si vous importez directement une clé privée compressée, vous ne serez pas en mesure de dépenser les fonds à cette adresse en utilisant les periphériques précédemment listés.</p>
+
+                <p>La solution recommandée est de balayer les fonds vers une adresse bitcoin existante. Voulez-vous balayer cette clé privée à la place ?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Importation directe</button>
+                    <button class="btn btn-primary">Touche de balayage</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div></div>
+</div>
+
+
+
+<div id="main-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Mot de passe principal nécessaire</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Cette action nécessite que vous entrez de nouveau votre mot de passe principal. S&#39;il vous plaît entrez-vous ou vous risquez être déconnecté.</p>
+
+        <div style="width:290px;margin: 0 auto;">
+            <p><b>Mot de passe principal:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button> <button class="btn btn-primary">Continuer</button>
+        </div>
+    </div>
+</div>
+
+<div id="second-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Le second mot de passe est requis</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Cette action nécessite que vous entriez votre second mot de passe : il est nécessaire pour pleinement déchiffrer votre porte-monnaie. Ne jamais entrer votre second mot de passe sur un ordinateur non sécurisé. Utilisez le clavier virtuel pour avoir une certaine protection contre les keyloggers.</p>
+
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
+
+        <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
+            <ul class="vkeyboard">
+                <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                <li class="delete lastitem">delete</li>
+                <li class="tab">tab</li>
+                <li class="letter">q</li>
+                <li class="letter">w</li>
+                <li class="letter">e</li>
+                <li class="letter">r</li>
+                <li class="letter">t</li>
+                <li class="letter">y</li>
+                <li class="letter">u</li>
+                <li class="letter">i</li>
+                <li class="letter">o</li>
+                <li class="letter">p</li>
+                <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                <li class="capslock">caps lock</li>
+                <li class="letter">a</li>
+                <li class="letter">s</li>
+                <li class="letter">d</li>
+                <li class="letter">f</li>
+                <li class="letter">g</li>
+                <li class="letter">h</li>
+                <li class="letter">j</li>
+                <li class="letter">k</li>
+                <li class="letter">l</li>
+                <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                <li class="return lastitem">return</li>
+                <li class="left-shift">shift</li>
+                <li class="letter">z</li>
+                <li class="letter">x</li>
+                <li class="letter">c</li>
+                <li class="letter">v</li>
+                <li class="letter">b</li>
+                <li class="letter">n</li>
+                <li class="letter">m</li>
+                <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                <li class="right-shift lastitem">shift</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button> <button class="btn btn-primary">Continuer</button>
+        </div>
+    </div>
+</div>
+
+<div id="label-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Label de l'adresse</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Veuillez entrer un label pour l'adresse <span class="address"></span></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Label :</label>
+                <div class="controls">
+                    <input name="label" placeholder="Label (par exemple Épargnes)" type="text" /><p class="help-block">Un label vous permet de vous rappeler quel est le but de cette adresse. Il peut s'agir du nom d'une personne ou d'une société.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button> <button class="btn btn-primary">Sauvegarder</button>
+        </div>
+    </div>
+</div>
+
+<div id="sign-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Signer le message</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Utilisez cet outil pour signer un message qui prouve que vous possédez une adresse. Ne signez que des messages détaillés auxquels vous êtes entièrement d'accord, ne jamais signer de message vague. En appuyant sur Signer le message, il se peut que votre navigateur ne réponde plus pendant quelques secondes.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Adresse:</label>
+                <div class="controls">
+                    <p class="address"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Message:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Entrez le message que vous souhaitez signer"></textarea>
+                </div>
+            </div>
+            <div class="control-group signature" style="display:none">
+                <label class="control-label">Signature :</label>
+                <div class="controls">
+                    <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Signer le message</button>
+        </div>
+    </div>
+</div>
+
+<div id="verify-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Vérification du message</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Utilisez cet outil pour vérifier un message signé par le propriétaire d'une adresse bitcoin particulière</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Adresse:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Adresse Bitcoin" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Message:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Entrez le message à vérifier"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Signature :</label>
+                <div class="controls">
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="Entrez la signature pour vérifier"></textarea>
+                </div>
+            </div>
+            <div class="control-group address-result" style="display:none">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <span class="address-result-txt"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Vérification du message</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>Adresse QR Code <small class="address"></small></h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Fermer</button>
+        </div>
+    </div>
+</div>
+
+<div id="add-address-book-entry-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Ajouter une entrée dans le carnet d'adresses</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Adresse:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Adresse Bitcoin" type="text">
+                    <p class="help-block">Entrez l'adresse Bitcoin que vous souhaitez ajouter à votre carnet d'adresses.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Label :</label>
+                <div class="controls">
+                    <input name="label" placeholder="Nom de la personne ou du commerçant" type="text" />
+                    <p class="help-block">Entrez le label pour cette adresse. Par exemple le nom de la personne ou de la société.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Ajouter une adresse</button>
+        </div>
+    </div>
+</div>
+
+<div id="not-synced-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Adresse non enregistrée</h3>
+    </div>
+    <div class="modal-body">
+        <p>Cette adresse n'a pas encore été sauvegardée sur nos serveurs et peut être perdue si vous quittez cette page. <span style="color:red;font-weight:bold;">Sauf si la clé privée est enregistrée ailleurs des pièces envoyées à des adresses non synchronisées seront définitivement perdues après la déconnexion</span></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-danger">Afficher l&#39;adresse Unsaved</button>
+            <button class="btn btn-primary" data-dismiss="modal">Fermer</button>
+        </div>
+    </div>
+</div>
+
+<div id="watch-only-copy-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Attention : adresse en lecture-seule</h3>
+    </div>
+    <div class="modal-body">
+        <p>Cet avertissement apparaît car vous avez copié une adresse <font color="red">Watch Only</font> dans le presse-papiers.</p>
+
+        <p>Une adresse <font color="red">Watch Only</font> signifie que vous pouvez seulement observer les opérations à cette adresse. À moins que vous ne possédiez la clé privée quelque part ailleurs, les fonds de celle-ci ne vous appartiennent pas.</p>
+
+        <p><b>Si vous n'avez pas de paper wallet ou d'autre sauvegarde, vous ne devriez pas retirer d'argent à cette adresse ou demander à quelqu'un de vous envoyer de l'argent sur celle-ci</b></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Confirmer la suppression</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">La suppression d'une mauvaise adresse peut entraîner des pertes financières. Si vous n'êtes pas sûr de ce que vous faites, annulez l'opération</div>
+
+        <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
+
+        <p>
+            Êtes-vous sûr de vouloir supprimer cette adresse ? Vous ne serez plus en mesure d'envoyer ou de recevoir de bitcoins à cette adresse. Le solde de celle-ci est de :
+        </p>
+
+        <h2 align="center" id="delete-balance"></h2>
+
+        <h2 id="change-mind" style="display:none;text-align:center">Vous avez <span id="change-mind-time">5</span> secondes pour changer d'avis ...</h2>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Supprimer uniquement la clé privée</button>
+            <button class="btn btn-danger">Supprimer l'adresse ainsi que la clé privée</button>
+        </div>
+    </div>
+</div>
+
+<div id="sweep-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Touches de balayage</h3>
+    </div>
+    <div class="modal-body">
+        <p>Balayer consiste à déplacer tous les fonds disponibles depuis une ou plusieurs adresses vers une autre adresse. Veuillez choisir une adresse où vous souhaiteriez balayer les adresses sélectionnées (Balance <span class="balance"></span>).</p>
+
+        <p align="center">
+        <div class="form-inline">
+            <label class="control-label">Balayer Pour:</label> <br /><select name="change"></select>
+        </div>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Continuer</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="ask-for-shared" class="modal hide">
+    <div class="modal-header">
+        <h3>Envoyer partagée?</h3>
+    </div>
+    <div class="modal-body">
+        <p>Envoyer cette transaction par le porte-monnaie partagée et obtenir un <span class="bonus-percent"></span>% de bonus (<span class="bonus-value"></span> sera renvoyé à l&#39;adresse d&#39;envoi). La transaction entraînera un retard d&#39;environ <span class="delay"></span>.</p>
+
+        <div class="alert alert-block alert-error" style="margin: 10px;">
+            N&#39;acceptez pas si vous vous attendez à recevoir un paiement en retour à l&#39;adresse d&#39;envoi. Opérations communes sont incompatibles avec SatoshiDICE, BitLotto et de nombreux jeux Bitcoin autres.
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Ne jamais me redemander.</div>
+
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Continuer sans</button>
+            <button class="btn btn-primary">Envoyer partagée?</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>Fonds insuffisants</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Cette opération ne peut pas être envoyé car il ya des fonds disponibles insufficent. Cela peut être dû à des frais supplémentaires de mineurs ou de transactions non confirmées.</p>
+
+        <p>La transaction peut être soit annulée. Ou le montant à envoyer peut être ajustée pour correspondre à la quantité maximale disponible pour envoyer.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">Requis: <span class="amount-required"></span> (Disponible: <span class="amount-available"></span>)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler Transaction</button>
+            <button class="btn btn-primary">Réglez Montant</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-for-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Frais de mineurs recommandée</h3>
+    </div>
+    <div class="modal-body">
+        <p>Cette transaction est de faible priorité. Il est recommandé d'inclure au moins 0,0005 BTC de frais de transaction afin de s'assurer que les mineurs la traiteront.</p>
+        <div class="alert alert-block alert-error" style="margin: 10px;">Si vous n'incluez aucun frais, cette opération peut prendre un certain temps à être confirmée. Tous les fonds vous seront retournés dans environ 24 heures.</div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Continuer sans frais</button>
+            <button class="btn btn-primary">Ajouter des frais</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="new-transaction-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Création d'une transaction</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center" class="loading-indicator" style="display:none;">
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+        </p>
+
+        <div class="offline-transaction" style="display:none">
+            <p>Votre transaction a été créée avec succès mais n'a pas encore été diffusée sur le réseau P2P. </p>
+
+            Pour compléter la transaction, ouvrir <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>. Copiez et collez le texte ci-dessous dans la zone de texte et appuyez sur Soumettre pour compléter la transaction. </ P>
+
+            <textarea name="data" style="width: 100%; height:100px;"></textarea>
+        </div>
+
+        <div id="tx-sign-progress" style="display:none">
+            <h4>Veuillez patienter. Signature de l'entrée numéro <span class="n">0</span> sur <span class="t"></span> …</h4>
+        </div>
+
+        <div id="review-tx" style="display:none">
+            <div class="basic">
+                <p>Veuillez confirmer que vous souhaitez : <span id="rtc-basic-summary"></span></p>
+            </div>
+
+            <div class="adv">
+                <p>Veuillez vérifier les détails ci-dessous :</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td width="110px;"><b>Hash</b></td>
+                        <td id="rtc-hash"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Version</b></td>
+                        <td id="rtc-version">1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Entrées</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Sorties</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Frais totaux</b></td>
+                        <td id="rtc-fees">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Valeur totale de sortie</b></td>
+                        <td id="rtc-value">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Laissant Porte-monnaie</b></td>
+                        <td id="rtc-effect" style="color: red">0</td>
+                    </tr>
+                </table>
+            </div>
+            <p align="right"><a class="show_adv"></a></p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Envoyer la transaction</button>
+        </div>
+    </div>
+</div>
+
+<div id="send-email-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Envoyer par courriel</h3>
+    </div>
+
+    <div class="modal-body">
+        <h3 style="padding-bottom:25px">
+            Envoyer <span class="amount"></span> BTC à <span class="email"></span> <br /> <small>Le message suivant sera envoyé au destinataire.</small>
+        </h3>
+
+        <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Envoyer le paiement</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="private-key-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Clé privée nécessaire</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Cette action nécessite la clé privée de l'adresse bitcoin <span class="address" style="font-weight:bold"></span>. Veuillez entrer la clé privée ci-dessous.</p>
+
+        <div style="width:400px;padding-left:20px;">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+            <button class="btn btn-primary">Entrez la clé privée</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-reader-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Numérisation QR Code</h3>
+    </div>
+
+    <div class="modal-body" style="padding-left:20px;overflow:hidden;">
+        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Attendez s&#39;il vous plaît ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key étirement. S&#39;il vous plaît attendre ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Restaurer instructions de sauvegarde</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+           <ul>
+              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Annuler</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
