@@ -99,7 +99,9 @@
             <li class="nav-header">Account Information</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> General</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notifications</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Passwords</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Security</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Language</h3>
-
-        <p>以下でご希望の言語を設定してください</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Local Currency</h3>
-
-        <p>右上の残高をクリックすることでビットコインおよび現地通貨間の表示を素早く切り替えることができます。</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Handle Bitcoin Links</h3>
 
         <p>Would you like to set blockchain.info as the default handler of bitcoin links? Bitcoin links (URIs) are used to automatically enter a recipient bitcoin address and send value when clicked.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Register URI Handler</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin Display</h3>
-
-        <p>Adjust the precision you would prefer bitcoin values to be displayed in.</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Language</h3>
+
+        <p>以下でご希望の言語を設定してください</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Local Currency</h3>
+
+        <p>右上の残高をクリックすることでビットコインおよび現地通貨間の表示を素早く切り替えることができます。</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Display</h3>
+
+        <p>Adjust the precision you would prefer bitcoin values to be displayed in.</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

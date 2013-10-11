@@ -99,7 +99,9 @@
             <li class="nav-header">Informatii despre cont</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Generale</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notificari</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Parole</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Securitate</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Limba</h3>
-
-        <p>Setati limba dvs. preferata de mai jos</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Moneda locala</h3>
-
-        <p>Aveti posibilitatea sa face-ti converstia rapid între bitcoins si moneda dvs. locala facând clic pe soldul dvs. în dreapta sus.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Manevrați Bitcoin Link-uri</h3>
 
         <p>Doriți să setați blockchain.info ca gestionar implicit de link-uri Bitcoin? Bitcoin link-uri (URI-uri) sunt folosite pentru a introduce automat o adresă Bitcoin destinatar și trimite valoare atunci cand este apasat.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Inregistrare Handler URI</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin Ecran</h3>
-
-        <p>Reglați precizie ați prefera valori Bitcoin să fie afișat inch</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Limba</h3>
+
+        <p>Setati limba dvs. preferata de mai jos</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Moneda locala</h3>
+
+        <p>Aveti posibilitatea sa face-ti converstia rapid între bitcoins si moneda dvs. locala facând clic pe soldul dvs. în dreapta sus.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Ecran</h3>
+
+        <p>Reglați precizie ați prefera valori Bitcoin să fie afișat inch</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

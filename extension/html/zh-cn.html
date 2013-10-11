@@ -99,7 +99,9 @@
             <li class="nav-header">帐户信息</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> 个人</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> 一般</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> 通知</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> 密码</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> 安全</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>语</h3>
-
-        <p>设置您的首选语言</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>当地货币</h3>
-
-        <p>您可以通过点击右上角的平衡称快速切换比特币和您的当地货币，。</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>处理Bitcoin的链接</h3>
 
         <p>你想作为默认的处理程序设置blockchain.info的bitcoin的链接？ Bitcoin的链接（URI）来自动输入一个收件人的Bitcoin地址及送价值点击时。</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">注册URI处理器</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin的显示</h3>
-
-        <p>调整Bitcoin的价值宁愿英寸显示精度</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>语</h3>
+
+        <p>设置您的首选语言</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>当地货币</h3>
+
+        <p>您可以通过点击右上角的平衡称快速切换比特币和您的当地货币，。</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin的显示</h3>
+
+        <p>调整Bitcoin的价值宁愿英寸显示精度</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

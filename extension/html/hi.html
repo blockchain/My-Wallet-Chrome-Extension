@@ -99,7 +99,9 @@
             <li class="nav-header">खाता जानकारी</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> व्यक्तिगत</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> सामान्य</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> अधिसूचनाएं</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> पासवर्डों</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> सुरक्षा</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>भाषा</h3>
-
-        <p>वांछित भाषा सेट नीचे</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>स्थानीय मुद्रा</h3>
-
-        <p>तुम जल्दी से सही शीर्ष पर अपने संतुलन पर क्लिक करके Bitcoins और अपने स्थानीय मुद्रा के बीच स्विच कर सकते हैं.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Bitcoin लिंक संभाल</h3>
 
         <p>आप bitcoin लिंक का डिफ़ॉल्ट हैंडलर के रूप में blockchain.info सेट करना चाहेंगे? Bitcoin लिंक (यूआरआई) स्वचालित रूप से एक प्राप्तकर्ता bitcoin पता दर्ज करें और क्लिक करने पर मूल्य भेजने के लिए इस्तेमाल कर रहे हैं.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">यूआरआइ हैंडलर रजिस्टर</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin प्रदर्शन</h3>
-
-        <p>आप अंदर प्रदर्शित करने के लिए bitcoin मूल्यों पसंद करेंगे परिशुद्धता समायोजित करें</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>भाषा</h3>
+
+        <p>वांछित भाषा सेट नीचे</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>स्थानीय मुद्रा</h3>
+
+        <p>तुम जल्दी से सही शीर्ष पर अपने संतुलन पर क्लिक करके Bitcoins और अपने स्थानीय मुद्रा के बीच स्विच कर सकते हैं.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin प्रदर्शन</h3>
+
+        <p>आप अंदर प्रदर्शित करने के लिए bitcoin मूल्यों पसंद करेंगे परिशुद्धता समायोजित करें</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

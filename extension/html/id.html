@@ -99,7 +99,9 @@
             <li class="nav-header">Informasi Akun</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Pribadi</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Umum</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Pemberitahuan</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Password</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Keamanan</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Bahasa</h3>
-
-        <p>Mengatur bahasa pilihan Anda di bawah ini</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Mata Uang Lokal</h3>
-
-        <p>Anda dapat dengan cepat beralih antara bitcoins dan mata uang lokal Anda dengan mengklik neraca di kanan atas.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Menangani Bitcoin Links</h3>
 
         <p>Apakah Anda ingin mengatur blockchain.info sebagai penangan default bitcoin link? Bitcoin link (URI) digunakan untuk secara otomatis masukkan alamat bitcoin penerima dan mengirim nilai saat diklik.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Daftar URI Handler</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin Tampilan</h3>
-
-        <p>Sesuaikan presisi Anda akan memilih nilai bitcoin yang akan ditampilkan masuk</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Bahasa</h3>
+
+        <p>Mengatur bahasa pilihan Anda di bawah ini</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Mata Uang Lokal</h3>
+
+        <p>Anda dapat dengan cepat beralih antara bitcoins dan mata uang lokal Anda dengan mengklik neraca di kanan atas.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Tampilan</h3>
+
+        <p>Sesuaikan presisi Anda akan memilih nilai bitcoin yang akan ditampilkan masuk</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

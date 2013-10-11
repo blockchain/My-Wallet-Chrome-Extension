@@ -99,7 +99,9 @@
             <li class="nav-header">Fiók Információk</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Személyes</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Általános</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Értesítések</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Jelszavak</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Biztonság</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Nyelv</h3>
-
-        <p>Állítsd be a kívánt nyelvet</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Helyi Pénznem</h3>
-
-        <p>Könnyen válthatsz bitcoin és a helyi pénznemed között jobb felül.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Fogantyú Bitcoin Linkek</h3>
 
         <p>Szeretne beállítani blockchain.info az alapértelmezett kezelő Bitcoin linkeket? Bitcoin linkek (URI) segítségével automatikusan adja meg a címzett Bitcoin-címet, és küldje érték mikor csattant.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Regisztráció URI Handler</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin Display</h3>
-
-        <p>Állítsa be a pontosság azt szeretné bitcoin értékek jelennek be</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Nyelv</h3>
+
+        <p>Állítsd be a kívánt nyelvet</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Helyi Pénznem</h3>
+
+        <p>Könnyen válthatsz bitcoin és a helyi pénznemed között jobb felül.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Display</h3>
+
+        <p>Állítsa be a pontosság azt szeretné bitcoin értékek jelennek be</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

@@ -99,7 +99,9 @@
             <li class="nav-header">Thông tin tài khoản</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Riêng</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Chung</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Thông báo</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Mật khẩu</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Bảo mật</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Ngôn ngữ</h3>
-
-        <p>Cài đặt ngôn ngữ ưa thích của bạn ở dưới đây</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Tiền tệ địa phương</h3>
-
-        <p>Bạn có thể thay đổi giữa bitcoin và tiền tệ địa phương bạn bằng cách nhấn vào số dư của bạn ở trên cùng bên phải.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Xử lý Liên kết Bitcoin</h3>
 
         <p>Bạn có muốn thiết lập blockchain.info như xử lý mặc định của liên kết Bitcoin? Bitcoin liên kết (URI) được sử dụng để tự động nhập địa chỉ Bitcoin người nhận và gửi giá trị khi nhấp vào.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Đăng ký URI Handler</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin Hiển thị</h3>
-
-        <p>Điều chỉnh chính xác bạn muốn giá trị Bitcoin được hiển thị in</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Ngôn ngữ</h3>
+
+        <p>Cài đặt ngôn ngữ ưa thích của bạn ở dưới đây</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Tiền tệ địa phương</h3>
+
+        <p>Bạn có thể thay đổi giữa bitcoin và tiền tệ địa phương bạn bằng cách nhấn vào số dư của bạn ở trên cùng bên phải.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Hiển thị</h3>
+
+        <p>Điều chỉnh chính xác bạn muốn giá trị Bitcoin được hiển thị in</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

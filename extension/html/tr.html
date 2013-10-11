@@ -99,7 +99,9 @@
             <li class="nav-header">Hesap Bilgileri</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Kişisel</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Genel</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Bildirimler</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Şifreler</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Güvenlik</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Dil</h3>
-
-        <p>Tercih ettiğiniz dili altında ayarlayın</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Yerel Para</h3>
-
-        <p>Hızla sağ üst dengenizi tıklayarak bitcoins ve yerel para birimi arasında geçiş yapabilirsiniz.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Bitcoin Linkler Kolu</h3>
 
         <p>Eğer bitcoin bağlantıların varsayılan işleyici olarak blockchain.info ayarlamak ister misiniz? Bitcoin bağlantılar (URI) otomatik olarak alıcı bitcoin adresinizi girin ve tıklandığında değer göndermek için kullanılır.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">URI Handler Kayıt</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin Ekran</h3>
-
-        <p>Eğer içeri görüntülenecek bitcoin değerleri tercih hassas ayarlama</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Dil</h3>
+
+        <p>Tercih ettiğiniz dili altında ayarlayın</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Yerel Para</h3>
+
+        <p>Hızla sağ üst dengenizi tıklayarak bitcoins ve yerel para birimi arasında geçiş yapabilirsiniz.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Ekran</h3>
+
+        <p>Eğer içeri görüntülenecek bitcoin değerleri tercih hassas ayarlama</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

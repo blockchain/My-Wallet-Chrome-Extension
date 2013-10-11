@@ -99,7 +99,9 @@
             <li class="nav-header">ข้อมูลบัญชี</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> ส่วนบุคคล</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> ทั่วไป</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> การแจ้งเตือน</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> รหัสผ่าน</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> ความปลอดภัย</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>ภาษา</h3>
-
-        <p>ตั้งภาษาที่คุณต้องการด้านล่าง</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>สกุลเงินท้องถิ่น</h3>
-
-        <p>คุณได้อย่างรวดเร็วสามารถสลับระหว่าง Bitcoins และสกุลเงินท้องถิ่นของคุณโดยคลิกสมดุลของคุณในด้านบนขวา</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>จัดการลิงค์ Bitcoin</h3>
 
         <p>คุณต้องการที่จะตั้งเป็น blockchain.info ดำเนินการเริ่มต้นของการเชื่อมโยง Bitcoin? bitcoin เชื่อมโยง (ยูริ) ถูกนำมาใช้โดยอัตโนมัติป้อนที่อยู่ Bitcoin ของผู้รับและส่งค่าเมื่อมีการคลิก</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">ลงทะเบียนจัดการ URI</button>
-    </div>
-
-    <div class="page-header">
-        <h3>แสดง bitcoin</h3>
-
-        <p>ปรับความแม่นยำคุณต้องการค่า Bitcoin ที่จะแสดงค่ะ</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>ภาษา</h3>
+
+        <p>ตั้งภาษาที่คุณต้องการด้านล่าง</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>สกุลเงินท้องถิ่น</h3>
+
+        <p>คุณได้อย่างรวดเร็วสามารถสลับระหว่าง Bitcoins และสกุลเงินท้องถิ่นของคุณโดยคลิกสมดุลของคุณในด้านบนขวา</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>แสดง bitcoin</h3>
+
+        <p>ปรับความแม่นยำคุณต้องการค่า Bitcoin ที่จะแสดงค่ะ</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

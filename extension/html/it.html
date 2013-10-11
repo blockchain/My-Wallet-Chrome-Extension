@@ -99,7 +99,9 @@
             <li class="nav-header">Informazioni sul Conto</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personale</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Generali</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notifiche</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Password</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Sicurezza</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Lingua</h3>
-
-        <p>Imposta la tua lingua preferita qui sotto</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Valuta Locale</h3>
-
-        <p>Puoi passare rapidamente da bitcoin alla tua valuta locale cliccando sul saldo nell'angolo in alto a destra.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Maneggiare Bitcoin Links</h3>
 
         <p>Volete impostare blockchain.info come gestore predefinito dei link bitcoin? Bitcoin link (URI) vengono utilizzati per immettere automaticamente un indirizzo bitcoin destinatario e inviare il valore quando si fa clic.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Registrati URI Handler</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin display</h3>
-
-        <p>Regolare la precisione si preferisce valori bitcoin da visualizzare dentro</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Lingua</h3>
+
+        <p>Imposta la tua lingua preferita qui sotto</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Valuta Locale</h3>
+
+        <p>Puoi passare rapidamente da bitcoin alla tua valuta locale cliccando sul saldo nell'angolo in alto a destra.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin display</h3>
+
+        <p>Regolare la precisione si preferisce valori bitcoin da visualizzare dentro</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

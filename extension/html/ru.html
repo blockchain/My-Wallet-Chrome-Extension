@@ -99,7 +99,9 @@
             <li class="nav-header">Информация об учетной записи</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Личный</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Общее</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Уведомления</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Пароли</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Безопасность</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Язык</h3>
-
-        <p>Установите нужный язык ниже</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Местная валюта</h3>
-
-        <p>Вы можете быстро переключаться между биткойнами и местной валютой, нажав на свой баланс в правом верхнем углу.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Ручка Bitcoin ссылки</h3>
 
         <p>Хотели бы Вы, чтобы установить blockchain.info по умолчанию обработчик ссылок Bitcoin? Bitcoin ссылки (URI), которые используются для автоматического ввода адреса получателя и отправить Bitcoin значение при нажатии.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Регистрация обработчика URI</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin дисплей</h3>
-
-        <p>Регулировка точности вы предпочитаете Bitcoin значений, которые отображаются дюйма</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Язык</h3>
+
+        <p>Установите нужный язык ниже</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Местная валюта</h3>
+
+        <p>Вы можете быстро переключаться между биткойнами и местной валютой, нажав на свой баланс в правом верхнем углу.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin дисплей</h3>
+
+        <p>Регулировка точности вы предпочитаете Bitcoin значений, которые отображаются дюйма</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

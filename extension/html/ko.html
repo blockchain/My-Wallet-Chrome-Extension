@@ -99,7 +99,9 @@
             <li class="nav-header">계정 정보</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> 개인의</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> 일반</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> 알림</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> 비밀번호</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> 보안</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>언어</h3>
-
-        <p>원하는 언어 아래를 설정</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>지역 통화</h3>
-
-        <p>당신은 신속하게 오른쪽 상단에 잔고를 클릭하여 bitcoins 및 현지 통화 사이를 전환 할 수 있습니다.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>비트 코인 링크를 처리</h3>
 
         <p>당신은 비트 코인 링크의 기본 처리기로 blockchain.info 설정 하시겠습니까? 비트 코인 링크 (URI는) 자동으로받는 비트 코인 주소를 입력하고 클릭하면 값을 전송하는 데 사용됩니다.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">URI 핸들러 등록</button>
-    </div>
-
-    <div class="page-header">
-        <h3>비트 코인 디스플레이</h3>
-
-        <p>당신이 안으로 표시 할 비트 코인 값을 선호하는 정밀도를 조정</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>언어</h3>
+
+        <p>원하는 언어 아래를 설정</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>지역 통화</h3>
+
+        <p>당신은 신속하게 오른쪽 상단에 잔고를 클릭하여 bitcoins 및 현지 통화 사이를 전환 할 수 있습니다.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>비트 코인 디스플레이</h3>
+
+        <p>당신이 안으로 표시 할 비트 코인 값을 선호하는 정밀도를 조정</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">

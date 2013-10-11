@@ -99,7 +99,9 @@
             <li class="nav-header">Πληροφορίες Λογαριασμού</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Προσωπικός</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Γενικός</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Ειδοποιήσεις</a></li>
+
             <li class="divider"></li>
             <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Οι κωδικοί πρόσβασης</a></li>
             <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Ασφάλεια</a></li>
@@ -225,35 +227,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Γλώσσα</h3>
-
-        <p>Ορίστε τη γλώσσα της προτίμησής σας παρακάτω</p>
-
-        <select id="language_select"></select>
-    </div>
-
-    <div class="page-header">
-        <h3>Τοπικό νόμισμα</h3>
-
-        <p>Μπορείτε να αλλάξετε γρήγορα ανάμεσα bitcoins και τοπικό νόμισμα κάνοντας κλικ στο πάνω δεξιά ισορροπία.</p>
-
-        <select id="local_currency"></select>
-    </div>
-
-    <div class="page-header">
         <h3>Χειριστείτε Bitcoin Links</h3>
 
         <p>Θα θέλατε να ορίσετε blockchain.info ως το προεπιλεγμένο πρόγραμμα χειρισμού του Bitcoin συνδέσμους; Bitcoin σύνδεσμοι (URIs) χρησιμοποιούνται για να εισάγετε αυτόματα μια διεύθυνση Bitcoin παραλήπτη και στείλτε αξία όταν πατηθεί.</p>
 
         <button class="btn btn-secondary" id="register-uri-handler">Εγγραφή Handler URI</button>
-    </div>
-
-    <div class="page-header">
-        <h3>Bitcoin Display</h3>
-
-        <p>Ρύθμιση της ακρίβειας θα προτιμούσατε τιμές Bitcoin να εμφανίζονται μέσα</p>
-
-        <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
@@ -306,6 +284,50 @@
         </p>
     </div>
 </div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Γλώσσα</h3>
+
+        <p>Ορίστε τη γλώσσα της προτίμησής σας παρακάτω</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Τοπικό νόμισμα</h3>
+
+        <p>Μπορείτε να αλλάξετε γρήγορα ανάμεσα bitcoins και τοπικό νόμισμα κάνοντας κλικ στο πάνω δεξιά ισορροπία.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Display</h3>
+
+        <p>Ρύθμιση της ακρίβειας θα προτιμούσατε τιμές Bitcoin να εμφανίζονται μέσα</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Transactions Per Page</h3>
+
+        <p>Set the number of transactions displayed per page</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">
