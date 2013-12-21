@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">帐户信息</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> 个人</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> 一般</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> 显示</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> 通知</a></li>
 
             <li class="divider"></li>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>每页交易</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>设置每页显示交易数量</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp存款</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp存款</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> 海妖存款</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp存款</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> 海妖存款</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">帐户设置</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>备份</h3>
@@ -962,8 +959,8 @@
                     <th>余额</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="新地址" data-content="点击此处产生一个新的比特币地址。您可以开始在这个地址接受比特币">新地址</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">前转到</th>
                     <th>到期日期</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">新的共享地址</button>
         </div>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">交易类型</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> 快速发送</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> 自定义</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> 共用的投币</a></li>
             <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> 共享发送</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> 中介</a></li>
 
             <li class="nav-header">通过发送</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS消息</a></li>
 
             <li class="nav-header">游戏</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">工具</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="地址" data-content="这是比特币的收件人地址。">到：</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">输入比特币收件人的地址</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">共用的投币<br/><small>不可信的硬币混合使用硬币连接和污点分析</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="从地址" data-content="如果需要，您可以指定从钱包的特定地址发送比特币。">来自：</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="地址" data-content="这是比特币的收件人地址。">到：</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">数量:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">重复:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">载入中</option></select>
+                    <p class="help-block">较高的重复次数，使交易更难以追查，并提高了隐私。</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="查看付款" data-content="击这里来检查付款申请。您可以确认提交或者取消交易。">查看付款</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>最大送价值:</b> <span></span><br />
+                    <b>最小送价值:</b> <span></span><br />
+                    <b>每个重复的费用百分比:</b> <span></span>%</br />
+                    <b>最小重复收费:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">出了错？</h4>
+
+        <p>
+            当发送一个共用的投币交易中间地址的一些被使用。如果有任何interupts加工或发生错误而导致交易无法完成硬币，可能会留在中间地址。点击下面的按钮来要求任何硬币留在中间地址，这个过程可能需要几分钟才能完成。
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">恢复中间地址</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="地址" data-content="这是比特币的收件人地址。">到：</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">输入比特币收件人的地址</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">数量:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="矿工费" data-content="这笔费用将被发送到比特币的矿工们，这可以帮助您的交易处理速度更快">矿工费:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">在SatoshiDICE下赌注<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a>是最流行的比特币的博彩游戏。赢取高达64,000倍于您的赌注的奖金，即时开奖。所有开奖记录可以通过blockchain验证，绝无作弊可能。</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a>是最流行的比特币的博彩游戏。赢取高达64,000倍于您的赌注的奖金，即时开奖。所有开奖记录可以通过blockchain验证，绝无作弊可能。</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>脑钱包</h3>
-
-                <p>脑钱包是私钥种子从一个难忘的密码短语。它可以记住这个密码，以恢复这个地址的资金，而无需一个钱包备份。</p>
-
-                <p>的最小密码短语的长度为15个字符。我们强烈建议您仍保持有规律的钱包备份与记忆的密码短语。</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">生成密钥</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>导入使用纸张的钱包</h3>
 
                 <p>使用您的摄像头从纸钱包扫描QR码</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>钱包第二个密码</h3>
-            </div>
-            <div class="modal-body">
-                <p>这个钱包，请输入第二个密码。</p>
-                <p align="center">
-                    <b>第二个密码:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">继续</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>加密的私有密钥</h3>
-            </div>
-            <div class="modal-body">
-                <p>已检测到加密的私钥。请输入下面的加密密码：</p>
-                <p align="center">
-                    <b>通关密语：:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">继续</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>钱包密码</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">标签：</label>
                 <div class="controls">
                     <input name="label" placeholder="标签例如储" type="text" /><p class="help-block">使用的标签，以帮助您记住这个地址是什么。它可以是一个人或公司的名称。</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">让公众？</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">默认情况下地址标签是可见的只有你。公共标签是公开可见的blockchain网站，任何人都可以查看。</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>发送共享？</h3>
-    </div>
-    <div class="modal-body">
-        <p>发送本次交易通过共享的钱包和获得<span class="bonus-percent"></span>％的奖金（<span class="bonus-value"></span>将被送回发送地址）。该交易将产生约<span class="delay"></span>的延迟。</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            不要接受，如果你希望收取款项的发送地址。共享的交易是不兼容的，与SatoshiDICE，BitLotto和许多其他Bitcoin的游戏。
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>发送共享？</h3>
+        </div>
+        <div class="modal-body">
+            <p>发送本次交易通过共享的钱包和获得<span class="bonus-percent"></span>％的奖金（<span class="bonus-value"></span>将被送回发送地址）。该交易将产生约<span class="delay"></span>的延迟。</p>
+
+            <div class="alert alert-block alert-error">
+                    不要接受，如果你希望收取款项的发送地址。共享的交易是不兼容的，与SatoshiDICE，BitLotto和许多其他Bitcoin的游戏。
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">请不要再问我了。</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">无视并继续</button>
+                <button class="btn btn-primary">发送共享？</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">请不要再问我了。</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">无视并继续</button>
-            <button class="btn btn-primary">发送共享？</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>共享投币交易“</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            完成此共享硬币交易发生错误。欲了解更多信息，请检查JavaScript控制台。
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            正在进行中的交易。不要关闭此窗口，或者关闭浏览器。
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">取消</button>
         </div>
     </div>
 </div>
@@ -2218,7 +2284,7 @@
     </div>
     <div class="modal-body">
         <p>本次交易是低优先级。我们建议您至少0.0005 比特币交易费，以确保矿工处理。</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">如果不包括的费用得到证实，这宗交易可能需要很长的时间。任何没证实的资金将在约24小时后退还给您。</div>
+        <div class="alert alert-block alert-error">如果不包括的费用得到证实，这宗交易可能需要很长的时间。任何没证实的资金将在约24小时后退还给您。</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>加密的私有密钥</h3>
+    </div>
+    <div class="modal-body">
+        <p>已检测到加密的私钥。请输入下面的加密密码：</p>
+        <p align="center">
+            <b>通关密语：:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">继续</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>Transaktioner per sida</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>Ange antalet transaktioner som visas per sida</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Insättning</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Insättning</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken Insättning</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Insättning</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken Insättning</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">Kontoinställningar</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>Säkerhetskopiering</h3>
@@ -962,8 +959,8 @@
                     <th>Balansera</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Ny adress" data-content="Klicka här för att skapa en ny Bitcoin adress. Du kan börja ta emot bitcoins i denna adress omedelbart">Ny adress</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">Framåt till</th>
                     <th>Löper ut</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Ny Delat Adress</button>
         </div>
@@ -1105,7 +1102,7 @@
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
                     <h5>Kan du inte hitta din e-kod?</h5>
 
-                    <p>E-postmeddelandet kommer att skickas från wallet@blockchain.info. Var noga med att kontrollera din skräppostmapp. Om du fortfarande inte kan hitta e-postmeddelandet klickar du på knappen nedan för att skicka det.</p>
+                    <p>Se till att kolla din skräppostmapp. Om du fortfarande inte kan hitta e-postmeddelandet klickar du på knappen nedan för att skicka det igen.</p>
 
                     <p align="center">
                         <a class="btn resend-code">Skicka länk</a>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">Transaktionstyp</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Quick Send</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Anpassad</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Delad Coin</a></li>
             <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Delad Skicka</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Depositionsavtal</a></li>
 
             <li class="nav-header">Skicka Via</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS-meddelande</a></li>
 
             <li class="nav-header">Spel</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">Verktyg</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="Att Adress" data-content="Detta är den Bitcoin adress hos mottagaren.">Till:</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">Enter The Bitcoin adress Mottagarens</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Delad Coin<br/><small>Trustless mynt blandning med mynt join och förorena analys</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="Från Adress" data-content="Om det behövs kan du välja att skicka mynt från en specifik adress i din plånbok.">Från:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Att Adress" data-content="Detta är den Bitcoin adress hos mottagaren.">Till:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Belopp:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Repetitioner:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Laddar</option></select>
+                    <p class="help-block">Ett högre antal repetitioner gör transaktionen svårare att spåra och förbättrar integritet.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Recension Betalning" data-content="Klicka här för att granska betalning. Du kommer att kunna bekräfta eller avbryta transaktionen.">Recension Betalning</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Maximal Skicka Värde:</b> <span></span><br />
+                    <b>Minsta Send Värde:</b> <span></span><br />
+                    <b>Avgift procent per Repetition:</b> <span></span>%</br />
+                    <b>Minsta avgift per Repetition:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Något gick fel?</h4>
+
+        <p>
+            När du skickar en delad mynt transaktion ett antal mellanliggande adresser används. Om något interupts processen eller ett fel förhindrar transaktionen från att slutföra mynten kan lämnas i en mellanliggande adress. Klicka på knappen nedan för att hävda några mynt kvar i mellanliggande adresser, kan den här processen ta flera minuter att slutföra.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Recover Mellanliggande Adresser</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="Att Adress" data-content="Detta är den Bitcoin adress hos mottagaren.">Till:</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">Enter The Bitcoin adress Mottagarens</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">Belopp:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="Gruvarbetare Avgift" data-content="Denna avgift kommer att skickas till Bitcoin gruvarbetarna och kan hjälpa din transaktion behandlas snabbare">Gruvarbetare Avgift:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">Vad med SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> är den mest populära Bitcoin vadslagning spel. Vinn upp till 64.000 x din insats, direkt. Alla rullar är verifierbara med blockchain.</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> är den mest populära Bitcoin vadslagning spel. Vinn upp till 64.000 x din insats, direkt. Alla rullar är verifierbara med blockchain.</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>Brain Plånbok</h3>
-
-                <p>En hjärna Plånbok är en privat nyckel ympades från en minnesvärd pass-fras. Det är möjligt att memorera detta lösenord för att återställa medlen på denna adress utan att behöva en plånbok säkerhetskopia.</p>
-
-                <p>Den minsta lösenorden längd är 15 tecken. Det rekommenderas starkt att du fortfarande hålla regelbundna plånbok säkerhetskopior även med lösenorden i minnet.</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Skapa nyckel</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>Importera användning av papper Plånbok</h3>
 
                 <p>Använd din webbkamera för att skanna en QR-kod från ett papper plånbok</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>Plånbok Second Lösenord</h3>
-            </div>
-            <div class="modal-body">
-                <p>Ange den andra lösenord för plånboken.</p>
-                <p align="center">
-                    <b>Second lösenord:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Fortsätt</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>Krypterad privat nyckel</h3>
-            </div>
-            <div class="modal-body">
-                <p>En krypterad privat nyckel har upptäckts. Ange krypteringsnyckeln lösenfras nedan:</p>
-                <p align="center">
-                    <b>Lösenordsfras::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Fortsätt</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Plånbok Lösenord</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">Tillverkare:</label>
                 <div class="controls">
                     <input name="label" placeholder="Etikett t.ex. Besparingar" type="text" /><p class="help-block">En etikett används för att hjälpa dig att komma ihåg vad denna adress är till för. Det kan vara namnet på en person eller ett företag.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Gör allmän?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">Med standardadress etiketter är synliga för bara dig. Offentliga etiketter är offentligt synliga på blockchain hemsida och kan ses av vem som helst.</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>Skicka Delad?</h3>
-    </div>
-    <div class="modal-body">
-        <p>Skicka denna transaktion igenom den delade plånboken och få ett <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> kommer att skickas tillbaka till den sändande adress). Transaktionen kommer att medföra en fördröjning på ungefär <span class="delay"></span>.</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            Acceptera inte om du förväntar dig att ta emot betalning tillbaka till den sändande adress. Delade transaktioner är oförenliga med SatoshiDICE, BitLotto och många andra spel Bitcoin.
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>Skicka Delad?</h3>
+        </div>
+        <div class="modal-body">
+            <p>Skicka denna transaktion igenom den delade plånboken och få ett <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> kommer att skickas tillbaka till den sändande adress). Transaktionen kommer att medföra en fördröjning på ungefär <span class="delay"></span>.</p>
+
+            <div class="alert alert-block alert-error">
+                    Acceptera inte om du förväntar dig att ta emot betalning tillbaka till den sändande adress. Delade transaktioner är oförenliga med SatoshiDICE, BitLotto och många andra spel Bitcoin.
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Aldrig fråga mig igen.</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">Fortsätta utan</button>
+                <button class="btn btn-primary">Skicka Delad?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Aldrig fråga mig igen.</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Fortsätta utan</button>
-            <button class="btn btn-primary">Skicka Delad?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Delad Coin Transaktion</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            Ett fel uppstod avslutad delade mynt transaktion. För ytterligare information, vänligen kontrollera javascript konsolen.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Transaktionen pågår. Stäng inte detta fönster eller avslutar webbläsaren.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Avbryt</button>
         </div>
     </div>
 </div>
@@ -2217,8 +2283,8 @@
         <h3>Gruvarbetare Avgift Rekommenderad</h3>
     </div>
     <div class="modal-body">
-        <p>Denna transaktion är låg prioritet. Det rekommenderas att du har minst en 0,0005 BTC transaktionsavgift för att säkerställa gruvarbetare bearbeta den.</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">Om du inte inkluderar en avgift denna transaktion kan ta lång tid att få bekräftat. Eventuella medel kommer att returneras till dig i ca 24 timmar.</div>
+        <p>Denna transaktion är låg prioritet. Det rekommenderas att du åtminstone en 0.0001 BTC transaktionsavgift för att säkerställa gruvarbetare bearbeta den.</p>
+        <div class="alert alert-block alert-error">Om du inte inkluderar en avgift denna transaktion kan ta lång tid att få bekräftat. Eventuella medel kommer att returneras till dig i ca 24 timmar.</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Krypterad privat nyckel</h3>
+    </div>
+    <div class="modal-body">
+        <p>En krypterad privat nyckel har upptäckts. Ange krypteringsnyckeln lösenfras nedan:</p>
+        <p align="center">
+            <b>Lösenordsfras::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Fortsätt</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

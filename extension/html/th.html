@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">ข้อมูลบัญชี</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> ส่วนบุคคล</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> ทั่วไป</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> แสดง</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> การแจ้งเตือน</a></li>
 
             <li class="divider"></li>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>รายการต่อหน้า</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>กำหนดจำนวนของการทำธุรกรรมแสดงต่อหนึ่งหน้า</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp เงินฝาก</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp เงินฝาก</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> ฝากคราเคน</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp เงินฝาก</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> ฝากคราเคน</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">การตั้งค่าบัญชี</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>สำรอง</h3>
@@ -962,8 +959,8 @@
                     <th>ยอดคงเหลือ</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="ที่อยู่ใหม่" data-content="คลิกที่นี่เพื่อสร้างที่อยู่ Bitcoin ใหม่ คุณสามารถเริ่มต้นรับ Bitcoins ไปยังที่อยู่นี้ทันที">ที่อยู่ใหม่</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">ไปข้างหน้าเพื่อ</th>
                     <th>วันที่หมดอายุใน</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">ที่อยู่ที่ใช้ร่วมกันใหม่</button>
         </div>
@@ -1105,7 +1102,7 @@
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
                     <h5>ไม่สามารถหาอีเมล์ของคุณรหัส?</h5>
 
-                    <p>อีเมล์จะถูกส่งจาก wallet@blockchain.info ให้แน่ใจว่าได้ตรวจสอบโฟลเดอร์สแปมของคุณ หากคุณยังไม่สามารถค้นหาอีเมลคลิกปุ่มด้านล่างเพื่อส่งมัน</p>
+                    <p>โปรดตรวจสอบโฟลเดอร์อีเมลขยะของคุณ หากคุณยังไม่สามารถค้นหาอีเมลคลิกที่ปุ่มด้านล่างเพื่อส่งมัน</p>
 
                     <p align="center">
                         <a class="btn resend-code">ส่งลิ้งค์</a>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">รายการประเภทที่</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> ด่วนส่ง</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> ประเพณี</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> เหรียญที่ใช้ร่วมกัน</a></li>
             <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> ที่ใช้ร่วมกันส่ง</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> escrow</a></li>
 
             <li class="nav-header">ส่งทาง</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> ข้อความ ข้อความ</a></li>
 
             <li class="nav-header">เกม</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">เครื่องมือ</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="ไปยังที่อยู่" data-content="นี่คือที่อยู่ของผู้รับ Bitcoin">ไปที่:</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">ใส่ที่อยู่ของผู้รับ Bitcoin</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">เหรียญที่ใช้ร่วมกัน<br/><small>เหรียญ Trustless ผสมใช้ร่วมเหรียญและการวิเคราะห์โรค</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="จากที่อยู่" data-content="หากจำเป็นต้องคุณสามารถเลือกที่จะส่งเหรียญจากที่อยู่เฉพาะในกระเป๋าของคุณ">จาก:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="ไปยังที่อยู่" data-content="นี่คือที่อยู่ของผู้รับ Bitcoin">ไปที่:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">จำนวน:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">ซ้ำ:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">โหลด</option></select>
+                    <p class="help-block">จำนวนที่สูงขึ้นของการทำธุรกรรมซ้ำทำให้ยากต่อการติดตามและปรับปรุงความเป็นส่วนตัว</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="วิธีการชำระเงินคิดเห็น" data-content="คลิกที่นี่เพื่อดูการชำระเงิน คุณจะสามารถที่จะยืนยันหรือยกเลิกการทำรายการ">วิธีการชำระเงินคิดเห็น</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>สูงสุดส่งค่า:</b> <span></span><br />
+                    <b>มูลค่าส่งขั้นต่ำ:</b> <span></span><br />
+                    <b>ร้อยละต่อค่าการทำซ้ำ:</b> <span></span>%</br />
+                    <b>ค่าธรรมเนียมขั้นต่ำต่อการทำซ้ำ:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">สิ่งที่ผิดพลาด?</h4>
+
+        <p>
+            เมื่อส่งธุรกรรมเหรียญที่ใช้ร่วมกันจำนวนของที่อยู่กลางถูกนำมาใช้ หากมีสิ่งใด interupts กระบวนการหรือข้อผิดพลาดจะช่วยป้องกันการทำธุรกรรมเสร็จสมบูรณ์เหรียญอาจจะเหลือที่อยู่ระหว่างกลาง คลิกที่ปุ่มด้านล่างเพื่อเรียกร้องใด ๆ เหรียญที่เหลืออยู่ในที่อยู่กลางขั้นตอนนี้อาจใช้เวลาหลายนาที
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">การกู้คืนที่อยู่ระดับกลาง</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="ไปยังที่อยู่" data-content="นี่คือที่อยู่ของผู้รับ Bitcoin">ไปที่:</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">ใส่ที่อยู่ของผู้รับ Bitcoin</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">จำนวน:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="ค่าธรรมเนียมคนงานเหมือง" data-content="ค่าธรรมเนียมนี้จะถูกส่งไปปฏิบัติ Bitcoin และสามารถช่วยทำธุรกรรมของคุณได้เร็วขึ้นการประมวลผล">ค่าธรรมเนียมคนงานเหมือง:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">เดิมพันด้วย SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> เป็นที่นิยมมากที่สุดเกมการพนัน Bitcoin ชนะได้ถึง 64,000 x เงินเดิมพันของคุณทันที ม้วนทั้งหมดอยู่ในการตรวจสอบการใช้ blockchain</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> เป็นที่นิยมมากที่สุดเกมการพนัน Bitcoin ชนะได้ถึง 64,000 x เงินเดิมพันของคุณทันที ม้วนทั้งหมดอยู่ในการตรวจสอบการใช้ blockchain</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>กระเป๋าสตางค์สมอง</h3>
-
-                <p>กระเป๋าสตางค์สมองเป็นเรือธงของหน่วยความจำส่วนตัวผ่านวลีที่สำคัญ มันเป็นไปได้ที่จะจดจำรหัสผ่านในการกู้คืนเงินทุนที่อยู่นี้โดยไม่จำเป็นต้องสำรองกระเป๋าสตางค์</p>
-
-                <p>ระยะเวลาในการส่งผ่านวลีขั้นต่ำไม่เกิน 15 อักขระ ก็ขอแนะนำว่าคุณยังคงเก็บสำรองข้อมูลปกติของกระเป๋าสตางค์ของคุณแม้จะมีผ่านวลีที่จำ-</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">สร้างคีย์</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>นำเข้าใช้ Wallet กระดาษ</h3>
 
                 <p>ใช้เว็บแคมของคุณเพื่อสแกนโค้ด QR จากกระเป๋าสตางค์ของกระดาษ</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>กระเป๋าสตางค์ของรหัสผ่านที่สอง</h3>
-            </div>
-            <div class="modal-body">
-                <p>กรุณากรอกรหัสผ่านที่สองสำหรับกระเป๋าสตางค์นี้</p>
-                <p align="center">
-                    <b>รหัสผ่านที่สอง:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">ดำเนินการต่อไป</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>กุญแจส่วนตัวที่เข้ารหัส</h3>
-            </div>
-            <div class="modal-body">
-                <p>กุญแจส่วนตัวที่เข้ารหัสได้รับการตรวจ กรุณากรอกรหัสผ่านการเข้ารหัสลับด้านล่าง:</p>
-                <p align="center">
-                    <b>รหัสผ่าน::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">ดำเนินการต่อไป</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>รหัสผ่านกระเป๋าสตางค์</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">ป้ายชื่อ:</label>
                 <div class="controls">
                     <input name="label" placeholder="ฉลากเช่นการ เงินออม" type="text" /><p class="help-block">ฉลากจะใช้ในการช่วยให้คุณจำสิ่งที่อยู่นี้สำหรับ มันอาจจะเป็นชื่อของบุคคลหรือ บริษัท</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">ทำให้สาธารณะ?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">โดยเริ่มต้นที่อยู่ป้ายปรากฏให้คุณเห็นเท่านั้น ป้ายที่สาธารณะสามารถมองเห็นสาธารณะบนเว็บไซต์ blockchain และสามารถดูได้โดยทุกคน</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>ส่งที่ใช้ร่วมกัน?</h3>
-    </div>
-    <div class="modal-body">
-        <p>ส่งรายการนี้ผ่านทางกระเป๋าสตางค์ที่ใช้ร่วมกันและได้รับโบนัส% <span class="bonus-percent"></span> (<span class="bonus-value"></span> จะถูกส่งกลับไปยังที่อยู่การส่ง) การทำธุรกรรมจะมีความล่าช้าประมาณ <span class="delay"></span></p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            ไม่ยอมรับถ้าคุณคาดหวังที่จะได้รับการชำระเงินกลับไปยังที่อยู่ส่ง การทำธุรกรรมที่ใช้ร่วมกันจะเข้ากันกับ SatoshiDICE, BitLotto และหลายเกมอื่น ๆ Bitcoin
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>ส่งที่ใช้ร่วมกัน?</h3>
+        </div>
+        <div class="modal-body">
+            <p>ส่งรายการนี้ผ่านทางกระเป๋าสตางค์ที่ใช้ร่วมกันและได้รับโบนัส% <span class="bonus-percent"></span> (<span class="bonus-value"></span> จะถูกส่งกลับไปยังที่อยู่การส่ง) การทำธุรกรรมจะมีความล่าช้าประมาณ <span class="delay"></span></p>
+
+            <div class="alert alert-block alert-error">
+                    ไม่ยอมรับถ้าคุณคาดหวังที่จะได้รับการชำระเงินกลับไปยังที่อยู่ส่ง การทำธุรกรรมที่ใช้ร่วมกันจะเข้ากันกับ SatoshiDICE, BitLotto และหลายเกมอื่น ๆ Bitcoin
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">ไม่เคยถามฉันอีก</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">ดำเนินการต่อโดยไม่ต้อง</button>
+                <button class="btn btn-primary">ส่งที่ใช้ร่วมกัน?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">ไม่เคยถามฉันอีก</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">ดำเนินการต่อโดยไม่ต้อง</button>
-            <button class="btn btn-primary">ส่งที่ใช้ร่วมกัน?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>รายการเหรียญที่ใช้ร่วมกัน</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            เกิดข้อผิดพลาดเสร็จสิ้นการทำธุรกรรมเหรียญนี้ที่ใช้ร่วมกัน สำหรับข้อมูลเพิ่มเติมโปรดตรวจสอบคอนโซล JavaScript
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            ความคืบหน้าในการทำธุรกรรม ไม่ต้องปิดหน้าต่างนี้หรือออกจากเบราว์เซอร์ของคุณ
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">ยกเลิก</button>
         </div>
     </div>
 </div>
@@ -2218,7 +2284,7 @@
     </div>
     <div class="modal-body">
         <p>รายการดังกล่าวนี้มีความสำคัญต่ำ ขอแนะนำให้คุณอย่างน้อยต้องประกอบด้วยค่าใช้จ่ายของการทำธุรกรรมเพื่อให้แน่ใจว่าคนงานเหมือง 0.0005 กระบวนการ BTC</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">หากคุณไม่ได้รวมค่าทำรายการนี้อาจต้องใช้เวลานานที่จะได้รับการยืนยัน เงินจะถูกส่งกลับให้คุณในเวลาประมาณ 24 ชั่วโมง</div>
+        <div class="alert alert-block alert-error">หากคุณไม่ได้รวมค่าทำรายการนี้อาจต้องใช้เวลานานที่จะได้รับการยืนยัน เงินจะถูกส่งกลับให้คุณในเวลาประมาณ 24 ชั่วโมง</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>กุญแจส่วนตัวที่เข้ารหัส</h3>
+    </div>
+    <div class="modal-body">
+        <p>กุญแจส่วนตัวที่เข้ารหัสได้รับการตรวจ กรุณากรอกรหัสผ่านการเข้ารหัสลับด้านล่าง:</p>
+        <p align="center">
+            <b>รหัสผ่าน::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">ดำเนินการต่อไป</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

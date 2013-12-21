@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">Информация за профила</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Личен</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Общ</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Дисплей</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Известия</a></li>
 
             <li class="divider"></li>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>Сделки на страница</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>Задаване на броя на сделките, показани на страница</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Депозит</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Депозит</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken Депозит</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp Депозит</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken Депозит</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">Настройки на профила</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>Архивиране</h3>
@@ -962,8 +959,8 @@
                     <th>Баланс</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Нов адрес" data-content="Щракнете тук, за да се генерира нов адрес bitcoin. Можете да започнете да получавате bitcoins в този адрес веднага">Нов адрес</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">С нетърпение</th>
                     <th>Изтича В</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Нов споделената адресна</button>
         </div>
@@ -1105,7 +1102,7 @@
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
                     <h5>Не можете да намерите Вашият email кодекс?</h5>
 
-                    <p>За електронна поща ще бъде изпратено от wallet@blockchain.info. Не забравяйте да проверите папката за спам. Ако все още не можете да намерите имейл щракнете върху бутона по-долу, за да го изпрати отново.</p>
+                    <p>Не забравяйте да проверите вашата спам папка. Ако все още не можете да намерите имейл щракнете върху бутона по-долу, за да го изпрати отново.</p>
 
                     <p align="center">
                         <a class="btn resend-code">Преизпрати Link</a>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">Тип на транзакцията</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Бързо Изпрати</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Обичай</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Споделени Coin</a></li>
             <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Споделени Изпрати</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Ескроу</a></li>
 
             <li class="nav-header">Изпращане чрез</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS съобщение</a></li>
 
             <li class="nav-header">Игри</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">Инструменти</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="На адрес" data-content="Това е Bitcoin адреса на получателя.">До:</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">Въведете Bitcoin адреса на получателя</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Споделени Coin<br/><small>Недоверчив монета смесване използване монета съвместен и анализ покварата</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="От Адрес" data-content="Ако е необходимо, можете да изберете да изпратите монети от конкретен адрес в портфейла си.">От:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="На адрес" data-content="Това е Bitcoin адреса на получателя.">До:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Размер:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Повторенията:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Товарене</option></select>
+                    <p class="help-block">По-голям брой повторения прави операцията по-трудно да се проследи и подобрява поверителност.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Мнение плащане" data-content="Щракнете тук, за да преразгледа плащане. Вие ще бъдете в състояние да потвърди или отмени сделката.">Мнение плащане</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Максимална Изпрати Стойност:</b> <span></span><br />
+                    <b>Минимална Send Стойност:</b> <span></span><br />
+                    <b>Такса Percent Per Повторение:</b> <span></span>%</br />
+                    <b>Минимална такса за Повторение:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Нещо се обърка?</h4>
+
+        <p>
+            При изпращане на споделеното сделката монета редица междинни адреси се използват. Ако нещо interupts на преработени или грешка пречи на сделката от попълването на монетите може да се остави в междинно адрес. Щракнете върху бутона по-долу, за да претендира за монети, останали в междинни адреси, този процес може да отнеме няколко минути.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Възстановяване на Междинните Адреси</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="На адрес" data-content="Това е Bitcoin адреса на получателя.">До:</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">Въведете Bitcoin адреса на получателя</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">Размер:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="Миньорите Такса" data-content="Тази такса ще бъдат изпратени на миньорите bitcoin и може да помогне сделката да се обработват по-бързо">Миньорите Такса:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">Залог с SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> е най-популярният bitcoin залагания игра. Спечелете до 64 000 х залога си, мигновено. Всички ролки могат да бъдат проверени с помощта на blockchain.</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> е най-популярният bitcoin залагания игра. Спечелете до 64 000 х залога си, мигновено. Всички ролки могат да бъдат проверени с помощта на blockchain.</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>Мозъчен Wallet</h3>
-
-                <p>Портфейл на мозъка е частен ключ със семена от едно незабравимо преминаване фраза. Възможно е да запомните тази парола, за да възстанови средствата на този адрес, без да е необходимо архивиране на портфейла.</p>
-
-                <p>Минималната преминаване фраза дължина е 15 символа. Тя е силно препоръчително, все още се водят редовно архивиране портфейла дори и с преминаване фраза запаметява.</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Генериране на ключ</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>Внос Използването на хартия Wallet</h3>
 
                 <p>Използвайте вашата уеб камера за сканиране на QR кода от портфейла на хартия</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>Wallet Втори парола</h3>
-            </div>
-            <div class="modal-body">
-                <p>Моля, въведете втората парола за този портфейл.</p>
-                <p align="center">
-                    <b>Второ парола:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Продължи</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>Encrypted частен ключ</h3>
-            </div>
-            <div class="modal-body">
-                <p>Един криптирана частният ключ е бил открит. Моля, въведете криптиране парола по-долу:</p>
-                <p align="center">
-                    <b>Фраза за достъп::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Продължи</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Wallet парола</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">Издател:</label>
                 <div class="controls">
                     <input name="label" placeholder="Label напр. Спестявания" type="text" /><p class="help-block">Се използва етикет, за да ви помогне да запомни какво е този адрес. Тя може да бъде на името на лице или фирма.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Направете Public?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">По подразбиране адрес етикетите са видими само за вас. Обществени етикети са публично видими на интернет страницата на blockchain и могат да бъдат гледани от никого.</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>Изпрати споделено?</h3>
-    </div>
-    <div class="modal-body">
-        <p>Изпрати тази сделка чрез споделената портфейла и получи <span class="bonus-percent"></span>% бонус (<span class="bonus-value"></span> ще бъдат изпратени обратно в изпращащата адрес). Сделката ще понесат закъснение от около <span class="delay"></span>.</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            Да не се приема, ако очаквате да получите на плащане на изпращащата адрес. Споделени сделки са несъвместими с SatoshiDICE, BitLotto и много други игри bitcoin.
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>Изпрати споделено?</h3>
+        </div>
+        <div class="modal-body">
+            <p>Изпрати тази сделка чрез споделената портфейла и получи <span class="bonus-percent"></span>% бонус (<span class="bonus-value"></span> ще бъдат изпратени обратно в изпращащата адрес). Сделката ще понесат закъснение от около <span class="delay"></span>.</p>
+
+            <div class="alert alert-block alert-error">
+                    Да не се приема, ако очаквате да получите на плащане на изпращащата адрес. Споделени сделки са несъвместими с SatoshiDICE, BitLotto и много други игри bitcoin.
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Никога не ме питай отново.</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">Продължи без</button>
+                <button class="btn btn-primary">Изпрати споделено?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Никога не ме питай отново.</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Продължи без</button>
-            <button class="btn btn-primary">Изпрати споделено?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Споделени Coin транзакция</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            Възникна грешка при попълването на настоящата обща сделка монета. За допълнителна информация, моля, проверете конзолата JavaScript.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Транзакциите в прогрес. Не затваряйте този прозорец или излезете от вашия браузър.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Отказ</button>
         </div>
     </div>
 </div>
@@ -2217,8 +2283,8 @@
         <h3>Миньорите Такса Рекомендуем</h3>
     </div>
     <div class="modal-body">
-        <p>Тази сделка е с нисък приоритет. Препоръчително е да включват най-малко 0.0005 БТК такса за сделка, за да се гарантира миньори я обработва.</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">Ако не включва такса тази сделка може да отнеме дълго време, за да се потвърди. Всички средства ще бъдат върнати в около 24 часа.</div>
+        <p>Тази сделка е с нисък приоритет. Препоръчва се да включва най-малкото БТК такса транзакция 0.0001, с цел да се гарантира, миньори го обработват.</p>
+        <div class="alert alert-block alert-error">Ако не включва такса тази сделка може да отнеме дълго време, за да се потвърди. Всички средства ще бъдат върнати в около 24 часа.</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Encrypted частен ключ</h3>
+    </div>
+    <div class="modal-body">
+        <p>Един криптирана частният ключ е бил открит. Моля, въведете криптиране парола по-долу:</p>
+        <p align="center">
+            <b>Фраза за достъп::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Продължи</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

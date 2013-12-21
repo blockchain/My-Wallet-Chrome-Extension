@@ -18,7 +18,7 @@ if $DOWNLOAD_HTML ; then
 	for i in "${array[@]}"
 	do
 		echo $i
-		wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&no_header=true&type=chrome"
+		wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&enable_partners=false&no_header=true&type=chrome"
 	done
 fi
 
@@ -77,6 +77,16 @@ cp $RESOURCE_DIR/email_16.gif ./Resources/
 cp $RESOURCE_DIR/sms_16.png ./Resources/
 cp $RESOURCE_DIR/google_16.png ./Resources/
 cp $RESOURCE_DIR/paper-wallet-reminder.png ./Resources/
+cp $RESOURCE_DIR/refresh-black-32.png ./Resources/
+
+
+#Sharedcoin
+cp $RESOURCE_DIR/sharedcoin_logo_circle.png ./Resources/
+cp $RESOURCE_DIR/loading-large.gif ./Resources/
+
+#Temp Ads
+cp $RESOURCE_DIR/kraken-logo-small.png ./Resources/
+
 
 cp $RESOURCE_DIR/bootstrap-responsive.min.css ./Resources/
 cp $RESOURCE_DIR/bootstrap.min.css ./Resources/
@@ -93,7 +103,6 @@ cp $RESOURCE_DIR/flags/eu.png ./Resources/flags/
 
 #wallet resource
 mkdir ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/camcanvas.swf ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/shared.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/bitcoinjs.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/wallet.min.js ./Resources/wallet/
@@ -105,7 +114,7 @@ cp $RESOURCE_DIR/wallet/import-export.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/account.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/frame-modal.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/address_modal.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/jquery-2.0.0.min.js ./Resources/wallet/jquery.min.js
+cp $RESOURCE_DIR/wallet/jquery-2.0.3.min.js ./Resources/wallet/jquery.min.js
 cp $RESOURCE_DIR/wallet/bootstrap.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/blockchainapi.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/chrome.js ./Resources/wallet/
@@ -119,6 +128,8 @@ cp $RESOURCE_DIR/wallet/paper-wallet.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jspdf.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/taint_grouping.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/filesaver.min.js ./Resources/wallet/
+cp $RESOURCE_DIR/wallet/sharedcoin.min.js ./Resources/wallet/
+cp "$RESOURCE_DIR/wallet/poll-for-session-guid.min.js" ./Resources/wallet/
 
 #icons
 cp $RESOURCE_DIR/cube48.png ./Resources/

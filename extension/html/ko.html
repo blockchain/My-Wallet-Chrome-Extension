@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">계정 정보</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> 개인의</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> 일반</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> 디스플레이</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> 알림</a></li>
 
             <li class="divider"></li>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>페이지 당 거래</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>페이지 당 표시되는 트랜잭션의 수를 설정</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">보증금 Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">보증금 Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> 크라켄 예금</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">보증금 Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> 크라켄 예금</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">계정 설정</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>백업</h3>
@@ -962,8 +959,8 @@
                     <th>잔액</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="새 주소" data-content="새로운 bitcoin 주소를 생성하기 위해 여기를 클릭하십시오. 당신은 즉시이 주소에 bitcoins을 받고 시작할 수 있습니다">새 주소</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">전달하려면</th>
                     <th>년 만기</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">새 공유 주소</button>
         </div>
@@ -1105,7 +1102,7 @@
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
                     <h5>이메일 코드를 찾을 수없는 이유는 무엇입니까?</h5>
 
-                    <p>이메일 wallet@blockchain.info에서 전송됩니다. 스팸 폴더를 확인하시기 바랍니다. 그래도 찾을 수없는 경우 이메일을 다시 보내려면 아래 버튼을 클릭하십시오.</p>
+                    <p>스팸 폴더를 확인해야합니다. 당신은 여전히​​ 찾을 수없는 경우 이메일을 다시 보내 아래의 버튼을 클릭합니다.</p>
 
                     <p align="center">
                         <a class="btn resend-code">링크 보내기</a>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">거래 유형</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> 빠른 보내기</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> 관습</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> 공유 코인</a></li>
             <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> 보내기 공유</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> 조건부 날인 증서</a></li>
 
             <li class="nav-header">통해 보내기</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS 메시지</a></li>
 
             <li class="nav-header">게임</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">도구</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="주소로" data-content="이 사람의 Bitcoin 주소입니다.">받는 사람 :</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">받는 사람의 Bitcoin 주소를 입력</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">공유 코인<br/><small>혼합 신용이없는 동전 동전 참여하고 더러운 분석을 사용하여</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="주소에서" data-content="필요한 경우 당신 지갑에서 특정 주소에서 동전을 보낼 수 있습니다.">보낸 사람 :</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="주소로" data-content="이 사람의 Bitcoin 주소입니다.">받는 사람 :</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">양:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">반복:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">로드</option></select>
+                    <p class="help-block">반복의 숫자가 높을 추적 할 트랜잭션이 더 어려워 및 개인 정보 보호를 향상시킵니다.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="검토 지급" data-content="지불을 검토하려면 여기를 클릭하십시오. 당신은 거래를 확인하거나 취소 할 수 있습니다.">검토 지급</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>값을 전송 최대:</b> <span></span><br />
+                    <b>최소 보내기 가치:</b> <span></span><br />
+                    <b>반복 당 비용 비율:</b> <span></span>%</br />
+                    <b>반복 당 최소 비용:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">뭔가 잘못 됐어요?</h4>
+
+        <p>
+            공유 동전 거래를 보낼 때 중간 주소의 번호가 사용됩니다. 아무것도 프로세스를 interrupts를하거나 오류가 동전을 완료 트랜잭션이없는 경우 중간 주소에 남아있을 수 있습니다. 중간 주소에 남아있는 동전을 주장하려면 아래 버튼을 클릭하여이 프로세스를 완료하는 데 몇 분 정도 걸릴 수 있습니다.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">중급 주소를 복구</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="주소로" data-content="이 사람의 Bitcoin 주소입니다.">받는 사람 :</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">받는 사람의 Bitcoin 주소를 입력</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">양:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="광부 요금" data-content="이 요금은 bitcoin의 광부로 전송되고 트랜잭션이 빠르게 처리 될 수 있습니다">광부 요금:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">SatoshiDICE으로 걸어<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> 가장 인기있는 bitcoin 베팅 게임이다. 즉시 64,000 X 내기, 최대 이겼다. 모든 롤 blockchain를 사용하여 검증합니다.</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> 가장 인기있는 bitcoin 베팅 게임이다. 즉시 64,000 X 내기, 최대 이겼다. 모든 롤 blockchain를 사용하여 검증합니다.</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>뇌 지갑</h3>
-
-                <p>뇌 지갑 패스 - 문구 기억에 남는에서 놓는 개인 키입니다. 이 지갑 백업을 필요하지 않고이 주소로 자금을 복원하기 위해이 암호를 기억 할 수 있습니다.</p>
-
-                <p>최소 패스 - 구문 길이는 15 자입니다. 그것은 매우 당신이 아직까지 패스 - 문구 기억와 함께 정기적으로 지갑 백업을 유지하는 것이 좋습니다.</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">키를 생성</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>종이 지갑을 사용하여 가져 오기</h3>
 
                 <p>종이 지갑에서 QR 코드를 스캔하여 웹캠을 사용하여</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>지갑 두 번째 비밀</h3>
-            </div>
-            <div class="modal-body">
-                <p>이 지갑 두 번째 암호를 입력하십시오.</p>
-                <p align="center">
-                    <b>두 번째 비밀:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">계속</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>암호화 된 개인 키</h3>
-            </div>
-            <div class="modal-body">
-                <p>암호화 된 개인 키가 감지되었습니다. 암호화 아래에 암호를 입력하십시오 :</p>
-                <p align="center">
-                    <b>암호 ::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">계속</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>지갑 암호</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">레이블 :</label>
                 <div class="controls">
                     <input name="label" placeholder="라벨 예 저금" type="text" /><p class="help-block">라벨은이 주소입니다 기억하는 데 사용됩니다. 이 개인이나 기업의 이름이 사용될 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">공공을?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">기본 주소 라벨 만 볼 수 있습니다. 공개 라벨은 blockchain 웹 사이트에 공개적으로 볼 수 있습니다 누구나 볼 수 있습니다.</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>공유 보내시겠습니까?</h3>
-    </div>
-    <div class="modal-body">
-        <p>공유 지갑 통해 트랜잭션을 보내고 <span class="bonus-percent"></span> % 보너스 (<span class="bonus-value"></span> 보내는 주소로 전송됩니다)를 얻을. 거래는 약 <span class="delay"></span>의 지연이 발생합니다.</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            당신이 보내는 주소로 지불을받을 것으로 예상하는 경우 허용되지 않습니다. 공유 거래 SatoshiDICE, BitLotto 및 다른 많은 bitcoin 게임과 호환됩니다.
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>공유 보내시겠습니까?</h3>
+        </div>
+        <div class="modal-body">
+            <p>공유 지갑 통해 트랜잭션을 보내고 <span class="bonus-percent"></span> % 보너스 (<span class="bonus-value"></span> 보내는 주소로 전송됩니다)를 얻을. 거래는 약 <span class="delay"></span>의 지연이 발생합니다.</p>
+
+            <div class="alert alert-block alert-error">
+                    당신이 보내는 주소로 지불을받을 것으로 예상하는 경우 허용되지 않습니다. 공유 거래 SatoshiDICE, BitLotto 및 다른 많은 bitcoin 게임과 호환됩니다.
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">다시 묻지 마십시오.</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">없이 계속</button>
+                <button class="btn btn-primary">공유 보내시겠습니까?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">다시 묻지 마십시오.</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">없이 계속</button>
-            <button class="btn btn-primary">공유 보내시겠습니까?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>공유 코인 거래</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            오류가이 공유 동전 트랜잭션을 완료 발생했습니다. 자세한 내용은 자바 스크립트 콘솔을 확인하시기 바랍니다.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            진행중인 트랜잭션. 이 창을 닫거나 브라우저를 종료하지 마십시오.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">취소</button>
         </div>
     </div>
 </div>
@@ -2217,8 +2283,8 @@
         <h3>광부 요금 추천</h3>
     </div>
     <div class="modal-body">
-        <p>이 거래는 낮은 우선 순위입니다. 그것은 당신이 광부가 처리되도록하려면 최소 0.0005 BTC 수수료를 포함하는 것이 좋습니다.</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">당신이 요금을 포함하지 않는 경우이 거래 확인하려면 시간이 오래 걸릴 수 있습니다. 모든 기금은 약 24 시간에서 당신에게 반환됩니다.</div>
+        <p>이 거래는 낮은 우선 순위입니다. 그것은 당신이 광부를 처리 할 수​​ 있도록하기 위해 적어도 0.0001 BTC 거래 수수료를 포함하는 것이 좋습니다.</p>
+        <div class="alert alert-block alert-error">당신이 요금을 포함하지 않는 경우이 거래 확인하려면 시간이 오래 걸릴 수 있습니다. 모든 기금은 약 24 시간에서 당신에게 반환됩니다.</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>암호화 된 개인 키</h3>
+    </div>
+    <div class="modal-body">
+        <p>암호화 된 개인 키가 감지되었습니다. 암호화 아래에 암호를 입력하십시오 :</p>
+        <p align="center">
+            <b>암호 ::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">계속</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

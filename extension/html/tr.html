@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">Hesap Bilgileri</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Kişisel</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Genel</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Ekran</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Bildirimler</a></li>
 
             <li class="divider"></li>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>Sayfa başına İşlemler</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>Sayfa başına görüntülenen işlem sayısı ayarlayın</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Mevduat Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Mevduat Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken Mevduat</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Mevduat Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken Mevduat</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">Hesap Ayarları</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>Yedekleme</h3>
@@ -962,8 +959,8 @@
                     <th>Bakiye</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Yeni Adres" data-content="Yeni Bitcoin adresini oluşturmak için buraya tıklayın. Sen hemen bu adrese bitcoins almaya başlayabilir">Yeni Adres</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">İleri için</th>
                     <th>In Bitiş</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Yeni Paylaşılan Adres</button>
         </div>
@@ -1105,7 +1102,7 @@
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
                     <h5>E-Posta Kodu Bulamıyor musunuz?</h5>
 
-                    <p>E wallet@blockchain.info gönderilmiş olacaktır. Spam klasörüne kontrol ettiğinizden emin olun. Eğer hala bulamadıysanız e-posta bu mesajı için aşağıdaki düğmeyi tıklayın.</p>
+                    <p>Spam klasörünü kontrol ettiğinizden emin olun. Eğer hala bulamadıysanız e-posta yeniden göndermek için aşağıdaki butonuna tıklayınız.</p>
 
                     <p align="center">
                         <a class="btn resend-code">Bağlantı tekrar gönderme</a>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">İşlem Türü</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Hızlı Gönder</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Görenek</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Ortak Para</a></li>
             <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Gönder Paylaşılan</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Emanet</a></li>
 
             <li class="nav-header">Via Gönder</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS Mesaj</a></li>
 
             <li class="nav-header">Oyunlar</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">Araçlar</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="To Address" data-content="Bu alıcının Bitcoin Adres.">Için:</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">Alıcının Bitcoin Adresini girin</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Ortak Para<br/><small>Karıştırma Trustless para para katılmak ve kusur analizi</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="Adres Gönderen" data-content="Gerekirse size cüzdan belirli bir adresten paralar göndermeyi seçebilirsiniz.">Gönderen:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="To Address" data-content="Bu alıcının Bitcoin Adres.">Için:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Miktar:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Tekrarlar:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Yükleme</option></select>
+                    <p class="help-block">Tekrar bir daha fazla sayıda izlemek için işlem daha zor hale getirir ve gizlilik geliştirir.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="İnceleme Ödeme" data-content="Ödeme incelemek için tıklayın. Siz işlemi onaylamak veya iptal etmek mümkün olacak.">İnceleme Ödeme</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Değer Gönder Maksimum:</b> <span></span><br />
+                    <b>Minimum Gönder Değer:</b> <span></span><br />
+                    <b>Tekrar Başına Ücret Yüzde:</b> <span></span>%</br />
+                    <b>Tekrar Ortalama Minimum:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Bir şeyler ters gitti?</h4>
+
+        <p>
+            Ortak bir para işlem gönderirken ara adresleri bir dizi kullanılır. Şey süreci interupts veya bir hata paraları tamamlamanızı işlem engelleyen ise bir ara adresi kalmış olabilir. Ara adresleri kalan herhangi bir para talep için aşağıdaki butona tıklayın, bu işlemin tamamlanması birkaç dakika sürebilir.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Orta Adresleri kurtarmak</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="To Address" data-content="Bu alıcının Bitcoin Adres.">Için:</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">Alıcının Bitcoin Adresini girin</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">Miktar:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="Madenciler Ücreti" data-content="Bu ücret Bitcoin madenciler gönderilir ve işlem daha hızlı işlenebilir yardımcı olabilir">Madenciler Ücreti:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">SatoshiDICE ile Bet<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> en popüler Bitcoin bahis oyunudur. Anında 64.000 x bahsinizi kadar kazanın. Tüm rulo blockchain kullanılarak doğrulanabilir.</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> en popüler Bitcoin bahis oyunudur. Anında 64.000 x bahsinizi kadar kazanın. Tüm rulo blockchain kullanılarak doğrulanabilir.</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>Beyin Cüzdan</h3>
-
-                <p>Beyin Cüzdan pass-phrase unutulmaz gelen seribaşı özel bir anahtardır. Bir cüzdan yedekleme gerek kalmadan bu adreste fon geri yüklemek için bu şifre ezberlemek mümkündür.</p>
-
-                <p>Minimum pass-phrase uzunluğu 15 karakterdir. Oldukça bile hala pass-phrase ezberlemiş düzenli cüzdan yedeklerini önerilir.</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Anahtar Oluştur</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>Kağıt Cüzdan kullanma İthalat</h3>
 
                 <p>Bir kağıt cüzdan bir QR kodu tarama için Webcam kullanın</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>Cüzdan İkinci Şifre</h3>
-            </div>
-            <div class="modal-body">
-                <p>Bu cüzdan için ikinci bir parola girin.</p>
-                <p align="center">
-                    <b>Ikinci bir şifre:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Devam etmek</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>Şifreli Özel Anahtar</h3>
-            </div>
-            <div class="modal-body">
-                <p>Şifreli özel anahtar tespit edildi. Şifreleme parolanızı aşağıya girin:</p>
-                <p align="center">
-                    <b>Parola::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Devam etmek</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Cüzdan Şifre</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">Etiket:</label>
                 <div class="controls">
                     <input name="label" placeholder="Etiket örneğin Tasarruf" type="text" /><p class="help-block">Bir etiket bu adres için ne olduğunu hatırlamanıza yardımcı olması için kullanılır. Bir kişi ya da şirketin adı olabilir.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Genel Yap?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">Standart adresine göre etiketler sadece size görünür. Kamu etiketler blockchain sitesinde kamuya görünür ve herkes tarafından görülebilir.</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>Paylaşılan gönder?</h3>
-    </div>
-    <div class="modal-body">
-        <p>Paylaşılan cüzdan ile bu işlem Gönder ve bir <span class="bonus-percent"></span>% bonusu (<span class="bonus-value"></span> gönderen adrese geri gönderilecektir) olsun. İşlem yaklaşık <span class="delay"></span> bir gecikme tabidir.</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            Eğer gönderen adrese ödeme almak için beklemek durumunda kabul etmeyin. Paylaşılan işlemleri SatoshiDICE, BitLotto ve diğer birçok Bitcoin oyunları ile uyumsuz.
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>Paylaşılan gönder?</h3>
+        </div>
+        <div class="modal-body">
+            <p>Paylaşılan cüzdan ile bu işlem Gönder ve bir <span class="bonus-percent"></span>% bonusu (<span class="bonus-value"></span> gönderen adrese geri gönderilecektir) olsun. İşlem yaklaşık <span class="delay"></span> bir gecikme tabidir.</p>
+
+            <div class="alert alert-block alert-error">
+                    Eğer gönderen adrese ödeme almak için beklemek durumunda kabul etmeyin. Paylaşılan işlemleri SatoshiDICE, BitLotto ve diğer birçok Bitcoin oyunları ile uyumsuz.
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Daha asla sorma.</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">Olmadan devam</button>
+                <button class="btn btn-primary">Paylaşılan gönder?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Daha asla sorma.</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Olmadan devam</button>
-            <button class="btn btn-primary">Paylaşılan gönder?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Ortak Para İşlem</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            Bir hata bu ortak para işlemi tamamladıktan oluştu. Daha fazla bilgi için javascript konsolu kontrol edin.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Devam işlem. Bu pencereyi kapatmak veya tarayıcınız çıkmayın.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Iptal</button>
         </div>
     </div>
 </div>
@@ -2217,8 +2283,8 @@
         <h3>Madenciler Ücret Tavsiye</h3>
     </div>
     <div class="modal-body">
-        <p>Bu işlem düşük öncelikli olduğunu. Bu madenciler işlemesini sağlamak için en az 0.0005 BTC işlem ücreti dahildir önerilir.</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">Eğer bir ücret dahil etmezseniz bu işlemin teyit almak için uzun bir zaman alabilir. Herhangi bir fon yaklaşık 24 saat içinde size iade edilecektir.</div>
+        <p>Bu işlem düşük öncelikli olduğunu. Bu madenciler işlemek sağlamak için en az bir 0.0001 BTC işlem ücreti dahildir tavsiye edilir.</p>
+        <div class="alert alert-block alert-error">Eğer bir ücret dahil etmezseniz bu işlemin teyit almak için uzun bir zaman alabilir. Herhangi bir fon yaklaşık 24 saat içinde size iade edilecektir.</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Şifreli Özel Anahtar</h3>
+    </div>
+    <div class="modal-body">
+        <p>Şifreli özel anahtar tespit edildi. Şifreleme parolanızı aşağıya girin:</p>
+        <p align="center">
+            <b>Parola::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Devam etmek</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

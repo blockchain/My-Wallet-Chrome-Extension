@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">खाता जानकारी</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> व्यक्तिगत</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> सामान्य</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> प्रदर्शन</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> अधिसूचनाएं</a></li>
 
             <li class="divider"></li>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>प्रति पेज लेनदेन</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>प्रति पृष्ठ प्रदर्शित लेनदेन की संख्या सेट करें</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">जमा Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">जमा Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken जमा</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">जमा Bitstamp</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken जमा</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">खाता सेटिंग्स</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>बैकअप</h3>
@@ -962,8 +959,8 @@
                     <th>शेष</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="नई पता" data-content="एक नया bitcoin पता जनरेट करने के लिए यहाँ क्लिक करें। तुम तुरंत bitcoins इस पते पर प्राप्त करना शुरू कर सकते हैं">नई पता</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">अग्रेषित करने के लिए</th>
                     <th>में समाप्त हो रहा</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">नई साझा पता</button>
         </div>
@@ -1105,7 +1102,7 @@
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
                     <h5>आप पा सकते हैं अपने ई-कोड ?</h5>
 
-                    <p>इस ईमेल wallet@blockchain.info से भेजा जाएगा. अपने स्पैम फ़ोल्डर की जाँच करने के लिए सुनिश्चित करें. यदि आप अभी भी नहीं मिल सकता है ईमेल नीचे दिए गए बटन पर क्लिक करने के लिए यह resend.</p>
+                    <p>अपने स्पैम फ़ोल्डर की जाँच करने के लिए सुनिश्चित करें. अगर आप अभी भी नहीं मिल सकता है ईमेल यह पुन: भेजने के लिए नीचे दिए गए बटन पर क्लिक करें.</p>
 
                     <p align="center">
                         <a class="btn resend-code">लिंक भेज फिर से</a>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">लेन - देन के प्रकार</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> त्वरित भेजें</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> रिवाज</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> साझा सिक्का</a></li>
             <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> भेजें साझा</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> एस्क्रौ</a></li>
 
             <li class="nav-header">इसके माध्यम से भेजें</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> एसएमएस संदेश</a></li>
 
             <li class="nav-header">खेल</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">उपकरण</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="करने के लिए पता" data-content="यह Bitcoin-प्राप्तकर्ता पता है.">करने के लिए:</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">प्राप्तकर्ता के Bitcoin पता दर्ज करें</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">साझा सिक्का<br/><small>मिश्रण अदृढ़ सिक्का सिक्का में शामिल होने और धब्बा विश्लेषण का उपयोग</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="पते से" data-content="यदि आवश्यक हो तो आप अपने बटुए में एक विशिष्ट पते से सिक्के भेजने के लिए चुन सकते हैं.">से:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="करने के लिए पता" data-content="यह Bitcoin-प्राप्तकर्ता पता है.">करने के लिए:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">राशि:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Repetitions:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">लदान</option></select>
+                    <p class="help-block">Repetitions के एक उच्च संख्या का पता लगाने के लिए लेन - देन और अधिक कठिन बना देता है और एकांत में सुधार.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="समीक्षा भुगतान" data-content="भुगतान को देखने के लिए यहाँ क्लिक करें। आप की पुष्टि या रद्द लेनदेन करने में सक्षम हो जाएगा.">समीक्षा भुगतान</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>मूल्य भेजें अधिकतम:</b> <span></span><br />
+                    <b>न्यूनतम भेजें मूल्य:</b> <span></span><br />
+                    <b>दोहराव प्रति शुल्क प्रतिशत:</b> <span></span>%</br />
+                    <b>दोहराव प्रति न्यूनतम शुल्क:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">कुछ गलत हो गया?</h4>
+
+        <p>
+            एक साझा सिक्का लेन - देन को भेजने पर मध्यवर्ती पतों की एक नंबर का इस्तेमाल कर रहे हैं. कुछ प्रसंस्कृत interupts या एक त्रुटि के सिक्कों को पूरा करने से लेन - देन को रोकता है, तो एक मध्यवर्ती पते में छोड़ा जा सकता है. मध्यवर्ती पतों में छोड़ किसी भी सिक्के का दावा करने के लिए नीचे दिए गए बटन पर क्लिक करें, इस प्रक्रिया को पूरा करने में कई मिनट लग सकते हैं.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">इंटरमीडिएट पते की वसूली</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="करने के लिए पता" data-content="यह Bitcoin-प्राप्तकर्ता पता है.">करने के लिए:</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">प्राप्तकर्ता के Bitcoin पता दर्ज करें</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">राशि:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="खनिकों शुल्क" data-content="इस राशि के लिए भेजा जाएगा bitcoin कथित तौर पर सपना देखा कि आपके लेन-देन प्रक्रिया को तेज करने के लिए मदद कर सकते हैं">खनिकों शुल्क:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">SatoshiDICE साथ शर्त<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> सबसे लोकप्रिय bitcoin सट्टेबाजी खेल है. 64,000 अपनी शर्त एक्स, तुरन्त जीतो. सभी रोल blockchain का उपयोग कर निरीक्षण कर रहे हैं.</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> सबसे लोकप्रिय bitcoin सट्टेबाजी खेल है. 64,000 अपनी शर्त एक्स, तुरन्त जीतो. सभी रोल blockchain का उपयोग कर निरीक्षण कर रहे हैं.</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>मस्तिष्क बटुआ</h3>
-
-                <p>एक मस्तिष्क बटुआ एक निजी कुंजी पदबंध याद करने के लिए एक अच्छा द्वारा उत्पन्न होता है। यह बिना एक बटुआ बटुआ बैकअप से पुनर्स्थापित करने के लिए याद करने के लिए इस पदबंध के लिए संभव है. </p>
-
-                <p>कम से कम पदबंध लंबाई 15 वर्ण है। यह उच्च अनुशंसित है कि आप नियमित रूप से बच भी पास वाक्यांश के साथ बैकअप बटुआ, रखना. </p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">कुंजी उत्पन्न</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>कागज वॉलेट का आयात</h3>
 
                 <p>अपने वेब कैमरा का उपयोग करने के लिए एक कागज बटुए से एक QR कोड स्कैन</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>वॉलेट दूसरा पासवर्ड</h3>
-            </div>
-            <div class="modal-body">
-                <p>इस बटुए के लिए दूसरा पासवर्ड दर्ज करें.</p>
-                <p align="center">
-                    <b>दूसरा पासवर्ड:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">जारी रखें</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>एनक्रिप्टेड निजी कुंजी</h3>
-            </div>
-            <div class="modal-body">
-                <p>एक एन्क्रिप्टेड निजी कुंजी पाया गया है. एन्क्रिप्शन नीचे पदबंध दर्ज करें:</p>
-                <p align="center">
-                    <b>कूटशब्द::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">जारी रखें</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>वॉलेट पासवर्ड</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">लेबल:</label>
                 <div class="controls">
                     <input name="label" placeholder="लेबल (उदा। पैसे बचाने के लिए) " type="text" /><p class="help-block">एक लेबल आप याद है जहाँ इस पते के लिए है में मदद करने के लिए किया है। उदाहरण के लिए, एक व्यक्ति या कंपनी का नाम। </p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">सार्वजनिक करना?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">डिफ़ॉल्ट पता करके लेबल केवल आप के लिए दिखाई दे रहे हैं. लोक लेबल blockchain वेबसाइट पर सार्वजनिक रूप से दिखाई दे रहे हैं और किसी के द्वारा देखा जा सकता है.</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>साझा भेजें?</h3>
-    </div>
-    <div class="modal-body">
-        <p>साझा बटुए के माध्यम से इस सौदे भेजें और एक <span class="bonus-percent"></span>% बोनस (<span class="bonus-value"></span> भेजने के पते पर वापस भेजा जाएगा) मिलता है. लेन - देन लगभग <span class="delay"></span> की देरी उठाना होगा.</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            स्वीकार नहीं अगर आप भुगतान भेजने के पते पर वापस प्राप्त करने की अपेक्षा है. साझा लेनदेन SatoshiDICE, BitLotto और कई अन्य bitcoin खेल के साथ असंगत हैं.
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>साझा भेजें?</h3>
+        </div>
+        <div class="modal-body">
+            <p>साझा बटुए के माध्यम से इस सौदे भेजें और एक <span class="bonus-percent"></span>% बोनस (<span class="bonus-value"></span> भेजने के पते पर वापस भेजा जाएगा) मिलता है. लेन - देन लगभग <span class="delay"></span> की देरी उठाना होगा.</p>
+
+            <div class="alert alert-block alert-error">
+                    स्वीकार नहीं अगर आप भुगतान भेजने के पते पर वापस प्राप्त करने की अपेक्षा है. साझा लेनदेन SatoshiDICE, BitLotto और कई अन्य bitcoin खेल के साथ असंगत हैं.
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">फिर मुझे पूछना कभी नहीं.</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">बिना जारी</button>
+                <button class="btn btn-primary">साझा भेजें?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">फिर मुझे पूछना कभी नहीं.</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">बिना जारी</button>
-            <button class="btn btn-primary">साझा भेजें?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>साझा सिक्का लेनदेन</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            कोई त्रुटि इस साझा सिक्का लेन - देन को पूरा हुआ. अधिक जानकारी के लिए जावास्क्रिप्ट कंसोल की जाँच करें.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            प्रगति में लेन - देन. इस विंडो को बंद करें या अपने ब्राउज़र से बाहर नहीं निकलते.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">रद्द करें</button>
         </div>
     </div>
 </div>
@@ -2218,7 +2284,7 @@
     </div>
     <div class="modal-body">
         <p>इस लेन-देन एक कम प्राथमिकता है। यह अनुशंसित है कि आप कम से कम 0,0005 बीटीसी सौदों की लागत के साथ आपके लेन-देन जल्दी से संसाधित किया जाता है यह सुनिश्चित करने के लिए है. </p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">इस लेन-देन लग सकता है एक लंबे समय से पहले यह पुष्टि की है के लिए आप कोई शुल्क चार्ज किया जाता है यदि। पैसे के बारे में 24 घंटे के भीतर आप को लौट जाएगा. </div>
+        <div class="alert alert-block alert-error">इस लेन-देन लग सकता है एक लंबे समय से पहले यह पुष्टि की है के लिए आप कोई शुल्क चार्ज किया जाता है यदि। पैसे के बारे में 24 घंटे के भीतर आप को लौट जाएगा. </div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>एनक्रिप्टेड निजी कुंजी</h3>
+    </div>
+    <div class="modal-body">
+        <p>एक एन्क्रिप्टेड निजी कुंजी पाया गया है. एन्क्रिप्शन नीचे पदबंध दर्ज करें:</p>
+        <p align="center">
+            <b>कूटशब्द::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">जारी रखें</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

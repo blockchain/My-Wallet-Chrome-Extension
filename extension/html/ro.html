@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">Informatii despre cont</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Generale</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Afișa</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notificari</a></li>
 
             <li class="divider"></li>
@@ -313,9 +315,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>Tranzacții pe pagină</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>Setați numărul de tranzacții afișate pe pagină</p>
 
         <p>
             <select id="transactions_per_page">
@@ -878,9 +880,7 @@
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp depozit</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -892,9 +892,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp depozit</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken a depozitelor</a>
 
                             
                                 
@@ -905,9 +903,7 @@
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp depozit</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken a depozitelor</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -915,6 +911,8 @@
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -926,7 +924,6 @@
                     <button class="btn" id="my-account-btn">Setarile contului</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>Copie de rezerva</h3>
@@ -962,8 +959,8 @@
                     <th>Indicatori</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Adresa noua" data-content="Click aici pentru a genera o adresa de bitcoin noua. Puteti începe sa primiti bitcoins în aceasta adresa imediat">Adresa noua</button>
@@ -1021,8 +1018,8 @@
                     <th class="hidden-phone">Mai departe la</th>
                     <th>Expira în</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Adresa nouă comun</button>
         </div>
@@ -1214,7 +1211,9 @@
             <li class="nav-header">Tipul tranzactiei</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Trimitere rapida</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Obicei</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Shared Trimite</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Moneda comună</a></li>
+            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Trimite comună</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
 
             <li class="nav-header">Trimite prin</li>
@@ -1222,7 +1221,10 @@
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> Mesaj SMS</a></li>
 
             <li class="nav-header">Jocuri</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">Unelte</li>
@@ -1252,7 +1254,7 @@
                     <label class="control-label pop" title="Catre adresa" data-content="Aceasta este adresa Bitcoin al destinatarului.">Pentru:</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">Introduceti adresa Bitcoin a beneficiarului</p>
                     </div>
@@ -1380,6 +1382,81 @@
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Moneda comună<br/><small>Monedă Trustless amestec folosind alăture monede și analiza pată</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="De la adresa" data-content="Daca este necesar, puteti alege sa trimiteti monedele de la o anumita adresa, în portofel.">De la:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Catre adresa" data-content="Aceasta este adresa Bitcoin al destinatarului.">Pentru:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Suma:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Repetari:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Încarcare</option></select>
+                    <p class="help-block">Un număr mai mare de repetari face tranzacția mult mai dificil de a urmări și îmbunătățește viața privată.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Plata opinie" data-content="Click aici pentru a revizui plata. Veti fi capabil de a confirma sau de a anula tranzactia.">Plata opinie</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Maxim Trimite Valoare:</b> <span></span><br />
+                    <b>Valoarea minima Trimite:</b> <span></span><br />
+                    <b>Procentul comisionului pe Repetarea:</b> <span></span>%</br />
+                    <b>Taxa minim pe Repetarea:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Ceva a mers prost?</h4>
+
+        <p>
+            Atunci când trimite o tranzacție monedă comună sunt utilizate o serie de adrese intermediare. Dacă ceva interupts proces sau o eroare împiedică tranzacție de completare a monedele pot fi lăsate într-o adresă intermediar. Faceți clic pe butonul de mai jos pentru a solicita orice monedele rămase în adrese intermediare, acest proces poate dura câteva minute pentru a finaliza.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Recuperare Adrese intermediare</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1393,18 +1470,18 @@
                         <label class="control-label pop" title="Catre adresa" data-content="Aceasta este adresa Bitcoin al destinatarului.">Pentru:</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">Introduceti adresa Bitcoin a beneficiarului</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">Suma:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1448,7 +1525,7 @@
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1473,8 +1550,8 @@
             <label class="control-label pop" title="Taxa minerilor " data-content="Aceasta taxa va fi trimisa la minerii bitcoin si poate ajuta ca tranzactia sa fie procesata mai rapid">Taxa minerilor :</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1506,7 +1583,7 @@
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">Pariaza cu SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> este cel mai popular joc de bitcoin de pariuri. Câstigati pâna la 64.000 x pariul dvs., instantaneu. Toate rolele sunt verificabile prin blockchain.</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> este cel mai popular joc de bitcoin de pariuri. Câstigati pâna la 64.000 x pariul dvs., instantaneu. Toate rolele sunt verificabile prin blockchain.</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1627,19 +1704,6 @@
             </div>
 
             <div class="page-header">
-                <h3>Portofel creier</h3>
-
-                <p>Un portofel Brain este o cheie privata însamânta-ta la o trecere de neuitat-fraza. Este posibil sa memoreze aceasta parola, în scopul de a restabili fondurile de la acea adresa, fara a avea nevoie de o copie de rezerva a portofelului.</p>
-
-                <p>Minim de trecere fraza lungime este de 15 de caractere. Este recomandat sa pastrati în continuare backup-uri regulate ale portofelului chiar si cu trecere fraza memorate.</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Generati cheie</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>Import Utilizarea Portofel hârtie</h3>
 
                 <p>Utilizati webcam-ul dumneavoastra pentru a scana un cod QR dintr-un portofel de hârtie</p>
@@ -1750,40 +1814,6 @@
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>Portofel În al doilea rând Parola</h3>
-            </div>
-            <div class="modal-body">
-                <p>Va rugam sa introduceti a doua parola pentru acest portofel.</p>
-                <p align="center">
-                    <b>În al doilea rând parolă:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continua</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>Cheie criptată Private</h3>
-            </div>
-            <div class="modal-body">
-                <p>O cheie privată criptată a fost detectat. Vă rugăm introduceți criptare fraza de autentificare de mai jos:</p>
-                <p align="center">
-                    <b>Frază de acces::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continua</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Portofel Parola</h3>
@@ -1823,6 +1853,7 @@
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1939,6 +1970,13 @@
                 <label class="control-label">Casa de discuri:</label>
                 <div class="controls">
                     <input name="label" placeholder="Eticheta de ex: Economie" type="text" /><p class="help-block">O eticheta este folosita pentru a ajuta sa va amintiti ce aceasta adresa este pentru. Acesta poate fi numele unei persoane sau companii.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Face publice?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">Prin adresa implicit etichetele sunt vizibile numai pentru tine. Etichetele publice sunt vizibile public pe site-ul blockchain și pot fi vizualizate de oricine.</p>
                 </div>
             </div>
         </div>
@@ -2170,23 +2208,51 @@
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>Trimite comun?</h3>
-    </div>
-    <div class="modal-body">
-        <p>Trimite această tranzacție prin portofel comune și a obține o <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> va fi trimis înapoi la adresa de trimitere). Tranzacția va suporta o întârziere de aproximativ <span class="delay"></span>.</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            Nu accepta, dacă vă așteptați să primiți plățile la adresa de expediere. Tranzacțiilor comune sunt incompatibile cu SatoshiDICE, BitLotto si multe alte jocuri bitcoin.
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>Trimite comun?</h3>
+        </div>
+        <div class="modal-body">
+            <p>Trimite această tranzacție prin portofel comune și a obține o <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> va fi trimis înapoi la adresa de trimitere). Tranzacția va suporta o întârziere de aproximativ <span class="delay"></span>.</p>
+
+            <div class="alert alert-block alert-error">
+                    Nu accepta, dacă vă așteptați să primiți plățile la adresa de expediere. Tranzacțiilor comune sunt incompatibile cu SatoshiDICE, BitLotto si multe alte jocuri bitcoin.
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Niciodata nu ma întreba din nou.</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">Fara sa continue</button>
+                <button class="btn btn-primary">Trimite comun?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">Niciodata nu ma întreba din nou.</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Fara sa continue</button>
-            <button class="btn btn-primary">Trimite comun?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Transaction monede comună</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            O eroare a avut loc finalizarea acestei tranzacții monedă comună. Pentru informații suplimentare, vă rugăm să verificați consola JavaScript.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Tranzacție în curs de desfășurare. Nu închideți această fereastră sau ieși din browser.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
         </div>
     </div>
 </div>
@@ -2218,7 +2284,7 @@
     </div>
     <div class="modal-body">
         <p>Aceasta tranzactie are o prioritate scazuta. Este recomandat sa includesti cel putin un comision 0.0005 tranzac?ie BTC, în scopul de a asigura o procese de minerit.</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">Daca nu include-ti o taxa aceasta tranzactie poate sa ia o lunga perioada de timp pentru a obtine confirmarea. Toate fondurile vor fi returnate la tine în aproximativ 24 de ore.</div>
+        <div class="alert alert-block alert-error">Daca nu include-ti o taxa aceasta tranzactie poate sa ia o lunga perioada de timp pentru a obtine confirmarea. Toate fondurile vor fi returnate la tine în aproximativ 24 de ore.</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2401,13 +2467,13 @@
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2418,6 +2484,22 @@
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Cheie criptată Private</h3>
+    </div>
+    <div class="modal-body">
+        <p>O cheie privată criptată a fost detectat. Vă rugăm introduceți criptare fraza de autentificare de mai jos:</p>
+        <p align="center">
+            <b>Frază de acces::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Continua</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -23,6 +23,8 @@ $(document).ready(function() {
 
     $('.quickstart').css('background-image', 'linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245))').find('.container:first-child').css('padding-top', '0px');
 
+    $('#large-summary').prepend('<img id="refresh" src="'+resource+'refresh-black-32.png" style="padding-bottom:4px" />');
+
 });
 
 MyWallet.makeNotice = function(type, id, msg, timeout) {
@@ -51,6 +53,21 @@ MyWallet.setLanguage = function(language) {
         superSetLanguage(language);
     }
 }
+
+MyWallet.logout = function() {
+    $.ajax({
+        type: "GET",
+        url: root + 'wallet/logout',
+        data : {format : 'plain'},
+        success: function(data) {
+            chrome.app.window.current().close();
+        },
+        error : function() {
+            chrome.app.window.current().close();
+        }
+    });
+}
+
 
 MyStore = new function() {
     this.put = function(key, value) {

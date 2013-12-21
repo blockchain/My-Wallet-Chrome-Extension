@@ -22,16 +22,15 @@ span.qrcodeicon {
 span.qrcodeicon span {
     position: absolute;
     display: block;
-    top: 1px;
+    top: 0px;
     right: 6px;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     background: url('/Resources/qrcode.png');
     cursor: pointer;
     z-index: 1;
 }
 span.qrcodeicon input {
-    padding-right: 16px;
     z-index: 0;
 }
 

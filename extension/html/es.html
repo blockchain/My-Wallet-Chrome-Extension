@@ -23,6 +23,8 @@
     <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
     <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
 
+    
+
     <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
     
     
@@ -65,7 +67,7 @@
 </div>
 
 <div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
-    <span id="notices" style="max-width: 600px; width:100%;"></span>
+    <span id="notices" style="max-width:600px;width:auto;"></span>
 </div>
 
 <div style="width:100%; float:left; clear:both"></div>
@@ -99,7 +101,7 @@
             <li class="nav-header">Información de la cuenta</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> General</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Mostrar</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notificaciones</a></li>
 
             <li class="divider"></li>
@@ -315,9 +317,9 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>Transacciones por página</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>Establecer el número de transacciones por página</p>
 
         <p>
             <select id="transactions_per_page">
@@ -880,9 +882,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                         <div class="tab-pane active" style="text-align:right" id="deposit-us">
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp fuerte</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fcashintocoins.com%3Fcode%3Dblockchain%26address%3D" id="cash-into-coins" target="blank">Cash Into Coins</a>
 
                             
                                 
@@ -894,9 +894,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp fuerte</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken fuerte</a>
 
                             
                                 
@@ -907,9 +905,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                             
                             
 
-                            
-                                <button class="btn btn-primary bitstamp-btn" data-title="Deposit Using Bitstamp" data-link="https://blockchain.info/r?url=https://www.bitstamp.net">Bitstamp fuerte</button>
-                            
+                            <a class="btn btn-primary" href="https://blockchain.info/r?url=https%3A%2F%2Fwww.kraken.com" target="blank"><img src="/Resources/kraken-logo-small.png"> Kraken fuerte</a>
                         </div>
 
                         <div class="tab-pane" id="deposit-other">
@@ -917,6 +913,8 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                         </div>
                     </div>
                 </div>
+            
+
             
 
             <div class="page-header" id="home-account-container">
@@ -928,7 +926,6 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                     <button class="btn" id="my-account-btn">Configuración de la Cuenta</button>
                 </p>
             </div>
-
 
             <div id="home-backup-container">
                 <h3>Copia de Seguridad</h3>
@@ -964,8 +961,8 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                     <th>Saldo</th>
                     <th></th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
 
             <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Nueva dirección" data-content="Haz clic aquí para generar una nueva dirección Bitcoin. Podrás recibir bitcoins en esta dirección de inmediato.">Nueva dirección</button>
@@ -1023,8 +1020,8 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                     <th class="hidden-phone">Reenviar a</th>
                     <th>Caduca en</th>
                 </tr>
-                <tbody></tbody>
                 </thead>
+                <tbody></tbody>
             </table>
             <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Nueva dirección compartida</button>
         </div>
@@ -1216,7 +1213,9 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             <li class="nav-header">Tipo de transacción</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Envío rápido</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Envío personalizado</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Enviar compartido</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Coin compartido</a></li>
+            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Compartido Enviar</a></li>
+
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Fideicomiso</a></li>
 
             <li class="nav-header">Enviar a través</li>
@@ -1224,7 +1223,10 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> Mensaje SMS</a></li>
 
             <li class="nav-header">Juegos</li>
+            
             <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
+
+            
 
             <li class="divider"></li>
             <li class="nav-header">Herramientas</li>
@@ -1254,7 +1256,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                     <label class="control-label pop" title="Dirección del destinatario" data-content="Esta es la dirección Bitcoin del destinatario.">A:</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon" /><input placeholder="Dirección Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="Dirección Bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                         <p class="help-block">Introduce la dirección Bitcoin del destinatario</p>
                     </div>
@@ -1382,6 +1384,81 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     </div>
 </div>
 
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Coin compartido<br/><small>Moneda sin esperanzas mezcla usando join moneda y análisis de mancha</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="Dirección del remitente" data-content="Si lo deseas, puedes enviar bitcoins desde una dirección específica.">De:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Dirección del destinatario" data-content="Esta es la dirección Bitcoin del destinatario.">A:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Dirección Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Cantidad:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Repeticiones:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Cargando</option></select>
+                    <p class="help-block">A mayor número de repeticiones que hace la transacción más difíciles de rastrear y mejora la privacidad.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Revisar pago" data-content="Haz click aquí para revisar la transacción. En el siguiente paso podrás confirmar o cancelar la operación.">Revisar pago</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Valor máximo de envío:</b> <span></span><br />
+                    <b>Mínimo Enviar Valor:</b> <span></span><br />
+                    <b>Cuota porcentual por repetición:</b> <span></span>%</br />
+                    <b>Cuota mínima por repetición:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Algo salió mal?</h4>
+
+        <p>
+            Cuando se envía una transacción de la moneda común se utiliza un número de direcciones intermedias. Si algo interupts el proceso o un error impide que la transacción se complete las monedas se pueden dejar en una dirección intermedia. Haga clic en el botón de abajo para reclamar cualquier cantidad de monedas que quedan en las direcciones intermedias, este proceso puede tardar varios minutos en completarse.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Recuperar direcciones intermedias</button>
+        </p>
+    </div>
+</div>
+
 <div class="tab-pane" id="send-shared">
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
@@ -1395,18 +1472,18 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                         <label class="control-label pop" title="Dirección del destinatario" data-content="Esta es la dirección Bitcoin del destinatario.">A:</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Dirección Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon"><input placeholder="Dirección Bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                             <p class="help-block">Introduce la dirección Bitcoin del destinatario</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop" title="Amount" data-content="The Amount in Bticoins to Send">Amount:</label>
+                        <label class="control-label pop">Cantidad:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" name="send-value"/><span
+                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
                                     class="add-on send-value-usd">$0</span>
                             </div>
 
@@ -1450,7 +1527,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon" /><input placeholder="Dirección Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="Dirección Bitcoin" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1475,8 +1552,8 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             <label class="control-label pop" title="Comisión" data-content="Esta comisión será enviada a los mineros Bitcoin y ayuda a que tu transacción sea confirmada más rápidamente.">Comisión:</label>
 
             <div class="controls">
-                <div class="input-prepend" style="width:220px">
-                    <span class="add-on btc-symbol"></span><input class="span2" placeholder="0.0" name="fees" style="min-width:55px;width:55px" type="text"/>
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                 </div>
             </div>
         </div>
@@ -1508,7 +1585,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
         <div class="well">
             <h4 class="page-header">Apuesta con SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://SatoshiDice.com" target="new">SatoshiDICE</a> es el juego más popular de apuestas de Bitcoin. Gana hasta 64.000 veces tu apuesta, al instante. Todos las tiradas pueden ser verificadas en la cadena de bloques.</small>
+                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> es el juego más popular de apuestas de Bitcoin. Gana hasta 64.000 veces tu apuesta, al instante. Todos las tiradas pueden ser verificadas en la cadena de bloques.</small>
             </h4>
 
             <div class="form-horizontal">
@@ -1629,19 +1706,6 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             </div>
 
             <div class="page-header">
-                <h3>Monedero mental</h3>
-
-                <p>Un "monedero mental" es una clave privada que se genera a partir de una contraseña memorable. Puedes memorizar esta contraseña y recuperar los fondos de esta dirección sin necesidad de conservar una copia de seguridad.</p>
-
-                <p>La longitud mínima de esta contraseña es de 15 caracteres. Aún recordando la contraseña, es altamente recomendable que guardes una copia de seguridad de tu monedero.</p>
-
-                <div class="form-inline">
-                    <input placeholder="pass-phrase" id="import-brain-wallet" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-brain-wallet-btn">Generar clave</button>
-                </div>
-            </div>
-
-            <div class="page-header">
                 <h3>Importar un monedero de papel</h3>
 
                 <p>Usa tu cámara web para escanear el código QR de un monedero de papel</p>
@@ -1752,40 +1816,6 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
             </div>
         </div>
 
-        <div id="import-second-password-modal" class="modal hide">
-            <div class="modal-header">
-                <h3>Monedero Segunda Contraseña</h3>
-            </div>
-            <div class="modal-body">
-                <p>Por favor introduce el segundo contraseña de esta cartera.</p>
-                <p align="center">
-                    <b>En segundo lugar contraseña:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continuar</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="import-private-key-password" class="modal hide">
-            <div class="modal-header">
-                <h3>Clave privada cifrada</h3>
-            </div>
-            <div class="modal-body">
-                <p>Se ha detectado una clave privada encriptada. Por favor, introduzca la frase de cifrado a continuación:</p>
-                <p align="center">
-                    <b>Frase de contraseña::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continuar</button>
-                </div>
-            </div>
-        </div>
-
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
                 <h3>Monedero Contraseña</h3>
@@ -1825,6 +1855,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     </div>
 </div>
 </div></div>
+</div>
 </div>
 
 
@@ -1941,6 +1972,13 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                 <label class="control-label">Etiqueta:</label>
                 <div class="controls">
                     <input name="label" placeholder="Etiqueta. Por ejemplo, "Ahorros"" type="text" /><p class="help-block">Una etiqueta te ayudará a recordar el propósito de la dirección. Puede ser, por ejemplo, el nombre de una persona o una compañía.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Hacer pública?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">Por dirección predeterminada etiquetas son visibles sólo a ustedes. Etiquetas públicos son públicamente visibles en el sitio web blockchain y pueden ser vistos por cualquier persona.</p>
                 </div>
             </div>
         </div>
@@ -2172,23 +2210,51 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 </div>
 
 
-<div id="ask-for-shared" class="modal hide">
-    <div class="modal-header">
-        <h3>Enviar compartido?</h3>
-    </div>
-    <div class="modal-body">
-        <p>Enviar esta transacción a través de la carpeta compartida y conseguir un <span class="bonus-percent"></span>% de bonificación (<span class="bonus-value"></span> será enviada de nuevo a la dirección de envío). La transacción tendrá un retraso de aproximadamente <span class="delay"></span>.</p>
 
-        <div class="alert alert-block alert-error" style="margin: 10px;">
-            No acepte si usted espera a recibir el pago a la dirección de envío. Transacciones compartidas son incompatibles con SatoshiDICE, BitLotto y muchos otros juegos Bitcoin otros.
+    <div id="ask-for-shared" class="modal hide">
+        <div class="modal-header">
+            <h3>Enviar compartido?</h3>
+        </div>
+        <div class="modal-body">
+            <p>Enviar esta transacción a través de la carpeta compartida y conseguir un <span class="bonus-percent"></span>% de bonificación (<span class="bonus-value"></span> será enviada de nuevo a la dirección de envío). La transacción tendrá un retraso de aproximadamente <span class="delay"></span>.</p>
+
+            <div class="alert alert-block alert-error">
+                    No acepte si usted espera a recibir el pago a la dirección de envío. Transacciones compartidas son incompatibles con SatoshiDICE, BitLotto y muchos otros juegos Bitcoin otros.
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-left"><input type="checkbox" id="shared-never-ask">No preguntar de nuevo.</div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-secondary">Continuar sin</button>
+                <button class="btn btn-primary">Enviar compartido?</button>
+            </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="pull-left"><input type="checkbox" id="shared-never-ask">No preguntar de nuevo.</div>
 
-        <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Continuar sin</button>
-            <button class="btn btn-primary">Enviar compartido?</button>
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Compartido Transacción Coin</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            Se ha producido un error de completar esta transacción moneda común. Para más información consulte la consola javascript.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Transacción en curso. No cierre esta ventana o salir de su navegador.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Cancelar</button>
         </div>
     </div>
 </div>
@@ -2220,7 +2286,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     </div>
     <div class="modal-body">
         <p>Esta es una transacción de baja prioridad. Se recomienda incluir al menos una comisión de 0,0005 BTC con el fin de asegurar que la transacción sea procesada por los mineros.</p>
-        <div class="alert alert-block alert-error" style="margin: 10px;">Puede ser que la transacción tarde un tiempo prolongado en confirmarse si no añades una comisión.Todos los fondos te serán devueltos en un plazo aproximado aproximadamente 24 horas.</div>
+        <div class="alert alert-block alert-error">Puede ser que la transacción tarde un tiempo prolongado en confirmarse si no añades una comisión.Todos los fondos te serán devueltos en un plazo aproximado aproximadamente 24 horas.</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2403,13 +2469,13 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
         <h4 class="page-header">Blockchain.info Is Offline</h4>
 
         <p>
-           <ul>
-              <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
-              <li>Launch the application. Choose Tools -> Import Private Keys.</li>
-              <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
-              <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
-              <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
-            </ul>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
         </p>
     </div>
 
@@ -2420,6 +2486,22 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     </div>
 </div>
 
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Clave privada cifrada</h3>
+    </div>
+    <div class="modal-body">
+        <p>Se ha detectado una clave privada encriptada. Por favor, introduzca la frase de cifrado a continuación:</p>
+        <p align="center">
+            <b>Frase de contraseña::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Continuar</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
