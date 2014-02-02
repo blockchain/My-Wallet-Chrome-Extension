@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">活跃</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">存档</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">共享</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>比特币地址</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="收纳私钥中的比特币" data-content="将私钥的比特币发送到指定的地址。">收纳私钥中的比特币
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="删除地址和私钥" data-content="删除选定的私人密钥。">删除地址和私钥
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">全选</button>
+                <button class="btn btn-secondary" id="archived-select-none">选择无</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="收纳私钥中的比特币" data-content="将私钥的比特币发送到指定的地址。">收纳私钥中的比特币</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="删除地址和私钥" data-content="删除选定的私人密钥。">删除地址和私钥</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>共享地址，</h3>
-
-            <p style="padding-top:10px">共享地址收到的款项将被转发到另一个地址在你的钱包。通过一个共享的钱包，打破了交易链的发送收到任何付款。 <a href="https://blockchain.info/wallet/send-shared" target="blank">(更多信息)</a></p>
-
-            <p class="well">
-                <b>共享地址的有效交易只收取0.5％的交易费。</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>地址</th>
-                    <th class="hidden-phone">前转到</th>
-                    <th>到期日期</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">新的共享地址</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> 快速发送</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> 自定义</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> 共用的投币</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> 共享发送</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> 中介</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">游戏</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">发送共享<br/><small>发送共享断你的钱包和目的地址之间的交易链。</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="地址" data-content="这是比特币的收件人地址。">到：</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="比特币的地址" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">输入比特币收件人的地址</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">数量:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> 包括本次交易费用为<span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus"><span class="bonus-value">0.00</span>将支付本次交易的奖金将不会有任何费用。</p>
-
-                            <p class="help-block free">共享的发送是免费的。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="查看付款" data-content="击这里来检查付款申请。您可以确认提交或者取消交易。">查看付款</button>
-
-                <p class="help-block fees">所有的共享交易产生<span class="mixer_fee">0.5</span>％手续费。</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">自定义事务<br/><small>使用下面的表格付款到一个或多个比特币地址。提交之前会要求您检查交易内容。</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">在SatoshiDICE下赌注<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a>是最流行的比特币的博彩游戏。赢取高达64,000倍于您的赌注的奖金，即时开奖。所有开奖记录可以通过blockchain验证，绝无作弊可能。</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">投注！</button> <button class="send btn pop" data-repeat="5">重复5次</button> <button class="send btn pop" data-repeat="10">重复X10</button>
-
-                    <p class="help-block">Blockchain.info不隶属于satoshidice.com。</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>摘要：</b> <a href="#" class="refresh">(刷新)</a></p>
-
-            <p><b>投注号码：</b> <span class="n-bets"></span></p>
-
-            <p><b>赢得的奖金：</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>发送共享？</h3>
-        </div>
-        <div class="modal-body">
-            <p>发送本次交易通过共享的钱包和获得<span class="bonus-percent"></span>％的奖金（<span class="bonus-value"></span>将被送回发送地址）。该交易将产生约<span class="delay"></span>的延迟。</p>
-
-            <div class="alert alert-block alert-error">
-                    不要接受，如果你希望收取款项的发送地址。共享的交易是不兼容的，与SatoshiDICE，BitLotto和许多其他Bitcoin的游戏。
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">请不要再问我了。</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">无视并继续</button>
-                <button class="btn btn-primary">发送共享？</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>共享投币交易“</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>较高的费用推荐</h3>
+    </div>
+    <div class="modal-body">
+        <p>您所指定的<span></span>自定义费用然而，对于本次交易的推荐费为<span></span>。你想使用推荐费呢？</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">使用自定义费用</button>
+            <button class="btn btn-primary">推荐使用费</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

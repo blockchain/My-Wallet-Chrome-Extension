@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Ενεργός</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Αρχείο</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Κοινό</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Διεύθυνση</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Κλειδιά Sweep" data-content="Μετακινήστε οποιαδήποτε bitcoins στις επιλεγμένες κλειδιά σε μια διαφορετική διεύθυνση Bitcoin.">Κλειδιά Sweep
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Διαγραφή Κλειδιά" data-content="Διαγραφή των επιλεγμένων ιδιωτικών κλειδιών.">Διαγραφή Κλειδιά
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Επιλέξτε All</button>
+                <button class="btn btn-secondary" id="archived-select-none">Επιλέξτε None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Κλειδιά Sweep" data-content="Μετακινήστε οποιαδήποτε bitcoins στις επιλεγμένες κλειδιά σε μια διαφορετική διεύθυνση Bitcoin.">Κλειδιά Sweep</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Διαγραφή Κλειδιά" data-content="Διαγραφή των επιλεγμένων ιδιωτικών κλειδιών.">Διαγραφή Κλειδιά</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Shared Διευθύνσεις</h3>
-
-            <p style="padding-top:10px">Πληρωμές που καταβάλλονται σε κοινές διευθύνσεις θα διαβιβαστεί σε άλλη διεύθυνση στο πορτοφόλι σας. Τυχόν πληρωμές που αποστέλλονται μέσω ενός κοινού πορτοφόλι σπάσιμο της αλυσίδας των συναλλαγών. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Περισσότερες πληροφορίες)</a></p>
-
-            <p class="well">
-                <b>Shared Διευθύνσεις ισχύουν για μία μόνο συναλλαγή και να προβεί σε 0,5% τέλος συναλλαγής.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Διεύθυνση</th>
-                    <th class="hidden-phone">Προώθηση</th>
-                    <th>Λήγει Σε</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Νέα Διεύθυνση Κοινόχρηστο</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Γρήγορη Αποστολή</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Έθιμο</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Κοινόχρηστο Coin</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Κοινόχρηστο Αποστολή</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Μεσεγγύησης</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Παιχνίδια</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Αποστολή Κοινόχρηστο<br/><small>Αποστολή κοινού στη διακοπή της αλυσίδας των συναλλαγών μεταξύ πορτοφόλι σας και μια διεύθυνση προορισμού.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Για την Διεύθυνση" data-content="Αυτό είναι το Bitcoin Διεύθυνση του παραλήπτη.">Προς:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Διεύθυνση" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Εισάγετε το Bitcoin διεύθυνση του παραλήπτη</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Ποσό:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Συμπεριλαμβάνονται οι αμοιβές που το σύνολο της συναλλαγής αυτής είναι <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Δεν θα υπάρξει καμία αμοιβή για τη συναλλαγή αυτή και μπόνους <span class="bonus-value">0.00</span> θα πρέπει να καταβληθεί.</p>
-
-                            <p class="help-block free">Κοινόχρηστα αποστολής είναι σήμερα δωρεάν.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Καταβολή Αξιολόγηση" data-content="Κάντε κλικ εδώ για να επανεξετάσει πληρωμής. Θα είναι σε θέση να επιβεβαιώσει ή να ακυρώσει τη συναλλαγή.">Καταβολή Αξιολόγηση</button>
-
-                <p class="help-block fees">Όλες οι κοινές συναλλαγές γίνονται με <span class="mixer_fee">0.5</span> Προμήθεια%.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Προσαρμοσμένη Συναλλαγών<br/><small>Χρησιμοποιήστε την παρακάτω φόρμα για να στείλετε μια πληρωμή σε μία ή περισσότερες διευθύνσεις Bitcoin. Θα σας ζητηθεί επανεξέταση συναλλαγή σας πριν από την υποβολή.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Στοίχημα Με SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> είναι το πιο δημοφιλές Bitcoin ενός παιχνιδιού στοιχημάτων Κερδίστε μέχρι 64.000 φορές το στοίχημά σας, δικαίωμα Όλα τα στοιχήματα μπορεί να ελεγχθεί με τη χρήση blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Τοποθετήστε το στοίχημα!</button> <button class="send btn pop" data-repeat="5">Επαναλάβετε x5</button> <button class="send btn pop" data-repeat="10">Επαναλάβετε x10</button>
-
-                    <p class="help-block">BΔεν Blockchain.info συνδεδεμένες με satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Περίληψη:</b> <a href="#" class="refresh">(Φρεσκάρω)</a></p>
-
-            <p><b>Αριθμός στοιχημάτων:</b> <span class="n-bets"></span></p>
-
-            <p><b>Κέρδη:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Αποστολή Κοινόχρηστο;</h3>
-        </div>
-        <div class="modal-body">
-            <p>Αποστολή αυτής της συναλλαγής μέσω του κοινού πορτοφόλι και να πάρετε μια <span class="bonus-percent"></span>% μπόνους (<span class="bonus-value"></span> θα σταλεί πίσω στην διεύθυνση αποστολής). Η συναλλαγή θα γίνονται με καθυστέρηση περίπου <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Μην αποδέχεστε αν περιμένετε να λάβετε την πληρωμή πίσω στην διεύθυνση αποστολής. Κοινόχρηστο συναλλαγές είναι ασυμβίβαστες με SatoshiDICE, BitLotto και πολλά άλλα παιχνίδια bitcoin.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Ποτέ μην με ρωτάτε πάλι.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Συνεχίστε Χωρίς</button>
-                <button class="btn btn-primary">Αποστολή Κοινόχρηστο;</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Κοινόχρηστο συναλλαγή Coin</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Ανώτατη Αμοιβή Συνιστάται</h3>
+    </div>
+    <div class="modal-body">
+        <p>Έχετε καθορίσει ένα έθιμο τέλος του <span></span> Ωστόσο, η συνιστώμενη αμοιβή για αυτή τη συναλλαγή είναι <span></span>. Θα θέλατε να χρησιμοποιήσετε την προτεινόμενη αμοιβή αντ &#39;αυτού;</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Χρησιμοποιήσετε την Προσαρμοσμένη Fee</button>
+            <button class="btn btn-primary">Χρησιμοποιήστε Συνιστώμενη Fee</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

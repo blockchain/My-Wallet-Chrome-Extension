@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Aktif</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Arşivlenmiş</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Paylaşılan</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Adresi</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Sweep Tuşları" data-content="Farklı bir Bitcoin adrese seçilen tuşları herhangi bitcoins taşıyın.">Sweep Tuşları
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Tuşlar sil" data-content="Seçilen özel anahtarları silin.">Tuşlar sil
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Tümünü Seç</button>
+                <button class="btn btn-secondary" id="archived-select-none">Yok&#39;u seçin</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Sweep Tuşları" data-content="Farklı bir Bitcoin adrese seçilen tuşları herhangi bitcoins taşıyın.">Sweep Tuşları</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Tuşlar sil" data-content="Seçilen özel anahtarları silin.">Tuşlar sil</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Paylaşılan Adresleri</h3>
-
-            <p style="padding-top:10px">Paylaşılan adresler size özel kalmasını istediğiniz ödeme almak için tasarlanmıştır. Alınan tüm para yatırma işlemlerinin zinciri kıran bir paylaşılan cüzdan aracılığıyla gönderilir. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Daha Fazla Bilgi)</a></p>
-
-            <p class="well">
-                <b>Paylaşılan Adresleri tek bir işlem için geçerlidir ve% 0.5 işlem ücretine tabi.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Adres</th>
-                    <th class="hidden-phone">İleri için</th>
-                    <th>In Bitiş</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Yeni Paylaşılan Adres</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Hızlı Gönder</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Görenek</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Ortak Para</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Gönder Paylaşılan</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Emanet</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Oyunlar</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Paylaşılan gönder<br/><small>Artan gizlilik paylaşılan bir cüzdan aracılığıyla paylaşılan güzergahlar işlemleri gönder.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="To Address" data-content="Bu alıcının Bitcoin Adres.">Için:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Adresi" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Alıcının Bitcoin Adresini girin</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Miktar:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Ücretleri bu işlemin toplam İçeren <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus"><span class="bonus-value">0.00</span> ödenecektir bu işlem ve bir ikramiye için hiç bir ücret olacak.</p>
-
-                            <p class="help-block free">Paylaşılan gönderme anda ücretsizdir.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="İnceleme Ödeme" data-content="Ödeme incelemek için tıklayın. Siz işlemi onaylamak veya iptal etmek mümkün olacak.">İnceleme Ödeme</button>
-
-                <p class="help-block fees">Tüm paylaşılan işlemler <span class="mixer_fee">0.5</span>% Ücreti alınır.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Özel İşlem<br/><small>Bir veya daha fazla Bitcoin adreslere ödeme göndermek için aşağıdaki formu kullanın. Sen sunulmadan önce İşleminizin gözden istenecektir.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">SatoshiDICE ile Bet<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> en popüler Bitcoin bahis oyunudur. Anında 64.000 x bahsinizi kadar kazanın. Tüm rulo blockchain kullanılarak doğrulanabilir.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Bahis koyun!</button> <button class="send btn pop" data-repeat="5">X5 tekrarlayın</button> <button class="send btn pop" data-repeat="10">X10 tekrarlayın</button>
-
-                    <p class="help-block">Blockchain.info satoshidice.com ile bağlı değildir.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Özet:</b> <a href="#" class="refresh">(Yenile)</a></p>
-
-            <p><b>Bahis sayısı:</b> <span class="n-bets"></span></p>
-
-            <p><b>Kazançlar:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Paylaşılan gönder?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Paylaşılan cüzdan ile bu işlem Gönder ve bir <span class="bonus-percent"></span>% bonusu (<span class="bonus-value"></span> gönderen adrese geri gönderilecektir) olsun. İşlem yaklaşık <span class="delay"></span> bir gecikme tabidir.</p>
-
-            <div class="alert alert-block alert-error">
-                    Eğer gönderen adrese ödeme almak için beklemek durumunda kabul etmeyin. Paylaşılan işlemleri SatoshiDICE, BitLotto ve diğer birçok Bitcoin oyunları ile uyumsuz.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Daha asla sorma.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Olmadan devam</button>
-                <button class="btn btn-primary">Paylaşılan gönder?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Ortak Para İşlem</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Yüksek Ücret Önerilen</h3>
+    </div>
+    <div class="modal-body">
+        <p>Ancak bu işlem için önerilen ücret <span></span> özel bir ücret, belirtilen <span></span>. Yerine önerilen ücreti kullanmak ister misiniz?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Özel Ücreti kullanın</button>
+            <button class="btn btn-primary">Önerilen ücreti kullanın</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

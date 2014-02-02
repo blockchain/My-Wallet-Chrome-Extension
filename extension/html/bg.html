@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Активен</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Архив</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Споделени</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Адрес</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Почистване ключове" data-content="Преместване на всички bitcoins в избрани ключове на друг адрес bitcoin.">Почистване ключове
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Изтриване Keys" data-content="Изтриване на избрани частни ключове.">Изтриване Keys
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Изберете All</button>
+                <button class="btn btn-secondary" id="archived-select-none">Изберете None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Почистване ключове" data-content="Преместване на всички bitcoins в избрани ключове на друг адрес bitcoin.">Почистване ключове</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Изтриване Keys" data-content="Изтриване на избрани частни ключове.">Изтриване Keys</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Споделени адреси</h3>
-
-            <p style="padding-top:10px">Плащания, получени до споделени адреси ще бъдат изпратени на друг адрес в портфейла си. Всички получени плащания са изпратени чрез споделена портфейла нарушаване на веригата на сделките. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Още по темата)</a></p>
-
-            <p class="well">
-                <b>Споделени адреси са валидни единствено за една операция и се наложи с 0,5% такса за транзакция.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Адрес</th>
-                    <th class="hidden-phone">С нетърпение</th>
-                    <th>Изтича В</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Нов споделената адресна</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Бързо Изпрати</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Обичай</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Споделени Coin</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Споделени Изпрати</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Ескроу</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Игри</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Изпрати Споделени<br/><small>Изпрати споделя с почивките по веригата на сделки между портфейла си и адреса на получателя.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="На адрес" data-content="Това е Bitcoin адреса на получателя.">До:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Адрес" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Въведете Bitcoin адреса на получателя</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Размер:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Включително възнаграждения общо на тази сделка е <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Няма да има такса за тази сделка и бонус от <span class="bonus-value">0.00</span> ще бъдат платени.</p>
-
-                            <p class="help-block free">Споделен изпращане в момента е безплатно.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Мнение плащане" data-content="Щракнете тук, за да преразгледа плащане. Вие ще бъдете в състояние да потвърди или отмени сделката.">Мнение плащане</button>
-
-                <p class="help-block fees">Всички споделени сделки дължи <span class="mixer_fee">0.5</span>% такса.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Митническо Transaction<br/><small>Използвайте формата по-долу, за да изпратите плащане на една или повече bitcoin адреси. Вие ще бъдете помолени да преразгледа сделката преди подаване.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Залог с SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> е най-популярният bitcoin залагания игра. Спечелете до 64 000 х залога си, мигновено. Всички ролки могат да бъдат проверени с помощта на blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Поставете залог!</button> <button class="send btn pop" data-repeat="5">Повторете x5</button> <button class="send btn pop" data-repeat="10">Повторете x10</button>
-
-                    <p class="help-block">Blockchain.info не е свързана с satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Резюме:</b> <a href="#" class="refresh">(Обнови)</a></p>
-
-            <p><b>Брой залози:</b> <span class="n-bets"></span></p>
-
-            <p><b>Печалби:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Изпрати споделено?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Изпрати тази сделка чрез споделената портфейла и получи <span class="bonus-percent"></span>% бонус (<span class="bonus-value"></span> ще бъдат изпратени обратно в изпращащата адрес). Сделката ще понесат закъснение от около <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Да не се приема, ако очаквате да получите на плащане на изпращащата адрес. Споделени сделки са несъвместими с SatoshiDICE, BitLotto и много други игри bitcoin.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Никога не ме питай отново.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Продължи без</button>
-                <button class="btn btn-primary">Изпрати споделено?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Споделени Coin транзакция</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Висока такса Препоръчителна</h3>
+    </div>
+    <div class="modal-body">
+        <p>Посочили сте обичай такса от <span></span> обаче препоръчителната такса за тази сделка е <span></span>. Бихте ли искали да използвате препоръчителната такса вместо това?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Използване на потребителски Fee</button>
+            <button class="btn btn-primary">Използвайте Препоръчителна Fee</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

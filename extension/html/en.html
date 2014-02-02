@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Active</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Archived</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Shared</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Address</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Sweep Keys" data-content="Move any bitcoins in the selected keys to a different bitcoin address.">Sweep Keys
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Delete Keys" data-content="Delete the selected private keys.">Delete Keys
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Select All</button>
+                <button class="btn btn-secondary" id="archived-select-none">Select None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Sweep Keys" data-content="Move any bitcoins in the selected keys to a different bitcoin address.">Sweep Keys</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Delete Keys" data-content="Delete the selected private keys.">Delete Keys</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Shared Addresses</h3>
-
-            <p style="padding-top:10px">Shared addresses are designed to receive payment you wish to keep private. Any payments received are sent through a shared wallet breaking the chain of transactions. <a href="https://blockchain.info/wallet/send-shared" target="blank">(More Info)</a></p>
-
-            <p class="well">
-                <b>Shared Addresses are valid for one transaction only and incur a 0.5% transaction fee.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Address</th>
-                    <th class="hidden-phone">Forward To</th>
-                    <th>Expires In</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">New Shared Address</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Quick Send</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Custom</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Shared Coin</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Shared Send</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Games</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Send Shared<br/><small>Send shared routes transactions through a shared wallet for increased privacy.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="To Address" data-content="This is the Bitcoin Address of the recipient.">To:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Enter The Bitcoin Address of the Recipient</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Amount:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Including fees the total of this transaction is <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">There will be no fees for this transaction and a bonus of <span class="bonus-value">0.00</span> will be paid.</p>
-
-                            <p class="help-block free">Shared send is currently free of charge.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Review Payment" data-content="Click Here to review payment. You will be able to confirm or cancel the transaction.">Review Payment</button>
-
-                <p class="help-block fees">All shared transactions incur a <span class="mixer_fee">0.5</span>% Fee.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Custom Transaction<br/><small>Use the form below to send a payment to one or more bitcoin addresses. You will be asked review your transaction before submission.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Bet With SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> is the most popular bitcoin betting game. Win up to 64,000x your bet, instantly. All rolls are verifiable using the blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Place Bet!</button> <button class="send btn pop" data-repeat="5">Repeat x5</button> <button class="send btn pop" data-repeat="10">Repeat x10</button>
-
-                    <p class="help-block">Blockchain.info is not affiliated with satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Summary:</b> <a href="#" class="refresh">(Refresh)</a></p>
-
-            <p><b>Number of Bets:</b> <span class="n-bets"></span></p>
-
-            <p><b>Winnings:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Send Shared?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Send this transaction through the shared wallet and get a<span class="bonus-percent"></span>% bonus</b> (<span class="bonus-value"></span> will be sent back to the sending address). The transaction will incur a delay of approximately <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Do not accept if you expect to receive payment back to the sending address. Shared transactions are incompatible with SatoshiDICE, BitLotto and many other bitcoin games.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Never ask me again.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Continue Without</button>
-                <button class="btn btn-primary">Send Shared?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Shared Coin Transaction</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Higher Fee Recommended</h3>
+    </div>
+    <div class="modal-body">
+        <p>You specified a custom fee of <span></span> however the recommended fee for this transaction is <span></span>. Would you like to use the recommended fee instead?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Use Custom Fee</button>
+            <button class="btn btn-primary">Use Recommended Fee</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

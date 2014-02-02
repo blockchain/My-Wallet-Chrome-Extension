@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">คล่องแคล่ว</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">เก็บ</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">ที่ใช้ร่วมกัน</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>ที่อยู่ Bitcoin</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="คีย์กวาด" data-content="ย้าย Bitcoins ใด ๆ ในคีย์ที่เลือกไปยังที่อยู่ที่แตกต่างกัน Bitcoin">คีย์กวาด
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="ลบคีย์" data-content="ลบคีย์ส่วนตัวที่เลือก">ลบคีย์
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">เลือกทั้งหมด</button>
+                <button class="btn btn-secondary" id="archived-select-none">เลือกไม่มี</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="คีย์กวาด" data-content="ย้าย Bitcoins ใด ๆ ในคีย์ที่เลือกไปยังที่อยู่ที่แตกต่างกัน Bitcoin">คีย์กวาด</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="ลบคีย์" data-content="ลบคีย์ส่วนตัวที่เลือก">ลบคีย์</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>ที่อยู่ที่ใช้ร่วมกัน</h3>
-
-            <p style="padding-top:10px">ที่อยู่ที่ใช้ร่วมกันถูกออกแบบมาเพื่อรับการชำระเงินที่คุณต้องการเก็บไว้เป็นส่วนตัว การชำระเงินที่ได้รับจะถูกส่งผ่านกระเป๋าสตางค์ที่ใช้ร่วมกันทำลายห่วงโซ่ของการทำธุรกรรม <a href="https://blockchain.info/wallet/send-shared" target="blank">(ข้อมูลเพิ่มเติม)</a></p>
-
-            <p class="well">
-                <b>ที่อยู่ที่ใช้ร่วมกันถูกต้องสำหรับการทำธุรกรรมเท่านั้นและต้องเสียค่าธรรมเนียมการทำธุรกรรม 0.5%</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>ที่อยู่</th>
-                    <th class="hidden-phone">ไปข้างหน้าเพื่อ</th>
-                    <th>วันที่หมดอายุใน</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">ที่อยู่ที่ใช้ร่วมกันใหม่</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> ด่วนส่ง</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> ประเพณี</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> เหรียญที่ใช้ร่วมกัน</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> ที่ใช้ร่วมกันส่ง</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> escrow</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">เกม</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">ส่งที่ใช้ร่วมกัน<br/><small>ส่งเส้นทางที่ใช้ร่วมกันการทำธุรกรรมผ่านกระเป๋าสตางค์ที่ใช้ร่วมกันเพื่อความเป็นส่วนตัวที่เพิ่มขึ้น</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="ไปยังที่อยู่" data-content="นี่คือที่อยู่ของผู้รับ Bitcoin">ไปที่:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="ที่อยู่ Bitcoin" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">ใส่ที่อยู่ของผู้รับ Bitcoin</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">จำนวน:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> รวมทั้งค่าใช้จ่ายรวมของการทำธุรกรรมนี้คือ <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">จะมีไม่มีค่าธรรมเนียมสำหรับการทำธุรกรรมนี้และโบนัส <span class="bonus-value">0.00</span> จะได้รับเงิน</p>
-
-                            <p class="help-block free">ที่ใช้ร่วมกันในปัจจุบันคือการส่งเสียค่าใช้จ่าย</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="วิธีการชำระเงินคิดเห็น" data-content="คลิกที่นี่เพื่อดูการชำระเงิน คุณจะสามารถที่จะยืนยันหรือยกเลิกการทำรายการ">วิธีการชำระเงินคิดเห็น</button>
-
-                <p class="help-block fees">ทุกรายการที่ใช้ร่วมกันมีค่า% <span class="mixer_fee">0.5</span></p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">รายการที่กำหนดเอง<br/><small>ใช้แบบฟอร์มด้านล่างเพื่อส่งการชำระเงินถึงหนึ่งหรือมากกว่าที่อยู่ Bitcoin คุณจะถูกถามทบทวนการทำธุรกรรมของคุณก่อนที่จะยื่น</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">เดิมพันด้วย SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> เป็นที่นิยมมากที่สุดเกมการพนัน Bitcoin ชนะได้ถึง 64,000 x เงินเดิมพันของคุณทันที ม้วนทั้งหมดอยู่ในการตรวจสอบการใช้ blockchain</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">วางเดิมพัน!</button> <button class="send btn pop" data-repeat="5">ทำซ้ำ x5</button> <button class="send btn pop" data-repeat="10">ทำซ้ำ x10</button>
-
-                    <p class="help-block">Blockchain.info ไม่เกี่ยวข้องกับ satoshidice.com</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>สรุป:</b> <a href="#" class="refresh">(รีเฟรช)</a></p>
-
-            <p><b>จำนวนของการเดิมพัน:</b> <span class="n-bets"></span></p>
-
-            <p><b>เงินที่ได้มา:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>ส่งที่ใช้ร่วมกัน?</h3>
-        </div>
-        <div class="modal-body">
-            <p>ส่งรายการนี้ผ่านทางกระเป๋าสตางค์ที่ใช้ร่วมกันและได้รับโบนัส% <span class="bonus-percent"></span> (<span class="bonus-value"></span> จะถูกส่งกลับไปยังที่อยู่การส่ง) การทำธุรกรรมจะมีความล่าช้าประมาณ <span class="delay"></span></p>
-
-            <div class="alert alert-block alert-error">
-                    ไม่ยอมรับถ้าคุณคาดหวังที่จะได้รับการชำระเงินกลับไปยังที่อยู่ส่ง การทำธุรกรรมที่ใช้ร่วมกันจะเข้ากันกับ SatoshiDICE, BitLotto และหลายเกมอื่น ๆ Bitcoin
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">ไม่เคยถามฉันอีก</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">ดำเนินการต่อโดยไม่ต้อง</button>
-                <button class="btn btn-primary">ส่งที่ใช้ร่วมกัน?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>รายการเหรียญที่ใช้ร่วมกัน</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>ค่าธรรมเนียมที่สูงขึ้นแนะนำ</h3>
+    </div>
+    <div class="modal-body">
+        <p>คุณระบุค่าที่กำหนดเองของ <span></span> ค่าที่แนะนำสำหรับการทำธุรกรรมครั้งนี้ แต่เป็น <span></span> คุณต้องการที่จะใช้ค่าแนะนำแทน</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">ใช้ค่าที่กำหนด</button>
+            <button class="btn btn-primary">ใช้ค่าที่แนะนำ</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

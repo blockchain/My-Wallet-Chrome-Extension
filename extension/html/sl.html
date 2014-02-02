@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Wallet - Sam svoja banka - Blockchain.info</title>
+    <title>Moja Denarnica - Sam svoja banka - Blockchain.info</title>
     <meta name="robots" content="noindex">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -38,7 +38,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <h1>
-                    <span class="hidden-phone">My Wallet <small>Sam svoja banka.</small></span>
+                    <span class="hidden-phone">Moja Denarnica <small>Sam svoja banka.</small></span>
 
                     <div style="display:none;" id="large-summary" class="pop pull-right" title="Vaše stanje" data-content="Prikazano je stanje v vaši denarnici. Ta znesek lahko potrošite, ko so vse prejete transakcije potrjene.">
                         <span id="balance"></span>
@@ -53,9 +53,9 @@
                 <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
                     <li><a id="home-intro-btn">Domača stran</a></li>
                     <li><a id="my-transactions-btn">Moje transakcije</a></li>
-                    <li><a id="send-coins-btn">Pošlji novce</a></li>
-                    <li><a id="receive-coins-btn">Prejmi novce</a></li>
-                    <li><a class="hidden-phone" id="import-export-btn">Import / Export</a></li>
+                    <li><a id="send-coins-btn">Pošlji sredstva</a></li>
+                    <li><a id="receive-coins-btn">Prejmi sredstva</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">Uvoz / izvoz</a></li>
                 </ul>
 
                 <h6 class="pull-right" id="status-container">
@@ -76,7 +76,7 @@
 
 <div id="my-account" style="display:none;">
     <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
-        <h2>Sensitive Data</h2>
+        <h2>Občutljivi podatki</h2>
 
         <p>V nastavitvah računa so vidni občutljivi podatki, ki jih ne kažite nepooblaščenim osebam. Svetujemo vam, da ne odpirate teh strani v javnosti in da ne snemate zaslonskih posnetkov.</p>
 
@@ -91,7 +91,7 @@
 
 
 <h2>
-    Account Settings <small>Uredite nastavitve svojega računa storitve Moja Denarnica.</small>
+    Nastavitve računa <small>Uredite nastavitve svojega računa storitve Moja Denarnica.</small>
 </h2>
 
 <div class="row-fluid">
@@ -100,17 +100,17 @@
         <ul class="nav nav-list">
             <li class="nav-header">Informacije o računu</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Osebno</a></li>
-            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> General</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Splošno</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Prikazati</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Obveščanje</a></li>
 
             <li class="divider"></li>
-            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Passwords</a></li>
-            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Security</a></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Gesla</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Varnost</a></li>
             <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Beleženje</a></li>
-            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Devices</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Naprave</a></li>
             <li class="divider"></li>
-            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Debugging</a></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Razhroščevanje</a></li>
         </ul>
     </div>
 </div>
@@ -121,7 +121,7 @@
         <h3>Elektronski naslov <small style="color:green">(Priporočeno)</small></h3>
 
         <p>
-            Elektronski naslov se uporablja za obnovitev pozabljenega vzdevka denarnice in za obveščanje o plačilih.<br/>
+            E je potrebno, da pomaga obnoviti izgubljeno denarnico identifikator in obvestila o plačilih.<br/>
         </p>
 
         <p>
@@ -145,7 +145,7 @@
     </div>
 
     <div class="page-header email-verified">
-        <h3>Vzdevek  <small>(Optional)</small></h3>
+        <h3>Vzdevek  <small>(Neobvezno)</small></h3>
         <p>
             Vzdevek denarnice je kratka beseda, ki jo lahko uporabljate namesto identifikatorja denarnice za lažji dostop.<br/>
         </p>
@@ -158,7 +158,7 @@
     </div>
 
     <div class="page-header">
-        <h3>Mobile Number <small>(Optional)</small>
+        <h3>Mobilna številka <small>(Neobvezno)</small>
         </h3>
 
         <p>
@@ -191,9 +191,9 @@
         </p>
     </div>
     <div class="page-header">
-        <h3>Check Compressed</h3>
+        <h3>Preverite Compressed</h3>
 
-        <p>Checks the balance of both compressed and uncompressed versions of all private keys to verify there is no transactions which can be redeemed not shown in the main wallet balance.</p>
+        <p>Preveri stanje tako stisnjene in nestisnjene različic vseh zasebnih ključev za preverjanje ni nobenih transakcij, ki se lahko odkupijo, ki niso prikazane v glavnem denarnice ravnotežje.</p>
 
         <p>
             <button class="btn" id="run-compressed-check">Run</button>
@@ -201,15 +201,15 @@
     </div>
 
     <div class="page-header">
-        <h3>PBKDF2 Iterations</h3>
+        <h3>PBKDF2 Ponovitve</h3>
 
-        <p>PBKDF2 is a function which stretches your password increasing the effort required to bruteforce it. A higher number of iterations is better however you may notice a slow down of your browser.</p>
+        <p>PBKDF2 je funkcija, ki se razteza svoje geslo povečuje napor potreben, da ga Bruteforce. Večje število iteracij je bolje, vendar pa boste lahko opazili upočasnitev vašega brskalnika.</p>
 
-        <p><b>Changing this value can cause compatability issues between old clients which don't support the new wallet encryption format.</b></p>
+        <p><b>Sprememba te vrednosti lahko povzroči težave pri združljivosti med starimi strankami, ki ne podpirajo nove denarnice šifriranje format.</b></p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Iterations:</label>
+                <label class="control-label">Ponovitve:</label>
 
                 <div class="controls">
                     <select id="pbkdf2-iterations">
@@ -229,11 +229,11 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Handle Bitcoin Links</h3>
+        <h3>Ravnajte Bitcoin Povezave</h3>
 
-        <p>Would you like to set blockchain.info as the default handler of bitcoin links? Bitcoin links (URIs) are used to automatically enter a recipient bitcoin address and send value when clicked.</p>
+        <p>Bi radi, da nastavite blockchain.info kot privzeti odpravnika Bitcoin povezav? Bitcoin povezave (URI) se uporablja za samodejno vnesti Bitcoin naslov prejemnika in pošiljanje vrednosti, ko kliknete.</p>
 
-        <button class="btn btn-secondary" id="register-uri-handler">Register URI Handler</button>
+        <button class="btn btn-secondary" id="register-uri-handler">Registrirajte se URI Handler</button>
     </div>
 
     <div class="page-header">
@@ -245,7 +245,7 @@
 
         <p style="padding-left:10px">
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 Minutes</b>
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 minut</b>
             </label>
             <label class="radio" style="font-weight:normal">
                 <input type="radio" name="inactivity-logout-time" value="600000"><b>10 minut</b>
@@ -254,7 +254,7 @@
                 <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 minut</b>
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Never</b>
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Nikoli</b>
             </label>
         </p>
     </div>
@@ -291,7 +291,7 @@
 <div class="tab-pane" id="account-display">
 
     <div class="page-header">
-        <h3>Language</h3>
+        <h3>Jezik</h3>
 
         <p>Izberite svoj jezik</p>
 
@@ -299,7 +299,7 @@
     </div>
 
     <div class="page-header">
-        <h3>Local Currency</h3>
+        <h3>Lokalna valuta</h3>
 
         <p>S klikom na stanje zgoraj desno lahko hitro preklapljate med prikazom zneskov v BTC in v svoji lokalni valuti.</p>
 
@@ -307,17 +307,17 @@
     </div>
 
     <div class="page-header">
-        <h3>Bitcoin Display</h3>
+        <h3>Bitcoin prikaza</h3>
 
-        <p>Adjust the precision you would prefer bitcoin values to be displayed in.</p>
+        <p>Nastavite natančnost, s katero bi raje Bitcoin vrednosti, da se prikaže noter</p>
 
         <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>Transakcije na stran</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>Nastavite število transakcij, prikazanih na strani</p>
 
         <p>
             <select id="transactions_per_page">
@@ -389,7 +389,7 @@
                 <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
             </div>
 
-            <input type="checkbox" value="4"> <b>Obvestila prek HTTP</b><br/>
+            <input type="checkbox" value="4"> <b>Obveščanje prek HTTP</b><br/>
 
             <div class="well type-4" style="display:none">
                 <p>Obvestila prek HTTP pošiljamo ob prejetih ali poslanih transakcijah. Prosimo, oglejte si informacije na strani za razvijalce.</p>
@@ -397,10 +397,10 @@
                 <input placeholder="Http URL" id="wallet-http-url" type="text"/>
             </div>
 
-            <input type="checkbox" value="128"> <b>Obvestila za Android</b><br/>
+            <input type="checkbox" value="128"> <b>Android Obvestila</b><br/>
 
             <div class="well type-128" style="display:none">
-                <p>Po seznanitvi boste prejmali obvestila na svojo napravo Android</p>
+                <p>Boste prejeli obvestila napravo Android, ko seznanjene.</p>
             </div>
 
         </div>
@@ -417,9 +417,9 @@
 
         <p>
             <select id="notifications-on">
-                <option value="0">Prejme ali pošlje novce</option>
-                <option value="1">Prejme novce</option>
-                <option value="2">Pošlje novce</option>
+                <option value="0">Prejme ali pošlje sredstva</option>
+                <option value="1">Prejme sredstva</option>
+                <option value="2">Pošlje sredstva</option>
             </select>
         </p>
     </div>
@@ -460,7 +460,7 @@
     <div class="logl l2 l1">
         <table class="table table-striped well" style="margin-top:10px;display:none;">
             <thead>
-            <th>Time</th>
+            <th>Čas</th>
             <th>Dejanje</th>
             <th>IP-naslov</th>
             <th>Brskalnik/agent</th>
@@ -503,7 +503,7 @@
 </div>
 
 <div class="tab-pane" id="account-passwords">
-    <div class="alert alert-block alert-error"><B>Warning!</B> Če pozabite geslo, bo vaša denarnica izgubljena. Gesel ni mogoče obnoviti!</div>
+    <div class="alert alert-block alert-error"><B>Opozorilo!</B> Če pozabite geslo, bo vaša denarnica izgubljena. Gesel ni mogoče obnoviti!</div>
 
     <p>
         Naši strežniki nikoli na noben način ne izvedo vašega gesla. To pomeni, da bo vaša denarnica varna tudi v primeru napada na naš strežnik. Nadalje zaradi tega mi ne moremo videti vašega stanja ali zgodovine transakcij.
@@ -546,7 +546,7 @@
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Password:</label>
+                <label class="control-label">Geslo:</label>
 
                 <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
             </div>
@@ -570,7 +570,7 @@
 
             <div class="form-horizontal">
                 <div class="control-group">
-                    <label class="control-label">Password:</label>
+                    <label class="control-label">Geslo:</label>
 
                     <div class="controls"><input id="double-password" type="password"/></div>
                 </div>
@@ -655,7 +655,7 @@
 
         <div class="two-factor t4" style="display:none">
             <p class="well">
-                Google Authenticator is enabled
+                Google Overovitelj je omogočen
             </p>
 
             <div style="display:none">
@@ -666,7 +666,7 @@
                 <div id="wallet-google-qr" style="margin:20px"></div>
 
                 <div class="well">
-                    <p>After scanning the above QR code with the google authenticator app enter the authentication code below:</p>
+                    <p>Po skeniranje zgoraj QR kodo z google Authenticator vnesite Spodnjo kodo pristnosti:</p>
 
                     <div class="controls">
                         <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
@@ -742,10 +742,10 @@
     </div>
 
     <div class="page-header">
-        <h3>Block TOR ip addresses</h3>
+        <h3>Block Tor IP naslovi</h3>
 
         <p>
-            Enable the following option to prevent ip addresses part of the TOR anonymizing network from accessing your wallet.
+            Omogočite to možnost, da se prepreči IP naslovov del TOR anonimiziranje dostopali do vaše denarnice.
         </p>
 
         <div class="form-horizontal">
@@ -794,7 +794,7 @@
 <div id="update-password-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Confirm Password Change</h3>
+        <h3>Potrdite spremembo gesla</h3>
     </div>
     <div class="modal-body">
         <p>Vaše geslo bo veljavno takoj. Geslo si zabeležie, saj ga ni možno povrniti, če ga pozabite. Če imate stare varnostne kopije, jih bo možno dešifrirati s starim geslom, zato je priporočljivo, da stare varnostne kopije po spremembi gesla izbrišete.</p>
@@ -802,7 +802,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Shrani geslo</button>
         </div>
     </div>
@@ -916,12 +916,12 @@
             
 
             <div class="page-header" id="home-account-container">
-                <h3>Account Settings</h3>
+                <h3>Nastavitve računa</h3>
 
                 <p>Uredite nastavitve svojega računa, npr. svoj e-naslov, geslo in nastavitve obveščanja.</p>
 
                 <p align="right">
-                    <button class="btn" id="my-account-btn">Account Settings</button>
+                    <button class="btn" id="my-account-btn">Nastavitve računa</button>
                 </p>
             </div>
 
@@ -942,12 +942,12 @@
 
 <div id="receive-coins" style="display:none;">
 
-    <h2>Addresses <small>Vaši bitcoin naslovi za prejemanje</small></h2>
+    <h2>Naslovi <small>Vaši bitcoin naslovi za prejemanje</small></h2>
 
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Aktivni</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Arhivirani</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Deljeni</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -955,22 +955,22 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Address</th>
-                    <th>Balance</th>
+                    <th>Naslov</th>
+                    <th>Stanje</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody></tbody>
             </table>
 
-            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="New Address" data-content="Kliknite tukaj, če želite ustvariti nov bitcoin naslov. Na ta naslov lahko začnete prejemati bitcoine takoj.">New Address</button>
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Nov naslov" data-content="Kliknite tukaj, če želite ustvariti nov bitcoin naslov. Na ta naslov lahko začnete prejemati bitcoine takoj.">Nov naslov</button>
 
             <div class="btn-group pull-right" style="margin:5px">
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     Več možnosti <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a id="generate-cold-storage">New Cold Storage Address</a></li>
+                    <li><a id="generate-cold-storage">New Cold Storage Naslov</a></li>
                     <li><a id="chord-diagram">Poglej relacijski diagram</a></li>
                     <li><a id="group-received" title="Taint Grouping">Združi naslove po sledovih</a></li>
                     <li><a class="hidden-phone" id="verify-message" title="Verify Message">Preveri sporočilo</a></li>
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin naslov</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Počisti ključe" data-content="Premakni vse bitcoine na izbranih ključih na drug bitcoin naslov.">Počisti ključe
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Izbriši ključe" data-content="Izbriši izbrane zasebne ključe.">Izbriši ključe
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Izberi vse</button>
+                <button class="btn btn-secondary" id="archived-select-none">Izberite Noben</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Počisti ključe" data-content="Premakni vse bitcoine na izbranih ključih na drug bitcoin naslov.">Počisti ključe</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Izbriši ključe" data-content="Izbriši izbrane zasebne ključe.">Izbriši ključe</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Deljeni naslovi</h3>
-
-            <p style="padding-top:10px">Deljeni naslovi so namenjeni prejemanju plačil, ki jih želite ohraniti zasebna. Vsa prejeta plačila gredo skozi skupno denarnico, s čimer se prekine veriga transakcij med virom in ciljem novcev. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Več informacij)</a></p>
-
-            <p class="well">
-                <b>Deljeni naslovi veljajo samo za eno transakcijo, za katero velja 1.5% provizija.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Address</th>
-                    <th class="hidden-phone">Posreduj na</th>
-                    <th>Poteče čez</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Nov deljen naslov</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1049,7 +1032,7 @@
                 </div>
 
                 <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
-                    <label class="control-label">Password:</label>
+                    <label class="control-label">Geslo:</label>
 
                     <div class="controls"><input id="restore-password" type="password"/></div>
                 </div>
@@ -1085,7 +1068,7 @@
                 </div>
 
                 <div class="control-group auth-5" style="display:none">
-                    <label class="control-label">SMS Code:</label>
+                    <label class="control-label">SMS koda:</label>
 
                     <div class="controls">
                         <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
@@ -1096,7 +1079,7 @@
 
                 <div style="padding-left: 160px;padding-bottom:20px">
                     <button class="btn btn-primary" id="restore-wallet-continue">Odpri denarnico</button>
-                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Create New Wallet</a>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Ustvari novo denarnico</a>
                 </div>
 
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
@@ -1133,7 +1116,7 @@
             <p> Če ste pozabili ID vaše denarnice, najprej preverite potrditveno elektronsko sporočilo, ki ste ga prejeli ob registraciji. Ne najdete sporočila? Kliknite na gumb spodaj in poslali vam ga bomo ponovno.</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Uvoz varnostne kopije</a> <a class="btn btn-small btn-secondary download-backup-btn">Prenesi varnostno kopijo</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Zopet Denarnica</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Uvoz varnostne kopije</a> <a class="btn btn-small btn-secondary download-backup-btn">Prenesi varnostno kopijo</a>
             </p>
 
             <h4>Pozabljeni podatki za dvostopenjsko overitev</h4>
@@ -1145,7 +1128,7 @@
                 <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Ponastavi dvostopenjsko overitev</a>
             </p>
 
-            <h4>Need Help?</h4>
+            <h4>Potrebujete pomoč?</h4>
 
             <p>
                 Preberite <a target="blank" href="https://blockchain.info/wallet/support-pages">Strani za podporo</a>
@@ -1167,7 +1150,7 @@
                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                     <ul class="dropdown-menu tx_display">
                         <li><a href="#" data-value="0"> Skrčeno</a></li>
-                        <li><a href="#" data-value="1"> Detailed</a></li>
+                        <li><a href="#" data-value="1"> Podrobno</a></li>
                         <li class="divider"></li>
                         <li><a href="#" data-value="export"> Izvoz zgodovine transakcij</a></li>
                     </ul>
@@ -1178,8 +1161,8 @@
                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                     <ul class="dropdown-menu tx_filter">
                         <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> Vse</a></li>
-                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Sent</a></li>
-                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Received</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Poslano</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Prejeto</a></li>
                         <li><a href="#" data-value="4"><i class="icon-random"></i> Escrow</a></li>
                     </ul>
                 </div>
@@ -1210,9 +1193,9 @@
         <ul class="nav nav-list">
             <li class="nav-header">Tip transakcije</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Hitro pošiljanje</a></li>
-            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Custom</a></li>
-            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Shared Coin</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Shared Send</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Po meri</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Skupna Coin</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
 
@@ -1220,15 +1203,14 @@
             <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Elektronska pošta</a></li>
             <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS sporočilo</a></li>
 
-            <li class="nav-header">Games</li>
+            <li class="nav-header">Igre</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
             <li class="divider"></li>
-            <li class="nav-header">Tools</li>
-            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Address Book</a></li>
+            <li class="nav-header">Orodja</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Imenik</a></li>
         </ul>
     </div>
 
@@ -1261,7 +1243,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label pop" title="Amount" data-content="Znesek bitcoinov, ki jih želite poslati">Amount:</label>
+                    <label class="control-label pop" title="Znesek" data-content="Znesek bitcoinov, ki jih želite poslati">Znesek:</label>
 
                     <div class="controls">
 
@@ -1304,17 +1286,17 @@
         <div class="recipient-container">
             <div class="recipient">
                 <div class="control-group">
-                    <label class="control-label pop" title="SMS Number" data-content="Vnesite SMS številko osebe, ki ji želite poslati bitcoine.">V dobro:</label>
+                    <label class="control-label pop" title="SMS številka" data-content="Vnesite SMS številko osebe, ki ji želite poslati bitcoine.">V dobro:</label>
 
                     <div class="controls">
-                        <select name="sms-country-code"></select> <br/> <input placeholder="SMS Number" name="send-to-sms" type="text" style="margin-top:5px"/>
+                        <select name="sms-country-code"></select> <br/> <input placeholder="SMS številka" name="send-to-sms" type="text" style="margin-top:5px"/>
 
                         <p class="help-block">Vnesite SMS številko prejemnika.</p>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label pop" title="Amount" data-content="Znesek bitcoinov, ki jih želite poslati">Amount:</label>
+                    <label class="control-label pop" title="Znesek" data-content="Znesek bitcoinov, ki jih želite poslati">Znesek:</label>
 
                     <div class="controls">
                         <div class="input-prepend input-append">
@@ -1360,7 +1342,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label pop" title="Amount" data-content="Znesek bitcoinov, ki jih želite poslati">Amount:</label>
+                    <label class="control-label pop" title="Znesek" data-content="Znesek bitcoinov, ki jih želite poslati">Znesek:</label>
 
                     <div class="controls">
                         <div class="input-prepend input-append">
@@ -1386,7 +1368,7 @@
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Shared Coin<br/><small>Trustless coin mixing using coin join and taint analysis</small></h4>
+        <h4 class="page-header">Skupna Coin<br/><small>Trustless kovanec mešanje uporabo kovanec pridružite in analizo priokusa</small></h4>
 
         <div class="form-horizontal">
             <div class="controls">
@@ -1412,7 +1394,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop">Amount:</label>
+                        <label class="control-label pop">Znesek:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
@@ -1424,11 +1406,11 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label pop">Repetitions:</label>
+                <label class="control-label pop">Ponovitev:</label>
 
                 <div class="controls">
                     <select name="repetitions"><option value="0">Nalagam</option></select>
-                    <p class="help-block">A higher number of repetitions makes the transaction more difficult to trace and improves privacy.</p>
+                    <p class="help-block">Večje število ponovitev naredi posel težje izslediti in izboljšuje zasebnost.</p>
                 </div>
             </div>
 
@@ -1436,77 +1418,28 @@
                 <button class="send btn btn-primary pop" title="Predogled plačila" data-content="Kliknite tukaj, če želite pregledati plačilo. V nadaljevanju boste lahko potrdili ali preklicali izvedbo plačila.">Predogled plačila</button>
 
                 <p class="help-block send-options" style="padding-top:10px">
-                    <b>Maximum Send Value:</b> <span></span><br />
-                    <b>Minimum Send Value:</b> <span></span><br />
-                    <b>Fee Percent Per Repetition:</b> <span></span>%</br />
-                    <b>Minimum Fee Per Repetition:</b> <span></span>
+                    <b>Najvišja vrednost Pošlji:</b> <span></span><br />
+                    <b>Minimalni Pošlji Vrednost:</b> <span></span><br />
+                    <b>Pristojbina odstotka na Ponovitev:</b> <span></span>%</br />
+                    <b>Minimalna vsota Per Ponovitev:</b> <span></span>
                 </p>
             </div>
         </div>
     </div>
     <div class="well">
-        <h4 style="margin-bottom: 5px">Something went wrong?</h4>
+        <h4 style="margin-bottom: 5px">Nekaj ​​je šlo narobe?</h4>
 
         <p>
-            When sending a shared coin transaction a number of intermediate addresses are used. If anything interupts the process or an error prevents the transaction from completing the coins may be left in an intermediate address. Click the button below to claim any coins left in intermediate addresses, this process can take several minutes to complete.
+            Pri pošiljanju skupni kovanec transakcijo se uporabljajo število vmesnih naslovov. Če nič drugega interupts proces ali napaka preprečuje transakcije od dokončnega kovance lahko ostane v vmesni naslov. Kliknite na spodnji gumb, da zahteva vse kovance, ki so ostali v vmesnih naslovov, lahko ta postopek traja nekaj minut.
         </p>
 
         <p>
-            <button class="btn" id="sharedcoin-recover">Recover Intermediate Addresses</button>
+            <button class="btn" id="sharedcoin-recover">Zopet Intermediate Naslovi</button>
         </p>
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Pošlji deljeno<br/><small>Deljeno poslanih novcev skozi skupno denarnico ni mogoče izslediti od pošiljatelja do prejemnika ali nazaj.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Naslov prejemnika" data-content="To je bitcoin naslov prejemnika.">V dobro:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin naslov" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Vnesite bitcoin naslov prejemnika</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Amount:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Skupen znesek transakcije z vključeno provizijo je <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Za to transakcijo provizija ne bo zaračunana, plačan pa vam bo dodaten bonus v višini <span class="bonus-value">0.00</span> BTC.</p>
-
-                            <p class="help-block free">Uporaba deljenih transakcij je trenutno brezplačna.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Predogled plačila" data-content="Kliknite tukaj, če želite pregledati plačilo. V nadaljevanju boste lahko potrdili ali preklicali izvedbo plačila.">Predogled plačila</button>
-
-                <p class="help-block fees">Na vse deljene transakcije se obračuna <span class="mixer_fee">0.5</span>% provizija.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Transakcija po meri<br/><small>Uporabi spodnji obrazec za pošiljanje na enega ali več bitcoin naslovov. Pred izvedbo plačila boste imeli možnost predogleda transakcij.</small></h4>
@@ -1541,7 +1474,7 @@
                 </div>
 
                 <div style="float:right;padding-right:20px">
-                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Remove Recipient" data-content="Odstrani zadnjega prejemnika."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Add Recipient" data-content="Če želite poslati bitcoine več prejemnikom hkrati, kliknite tukaj za dodajanje novega naslova"/>
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Odstrani prejemnika" data-content="Odstrani zadnjega prejemnika."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Dodaj prejemnika" data-content="Če želite poslati bitcoine več prejemnikom hkrati, kliknite tukaj za dodajanje novega naslova"/>
                 </div>
             </div>
         </div>
@@ -1573,51 +1506,17 @@
         </div>
 
         <div class="form-actions">
-            <button class="reset btn">Reset Form</button>
+            <button class="reset btn">Ponastavi obrazec</button>
             <button class="send btn btn-primary pop" title="Predogled plačila" data-content="Kliknite tukaj, če želite pregledati plačilo. V nadaljevanju boste lahko potrdili ali preklicali izvedbo plačila.">Predogled plačila</button>
         </div>
     </div>
 </div>
 
 
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Stavi s SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> je najbolj priljubljena igra v bitcoin stavah. Zadeni do 64000-kratnika vrednosti stave, v trenutku. Vse izide lahko preverite preko verige blokov.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Stavi!</button> <button class="send btn pop" data-repeat="5">Ponovi x5</button> <button class="send btn pop" data-repeat="10">Ponovi x10</button>
-
-                    <p class="help-block">Blockchain.info ni povezan z satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Summary:</b> <a href="#" class="refresh">(Refresh)</a></p>
-
-            <p><b>Number of Bets:</b> <span class="n-bets"></span></p>
-
-            <p><b>Zmage:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
-
 
 <div class="tab-pane well" id="address-book">
 
-    <h3>Address Book</h3>
+    <h3>Imenik</h3>
 
     <p>Imenik vsebuje seznam naslovov prejemnikov. Lahko ga uporabite za hrambo naslovov oseb, ki jih poznate, ali prodajalcev, s katerimi pogosto poslujete.</p>
 
@@ -1637,7 +1536,7 @@
     </table>
 
     <div class="form-actions">
-        <button id="add-address-book-entry-btn" class="btn btn-primary">Add New Entry</button>
+        <button id="add-address-book-entry-btn" class="btn btn-primary">Dodaj nov vnos</button>
     </div>
 </div>
 </div>
@@ -1665,10 +1564,10 @@
 <div class="span2">
     <div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list">
-            <li class="nav-header">Import / Export</li>
-            <li class="active"><a href="#import" data-toggle="tab">Import</a></li>
+            <li class="nav-header">Uvoz / izvoz</li>
+            <li class="active"><a href="#import" data-toggle="tab">Uvoz</a></li>
             <li><a href="#import-backup" data-toggle="tab">Uvoz varnostne kopije</a></li>
-            <li><a href="#import-wallet" data-toggle="tab">Import Wallet</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">Uvoz denarnice</a></li>
             <li><a href="#export-crypted" data-toggle="tab">Izvozi šifrirano</a></li>
             <li><a href="#export-unencrypted" data-toggle="tab">Izvozi nešifrirano</a></li>
             <li><a class="paper-wallet-btn">Papirnata denarnica</a></li>
@@ -1684,7 +1583,7 @@
             <div class="page-header">
                 <h3>Dodajanje naslova za opazovanje</h3>
 
-                <p>V svojo denarnico lahko dodate <font color="red">Watch Only</font> bitcoin naslov. S tega naslova ne boste mogli pošiljati novcev, ne da bi dodali še njegov zasebni ključ.</p>
+                <p>V svojo denarnico lahko dodate <font color="red">Watch Only</font> bitcoin naslov. S tega naslova ne boste mogli pošiljati sredstev, ne da bi dodali še njegov zasebni ključ.</p>
 
                 <div class="form-inline">
                     <input placeholder="Bitcoin naslov" id="import-address-address" type="text"/>
@@ -1719,9 +1618,9 @@
 
             <table class="table table-striped well" style="margin-top:10px">
                 <thead>
-                <th>File Name</th>
+                <th>Ime datoteke</th>
                 <th>Zadnjič spremenjena</th>
-                <th>Size</th>
+                <th>Velikost</th>
                 <th>Dejanje</th>
                 </thead>
                 <tbody></tbody>
@@ -1730,7 +1629,7 @@
 
         <div class="tab-pane" id="import-wallet">
 
-            <h3 class="page-header">Import Wallet</h3>
+            <h3 class="page-header">Uvoz denarnice</h3>
 
             <p>Uvozite lahko ključe v različnih formatih.</p>
             <ul>
@@ -1749,7 +1648,7 @@
         </div>
 
         <div class="tab-pane" id="export-crypted">
-            <h3 class="page-header">Export <small>V spodnjem polju so vaši zasebni ključi, šifrirani z AES.</small></h3>
+            <h3 class="page-header">Izvoz <small>V spodnjem polju so vaši zasebni ključi, šifrirani z AES.</small></h3>
 
             <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
 
@@ -1785,14 +1684,14 @@
             <div class="modal-body">
                 <p>Prosimo, potrdite, da želite dodati <font color="red">Watch Only</font> naslov <span class="address"></span>.</p>
 
-                <p>Da je naslov <font color="red">Watch Only</font>, pomeni, da lahko transakcije na njem le opazujete, ne morete pa novcev trošiti. Če zanj nimate nekje shranjenega zasebnega ključa, potem niste lastnik novcev na tem naslovu.</p>
+                <p>Da je naslov <font color="red">Watch Only</font>, pomeni, da lahko transakcije na njem le opazujete, ne morete pa sredstev trošiti. Če zanj nimate nekje shranjenega zasebnega ključa, potem niste lastnik sredstev na tem naslovu.</p>
 
                 <p>Če nimate papirne denarnice ali varnostne kopije, ne shranjujte bitcoinov na ta naslov. Prav tako ne ne uporabljajte tega naslova za nakazila od drugih uporabnikov.</p>
             </div>
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn btn-secondary">Prekliči</button>
                     <button class="btn btn-primary">Nadaljuj</button>
                 </div>
             </div>
@@ -1800,10 +1699,10 @@
 
         <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Import Private Key Warning</h3>
+                <h3>Uvoziti zasebni ključ Opozorilo</h3>
             </div>
             <div class="modal-body">
-                <p><b>Never import a private key from a public or untrusted source.</b> This includes common brain wallets, competitions and purchased private keys. Instead we recommend to sweep the key, which means to send all the funds to one of your existing addresses rather than actually adding a new address to your wallet.</p>
+                <p><b>Nikoli uvoziti zasebni ključ iz javnega ali odpeti vira.</b> Ta vključuje skupne možganske denarnice, tekmovanja in kupljene zasebnih ključev. Namesto tega vam priporočamo, da pomete ključ, kar pomeni, da pošlje vsa sredstva za enega od vaših obstoječih naslovov, ne pa dejansko dodal nov naslov za vašo denarnico.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1816,12 +1715,12 @@
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>Denarnica Geslo</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>Če je ta denarnica šifrirani prosimo vnesite geslo spodaj. V nasprotnem primeru pustite prazno.</p>
                 <p align="center">
-                    <b>Wallet Password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>Denarnica Geslo:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
@@ -1838,9 +1737,9 @@
             </div>
 
             <div class="modal-body">
-                <p>Stisnjeni zasebni ključi v naših aplikacijah za Android, iPhone in v programskem vmesniku za trgovce trenutno niso podprti. Če uvozite stisnjen zasebni ključ, novcev z omenjenimi napravami boste mogli uporabiti.</p>
+                <p>Stisnjeni zasebni ključi v naših aplikacijah za Android, iPhone in v programskem vmesniku za trgovce trenutno niso podprti. Če uvozite stisnjen zasebni ključ, sredstev z omenjenimi napravami boste mogli uporabiti.</p>
 
-                <p>Priporočljiva rešitev je, da počistite novce na obstoječ bitcoin naslov. Ali bi raje počistili ta zasebni ključ?</p>
+                <p>Priporočljiva rešitev je, da počistite sredstva na obstoječ bitcoin naslov. Ali bi raje počistili ta zasebni ključ?</p>
             </div>
 
             <div class="modal-footer">
@@ -1874,7 +1773,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button> <button class="btn btn-primary">Nadaljuj</button>
+            <button class="btn btn-secondary">Prekliči</button> <button class="btn btn-primary">Nadaljuj</button>
         </div>
     </div>
 </div>
@@ -1951,7 +1850,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button> <button class="btn btn-primary">Nadaljuj</button>
+            <button class="btn btn-secondary">Prekliči</button> <button class="btn btn-primary">Nadaljuj</button>
         </div>
     </div>
 </div>
@@ -1967,23 +1866,23 @@
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Label:</label>
+                <label class="control-label">Oznaka:</label>
                 <div class="controls">
                     <input name="label" placeholder="Oznaka, npr. Prihranki" type="text" /><p class="help-block">Oznake uporabite zato, da si zapomnite, komu naslov pripada. Lahko je ime osebe ali podjetja. </p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Make Public?</label>
+                <label class="control-label">Javno objaviti?</label>
                 <div class="controls">
-                    <input name="make_public" type="checkbox" /><p class="help-block">By Default address labels are visible to you only. Public labels are publically visible on the blockchain website and can be viewed by anyone.</p>
+                    <input name="make_public" type="checkbox" /><p class="help-block">Skupaj z zamudnimi naslovu so vidne samo tebi nalepke. Javne oznake so javno vidni na spletni strani blockchain in si lahko ogledate z nikomer.</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button> <button class="btn btn-primary">Save</button>
+            <button class="btn btn-secondary">Prekliči</button> <button class="btn btn-primary">Shrani</button>
         </div>
     </div>
 </div>
@@ -1999,19 +1898,19 @@
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Address:</label>
+                <label class="control-label">Naslov:</label>
                 <div class="controls">
                     <p class="address"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Message:</label>
+                <label class="control-label">Sporočilo:</label>
                 <div class="controls">
                     <textarea name="message" style="width:90%;height:100px;" placeholder="Vnesite sporočilo, ki ga želite podpisati."></textarea>
                 </div>
             </div>
             <div class="control-group signature" style="display:none">
-                <label class="control-label">Signature:</label>
+                <label class="control-label">Podpis:</label>
                 <div class="controls">
                     <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
                 </div>
@@ -2021,7 +1920,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Podpišite sporočilo</button>
         </div>
     </div>
@@ -2038,19 +1937,19 @@
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Address:</label>
+                <label class="control-label">Naslov:</label>
                 <div class="controls">
                     <input name="address" placeholder="Bitcoin naslov" type="text">
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Message:</label>
+                <label class="control-label">Sporočilo:</label>
                 <div class="controls">
                     <textarea name="message" style="width:90%;height:100px;" placeholder="Vnesite sporočilo"></textarea>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Signature:</label>
+                <label class="control-label">Podpis:</label>
                 <div class="controls">
                     <textarea name="signature" style="width:90%;height:100px;" placeholder="Vnesite podpis, ki ga želite preveriti"></textarea>
                 </div>
@@ -2066,7 +1965,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Preveri sporočilo</button>
         </div>
     </div>
@@ -2083,7 +1982,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Close</button>
+            <button class="btn btn-secondary">Zapri</button>
         </div>
     </div>
 </div>
@@ -2096,14 +1995,14 @@
     <div class="modal-body">
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Address:</label>
+                <label class="control-label">Naslov:</label>
                 <div class="controls">
                     <input name="address" placeholder="Bitcoin naslov" type="text">
                     <p class="help-block">Vnesite bitcoin naslov, ki ga želite dodati v imenik.</p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Label:</label>
+                <label class="control-label">Oznaka:</label>
                 <div class="controls">
                     <input name="label" placeholder="Ime osebe ali trgovine" type="text" />
                     <p class="help-block">Vnesite oznako za ta naslov, npr. ime osebe ali podjetja.</p>
@@ -2113,7 +2012,7 @@
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Dodaj naslov</button>
         </div>
     </div>
@@ -2125,13 +2024,13 @@
         <h3 style="color:red;">Naslov ni shranjen</h3>
     </div>
     <div class="modal-body">
-        <p>Ta naslov še ni shranjen na na naš strežnik in ga lahko izgubite, ko boste zapustili to stran.  <span style="color:red;font-weight:bold;">Če zasbni ključ ni shranjen kje drugje, bodo vsi novci, poslani na nesinhronizirani naslov, trajno izgubljeni po odjavi.</span></p>
+        <p>Ta naslov še ni shranjen na na naš strežnik in ga lahko izgubite, ko boste zapustili to stran.  <span style="color:red;font-weight:bold;">Razen če je shranjen zasebni ključ na drugem vse kovance, poslana Nesinhronizirane naslovov dokončno izgubil po odjavi</span></p>
     </div>
 
     <div class="modal-footer">
         <div class="pull-right">
-            <button class="btn btn-danger">Show Unsaved Address</button>
-            <button class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button class="btn btn-danger">Prikaži Neshranjen naslov</button>
+            <button class="btn btn-primary" data-dismiss="modal">Zapri</button>
         </div>
     </div>
 </div>
@@ -2144,14 +2043,14 @@
     <div class="modal-body">
         <p>To opozorilo ste dobili, ker ste v odložišče kopirali <font color="red">Watch Only</font> naslov.</p>
 
-        <p>Da je naslov <font color="red">Watch Only</font>, pomeni, da lahko transakcije na njem le opazujete, ne morete pa novcev trošiti. Če zanj nimate nekje shranjenega zasebnega ključa, potem niste lastnik novcev na tem naslovu.</p>
+        <p>Da je naslov <font color="red">Watch Only</font>, pomeni, da lahko transakcije na njem le opazujete, ne morete pa sredstev trošiti. Če zanj nimate nekje shranjenega zasebnega ključa, potem niste lastnik sredstev na tem naslovu.</p>
 
         <p><b>Če nimate papirne denarnice ali varnostne kopije, ne shranjujte bitcoinov na ta naslov. Prav tako ne ne uporabljajte tega naslova za nakazila od drugih uporabnikov.</b></p>
     </div>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-secondary" data-dismiss="modal">Zapri</button>
         </div>
     </div>
 </div>
@@ -2162,12 +2061,12 @@
         <h3>Potrdite izbris</h3>
     </div>
     <div class="modal-body">
-        <div class="alert alert-block alert-error">Izbris napačnega naslova pomeni izgubo novcev na njem. Če niste prepričani, pritisnite prekliči.</div>
+        <div class="alert alert-block alert-error">Izbris napačnega naslova pomeni izgubo sredstev na njem. Če niste prepričani, pritisnite prekliči.</div>
 
         <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
 
         <p>
-            Ali ste prepričani, da želite odstraniti ta naslov? Če ga odstranite, z njega ne boste mogli pošiljati novcev ali jih prejemati nanj. Stanje na tem naslovu je:
+            Ali ste prepričani, da želite odstraniti ta naslov? Če ga odstranite, z njega ne boste mogli pošiljati sredstev ali jih prejemati nanj. Stanje na tem naslovu je:
         </p>
 
         <h2 align="center" id="delete-balance"></h2>
@@ -2177,7 +2076,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Izbriši samo zasebni ključ</button>
             <button class="btn btn-danger">Izbriši naslov in zasebni ključ</button>
         </div>
@@ -2190,7 +2089,7 @@
         <h3>Počisti ključe</h3>
     </div>
     <div class="modal-body">
-        <p>Počistiti pomeni premakniti vse razpoložljive novce iz enega ali več naslovov na drug naslov. Prosimo, izberite naslov, na katerega bi radi počistili izbrane naslove (stanje: <span class="balance"></span>).</p>
+        <p>Počistiti pomeni premakniti vsa razpoložljiva sredstva iz enega ali več naslovov na drug naslov. Prosimo, izberite naslov, na katerega bi radi počistili izbrane naslove (stanje: <span class="balance"></span>).</p>
 
         <p align="center">
         <div class="form-inline">
@@ -2201,47 +2100,24 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Nadaljuj</button>
         </div>
     </div>
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Pošljite deljeno?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Izvedite to transakcijo kot deljeno transakcijo in pridobite bonus v višini <span class="bonus-percent"></span>%</b> (<span class="bonus-value"></span> bitcoinov bo poslano nazaj na naslov, s katerega pošiljate). Transakcija bo izvedena z zakasnitvijo približno <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Zavrnite, če pričakujete kako plačilo nazaj na naslov, iz katerega izvira prvotna transakcija. Deljene transakcije so nezdružljive s SatoshiDICE, BitLotto in številnimi drugimi bitcoin igrami.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Ne sprašuj več.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Continue Without</button>
-                <button class="btn btn-primary">Pošljite deljeno?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
-        <h3>Shared Coin Transaction</h3>
+        <h3>Skupna Coin transakcije</h3>
     </div>
     <div class="modal-body">
         <div class="alert alert-block alert-error">
-            An error occurred completing this shared coin transaction. For further information please check the javascript console.
+            Prišlo je do napake dokončanje tega skupnega kovanca transakcijo. Za dodatne informacije preverite javascript konzolo.
         </div>
 
         <div class="alert alert-block alert-warning">
-            Transaction in progress. Do not close this window or exit your browser.
+            Transakcija v teku. Ne zaprite to okno ali zaprete brskalnik.
         </div>
 
         <p align="center" class="loading-indicator" style="display:none;padding:10px;">
@@ -2252,28 +2128,28 @@
         <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
 
             <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
         </div>
     </div>
 </div>
 
 <div id="insufficient-funds" class="modal hide">
     <div class="modal-header">
-        <h3>Insufficient Funds</h3>
+        <h3>Nezadostna sredstva</h3>
     </div>
 
     <div class="modal-body">
-        <p>This transaction cannot be sent because there are insufficent funds available. This may be due to additional miners fees or unconfirmed transactions.</p>
+        <p>Ta transakcija se ne more poslati, ker je premalo, razpoložljivih sredstev. To je lahko zaradi dodatnih pristojbin rudarjev ali nepotrjenih poslov.</p>
 
-        <p>The transaction can either be cancelled. Or the amount to send can be adjusted to match the maximum amount available to send.</p>
+        <p>Transakcija se lahko bodisi preklicati. Ali se lahko znesek za pošiljanje prilagodimo najvišji znesek, ki je na voljo za pošiljanje.</p>
     </div>
 
-    <h3 align="center" style="padding-bottom:10px">Required: <span class="amount-required"></span> (Available: <span class="amount-available"></span>)</h3>
+    <h3 align="center" style="padding-bottom:10px">Obvezno: <span class="amount-required"></span> (Na voljo: <span class="amount-available"></span>)</h3>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel Transaction</button>
-            <button class="btn btn-primary">Adjust Amount</button>
+            <button class="btn btn-secondary">Prekliči transakcijo</button>
+            <button class="btn btn-primary">Prilagodite Količina</button>
         </div>
     </div>
 </div>
@@ -2284,7 +2160,7 @@
     </div>
     <div class="modal-body">
         <p>Ta transakcija ima nizko prioriteto. Priporočljivo je, da vključite vsaj 0,005 BTC provizije, da zagotovite obdelavo.</p>
-        <div class="alert alert-block alert-error">Če ne vključite provizije, bo lahko trajalo dolgo, da bo transakcija potrjena. Vsi novci vam bodo vrnjeni v približno 24 urah.</div>
+        <div class="alert alert-block alert-error">Če ne vključite provizije, bo lahko trajalo dolgo, da bo transakcija potrjena. Vsa sredstva vam bodo vrnjena v približno 24 urah.</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Višja cena Priporočena</h3>
+    </div>
+    <div class="modal-body">
+        <p>Vi določeno provizijo po meri <span></span> pa priporočamo pristojbina za to transakcijo je <span></span>. Bi radi, da namesto tega uporabite priporočeni provizijo?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Uporabi pristojbina</button>
+            <button class="btn btn-primary">Uporabi priporočene Fee</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2332,15 +2222,15 @@
                         <td id="rtc-hash"></td>
                     </tr>
                     <tr>
-                        <td><b>Version</b></td>
+                        <td><b>Različica</b></td>
                         <td id="rtc-version">1</td>
                     </tr>
                     <tr>
-                        <td><b>Inputs</b></td>
+                        <td><b>Vhodi</b></td>
                         <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
                     </tr>
                     <tr>
-                        <td><b>Outputs</b></td>
+                        <td><b>Izhodi</b></td>
                         <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
                     </tr>
                     <tr>
@@ -2364,8 +2254,8 @@
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Send Transaction</button>
+            <button class="btn btn-secondary">Prekliči</button>
+            <button class="btn btn-primary">Pošlji transakcijo</button>
         </div>
     </div>
 </div>
@@ -2377,7 +2267,7 @@
 
     <div class="modal-body">
         <h3 style="padding-bottom:25px">
-            Pošlji <span class="amount"></span> BTC na <span class="email"></span> <br /> <small>The following message will be sent to the recipient.</small>
+            Pošlji <span class="amount"></span> BTC na <span class="email"></span> <br /> <small>Naslednje sporočilo bo poslano prejemniku.</small>
         </h3>
 
         <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
@@ -2385,7 +2275,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Pošlji plačilo</button>
         </div>
     </div>
@@ -2408,7 +2298,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
             <button class="btn btn-primary">Vnesite zasebni ključ</button>
         </div>
     </div>
@@ -2420,25 +2310,25 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
         </div>
     </div>
 </div>
 
 <div id="decrypting-progress-modal" class="modal hide" style="max-width:400px">
     <div class="modal-header">
-        <h3>Please Wait...</h3>
+        <h3>Prosimo, počakajte ...</h3>
     </div>
 
     <div class="modal-body">
 
         <p align="center">
-            Key stretching. Please wait..
+            Ključ raztezanje. Prosimo, počakajte ..
         </p>
 
         <div class="progress progress-striped active" align="center">
@@ -2479,19 +2369,19 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">Prekliči</button>
         </div>
     </div>
 </div>
 
 <div id="import-private-key-password" class="modal hide">
     <div class="modal-header">
-        <h3>Encrypted Private Key</h3>
+        <h3>Šifriran zasebni ključ</h3>
     </div>
     <div class="modal-body">
-        <p>An encrypted private key has been detected. Please enter the encryption passphrase below:</p>
+        <p>Šifriran zasebni ključ je bila zaznana. Vnesite šifriranje geslo spodaj:</p>
         <p align="center">
-            <b>Passphrase::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+            <b>Geslo::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
         </p>
     </div>
     <div class="modal-footer">

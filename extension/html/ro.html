@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Activ</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Arhivate</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Shared</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Adresa Bitcoin</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Matura Taste" data-content="Mutati orice bitcoins din cheile selectate catre o adresa de bitcoin diferita.">Matura Taste
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Stergeti Taste" data-content="Stergeti cheile private selectate.">Stergeti Taste
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Selectați Toate</button>
+                <button class="btn btn-secondary" id="archived-select-none">Selectați Nu există</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Matura Taste" data-content="Mutati orice bitcoins din cheile selectate catre o adresa de bitcoin diferita.">Matura Taste</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Stergeti Taste" data-content="Stergeti cheile private selectate.">Stergeti Taste</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Adrese comun</h3>
-
-            <p style="padding-top:10px">Adresele comune sunt concepute pentru a primi plăți pe care doriți să le păstrați private. Orice plăți primite sunt trimise printr-un portofel comun de rupere a lanțului de tranzacții. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Mai multe informatii)</a></p>
-
-            <p class="well">
-                <b>Adrese comune sunt valabile pentru o singură tranzacție și numai suporta un comision de tranzacție de 0,5%.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Adresa</th>
-                    <th class="hidden-phone">Mai departe la</th>
-                    <th>Expira în</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Adresa nouă comun</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Trimitere rapida</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Obicei</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Moneda comună</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Trimite comună</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Jocuri</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Trimite comun<br/><small>Trimite tranzacțiile rute comune prin intermediul unui portofel comun pentru intimitate a crescut.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Catre adresa" data-content="Aceasta este adresa Bitcoin al destinatarului.">Pentru:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Introduceti adresa Bitcoin a beneficiarului</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Suma:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Inclusiv taxele totală a acestei tranzacții este <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Nu vor exista taxe pentru această tranzacție și un bonus de <span class="bonus-value">0.00</span> vor fi plătite.</p>
-
-                            <p class="help-block free">Shared trimite este în prezent gratuit.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Plata opinie" data-content="Click aici pentru a revizui plata. Veti fi capabil de a confirma sau de a anula tranzactia.">Plata opinie</button>
-
-                <p class="help-block fees">Toate tranzacțiile comune suporta o taxa de <span class="mixer_fee">0.5</span>%.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Tranzactie personalizata<br/><small>Foloseste formularul de mai jos pentru a trimite o plata la una sau mai multe adrese bitcoin. Vi se va solicita analiza tranzactiei înainte de depunere.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Pariaza cu SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> este cel mai popular joc de bitcoin de pariuri. Câstigati pâna la 64.000 x pariul dvs., instantaneu. Toate rolele sunt verificabile prin blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Plasati pariuri!</button> <button class="send btn pop" data-repeat="5">Repetare</button> <button class="send btn pop" data-repeat="10">Repetare</button>
-
-                    <p class="help-block">Blockchain.info nu este afiliat cu satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Rezumat:</b> <a href="#" class="refresh">(Reîmprospatare)</a></p>
-
-            <p><b>Numar de pariuri:</b> <span class="n-bets"></span></p>
-
-            <p><b>Castigate:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Trimite comun?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Trimite această tranzacție prin portofel comune și a obține o <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> va fi trimis înapoi la adresa de trimitere). Tranzacția va suporta o întârziere de aproximativ <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Nu accepta, dacă vă așteptați să primiți plățile la adresa de expediere. Tranzacțiilor comune sunt incompatibile cu SatoshiDICE, BitLotto si multe alte jocuri bitcoin.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Niciodata nu ma întreba din nou.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Fara sa continue</button>
-                <button class="btn btn-primary">Trimite comun?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Transaction monede comună</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Taxa de mai recomandat</h3>
+    </div>
+    <div class="modal-body">
+        <p>Ați specificat o taxă de obicei de <span></span> cu toate acestea, taxa recomandat pentru această tranzacție este <span></span>. Doriți să utilizați taxa recomandat în schimb?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Utilizați Taxa personalizat</button>
+            <button class="btn btn-primary">Utilizați Taxa recomandată</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

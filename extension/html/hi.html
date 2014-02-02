@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">सक्रिय</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">संग्रहीत</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">साझा</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin पता</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="स्वीप कुंजी" data-content="कदम चयनित कुंजियों एक और Bitcoins पता करने के लिए.">स्वीप कुंजी
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="कुंजी हटाएँ" data-content="हटाएं चयनित निजी कुंजी.">कुंजी हटाएँ
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">सभी चुनें</button>
+                <button class="btn btn-secondary" id="archived-select-none">कोई नहीं का चयन</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="स्वीप कुंजी" data-content="कदम चयनित कुंजियों एक और Bitcoins पता करने के लिए.">स्वीप कुंजी</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="कुंजी हटाएँ" data-content="हटाएं चयनित निजी कुंजी.">कुंजी हटाएँ</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>साझा पते</h3>
-
-            <p style="padding-top:10px">साझा पते से प्राप्त भुगतान अपने बटुए में एक और पते पर भेजा जाएगा. किसी भी प्राप्त भुगतान एक साझा लेनदेन की चेन तोड़ने बटुआ के माध्यम से भेजा जाता है. <a href="https://blockchain.info/wallet/send-shared" target="blank">(अधिक जानकारी)</a></p>
-
-            <p class="well">
-                <b>साझा पते एक लेन - देन के लिए ही मान्य हैं और एक 0.5% लेनदेन शुल्क उठाना.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>पता</th>
-                    <th class="hidden-phone">अग्रेषित करने के लिए</th>
-                    <th>में समाप्त हो रहा</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">नई साझा पता</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> त्वरित भेजें</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> रिवाज</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> साझा सिक्का</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> भेजें साझा</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> एस्क्रौ</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">खेल</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">साझा भेजें<br/><small>अपने बटुए और एक गंतव्य पता के बीच लेन - देन की श्रृंखला टूट साझा भेजें.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="करने के लिए पता" data-content="यह Bitcoin-प्राप्तकर्ता पता है.">करने के लिए:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin पता" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">प्राप्तकर्ता के Bitcoin पता दर्ज करें</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">राशि:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> फीस सहित इस सौदे की कुल <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus"><span class="bonus-value">0.00</span> का भुगतान किया जाएगा इस सौदे का एक बोनस के लिए कोई फीस नहीं होगी.</p>
-
-                            <p class="help-block free">साझा भेजने वर्तमान में नि: शुल्क है.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="समीक्षा भुगतान" data-content="भुगतान को देखने के लिए यहाँ क्लिक करें। आप की पुष्टि या रद्द लेनदेन करने में सक्षम हो जाएगा.">समीक्षा भुगतान</button>
-
-                <p class="help-block fees">सभी साझा लेनदेन% <span class="mixer_fee">0.5</span> शुल्क उठाना.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">विशेष लेन-देन<br/><small>कृपया नीचे के फार्म का उपयोग एक या एक से अधिक bitcoin पतों के लिए एक भुगतान भेजने के लिए करें। आप प्रसारण के लिए अपने लेन-देन की जांच करने के लिए कहा जाएगा। </small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">SatoshiDICE साथ शर्त<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> सबसे लोकप्रिय bitcoin सट्टेबाजी खेल है. 64,000 अपनी शर्त एक्स, तुरन्त जीतो. सभी रोल blockchain का उपयोग कर निरीक्षण कर रहे हैं.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">शर्त जगह!</button> <button class="send btn pop" data-repeat="5">X5 दोहराएँ</button> <button class="send btn pop" data-repeat="10">X10 दोहराएँ</button>
-
-                    <p class="help-block">Blockchain.info satoshidice.com के साथ संबद्ध नहीं है.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>सारांश:</b> <a href="#" class="refresh">(ताज़ा करना)</a></p>
-
-            <p><b>दांव की संख्या:</b> <span class="n-bets"></span></p>
-
-            <p><b>जीता:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>साझा भेजें?</h3>
-        </div>
-        <div class="modal-body">
-            <p>साझा बटुए के माध्यम से इस सौदे भेजें और एक <span class="bonus-percent"></span>% बोनस (<span class="bonus-value"></span> भेजने के पते पर वापस भेजा जाएगा) मिलता है. लेन - देन लगभग <span class="delay"></span> की देरी उठाना होगा.</p>
-
-            <div class="alert alert-block alert-error">
-                    स्वीकार नहीं अगर आप भुगतान भेजने के पते पर वापस प्राप्त करने की अपेक्षा है. साझा लेनदेन SatoshiDICE, BitLotto और कई अन्य bitcoin खेल के साथ असंगत हैं.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">फिर मुझे पूछना कभी नहीं.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">बिना जारी</button>
-                <button class="btn btn-primary">साझा भेजें?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>साझा सिक्का लेनदेन</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>उच्च शुल्क की सिफारिश की</h3>
+    </div>
+    <div class="modal-body">
+        <p>क्या आप फिर भी इस लेन - देन के लिए सिफारिश शुल्क है <span></span> के लिए एक कस्टम शुल्क निर्दिष्ट <span></span>. आप के बजाय सिफारिश शुल्क का उपयोग करना चाहेंगे?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">कस्टम शुल्क का उपयोग</button>
+            <button class="btn btn-primary">अनुशंसित शुल्क का उपयोग</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

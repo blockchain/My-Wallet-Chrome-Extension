@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Aktiv</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Arkivert</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Delt</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Adresse</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Feie Keys" data-content="Flytt eventuelle Bitcoins i de utvalgte nøklene til en annen Bitcoin adresse.">Feie Keys
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Slett Keys" data-content="Slett de valgte private nøkler.">Slett Keys
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Velg alle</button>
+                <button class="btn btn-secondary" id="archived-select-none">Velg ingen</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Feie Keys" data-content="Flytt eventuelle Bitcoins i de utvalgte nøklene til en annen Bitcoin adresse.">Feie Keys</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Slett Keys" data-content="Slett de valgte private nøkler.">Slett Keys</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Delte adresser</h3>
-
-            <p style="padding-top:10px">Delte adresser er laget for å motta betaling du ønsker å holde privat. Eventuelle innbetalinger blir sendt gjennom en felles lommebok bryte kjeden av transaksjoner. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Mer info)</a></p>
-
-            <p class="well">
-                <b>Delte adresser er gyldige for en transaksjon bare og pådra seg en 0,5% transaksjonsgebyr.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Adresse</th>
-                    <th class="hidden-phone">Frem til</th>
-                    <th>Utløper i</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Ny Felles Adresse</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Rask Send</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Custom</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Felles mynt</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Delt Send</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Spill</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Send Delt<br/><small>Send delte ruter transaksjoner gjennom en felles lommebok for økt personvern.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Til adresse" data-content="Dette er den Bitcoin-postadressen til mottakeren.">Til:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Adresse" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Enter The Bitcoin-postadressen til mottakeren</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Beløp:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Inkludert avgifter summen av denne transaksjonen er <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Det blir ingen gebyr for denne transaksjonen og en bonus på <span class="bonus-value">0.00</span> blir betalt.</p>
-
-                            <p class="help-block free">Delt send er for tiden gratis.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Gjennomgå betaling" data-content="Klikk her for å gjennomgå betaling. Du vil kunne bekrefte eller avbryte transaksjonen.">Gjennomgå betaling</button>
-
-                <p class="help-block fees">Alle delte transaksjoner pådra seg en <span class="mixer_fee">0.5</span>% Fee.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Custom Transaction<br/><small>Bruk skjemaet nedenfor for å sende en betaling til en eller flere Bitcoin adresser. Du vil bli bedt om vurdere transaksjonen før innsending.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Bet Med SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> er den mest populære Bitcoin betting spillet. Vinn opp til 64 000 x innsatsen, umiddelbart. Alle ruller er kontrollerbar ved hjelp av blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Legg inn bud!</button> <button class="send btn pop" data-repeat="5">Gjenta x5</button> <button class="send btn pop" data-repeat="10">Gjenta x10</button>
-
-                    <p class="help-block">Blockchain.info er ikke tilknyttet satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Oppsummering:</b> <a href="#" class="refresh">(Refresh)</a></p>
-
-            <p><b>Antall spill:</b> <span class="n-bets"></span></p>
-
-            <p><b>Gevinst:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Send Delt?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Send denne transaksjonen gjennom felles lommebok og få en <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> vil bli sendt tilbake til avsenderadressen). Transaksjonen vil medføre en forsinkelse på ca <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Ikke godta hvis du forventer å motta betaling tilbake til sender adressen. Delte transaksjoner er uforenlig med SatoshiDICE, BitLotto og mange andre Bitcoin spill.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Ikke spør igjen.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Fortsett uten</button>
-                <button class="btn btn-primary">Send Delt?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Felles mynt Transaction</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Høyere Fee Anbefalt</h3>
+    </div>
+    <div class="modal-body">
+        <p>Du angitt en egendefinert gebyr på <span></span> men den anbefalte gebyr for denne transaksjonen er <span></span>. Har du lyst til å bruke den anbefalte avgift i stedet?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Bruk Custom Fee</button>
+            <button class="btn btn-primary">Bruk anbefalt Fee</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

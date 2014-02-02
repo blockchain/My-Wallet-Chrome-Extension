@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Attivo</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Archiviato</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Diviso</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Indirizzo Bitcoin</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Pulisci le Chiavi" data-content="Sposta i bitcoin eventualmente presenti nelle chiavi selezionate a un differente indirizzo bitcoin.">Pulisci le Chiavi
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Cancella le Chiavi" data-content="Cancella le Chiavi Private selezionate">Cancella le Chiavi
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Seleziona tutto</button>
+                <button class="btn btn-secondary" id="archived-select-none">Selezionare Nessuno</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Pulisci le Chiavi" data-content="Sposta i bitcoin eventualmente presenti nelle chiavi selezionate a un differente indirizzo bitcoin.">Pulisci le Chiavi</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Cancella le Chiavi" data-content="Cancella le Chiavi Private selezionate">Cancella le Chiavi</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Indirizzi condivisi</h3>
-
-            <p style="padding-top:10px">Indirizzi condivisi sono progettati per ricevere il pagamento che si desidera mantenere privati. I pagamenti ricevuti vengono inviati tramite un portafoglio condiviso rompere la catena di operazioni. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Ulteriori informazioni)</a></p>
-
-            <p class="well">
-                <b>Gli indirizzi condivisi sono validi soltanto per una operazione e comportano una commissione dello 0,5%.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Indirizzo</th>
-                    <th class="hidden-phone">Inoltra A</th>
-                    <th>Scade In</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Nuovo indirizzo condiviso</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Invio Veloce</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Personalizzata</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Moneta comune</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Condiviso Invia</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Deposito di Garanzia</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Giochi</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Invia condiviso<br/><small>Invia condivisi transazioni percorsi che attraversano un portafoglio condiviso per maggiore privacy.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="All'Indirizzo" data-content="Questo è l'indirizzo Bitcoin del destinatario.">A:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Indirizzo Bitcoin" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Inserisci l'indirizzo Bitcoin del destinatario</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Importo:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Compresi gli emolumenti il ​​totale di questa operazione è <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Non ci saranno tasse per questa transazione e un bonus di <span class="bonus-value">0.00</span> sarà pagato.</p>
-
-                            <p class="help-block free">Shared invio è attualmente gratuito.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Rivedi il Pagamento" data-content="Clicca Qui per rivedere il pagamento. Potrai confermareo cancellare la transazione.">Rivedi il Pagamento</button>
-
-                <p class="help-block fees">Tutte le transazioni condivisi sará una <span class="mixer_fee">0.5</span>% Commissione.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Transazione Personalizzata<br/><small>Usa il modulo qui sotto per inviare un pagamento a uno o più indirizzi bitcoin. Ti sarà richiesto di rivedere la tua transazione prima di confermarla.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Scommetti con SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> questo è il gioco di scommesse bitcoin più popolare che ci sia. Vinci fino a 64.000x la tua scommessa, all'instante. Tutte le estrazioni sono verificabili usando la blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Inserisci la Scommessa!</button> <button class="send btn pop" data-repeat="5">Ripeti x5</button> <button class="send btn pop" data-repeat="10">Ripeti x10</button>
-
-                    <p class="help-block">Blockchain.info non è affiliato con satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Sommario:</b> <a href="#" class="refresh">(Rinfresca)</a></p>
-
-            <p><b>Numero di Scommesse:</b> <span class="n-bets"></span></p>
-
-            <p><b>Vincite:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Invia condiviso?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Invia questa transazione attraverso il portafoglio condiviso e ottenere un <span class="bonus-percent"></span>% di bonus (<span class="bonus-value"></span> verrà rispedito all&#39;indirizzo di invio). La transazione verrà addebitato un ritardo di circa <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Non accettare se vi aspettate di ricevere il pagamento torna l&#39;indirizzo di invio. Operazioni condivise sono incompatibili con SatoshiDICE, BitLotto e tanti altri giochi bitcoin altri.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Non me lo chiedere più.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Continua Senza</button>
-                <button class="btn btn-primary">Invia condiviso?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Condiviso Transaction Coin</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Fee superiore consigliato</h3>
+    </div>
+    <div class="modal-body">
+        <p>È stato specificato un canone personalizzato <span></span> tuttavia la tassa consigliato per questa transazione è <span></span>. Volete utilizzare la quota consigliata invece?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Utilizzare Tassa su ordinazione</button>
+            <button class="btn btn-primary">Utilizzare Fee consigliato</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Kích hoạt</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Đã lưu trữ</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Chia sẻ</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Địa chỉ Bitcoin</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Khóa quét" data-content="Di chuyển bất cứ bitcoin trong khóa đã chọn tới một địa chỉ khác.">Khóa quét
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Xóa khóa" data-content="Xóa những khóa riêng đã chọn.">Xóa khóa
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Chọn tất cả</button>
+                <button class="btn btn-secondary" id="archived-select-none">Chọn None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Khóa quét" data-content="Di chuyển bất cứ bitcoin trong khóa đã chọn tới một địa chỉ khác.">Khóa quét</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Xóa khóa" data-content="Xóa những khóa riêng đã chọn.">Xóa khóa</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Chia sẻ địa chỉ</h3>
-
-            <p style="padding-top:10px">Địa chỉ chia sẻ được thiết kế để nhận được khoản thanh toán bạn muốn giữ riêng tư. Bất kỳ khoản tiền nhận được sẽ được gửi thông qua một chiếc ví được chia sẻ phá vỡ dây chuyền của các giao dịch. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Thêm thông tin)</a></p>
-
-            <p class="well">
-                <b>Địa chỉ chia sẻ có giá trị trong một giao dịch duy nhất và phải chịu một khoản phí giao dịch 0,5%.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Địa chỉ</th>
-                    <th class="hidden-phone">Chuyển tiếp tới</th>
-                    <th>Hết hạn đến</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">New chung Địa chỉ</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Gửi nhanh</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Tùy biến</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Coin chia sẻ</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Gửi chia sẻ</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Ký quỹ</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Trò chơi</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Gửi tin chung<br/><small>Gửi các tuyến đường chia sẻ các giao dịch thông qua một ví chia sẻ riêng tư tăng lên.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Tới địa chỉ" data-content="Đây là địa chỉ Bitcoin của người nhận.">Tới:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Địa chỉ Bitcoin" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Nhập vào địa chỉ Bitcoin của người nhận</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Giá trị:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Bao gồm cả phí tổng số các giao dịch này là <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Sẽ không có lệ phí cho giao dịch này và một phần thưởng <span class="bonus-value">0.00</span> sẽ được thanh toán.</p>
-
-                            <p class="help-block free">Chung gửi miễn phí.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Xem lại thanh toán" data-content="Nhấn vào đây để xem lại thanh toán. Bạn sẽ có thể nhận hoặc hủy bỏ giao dịch.">Xem lại thanh toán</button>
-
-                <p class="help-block fees">Tất cả các giao dịch được chia sẻ phải chịu một khoản Lệ Phí% <span class="mixer_fee">0.5</span>.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Tùy biến giao dịch<br/><small>Sử dụng mẫu dưới đây để gửi một giao dịch tới một hoặc nhiều địa chỉ bitcoin. Bạn sẽ được hỏi để xem xét giao dịch trước khi hoàn thành giao dịch.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Đặt cược với SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> là trang trò chơi đặt cược bằng bitcoin phổ biến nhất. Thắng lên tới 64,000x giá trị đặt của bạn. Tất cả đều có thể kiểm chứng bằng blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Vui lòng đặt cược!</button> <button class="send btn pop" data-repeat="5">Lặp lại x5</button> <button class="send btn pop" data-repeat="10">Lặp lại x10</button>
-
-                    <p class="help-block">Blockchain.info không liên kết với satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Tóm tắt:</b> <a href="#" class="refresh">(Làm mới)</a></p>
-
-            <p><b>Số lượng đặt cược:</b> <span class="n-bets"></span></p>
-
-            <p><b>Trúng thưởng:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Gửi chung?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Gửi giao dịch này thông qua các khoản chi tiêu chung và một <span class="bonus-percent"></span>% tiền thưởng (<span class="bonus-value"></span> sẽ được gửi trả lại cho địa chỉ gửi đi). Các giao dịch sẽ phải chịu một sự chậm trễ của khoảng <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Không chấp nhận nếu bạn mong đợi để nhận được khoản thanh toán trở lại địa chỉ gửi đi. Giao dịch chung là không tương thích với SatoshiDICE, BitLotto và nhiều trò chơi khác Bitcoin.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Không bao giờ hỏi lại.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Tiếp tục mà không cần</button>
-                <button class="btn btn-primary">Gửi chung?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Chia sẻ Coin giao dịch</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Phí cao Đê</h3>
+    </div>
+    <div class="modal-body">
+        <p>Bạn chỉ định một khoản phí tùy chỉnh của <span></span> tuy nhiên lệ phí đề nghị cho giao dịch này là <span></span>. Bạn muốn sử dụng lệ phí đề nghị để thay thế?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Phí sử dụng tùy chỉnh</button>
+            <button class="btn btn-primary">Sử dụng đề nghị Phí</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

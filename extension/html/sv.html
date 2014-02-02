@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Aktiv</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Arkiverad</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Delad</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Adress</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Sopa Keys" data-content="Flytta alla bitcoins i de valda nycklarna till en annan Bitcoin adress.">Sopa Keys
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Delete" data-content="Ta bort de valda privata nycklar.">Delete
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Markera alla</button>
+                <button class="btn btn-secondary" id="archived-select-none">Välj None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Sopa Keys" data-content="Flytta alla bitcoins i de valda nycklarna till en annan Bitcoin adress.">Sopa Keys</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Delete" data-content="Ta bort de valda privata nycklar.">Delete</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Delade adresser</h3>
-
-            <p style="padding-top:10px">Delade adresser är utformade för att erhålla betalning du vill behålla privat. Eventuella erhållna betalningar skickas via en gemensam plånbok bryta kedjan av transaktioner. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Mer info)</a></p>
-
-            <p class="well">
-                <b>Delade adresser gäller för en transaktion bara och medföra en 0,5% transaktionsavgift.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Adress</th>
-                    <th class="hidden-phone">Framåt till</th>
-                    <th>Löper ut</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Ny Delat Adress</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Quick Send</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Anpassad</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Delad Coin</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Delad Skicka</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Depositionsavtal</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Spel</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Skicka Delad<br/><small>Skicka gemensamma rutter transaktioner genom en gemensam plånbok för ökad integritet.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Att Adress" data-content="Detta är den Bitcoin adress hos mottagaren.">Till:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Adress" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Enter The Bitcoin adress Mottagarens</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Belopp:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Inklusive arvoden summan av denna transaktion är <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Det blir inga avgifter för denna transaktion och en bonus på <span class="bonus-value">0.00</span> kommer att betalas.</p>
-
-                            <p class="help-block free">Delad skicka är för närvarande gratis.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Recension Betalning" data-content="Klicka här för att granska betalning. Du kommer att kunna bekräfta eller avbryta transaktionen.">Recension Betalning</button>
-
-                <p class="help-block fees">Alla delade transaktioner medför en <span class="mixer_fee">0.5</span>% avgift.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Anpassad Transaktion<br/><small>Använd formuläret nedan för att skicka en betalning till en eller flera Bitcoin adresser. Du ombeds granska din transaktion innan inlämning.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Vad med SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> är den mest populära Bitcoin vadslagning spel. Vinn upp till 64.000 x din insats, direkt. Alla rullar är verifierbara med blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Satsa!</button> <button class="send btn pop" data-repeat="5">Upprepa x5</button> <button class="send btn pop" data-repeat="10">Upprepa x10</button>
-
-                    <p class="help-block">Blockchain.info är inte associerat med satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Sammanfattning:</b> <a href="#" class="refresh">(Uppdatera)</a></p>
-
-            <p><b>Antal spel:</b> <span class="n-bets"></span></p>
-
-            <p><b>Vinster:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Skicka Delad?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Skicka denna transaktion igenom den delade plånboken och få ett <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> kommer att skickas tillbaka till den sändande adress). Transaktionen kommer att medföra en fördröjning på ungefär <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Acceptera inte om du förväntar dig att ta emot betalning tillbaka till den sändande adress. Delade transaktioner är oförenliga med SatoshiDICE, BitLotto och många andra spel Bitcoin.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Aldrig fråga mig igen.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Fortsätta utan</button>
-                <button class="btn btn-primary">Skicka Delad?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Delad Coin Transaktion</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Högre Fee Rekommenderat</h3>
+    </div>
+    <div class="modal-body">
+        <p>Du angav ett anpassat avgift på <span></span> men det rekommenderade avgift för denna transaktion är <span></span>. Vill du använda den rekommenderade avgiften istället?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Använd Anpassad Fee</button>
+            <button class="btn btn-primary">Använd Rekommenderad Fee</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

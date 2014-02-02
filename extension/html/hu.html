@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Aktív</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Archív</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Megosztott</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Cím</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Kulcsok Takarítása" data-content="Minden kulcshoz tartozó bitcoin átküldése más bitcoin címre.">Kulcsok Takarítása
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Kulcsok Törlése" data-content="A kiválasztott privát kulcsok törlése.">Kulcsok Törlése
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Az összes kijelölése</button>
+                <button class="btn btn-secondary" id="archived-select-none">Válassza a None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Kulcsok Takarítása" data-content="Minden kulcshoz tartozó bitcoin átküldése más bitcoin címre.">Kulcsok Takarítása</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Kulcsok Törlése" data-content="A kiválasztott privát kulcsok törlése.">Kulcsok Törlése</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Megosztott címek</h3>
-
-            <p style="padding-top:10px">Megosztott címek úgy tervezték, hogy a fizetés meg szeretné tartani magán. Minden beérkezett befizetések küldött át egy közös pénztárca megtörve az ügyletek láncolatának. <a href="https://blockchain.info/wallet/send-shared" target="blank">(További Info)</a></p>
-
-            <p class="well">
-                <b>Megosztott címek érvényesek egy tranzakció csak, és beszedi a 0,5%-os tranzakciós díjat.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Cím</th>
-                    <th class="hidden-phone">Továbbítva</th>
-                    <th>Lejárat</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">New Megosztott Address</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Gyorsküldés</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Egyedi</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Megosztott Coin</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Megosztott Küldés</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Zálog</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Játékok</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Send Megosztott<br/><small>Küldd azonos útvonal ügyleteket a közös pénztárca nagyobb magánélet.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Címzett" data-content="Ez a címzett bitcoin címe.">To:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Cím" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Add meg a címzett bitcoin címét</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Mennyiség:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Beleértve a díjakat az összes a tranzakció <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Nem lesz díjakat a tranzakció, és a bónusz: <span class="bonus-value">0.00</span> fogják fizetni.</p>
-
-                            <p class="help-block free">Megosztott küldési jelenleg ingyenes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Fizetés Áttekintése" data-content="Kattints ide a tranzakció áttekintéséhez. Megerősítheted vagy elvetheted a tranzakciót még küldés előtt.">Fizetés Áttekintése</button>
-
-                <p class="help-block fees">A közös műveletek merülnek fel a <span class="mixer_fee">0.5</span>% díj.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Egyedi Tranzakció<br/><small>Használd az alábbi űrlapot, hogy egy vagy több címzettnek küldhess bitcoint. A kiküldés előtt még egyszer áttekintheted a tranzakciót.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Fogadj a SatoshiDICE -on<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> ez a legnépszerűbb bitcoin játék. Akár a pénzed 64.000x -sét is megnyerheted, azonnal. A forgatások a blokklánc alapján nyomonkövethetők, így a játék megbízható.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Rakj Tétet!</button> <button class="send btn pop" data-repeat="5">Ismételd x5</button> <button class="send btn pop" data-repeat="10">Ismételd x10</button>
-
-                    <p class="help-block">Blokkchain.info -nak nincs köze satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Összesítő:</b> <a href="#" class="refresh">(Frissítés)</a></p>
-
-            <p><b>Tétek Száma:</b> <span class="n-bets"></span></p>
-
-            <p><b>Nyeremények:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Send Megosztott?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Küldje el ezt a tranzakciót a közös pénztárca, és kap egy <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> küld vissza a küldő címe). A tranzakció merülnek késéssel mintegy <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Ne fogadja el, ha azt várod, hogy a fizetés vissza a küldő címre. Közös tranzakciók összeegyeztethetetlenek SatoshiDICE, BitLotto és sok más bitcoin játékot.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Többet ne kérdezd.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Tovább e nélküld</button>
-                <button class="btn btn-primary">Send Megosztott?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>Megosztott Coin Tranzakció</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Magasabb díjat ajánlott</h3>
+    </div>
+    <div class="modal-body">
+        <p>Adott meg egyéni díjat <span></span> de az ajánlott díj a tranzakció <span></span>. Szeretnéd, hogy az ajánlott díj helyett?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Az Egyéni díj</button>
+            <button class="btn btn-primary">Használja az ajánlott díj</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

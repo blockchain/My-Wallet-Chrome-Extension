@@ -5,13 +5,13 @@
     "description": "A Bitcoin wallet which runs in your browser.",
     "container" : "GOOGLE_DRIVE",
     "api_console_project_id" : "789483738880",
-    "version": "3.1.15",
+    "version": "3.1.18",
     "offline_enabled": true,
     "icons": {
         "16": "favicon.ico",
-        "48": "cube48.png",
-        "64": "cube64.png",
-        "128": "cube128.png"
+        "48": "blockchain_b_blue_48.png",
+        "64": "blockchain_b_blue_64.png",
+        "128": "blockchain_b_blue_128.png"
     },
     "permissions": [
         "https://blockchain.info/",

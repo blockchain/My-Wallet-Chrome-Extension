@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">활동적인</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">보관</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">공유</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin 주소</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="스위프 키" data-content="다른 bitcoin 주소로 선택된 키에 bitcoins 이동합니다.">스위프 키
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="키를 삭제" data-content="선택한 개인 키를 삭제합니다.">키를 삭제
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">전체 선택</button>
+                <button class="btn btn-secondary" id="archived-select-none">없음을 선택</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="스위프 키" data-content="다른 bitcoin 주소로 선택된 키에 bitcoins 이동합니다.">스위프 키</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="키를 삭제" data-content="선택한 개인 키를 삭제합니다.">키를 삭제</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>공유 주소</h3>
-
-            <p style="padding-top:10px">공유 주소는 비공개로 유지하고자하는 지불을받을 수 있도록 설계되었습니다. 받은 결제는 거래의 사슬을 깨는 공유 지갑을 통해 발송됩니다. <a href="https://blockchain.info/wallet/send-shared" target="blank">(추가 정보)</a></p>
-
-            <p class="well">
-                <b>공유 주소는 하나의 거래 만 유효하며 0.5 % 수수료가 부과됩니다.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>주소</th>
-                    <th class="hidden-phone">전달하려면</th>
-                    <th>년 만기</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">새 공유 주소</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1212,7 +1195,7 @@
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> 빠른 보내기</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> 관습</a></li>
             <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> 공유 코인</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> 보내기 공유</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> 조건부 날인 증서</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">게임</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1457,56 +1439,7 @@
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">공유 보내기<br/><small>증가 개인 정보 보호를 위해 공유 지갑을 통해 공유 경로 거래를 보낼 수 있습니다.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="주소로" data-content="이 사람의 Bitcoin 주소입니다.">받는 사람 :</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin 주소" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">받는 사람의 Bitcoin 주소를 입력</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">양:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> 비용에게이 거래의 총을 포함하여 <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus"><span class="bonus-value">0.00</span> 지급됩니다이 트랜잭션의 보너스에 대한 요금이 없을 것입니다.</p>
-
-                            <p class="help-block free">공유 전송은 현재 무료입니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="검토 지급" data-content="지불을 검토하려면 여기를 클릭하십시오. 당신은 거래를 확인하거나 취소 할 수 있습니다.">검토 지급</button>
-
-                <p class="help-block fees">모든 공유 거래는 <span class="mixer_fee">0.5</span> %의 수수료가 부과됩니다.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">사용자 정의 트랜잭션<br/><small>하나 이상의 bitcoin 주소로 결제를 보내 시려면 아래 양식을 사용하십시오. 당신은 제출하기 전에 거래를 검토해야합니다.</small></h4>
@@ -1579,40 +1512,6 @@
     </div>
 </div>
 
-
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">SatoshiDICE으로 걸어<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> 가장 인기있는 bitcoin 베팅 게임이다. 즉시 64,000 X 내기, 최대 이겼다. 모든 롤 blockchain를 사용하여 검증합니다.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">베팅!</button> <button class="send btn pop" data-repeat="5">X5를 반복</button> <button class="send btn pop" data-repeat="10">X10을 반복</button>
-
-                    <p class="help-block">Blockchain.info는 satoshidice.com와 제휴 관계에 있지 않습니다.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>요약 :</b> <a href="#" class="refresh">(새롭게하다)</a></p>
-
-            <p><b>베팅 수 :</b> <span class="n-bets"></span></p>
-
-            <p><b>위닝 :</b> <span class="winnings"></span></p>
-        </div>
-    </div>
 
 
 <div class="tab-pane well" id="address-book">
@@ -2208,29 +2107,6 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>공유 보내시겠습니까?</h3>
-        </div>
-        <div class="modal-body">
-            <p>공유 지갑 통해 트랜잭션을 보내고 <span class="bonus-percent"></span> % 보너스 (<span class="bonus-value"></span> 보내는 주소로 전송됩니다)를 얻을. 거래는 약 <span class="delay"></span>의 지연이 발생합니다.</p>
-
-            <div class="alert alert-block alert-error">
-                    당신이 보내는 주소로 지불을받을 것으로 예상하는 경우 허용되지 않습니다. 공유 거래 SatoshiDICE, BitLotto 및 다른 많은 bitcoin 게임과 호환됩니다.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">다시 묻지 마십시오.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">없이 계속</button>
-                <button class="btn btn-primary">공유 보내시겠습니까?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
         <h3>공유 코인 거래</h3>
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>높은 비용 추천</h3>
+    </div>
+    <div class="modal-body">
+        <p>당신은 그러나이 거래에 권장되는 수수료는 <span></span>의 주문 요금을 지정된 <span></span>. 대신 권장되는 비용을 사용 하시겠습니까?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">사용자 정의 수수료 사용</button>
+            <button class="btn btn-primary">추천 요금을 사용하여</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

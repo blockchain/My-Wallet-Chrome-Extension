@@ -40,7 +40,7 @@
                 <h1>
                     <span class="hidden-phone">Mijn Portemonnee <small>Ben Uw Eigen Bank.</small></span>
 
-                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Uw Saldo" data-content="Dit toont het saldo van uw bitcoin portemonnee. U kunt dit bedrag misschien neit meteen besteden voordat alle transacties bevestigd zijn.">
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Uw Saldo" data-content="Dit toont het saldo van uw Bitcoin portemonnee. U kunt dit bedrag mogelijk niet besteden totdat alle transacties bevestigd zijn.">
                         <span id="balance"></span>
                         <small id="balance2">0</small>
                     </div>
@@ -78,7 +78,7 @@
     <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
         <h2>Gevoelige gegevens</h2>
 
-        <p>Accountinstellingen bevat gevoelige gegevens die niet getoond moeten worden aan andere mensen. Het wordt aanbevolen dat u dit gedeelte van de site niet opent in openbare plaatsen of screenshots maakt.</p>
+        <p>Accountinstellingen bevat gevoelige gegevens die niet getoond moeten worden aan andere mensen. Het wordt aanbevolen dat u dit gedeelte van de site niet opent in openbare plaatsen, of screenshots maakt.</p>
 
         <p align="right">
             <button class="btn btn-primary" id="show-account-settings">Verder gaan</button>
@@ -101,7 +101,7 @@
             <li class="nav-header">Accountinformatie</li>
             <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Persoonlijk</a></li>
             <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Algemeen</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Tonen</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Weergave</a></li>
             <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notificaties</a></li>
 
             <li class="divider"></li>
@@ -174,7 +174,7 @@
         </p>
 
         <div class="sms-unverified well">
-            <p>Voer de code uit het sms bericht in.</p>
+            <p>Voer de code uit het SMS-bericht in.</p>
             <p class="form-inline"><input placeholder="SMS Verificatie Code" class="wallet-sms-code" type="text"/> <button class="btn">Controleren</button> </p>
         </div>
     </div>
@@ -184,7 +184,7 @@
     <div class="page-header">
         <h3>Integriteitscontrole</h3>
 
-        <p>Controleert of alle addressen in uw portemonnee overeenkomen met de juiste bitcoin adressen en hercodeert uw portemonnee. Dit kan lang duren in sommige browsers.</p>
+        <p>Controleert of alle adressen in uw portemonnee overeenkomen met de juiste bitcoin adressen en hercodeert uw portemonnee. Dit kan lang duren in sommige browsers.</p>
 
         <p>
             <button class="btn" id="run-key-check">Lopen</button>
@@ -240,7 +240,7 @@
         <h3>Inactiviteit Logout</h3>
 
         <p>
-            Standaard wordt u automatisch afgemeld bij uw portemonnee na 10 minuten van inactiviteit. U kunt de time-outperiode hieronder instellen.
+            Standaard wordt u automatisch afgemeld bij uw portemonnee na 10 minuten inactiviteit. U kunt de time-outperiode hieronder instellen.
         </p>
 
         <p style="padding-left:10px">
@@ -260,21 +260,21 @@
     </div>
 
     <div class="page-header">
-        <h3>Standaard Kosten Beleid</h3>
+        <h3>Standaard Kostenbeleid</h3>
 
         <p>
-            Blockchain.info transacties zijn gratis. Echter, voor het Bitcoin-netwerk zijn mogelijk extra kosten voor de Mijners nodig die de snelheid waarmee uw transacties worden geverifieerd verhoogt en helpt bij het ondersteunen van het netwerk. Onder instellingen kunt u het standaard kosten beleid wijzigen.
+            Blockchain.info transacties zijn gratis. Echter, voor het Bitcoin-netwerk zijn mogelijk extra kosten voor de Mijners nodig die de snelheid waarmee uw transacties worden geverifieerd verhoogt en helpt bij het ondersteunen van het netwerk. Onder instellingen kunt u het standaard kostenbeleid wijzigen.
         </p>
 
         <p style="padding-left:10px">
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="-1"><b>Laag</b> - Kosten voor de Mijners worden niet opnemen tenzij absoluut noodzakelijk. <font color="red">Transacties zullen aanzienlijk langzamer verwerkt worden</font>.
+                <input type="radio" name="fee-policy" value="-1"><b>Laag</b> - Een vergoeding voor de Mijners wordt niet toegevoegd tenzij absoluut noodzakelijk. <font color="red">Transacties zullen aanzienlijk langzamer verwerkt worden</font>.
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="0"><b>Normaal</b> - Volg het kosten beleid voorgesteld door de primaire bitcoin client. <font color="green">Aanbevolen</font>.
+                <input type="radio" name="fee-policy" value="0"><b>Normaal</b> - Volg het kostenbeleid voorgesteld door de primaire bitcoin client. <font color="green">Aanbevolen</font>.
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="1"><b>Hoog</b> - De Tarieven zullen gebruikt worden om ervoor te zorgen dat uw transacties hoge prioriteit hebben (0,001 BTC Basis Kosten).
+                <input type="radio" name="fee-policy" value="1"><b>Hoog</b> - De Kosten zullen gebruikt worden om ervoor te zorgen dat uw transacties hoge prioriteit hebben (0,001 BTC Basiskosten).
             </label>
         </p>
     </div>
@@ -317,7 +317,7 @@
     <div class="page-header">
         <h3>Transacties per pagina</h3>
 
-        <p>Stel het aantal transacties per pagina weergegeven</p>
+        <p>Stel het aantal transacties per pagina getoond in</p>
 
         <p>
             <select id="transactions_per_page">
@@ -360,7 +360,7 @@
                 </p>
 
                 <div class="sms-unverified">
-                    <p>Voer de code uit het sms bericht in.</p>
+                    <p>Voer de code uit het SMS-bericht in.</p>
                     <p class="form-inline">
                         <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Controleren</button>
                     </p>
@@ -376,7 +376,7 @@
             <input type="checkbox" value="8"> <b>Skype</b><br/>
 
             <div class="well type-8" style="display:none">
-                <p>U ontvangt meldingen via Skype naar onderstaande gebruikersnaam:</p>
+                <p>U ontvangt meldingen via Skype naar de onderstaande gebruikersnaam:</p>
 
                 <input placeholder="Skype Username" id="wallet-skype" type="text"/>
             </div>
@@ -413,7 +413,7 @@
     </div>
 
     <div class="page-header">
-        <h3>Als mijn wallet</h3>
+        <h3>Als mijn portemonnee</h3>
 
         <p>
             <select id="notifications-on">
@@ -443,7 +443,7 @@
 <div class="tab-pane" id="account-logging">
     <h3 class="page-header">Log Niveau</h3>
 
-    <p>Het log niveau bepaalt welke gegevens worden geregistreerd wanneer uw acties neemt met uw portemonnee. Standaard is het log uitgeschakeld, afgezien van adminhandelingen. Het inschakelen van het log biedt een betere beveiliging door het verstrekken van meer informatie over potentiële onbevoegde toegang tot uw portefeuille maar heirvoor wordt wel wat privacy opgeofferd.</p>
+    <p>Het logniveau bepaalt welke gegevens worden geregistreerd wanneer uw acties uitvoert met uw portemonnee. Standaard is het log uitgeschakeld, afgezien van adminhandelingen. Het inschakelen van het log biedt een betere beveiliging door het verstrekken van meer informatie over potentiële onbevoegde toegang tot uw portemonnee, maar hiervoor wordt wel wat privacy opgeofferd.</p>
 
     <p>
         <select id="logging-level">
@@ -475,7 +475,7 @@
 </div>
 
 <div class="tab-pane" id="account-devices">
-    <h3>Apparaat aan elkaar koppelen</h3>
+    <h3>Apparaatkoppeling</h3>
 
     <p>Scan de code met uw iPhone of Android-toestel om het te koppelen aan uw account.</p>
 
@@ -503,7 +503,7 @@
 </div>
 
 <div class="tab-pane" id="account-passwords">
-    <div class="alert alert-block alert-error"><B>Waarschuwing!</B> Elke keer als u uw wachtwoord vergeet zal u uw portemonnee niet kunnen bereiken. Er is geen wachtwoord herstel proces!</div>
+    <div class="alert alert-block alert-error"><B>Waarschuwing!</B> Elke keer als u uw wachtwoord vergeet zal u uw portemonnee niet kunnen bereiken. Er is geen wachtwoord herstel-proces!</div>
 
     <p>
         Uw wachtwoord wordt nooit gedeeld met onze servers in welke vorm dan ook. Dit betekent dat uw portemonnee nog steeds veilig zou moeten zijn in het geval onze servers zijn aangetast. Maar het betekent wel dat er geen functionaliteit is om uw wachtwoord te resetten.
@@ -512,7 +512,7 @@
     <div class="page-header">
         <h3 style="margin-bottom:5px">Wachtwoord ezelsbruggetje</h3>
 
-        <p>Wachtwoord ezelsbruggetjes kunnen worden gebruikt om uw portemonnee wachtwoord te herstellen als u deze vergetenbent . Zonder de ezelsbruggetje is er geen manier waarop we u kunnen helpen bij het herstellen van een vergeten wachtwoord. Bij het wijzigen van wachtwoorden van de portemonnee verandert het ezelsbruggetje.</p>
+        <p>Wachtwoord ezelsbruggetjes kunnen worden gebruikt om uw portemonnee wachtwoord te herstellen als u deze vergeten bent. Zonder de ezelsbruggetje is er geen manier waarop we u kunnen helpen bij het herstellen van een vergeten wachtwoord. Bij het wijzigen van wachtwoorden van de portemonnee verandert het ezelsbruggetje.</p>
 
         <div id="accordion1">
             <div class="accordion-group">
@@ -558,7 +558,7 @@
         </div>
 
         <p>
-            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Verander hoofd wachtwoord</button>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Verander hoofdwachtwoord</button>
         </p>
     </div>
 
@@ -596,7 +596,7 @@
     <div class="page-header">
         <h3>Wachtwoord Hints</h3>
 
-        <p>Als u uw wachtwoord(en) vergeet, kunnen hints nuttig zijn om u te helpen herinneren. Als er een e-mailadres is gekoppeld aan uw account, kunnen hints naar u gemaild worden. Als er geen e-mailadres is gekoppeld aan uw account, zijn hints beschikbaar voor iedereen die uw portemonnee-id weet.</p>
+        <p>Als u uw wachtwoord(en) vergeet, kunnen hints nuttig zijn om u te helpen het te herinneren. Als er een e-mailadres is gekoppeld aan uw account, kunnen hints naar u gemaild worden. Als er geen e-mailadres is gekoppeld aan uw account, zijn hints beschikbaar voor iedereen die uw portemonnee-id weet.</p>
 
         <p class="well">
             <b>Bijvoorbeeld:</b> Als uw wachtwoord was: paardbatterijnietje zou een goede wachtwoord hint zijn: Elektrisch paard?
@@ -622,7 +622,7 @@
     <div class="page-header">
         <h3>Dubbele authenticatie</h3>
 
-        <p>Dubbele beveiliging voegt een extra beveiligingslaag toe aan uw wachtwoord.</p>
+        <p>Dubbele authenticatie voegt een extra beveiligingslaag toe aan uw wachtwoord.</p>
 
         <p>
             <select id="two-factor-select">
@@ -691,7 +691,7 @@
             </p>
 
             <div class="sms-unverified well">
-                <p>Voer de code uit het sms bericht in.</p>
+                <p>Voer de code uit het SMS-bericht in.</p>
                 <p class="form-inline"><input placeholder="SMS Verificatie Code" class="wallet-sms-code" type="text"/> <button class="btn">Controleren</button> </p>
             </div>
         </div>
@@ -724,10 +724,10 @@
     </div>
 
     <div class="page-header">
-        <h3>Onthoud de dubbele beveiliging nooit</h3>
+        <h3>Onthoud de dubbele authenticatie nooit</h3>
 
         <p>
-            Standaard zal uw browser na het inloggen met dubbele authenticatie voor een korte periode herinnerd worden zonder opnieuw in te loggen . Vink dit vakje aan als u dit gedrag uit wilt schakelen en elke keer een volledige login vereist.
+            Standaard zal uw browser na het inloggen met dubbele authenticatie voor een korte periode dit onthouden zonder dat opnieuw ingelogd hoeft te wordt. Vink dit vakje aan als u dit gedrag uit wilt schakelen en elke keer een volledige login vereist.
         </p>
 
         <div class="form-horizontal">
@@ -761,7 +761,7 @@
         <h3>Te beperken tot IP</h3>
 
         <p>
-            Schakel dit in om de toegang tot uw portemonnee te beperken ​​ tot een specifiek ip-adres of meerdere IP-adressen door komma's gescheiden. Dit is alleen mogelijk als u een statisch IP-adres heeft. U zult niet in staat zijn om in te loggen of API's toegang te geven vanaf een computer die niet op het opgegeven netwerk zit, maar mobiele apps zullen blijven functioneren als ze eenmaal gekoppeld zijn.
+            Schakel dit in om de toegang tot uw portemonnee te beperken ​​ tot een specifiek IP-adres of meerdere IP-adressen door komma's gescheiden. Dit is alleen mogelijk als u een statisch IP-adres heeft. U zult niet in staat zijn om in te loggen of API's toegang te geven vanaf een computer die niet op het opgegeven netwerk zit, maar mobiele apps zullen blijven functioneren als ze eenmaal gekoppeld zijn.
         </p>
 
         <div class="form-horizontal">
@@ -797,7 +797,7 @@
         <h3>Bevestig wachtwoordwijziging</h3>
     </div>
     <div class="modal-body">
-        <p>Uw wachtwoord wordt onmiddellijk bijgewerkt. Zorg ervoor dat u een notitite van het nieuwe wachtwoord maakt, want het kan niet worden hersteld als u het vergeet! Als u een versleutelde back-up portemonnee heeft is het mogelijk deze te decoderen met behulp van uw oude wachtwoord, daarom is het raadzaam deze backups te verwijderen en nieuwe te maken.</p>
+        <p>Uw wachtwoord wordt onmiddellijk bijgewerkt. Zorg ervoor dat u een notitie van het nieuwe wachtwoord maakt, want het kan niet worden hersteld als u het vergeet! Als u een versleutelde back-up portemonnee heeft is het mogelijk deze te decoderen met behulp van uw oude wachtwoord, dus is het daarom raadzaam deze back-ups te verwijderen en nieuwe te maken.</p>
     </div>
 
     <div class="modal-footer">
@@ -918,7 +918,7 @@
             <div class="page-header" id="home-account-container">
                 <h3>Accountinstellingen</h3>
 
-                <p>Bewerk uw accountinstellingen zoals e-mailadres, wachtwoord en instellingen voor notificaties.</p>
+                <p>Bewerk uw accountinstellingen zoals e-mailadres, wachtwoord en notificatieinstellingen.</p>
 
                 <p align="right">
                     <button class="btn" id="my-account-btn">Accountinstellingen</button>
@@ -947,7 +947,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#active-addresses" data-toggle="tab">Actief</a></li>
         <li><a href="#archived-addresses" data-toggle="tab">Gearchiveerd</a></li>
-        <li><a href="#shared-addresses" data-toggle="tab">Gedeeld</a></li>
+        
     </ul>
 
     <div id="receive-content" class="tab-content">
@@ -986,7 +986,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <th><input type="checkbox" id="enable_archived_checkbox"></th>
+                <th></th>
                 <th>Bitcoin Adres</th>
                 <th></th>
                 <th></th>
@@ -994,35 +994,18 @@
                 <tbody></tbody>
             </table>
 
-            <div class="pull-right btn-group">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Keys Vegen" data-content="Verplaats Bitcoins opgeslagen in de geselecteerde keys naar een ​​ander bitcoin adres.">Keys Vegen
-                </button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Delete" data-content="Verwijder de geselecteerde private keys.">Delete
-                </button>
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Selecteer alles</button>
+                <button class="btn btn-secondary" id="archived-select-none">Selecteer niets</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Keys Vegen" data-content="Verplaats Bitcoins opgeslagen in de geselecteerde keys naar een ​​ander bitcoin adres.">Keys Vegen</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Delete" data-content="Verwijder de geselecteerde private keys.">Delete</button>
             </div>
         </div>
 
-        <div class="tab-pane" id="shared-addresses">
-            <h3>Gedeelde Adressen</h3>
-
-            <p style="padding-top:10px">Ontvangen betalingen naar gedeelde adressen worden doorgestuurd naar een ander adres in uw portemonnee. Ontvangen betalingen worden verzonden via een gedeelde portemonnee het breken van de keten van transacties. <a href="https://blockchain.info/wallet/send-shared" target="blank">(Meer info)</a></p>
-
-            <p class="well">
-                <b>Gedeelde Adressen zijn geldig voor een transactie slechts en maken een 0,5% transactiekosten.</b>
-            </p>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Adres</th>
-                    <th class="hidden-phone">Doorsturen naar</th>
-                    <th>Verloopt Over</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button class="btn btn-success pull-right" id="shared-address" style="margin:5px">Nieuwe Shared Address</button>
-        </div>
+        
     </div>
 </div>
 
@@ -1100,9 +1083,9 @@
                 </div>
 
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
-                    <h5>Kan u uw e-code neit vinden?</h5>
+                    <h5>Kunt u uw e-code niet vinden?</h5>
 
-                    <p>De e-mail wordt verzonden van wallet@blockchain.info. Zorg ervoor dat u uw spam-map controleert. Als u de mail nog steeds niet kunt vinden kunt u klikken op de knop om het opnieuw te verzenden.</p>
+                    <p>Controleer uw spam map. Als u de mail nog steeds niet kunt vinden kunt u op de knop klikken om het bericht opnieuw te versturen.</p>
 
                     <p align="center">
                         <a class="btn resend-code">Opnieuw verzenden link</a>
@@ -1112,7 +1095,7 @@
                 <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
                     <h5>Niet ontvangen SMS-code?</h5>
 
-                    <p>Controleer uw netwerk signaal. Het kan maximaal 10 minuten duren voor uw berichten worden afgeleverd, Klik als het is meer dan 10 minuten geduurt heeft op de onderstaande knop om het bericht te verzenden.</p>
+                    <p>Controleer uw netwerksignaal. Het kan maximaal 10 minuten duren voor uw berichten worden afgeleverd. Klik als het langer dan 10 minuten geduurd heeft op de onderstaande knop om het bericht opnieuw te verzenden.</p>
 
                     <p align="center">
                         <a class="btn resend-code">Verzend Bericht Opnieuw</a>
@@ -1189,7 +1172,7 @@
         </div>
     </div>
 
-    <p class="padded well" id="no-transactions" align="center">Normaal gesproken uzouden w Bitcoin transacties hier worden vermeld, maar u heeft er mpg geen.</p>
+    <p class="padded well" id="no-transactions" align="center">Normaal gesproken zouden uw Bitcoin-transacties hier worden vermeld, maar u heeft er nog geen.</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
         <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
@@ -1211,8 +1194,8 @@
             <li class="nav-header">Transactie Type</li>
             <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Snel versturen</a></li>
             <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Speciaal</a></li>
-            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Gedeeld Coin</a></li>
-            <li><a href="#send-shared" data-toggle="tab"><i class="icon-random"></i> Gedeeld Stuur</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Gedeelde Transactie</a></li>
+            
 
             <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Borg</a></li>
 
@@ -1222,7 +1205,6 @@
 
             <li class="nav-header">Spelletjes</li>
             
-            <li><a href="#send-satoshi-dice" data-toggle="tab"><i class="icon-dice" style="background-image:url('/Resources/dice.png');background-position: 0px;width:16px;height:16px;"></i> Satoshi Dice</a></li>
 
             
 
@@ -1386,7 +1368,7 @@
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Gedeeld Coin<br/><small>Trouweloos munt mengen met munt join en smet analyse</small></h4>
+        <h4 class="page-header">Gedeelde Transactie<br/><small>Betrouwbaar bitcoins mixen gebruikmakend van 'coin join' en besmettingsanalyse</small></h4>
 
         <div class="form-horizontal">
             <div class="controls">
@@ -1428,7 +1410,7 @@
 
                 <div class="controls">
                     <select name="repetitions"><option value="0">Laden</option></select>
-                    <p class="help-block">Een hoger aantal herhalingen maakt de transactie moeilijk te traceren en verbetert privacy.</p>
+                    <p class="help-block">Een hoger aantal herhalingen maakt de transactie moeilijker te traceren en verbetert privacy.</p>
                 </div>
             </div>
 
@@ -1436,9 +1418,9 @@
                 <button class="send btn btn-primary pop" title="Betaling controleren" data-content="Klik hier om de betaling te bekijken. U zult in staat zijn om de transactie te bevestigen of te annuleren.">Betaling controleren</button>
 
                 <p class="help-block send-options" style="padding-top:10px">
-                    <b>Maximale Waarde Verstuur:</b> <span></span><br />
-                    <b>Minimum Send Waarde:</b> <span></span><br />
-                    <b>Vergoeding Procent Per Herhaling:</b> <span></span>%</br />
+                    <b>Maximale Verzendwaarde:</b> <span></span><br />
+                    <b>Minimale Verzendwaarde:</b> <span></span><br />
+                    <b>Percentage Vergoeding Per Herhaling:</b> <span></span>%</br />
                     <b>Minimum Fee Per Herhaling:</b> <span></span>
                 </p>
             </div>
@@ -1452,61 +1434,12 @@
         </p>
 
         <p>
-            <button class="btn" id="sharedcoin-recover">Recover Intermediate Adressen</button>
+            <button class="btn" id="sharedcoin-recover">Herstel Tussenliggende Adressen</button>
         </p>
     </div>
 </div>
 
-<div class="tab-pane" id="send-shared">
-    <div class="well">
-        <a style="float:right;" href="https://blockchain.info/wallet/send-shared" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Stuur Gedeelde<br/><small>Stuur gedeeld met pauzes de keten van transacties tussen uw portemonnee en een bestemmingsadres.</small></h4>
-
-        <div class="form-horizontal">
-            <div class="recipient-container">
-                <div class="recipient">
-                    <div class="control-group">
-                        <label class="control-label pop" title="Bestemmingsadres" data-content="Dit is het Bitcoin-adres van de ontvanger.">Aan:</label>
-
-                        <div class="controls">
-                            <span class="qrcodeicon"><input placeholder="Bitcoin Adres" name="send-to-address" type="text"/><span></span></span>
-
-                            <p class="help-block">Voer het bitcoin adres van de ontvanger in</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label pop">Bedrag:</label>
-
-                        <div class="controls">
-                            <div class="input-prepend input-append">
-                                <span class="add-on btc-symbol"></span><input class="span2" style="width:90px;" name="send-before-fees" placeholder="0.0" type="text"/><input type="hidden" class="send-value" name="send-value"/><span
-                                    class="add-on send-value-usd">$0</span>
-                            </div>
-
-                            <p class="help-block fees"> Met inbegrip van vergoedingen het totaal van deze transactie is <span class="shared-fees">0.00</span></p>
-
-                            <p class="help-block bonus">Er zullen geen kosten in rekening voor deze transactie en een bonus van <span class="bonus-value">0.00</span> zal worden betaald.</p>
-
-                            <p class="help-block free">Shared send is momenteel gratis.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Betaling controleren" data-content="Klik hier om de betaling te bekijken. U zult in staat zijn om de transactie te bevestigen of te annuleren.">Betaling controleren</button>
-
-                <p class="help-block fees">Alle gedeelde transacties lopen een <span class="mixer_fee">0.5</span>% Fee.</p>
-
-                <div class="progress" style="display:none;">
-                    <div class="bar" style="width:10%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="tab-pane well" id="send-custom">
     <h4 class="page-header">Speciale Transactie<br/><small>Gebruik het formulier hieronder om een ​​betaling te verzenden naar een of meer bitcoin adressen. U wordt nog gevraagd uw transactie te controleren voor verzending.</small></h4>
@@ -1580,40 +1513,6 @@
 </div>
 
 
-    <div class="tab-pane" id="send-satoshi-dice" data-name="satoshidice">
-        <div class="well">
-            <h4 class="page-header">Gok met SatoshiDICE<br/>
-                <small><a href="https://blockchain.info/r?url=http://satoshidice.com" target="new">SatoshiDICE</a> is het meest populaire bitcoin gokspel. Win tot 64.000 x je inzet, direct. Alle doobelsteen worpen zijn controleerbaar met behulp van de blockchain.</small>
-            </h4>
-
-            <div class="form-horizontal">
-                <div class="controls">
-                    <img src="/Resources/satoshi_dice.png" style="padding-bottom:25px">
-                </div>
-
-                <div class="recipient-container"></div>
-
-                <div class="form-actions">
-                    <button class="send btn btn-success pop" data-repeat="1">Zet in!</button> <button class="send btn pop" data-repeat="5">Herhaal 5 keer</button> <button class="send btn pop" data-repeat="10">Herhaal 10 keer</button>
-
-                    <p class="help-block">Blockchain.info is niet aangesloten bij satoshidice.com.</p>
-
-                    <div class="progress" style="display:none;margin-top:10px">
-                        <div class="bar" style="width:10%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="well profit-loss" style="display:none">
-            <p><b>Samenvatting:</b> <a href="#" class="refresh">(Verversen)</a></p>
-
-            <p><b>Aantal Inzetten:</b> <span class="n-bets"></span></p>
-
-            <p><b>Winst:</b> <span class="winnings"></span></p>
-        </div>
-    </div>
-
 
 <div class="tab-pane well" id="address-book">
 
@@ -1649,7 +1548,7 @@
     <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
         <h2>Waarschuwing, Geavanceerd!</h2>
 
-        <p>In dit gedeelte kunt u wijzigingen aanbrengen aan uw portemonnee die gecompliceerd en verwarrend kunnen zijn. Het is raadzaam alleen verder te gaan als u een ervaren Bitcoin gebruiker bent. U moet beschikken over een goed begrip van wat private keys zijn en hoe zij betrekking hebben op bitcoin addressen.</p>
+        <p>In dit gedeelte kunt u wijzigingen aanbrengen aan uw portemonnee die gecompliceerd en verwarrend kunnen zijn. Het is raadzaam alleen verder te gaan als u een ervaren Bitcoin gebruiker bent. U moet beschikken over een goed begrip van wat private keys zijn en hoe zij betrekking hebben op Bitcoinadressen.</p>
 
         <p align="right">
             <button class="btn btn-primary" id="show-import-export">Ik begrijp het</button>
@@ -1684,7 +1583,7 @@
             <div class="page-header">
                 <h3>Voeg alleen kijken bitcoin adres toe</h3>
 
-                <p>U kunt een <font color="red">Watch Only</font> bitcoin-adres toevoegen aan uw portemonnee. U zult niet in staat om Bitcoins versturen vanaf dit adres zonder de private key te verstrekken</p>
+                <p>U kunt een <font color="red">Watch Only</font> Bitcoin-adres toevoegen aan uw portemonnee. U zult niet in staat om Bitcoins versturen vanaf dit adres zonder de private key te verstrekken</p>
 
                 <div class="form-inline">
                     <input placeholder="Bitcoin Adres" id="import-address-address" type="text"/>
@@ -1741,7 +1640,7 @@
                 <li>Uitvoer van <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
             </ul>
 
-            <p>Houd er rekening mee dat er momenteel een limiet is van 400 private keys per portemonnee. Let op, voor Portemonnees  met veel private keys kan uw browser een paar minuten lang niet reageren.</p>
+            <p>Houd er rekening mee dat er momenteel een limiet is van 400 private keys per portemonnee. Let op, voor Portemonnees met veel private keys kan uw browser een paar minuten lang niet reageren.</p>
 
             <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Kopieer en plak uw portemonnee gegevens in dit veld"></textarea>
 
@@ -1838,7 +1737,7 @@
             </div>
 
             <div class="modal-body">
-                <p>Gecomprimeerde Private Keys worden momenteel niet ondersteund door de Android app, iPhone app of Merchant API. Als u een gecomprimeerde private key importeert zult u niet in staat zijn om de bitcoins op dat adres te besteden met behulp van de eerder genoemde apparaten.</p>
+                <p>Gecomprimeerde Private Keys worden momenteel niet ondersteund door de Android-app, iPhone-app of Merchant API. Als u een gecomprimeerde private key importeert zult u niet in staat zijn om de bitcoins op dat adres te besteden met behulp van de eerder genoemde apparaten.</p>
 
                 <p>De aanbevolen oplossing is om de fondsen te vegen naar een bestaand bitcoin adres. Wilt u in plaats daarvan deze Private Key vegen?</p>
             </div>
@@ -1886,7 +1785,7 @@
     </div>
 
     <div class="modal-body">
-        <p>Deze actie vereist dat u uw tweede wachtwoord invoert om uw portemonnee volledig te decoderen. U moet uw tweede wachtwoord nooit in te voeren op een niet-vertrouwde computer. Gebruik het schermtoetsenbord om wat bescherming tegen keyloggers te bieden.</p>
+        <p>Deze actie vereist dat u uw tweede wachtwoord invoert om uw portemonnee volledig te decoderen. U moet uw tweede wachtwoord nooit invoeren op een niet-vertrouwde computer. Gebruik het schermtoetsenbord om wat bescherming tegen keyloggers te bieden.</p>
 
         <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
 
@@ -1976,7 +1875,7 @@
             <div class="control-group">
                 <label class="control-label">Openbaar maken?</label>
                 <div class="controls">
-                    <input name="make_public" type="checkbox" /><p class="help-block">Op Standaard adresetiketten zijn alleen zichtbaar voor jou. Openbare labels zijn publiekelijk zichtbaar op de blockchain website en kan worden bekeken door iedereen.</p>
+                    <input name="make_public" type="checkbox" /><p class="help-block">Standaard zijn adressenlabels alleen zichtbaar voor u. Publieke labels zijn zichtbaar voor iedereen op de blockchain website.</p>
                 </div>
             </div>
         </div>
@@ -2208,40 +2107,17 @@
 </div>
 
 
-
-    <div id="ask-for-shared" class="modal hide">
-        <div class="modal-header">
-            <h3>Stuur Gedeelde?</h3>
-        </div>
-        <div class="modal-body">
-            <p>Stuur deze transactie door de gedeelde portemonnee en krijg een <span class="bonus-percent"></span>% bonus (<span class="bonus-value"></span> zal worden teruggestuurd naar de verzendende adres). De transactie zal oplopen een vertraging van ongeveer <span class="delay"></span>.</p>
-
-            <div class="alert alert-block alert-error">
-                    Niet accepteren als u verwacht terug te ontvangen betaling aan de verzendende adres. Gedeelde transacties niet verenigbaar zijn met SatoshiDICE, BitLotto en vele andere bitcoin games.
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="pull-left"><input type="checkbox" id="shared-never-ask">Vraag me dit nooit meer.</div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-secondary">Verder Zonder</button>
-                <button class="btn btn-primary">Stuur Gedeelde?</button>
-            </div>
-        </div>
-    </div>
-
-
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
-        <h3>Gedeeld Coin Transactie</h3>
+        <h3>Gedeelde Transactie</h3>
     </div>
     <div class="modal-body">
         <div class="alert alert-block alert-error">
-            Er is een fout opgetreden invullen van deze gedeelde munt transactie. Voor meer informatie kijk dan op de javascript console.
+            Er is een fout opgetreden bij het voltooien van deze gedeelde transactie. Kijk in uw Javascript console voor meer informatie.
         </div>
 
         <div class="alert alert-block alert-warning">
-            Transactie aan de gang. Gebruik dit venster te sluiten of in uw browser te sluiten.
+            Transactie is aan de gang. Sluit dit venster of uw browser niet.
         </div>
 
         <p align="center" class="loading-indicator" style="display:none;padding:10px;">
@@ -2283,7 +2159,7 @@
         <h3>Mijners kosten aanbevolen</h3>
     </div>
     <div class="modal-body">
-        <p>Deze transactie heeft een lage prioriteit. Het wordt aanbevolen dat u ten minste 0,0005 BTC aan transactiekosten meestuurt om ervoor te zorgen dat uw transactie snel verwerkt wordt.</p>
+        <p>Deze transactie heeft een lage prioriteit. Het wordt aanbevolen dat u tenminste 0,0005 BTC aan transactiekosten meestuurt om ervoor te zorgen dat uw transactie snel verwerkt wordt.</p>
         <div class="alert alert-block alert-error">Als u geen kosten betaalt voor deze transactie kan het lang duren voordat deze bevestigd wordt. Het geld zal aan u worden teruggegeven binnen ongeveer 24 uur.</div>
     </div>
     <div class="modal-footer">
@@ -2294,6 +2170,20 @@
     </div>
 </div>
 
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Hogere Fee Aanbevolen</h3>
+    </div>
+    <div class="modal-body">
+        <p>U hebt opgegeven een aangepaste vergoeding van <span></span> maar de aanbevolen kosten voor deze transactie is <span></span>. Wilt u de aanbevolen tarief in plaats gebruiken?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Gebruik Aangepast Fee</button>
+            <button class="btn btn-primary">Gebruik Aanbevolen Fee</button>
+        </div>
+    </div>
+</div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
@@ -2315,7 +2205,7 @@
         </div>
 
         <div id="tx-sign-progress" style="display:none">
-            <h4>Even geduld aub. Uw transacties worden ondertekend. Aantal <span class="n">0</span> van <span class="t"></span> ...</h4>
+            <h4>Even geduld a.u.b.. Uw transacties worden ondertekend. Aantal <span class="n">0</span> van <span class="t"></span> ...</h4>
         </div>
 
         <div id="review-tx" style="display:none">
@@ -2420,7 +2310,7 @@
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
-        <div class="qr-code-reader" style="width:320px;height:240px;z-index:10;"></div>
+        <div class="qr-code-reader" align="center"></div>
     </div>
 
     <div class="modal-footer">

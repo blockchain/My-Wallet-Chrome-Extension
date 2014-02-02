@@ -7,7 +7,7 @@ cd ../
 cd ./My-Wallet-Chrome-Extension/extension
 
 WEB_CONTENT="../../website/WebContent"
-DOWNLOAD_HTML=false;
+DOWNLOAD_HTML=true;
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
 if $DOWNLOAD_HTML ; then
@@ -130,10 +130,5 @@ cp $RESOURCE_DIR/wallet/taint_grouping.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/filesaver.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/sharedcoin.min.js ./Resources/wallet/
 cp "$RESOURCE_DIR/wallet/poll-for-session-guid.min.js" ./Resources/wallet/
-
-#icons
-cp $RESOURCE_DIR/cube48.png ./Resources/
-cp $RESOURCE_DIR/cube64.png ./Resources/
-cp $RESOURCE_DIR/cube128.png ./Resources/
 
 zip -r ../Extension.zip *
