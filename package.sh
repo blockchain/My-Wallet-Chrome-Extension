@@ -132,3 +132,6 @@ cp $RESOURCE_DIR/wallet/sharedcoin.min.js ./Resources/wallet/
 cp "$RESOURCE_DIR/wallet/poll-for-session-guid.min.js" ./Resources/wallet/
 
 zip -r ../Extension.zip *
+
+git commit -a -m "Sync Local"
+git push
