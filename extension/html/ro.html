@@ -1,0 +1,2350 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portofelul meu - Fii propriul tau bancher - Blockchain.info</title>
+    <meta name="robots" content="noindex">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
+
+    <style type="text/css">
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
+
+    
+
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
+    
+    
+    
+</head>
+
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/" data-language="ro">
+
+<div class="quickstart">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>
+                    <span class="hidden-phone">Portofelul meu <small>Fii propriul tau bancher.</small></span>
+
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Soldul" data-content="Acest lucru arata soldul de portofel bitcoin. Este posibil sa nu fi capabil sa-ti petreaca aceasta suma pâna când toate tranzactiile sunt confirmate.">
+                        <span id="balance"></span>
+                        <small id="balance2">0</small>
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid" style="margin-top:10px">
+            <div class="span12 no-print">
+                <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
+                    <li><a id="home-intro-btn">Portofel Acasa</a></li>
+                    <li><a id="my-transactions-btn">Tranzactii mele</a></li>
+                    <li><a id="send-coins-btn">Trimite Bani</a></li>
+                    <li><a id="receive-coins-btn">Bani primiti</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">Import / Export</a></li>
+                </ul>
+
+                <h6 class="pull-right" id="status-container">
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Încarcare</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
+    <span id="notices" style="max-width:600px;width:auto;"></span>
+</div>
+
+<div style="width:100%; float:left; clear:both"></div>
+
+<div class="container" style="margin-top:10px">
+
+<div id="my-account" style="display:none;">
+    <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
+        <h2>Date sensibile</h2>
+
+        <p>Setări cont afișează datele sensibile, care nu ar trebui să fie prezentate la alte persoane. Este recomandat să nu deschideți această secțiune în locuri publice sau de a lua capturi de ecran din această secțiune.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-account-settings">Continua</button>
+        </p>
+    </div>
+
+    <div id="my-account-content" style="display:none">
+
+
+
+
+<h2>
+    Setarile contului <small>Modifica setarile portofelul meu de cont.</small>
+</h2>
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Informatii despre cont</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Generale</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Afișa</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notificari</a></li>
+
+            <li class="divider"></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Parole</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Securitate</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Logging</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Dispozitive</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Depanarea</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+<div class="tab-content">
+<div class="active tab-pane" id="account-information">
+    <div class="page-header">
+        <h3>Trimiteti e-mail <small style="color:green">(Recomandat)</small></h3>
+
+        <p>
+            Un e-mail este necesara pentru a ajuta la recuperarea unui identificator portofel pierdut și pentru notificările de plată.<br/>
+        </p>
+
+        <p>
+            <input placeholder="Email-ul dvs." id="wallet-email" type="text"/>
+        </p>
+
+        <p class="email-verified">
+            <font color="green">E-mail confirmat</font>
+        </p>
+
+        <div class="email-unverified">
+            <b>E-mail Cod de verificare:</b><br/><br/>
+
+            <div class="form-inline">
+                <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
+                <button class="btn">Verifica</button>
+                <button class="btn" id="wallet-email-send">Retrimite link</button>
+            </div>
+            <br/> <font color="red">E-mail nu a fost verificat</font>
+        </div>
+    </div>
+
+    <div class="page-header email-verified">
+        <h3>Alias  <small>(Facultativ)</small></h3>
+        <p>
+            Un alias este link-ul scurt, care pot fi memorate pentru acces rapid la contul dvs. fara a fi nevoie sa-si aminteasca un identificator<br/>
+        </p>
+
+        <p>
+            <input placeholder="Un Nickname sau alt cuvânt de neuitat" id="wallet-alias" type="text"/>
+        </p>
+
+        <pre class="alias" style="display:none"></pre>
+    </div>
+
+    <div class="page-header">
+        <h3>Numar de mobil <small>(Facultativ)</small>
+        </h3>
+
+        <p>
+            Va rugam sa introduceti numarul dvs. de telefon mobil de mai jos.Sms-urile internationale pot fi, uneori, nesigure si nu poate fi disponibil pentru unele tari si retele.
+        </p>
+
+        <p class="form-inline">
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Trimite codul SMS</button>
+        </p>
+
+        <p class="sms-verified">
+            <font color="green">SMS-uri verificate</font>
+        </p>
+
+        <div class="sms-unverified well">
+            <p>Introduceti codul de verificare cuprinse în mesajul SMS.</p>
+            <p class="form-inline"><input placeholder="SMS Cod de verificare" class="wallet-sms-code" type="text"/> <button class="btn">Verifica</button> </p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Verificati integritatea</h3>
+
+        <p>Verifica toate cheile din portofelul tau, gases-te adresa pe care o cauti si apoi recripteaza portofelul. Acest lucru poate dura o lunga perioada de timp, în unele browsere.</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Alerga</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Verifica comprimat</h3>
+
+        <p>Verifică echilibrul de ambele versiuni comprimat și necomprimate a tuturor chei private pentru a verifica dacă nu există tranzacții care pot fi răscumpărate nu afișate în echilibru principal al portofelului.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Alerga</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Iterations</h3>
+
+        <p>PBKDF2 este o funcție care se întinde parola creșterea efortul necesar pentru a bruteforce. Un număr mare de iterații este mai bine însă este posibil să observați o încetinire a browser-ului.</p>
+
+        <p><b>Schimbarea aceasta valoare poate cauza probleme de compatibilitate între clienții vechi, care nu suporta noul format de criptare portofel.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iterații:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-general">
+
+    <div class="page-header">
+        <h3>Manevrați Bitcoin Link-uri</h3>
+
+        <p>Doriți să setați blockchain.info ca gestionar implicit de link-uri Bitcoin? Bitcoin link-uri (URI-uri) sunt folosite pentru a introduce automat o adresă Bitcoin destinatar și trimite valoare atunci cand este apasat.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Inregistrare Handler URI</button>
+    </div>
+
+    <div class="page-header">
+        <h3>Inactivitatea Logout</h3>
+
+        <p>
+            În mod implicit, veți fi conectat în mod automat din contul portofelul dumneavoastră după 10 minute de inactivitate. Puteți ajusta perioada de inactivitate de mai jos.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 minute</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 minute</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 de minute</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Niciodată</b>
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Politica implicita a taxelor</h3>
+
+        <p>
+            Tranzactiile Blockchain.info sunt gratuite. Cu toate acestea reteaua bitcoin poate solicita o suplimentare de taxa de mineri care afecteaza viteza de tranzactiilor dvs., acestea sunt verificate si contribuie la sustinerea retelei. Modificati setarile de mai jos pentru a modifica politica implicita a taxei minerilor.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>Frugal</b> - O taxa de minerit nu va fi inclusa, cel putin nu pana cand nu va fi imperativ necesar. <font color="red">Tranzactiile vor fi semnificativ mai lent pentru a confirma</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>Normal</b> - Urmati politica taxelor sugerata de clientul bitcoin magistrala. <font color="green">Recomandat</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>Generos</b> - Taxe va fi setata pentru a asigura ca tranzactiile sunt in stadiul de prioritate maxima (0,001 BTC Taxa de baza).
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Backup-uri automate prin e-mail</h3>
+        <p>
+            Verificati acest lucru pentru a primi o copie de rezerva nou mod automat atunci când actualiza-ti portofelul dvs: <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+</div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Limba</h3>
+
+        <p>Setati limba dvs. preferata de mai jos</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Moneda locala</h3>
+
+        <p>Aveti posibilitatea sa face-ti converstia rapid între bitcoins si moneda dvs. locala facând clic pe soldul dvs. în dreapta sus.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Ecran</h3>
+
+        <p>Reglați precizie ați prefera valori Bitcoin să fie afișat inch</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Tranzacții pe pagină</h3>
+
+        <p>Setați numărul de tranzacții afișate pe pagină</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
+
+<div class="tab-pane" id="account-notifications">
+    <div class="page-header">
+        <h3>Notificari</h3>
+
+        <p>Optional primi-ti notificari atunci când o plata este trimisa sau primita din portofel.</p>
+
+        <div id="notifications-type">
+            <input type="checkbox" value="1"> <b>Notificari e-mail</b><br/>
+
+            <div class="well type-1" style="display:none">
+                Veti primi notificari prin e-mail. Va rugam sa confirmati adresa dvs de e-mail daca nu a-ti facut-o deja.
+            </div>
+
+            <input type="checkbox" value="32"> <b>Notificari SMS</b><br/>
+
+            <div class="well type-32" style="display:none">
+                <p>
+                    Va rugam sa introduceti numarul dvs. de telefon mobil de mai jos.Sms-urile internationale pot fi, uneori, nesigure si nu poate fi disponibil pentru unele tari si retele.
+                </p>
+
+                <p class="form-inline">
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Trimite codul SMS</button>
+                </p>
+
+                <p class="sms-verified">
+                    <font color="green">SMS-uri verificate</font>
+                </p>
+
+                <div class="sms-unverified">
+                    <p>Introduceti codul de verificare cuprinse în mesajul SMS.</p>
+                    <p class="form-inline">
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Verifica</button>
+                    </p>
+                </div>
+            </div>
+
+            <input type="checkbox" value="2" /> <b>Google Talk</b><br/>
+
+            <div class="well type-2" style="display:none">
+                Veti primi notificari prin Google Talk.
+            </div>
+
+            <input type="checkbox" value="8"> <b>Skype</b><br/>
+
+            <div class="well type-8" style="display:none">
+                <p>Veti primi notificari prin Skype pentru numele de utilizator de mai jos:</p>
+
+                <input placeholder="Skype Username" id="wallet-skype" type="text"/>
+            </div>
+
+            <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
+
+            <div class="well type-64" style="display:none">
+                <p>Va rugam sa introduceti <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> e-mail de mai jos:</p>
+
+                <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
+            </div>
+
+            <input type="checkbox" value="4"> <b>HTTP Notificări</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>Notificările vor fi trimise http atunci când tranzacțiile sunt trimise sau primite. Vă rugăm să consultați secțiunea dezvoltatori pentru un ghid pentru punerea în aplicare de apel invers.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+            <input type="checkbox" value="128"> <b>Android Notificări</b><br/>
+
+            <div class="well type-128" style="display:none">
+                <p>Veți primi notificări pe dispozitivul dvs. Android După împerechere.</p>
+            </div>
+
+        </div>
+
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML5 Notificari</b><br/>
+
+        <div class="well" style="display:none">
+            <p>Notificarile de tip HTML5 sunt diferite de regulate ferestre pop-up, în care le solicita permisiunea utilizatorului de a fi indicat. În prezent, sustinuta în Chrome si Safari.</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Când portofelul meu</h3>
+
+        <p>
+            <select id="notifications-on">
+                <option value="0">Trimite sau primeste Bitcoins</option>
+                <option value="1">Trimite Bitcoins</option>
+                <option value="2">Primeste Bitcoins</option>
+            </select>
+        </p>
+    </div>
+
+    <h3>Dupa Confirmari</h3>
+
+    <p>
+        <select id="notifications-confirmations">
+            <option value="0">Imediat</option>
+            <option value="1">Confirmarea 1</option>
+            <option value="2">2 Confirmari</option>
+            <option value="3">3 Confirmari</option>
+            <option value="4">4 Confirmari</option>
+            <option value="5">5 Confirmari</option>
+            <option value="6">6 Confirmari</option>
+        </select>
+    </p>
+</div>
+
+
+<div class="tab-pane" id="account-logging">
+    <h3 class="page-header">Logging Level</h3>
+
+    <p> Datele dumneavoastra vor fi inscrise numai in cazul trimiterii/primirii de bitcoins . În mod implicit jurnalul este oprit in afara de actiunile întreprinse de catre administratori. Activarea ofera o mai buna securitate prin furnizarea de mai multe informatii cu privire la accesul neautorizat la poten?ialul de portofel totusi un pic de intimitate poate fi sacrificata.</p>
+
+    <p>
+        <select id="logging-level">
+            <option value="0">Logging pentru persoane cu handicap</option>
+            <option value="1">Log Actiuni cu adrese IP trunchiata</option>
+            <option value="2">Log Actiuni cu adresa IP si User Agent</option>
+        </select>
+    </p>
+
+    <p class="well">
+        Modificarea nivelului de logare nu sterge fisiere log existente. Activitatea expira dupa 2 saptamâni.
+    </p>
+
+    <div class="logl l2 l1">
+        <table class="table table-striped well" style="margin-top:10px;display:none;">
+            <thead>
+            <th>Timp</th>
+            <th>Actiune</th>
+            <th>Adresa IP</th>
+            <th>User Agent</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p class="logl l0" style="display:none;">
+        <font color="green">Logging pentru persoane cu handicap</font>
+    </p>
+</div>
+
+<div class="tab-pane" id="account-devices">
+    <h3>Dispozitiv de Asociere</h3>
+
+    <p>Scanati codul de mai jos cu iPhone-ul sau pe dispozitivul Android pentru a-l asocia cu contul dvs.</p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
+                    Afișare / Ascundere Asocierea Cod.
+                </a>
+            </div>
+
+            <div id="pairing_code" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-passwords">
+    <div class="alert alert-block alert-error"><B>Atentie!</B> Orice parolele uitata va duce la portofel ca fiind ne-accesibile. Nu exista nici un proces de recuperare a parolei!</div>
+
+    <p>
+        Parola dumneavoastra nu este niciodata partajata pe serverele noastre. Acest lucru înseamna ca portofelul dvs ar fi în continuare în conditii de siguranta, în cazul în serverele noastre sufera un atac sau tentativa de accesare a datelor dvs. De asemenea, ne împiedica de la vizualizarea soldului contului sau istoricul tranzactiilor.
+    </p>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Parola Mnemonic</h3>
+
+        <p>Mnemonicele parola poate fi folosita pentru a recupera parola dvs. de portofel dacă a fost uitată. Fără a mnemonic nu există nici un fel ne poate ajuta la recuperarea unei parole uitate. La schimbarea parolelor portofel mnemonic se va schimba.</p>
+
+        <div id="accordion1">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
+                        Afișare / Ascundere Parola Mnemonic
+                    </a>
+                </div>
+
+                <div id="password_mnemonic" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="password_mnemonic1">
+                            <h5 class="page-header">Main Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+
+                        <div id="password_mnemonic2">
+                            <h5 class="page-header">Second Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Parola principal</h3>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Parola:</label>
+
+                <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Confirma parola:</label>
+
+                <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+        </div>
+
+        <p>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Actualizati parola principala</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px"> A doua parola </h3>
+
+        <div class="double-encryption-off">
+            <p>Puteti seta o a doua parola, optional, care va fi necesara atunci când veti trimite fonduri din contul dvs. Pentru portofele mari, browser-ul dvs. poate fi incetinit, si poata sa isi revina abia dupa cateva minute dupa trimiterea platii</p>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Parola:</label>
+
+                    <div class="controls"><input id="double-password" type="password"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Confirma parola:</label>
+
+                    <div class="controls"><input id="double-password2" type="password"/></div>
+                </div>
+            </div>
+
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">Activati criptare dubla</button>
+        </div>
+
+        <div class="double-encryption-on">
+            <p>Criptare dubla este activata. O a doua parola va fi necesara înainte de a putea trimite fonduri.</p>
+
+            <p>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">Dezactiva-ti criptarea dubla</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Sugestii parola</h3>
+
+        <p>Daca ati uitat parola, indiciile pot fi utile pentru a ajuta la reîmprospata memoriei. Daca exista o adresa de e-mail asociata cu contul dvs., indicii pot fi trimisa prin email. Daca nici un e-mail nu este asociata cu contul dvs., indicii sunt disponibile pentru oricine care stie identificatorul Dvs. de portofel.</p>
+
+        <p class="well">
+            <b>De exemplu:</b> În cazul în care parola a fost portofel: HorseBatteryStaple o sugestie pentru parola buna ar fi: calul electric?
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Sugestie parola principala:</label>
+
+                <div class="controls"><input id="password-hint1" type="text"/></div>
+            </div>
+
+            <div class="control-group double-encryption-on">
+                <label class="control-label">A doua sugestie de parola:</label>
+
+                <div class="controls"><input id="password-hint2" type="text"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-security">
+    <div class="page-header">
+        <h3>Doi factori de autentificare</h3>
+
+        <p>Doi factori de autentificare, adauga un nivel suplimentar de securitate pe partea de sus a parolei.</p>
+
+        <p>
+            <select id="two-factor-select">
+                <option value="0">Nici unul</option>
+                <option value="5">Mesaj SMS</option>
+                <option value="1">Yubikey</option>
+                <option value="2">Trimiteti e-mail</option>
+                <!--<option value="3">Mt Gox Yubikey</option>-->
+                <option value="4">Google Authenticator</option>
+            </select>
+        </p>
+
+        <div class="well two-factor t0" style="display:none">
+            Doi factori de autentificare nu sunt activate pe contul dvs.
+        </div>
+
+        <div class="well two-factor t1 t3" style="display:none">
+            <b>Yubikey</b> <br/> Pentru a asocia cheia cu contul dvs. selectati caseta text de mai jos si apasati butonul verde, LED-ul de pe aparat yubikey.
+
+            <div class="controls">
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">Selectati caseta de text de mai sus si apasati lumina verde LED de pe Yubikey-ul dumneavoastra.</p>
+            </div>
+        </div>
+
+        <div class="well two-factor t2" style="display:none">
+            <b>Trimiteti e-mail</b> <br/> Doi factori de autentificare prin e-mail este activat in contul dvs. Un e-mail va fi trimis la <span class="my-email"></span> acesta contine un cod de confirmare, care va trebui sa fie furnizat la autentificare.
+        </div>
+
+        <div class="two-factor t4" style="display:none">
+            <p class="well">
+                Google Authenticator este activat
+            </p>
+
+            <div style="display:none">
+                <p>
+                    Deschide-ti aplicatia Google Authenticator si scana-ti codul QR de mai jos pentru a finaliza procesul de împerechere.
+                </p>
+
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>După scanarea codului QR de mai sus cu aplicația Google Authenticator introduceți codul de autentificare de mai jos:</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-factor t5 well" style="display:none">
+            <b>Mesaj SMS</b>
+
+            <p>
+                Va rugam sa introduceti numarul dvs. de telefon mobil de mai jos.Sms-urile internationale pot fi, uneori, nesigure si nu poate fi disponibil pentru unele tari si retele.
+            </p>
+
+            <p class="form-inline">
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Trimite codul SMS</button>
+            </p>
+
+            <p class="sms-verified" style="color:green">
+                SMS-uri verificate
+            </p>
+
+            <div class="sms-unverified well">
+                <p>Introduceti codul de verificare cuprinse în mesajul SMS.</p>
+                <p class="form-inline"><input placeholder="SMS Cod de verificare" class="wallet-sms-code" type="text"/> <button class="btn">Verifica</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Păstrați întotdeauna Backup Browser</h3>
+
+        <p>Activați această opțiune pentru a forța o copie de siguranță portofel care urmează să fie stocate în browser de stocare locale, chiar atunci când două factor de autentificare este activată. Dacă este activat un atacator cu acces la browser-ul ar putea să se sustragă două factor de autentificare, cu toate acestea în cazul în portofel este accesat folosind orice alt PC sau browser-ul este încă protejat de factor de autentificare doi.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Păstrați întotdeauna:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Fraza secreta</h3>
+
+        <p>O fraza secreta poate fi folosit pentru a ne ajuta sa va confirmati identitatea în cazul unui identificator pierdut portofelul sau yubikey. Acesta poate fi un singur cuvânt sau o propozitie pâna la 255 de caractere în lungime.</p>
+
+        <p>
+            <input id="wallet-phrase" type="text"/>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Nu va aminti-ti niciodata cei doi factori de autentificare</h3>
+
+        <p>
+            Implicit dupa logare cu factor de autentificare browser-ul dvs. isi va amintit pentru o perioada scurta de timp, permitându-va sa va autentific-ati din nou, fara a fi nevoie de re-autentificare. Verific-ati caseta de mai jos daca doriti sa dezactivati acest comportament si necesita autentificare de fiecare data.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Amintiti-va niciodata:</label>
+
+                <div class="controls">
+                    <input id="never-save-auth-type" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Bloca adresele IP TOR</h3>
+
+        <p>
+            Activați următoarea opțiune pentru a preveni adrese IP parte a rețelei anonimatului TOR la ​​accesarea portofel.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Activeaza / Dezactiveaza:</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Pentru a restrictiona IP</h3>
+
+        <p>
+            Activati aceasta optiune pentru a restrictiona accesul la portofelul dumneavoastra la o anumita adresa IP sau mai multe adrese IP separate prin virgula. Activati acest lucru numai daca aveti o adresa IP statica. Dvs nu veti fi capabil sa va autentificati sau sa accesati orice API de la orice calculator care nu are una din adresele de IP mentionate, aplicatia mobila va continua sa functioneze o data ce a fost asociata.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Activeaza / Dezactiveaza:</label>
+
+                <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Blocarea IP:</label>
+
+                <div class="controls">
+                    <input id="ip-lock" type="text"/>
+
+                    <p class="help-block">Mai multe adrese IP trebuie sa fie separate prin virgula.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Curent IP:</label>
+
+                <div class="controls"><span id="my-ip"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="update-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Confirmati Schimbare parola</h3>
+    </div>
+    <div class="modal-body">
+        <p>Parola dvs. va fi actualizat imediat. Asigurati-va ca a-ti facut o copie de rezerva a noii parole, deoarece nu poate fi recuperata daca a fost uitata! Daca aveti vreo copie de rezerva criptata a portofelului dvs atunci poate fi decriptata cu parola veche, va recomandam sa stergeti backupurile vechi.</p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Actualizare Parola</button>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div id="home-intro" style="display:none;">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="well table table-striped">
+                <tr>
+                    <td>Totalul tranzactiilor</td>
+                    <td><span id="summary-n-tx">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Totala primite</td>
+                    <td><span id="summary-received">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Trimis total</td>
+                    <td colspan="2"><span id="summary-sent">0</span></td>
+                </tr>
+                <tr>
+                    <td>Sold final</td>
+                    <td><span id="summary-balance">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
+
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
+                    <small>Aceasta este adresa dvs. de Bitcoin</small>
+
+                    <p class="primary-address" id="my-primary-address"></p>
+
+                    <small>Trimite-ti acest lucru cu oricine si le poate trimite plati.</small>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="span6">
+            <div class="no-watch-only" id="home-deposit-container"></div>
+
+            <div class="page-header" id="partner-home-buttons" style="display:none">
+                <h3 style="padding-bottom:10px">Partenerii</h3>
+
+                <p align="right"></p>
+            </div>
+
+            <div class="page-header" id="home-account-container">
+                <h3>Setarile contului</h3>
+
+                <p>Edita-ti setarile contului dvs., inclusiv adresa de e-mail, parola si setarile de notificare.</p>
+
+                <p align="right">
+                    <button class="btn" id="my-account-btn">Setarile contului</button>
+                </p>
+            </div>
+
+            <div id="home-backup-container">
+                <h3>Copie de rezerva</h3>
+
+                <p>Back-up portofelul tau este un pas important, care este usor de uitat. Blockchain.info ia toate masurile de precautie pentru a pastra în conditii de siguranta portofelul dumneavoastra, dar este întotdeauna mai bine sa pastra-ti o copie locala doar în cazul de necesitate.</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Trimiteti e-mail</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="receive-coins" style="display:none;">
+
+    <h2>Adrese <small>Adresele care primesc bitcoin</small></h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#active-addresses" data-toggle="tab">Activ</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">Arhivate</a></li>
+        
+    </ul>
+
+    <div id="receive-content" class="tab-content">
+        <div class="active tab-pane" id="active-addresses" style="margin-bottom:200px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Adresa</th>
+                    <th>Indicatori</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Adresa noua" data-content="Click aici pentru a genera o adresa de bitcoin noua. Puteti începe sa primiti bitcoins în aceasta adresa imediat">Adresa noua</button>
+
+            <div class="btn-group pull-right" style="margin:5px">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Mai multe actiuni <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">Noua Adresa Cold Storage</a></li>
+                    <li><a id="chord-diagram">Vezi Diagrama relatie</a></li>
+                    <li><a id="group-received" title="Taint Grouping">Grupul de adrese de email Taint</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">Verificati Mesajele</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="archived-addresses" style="margin-bottom:200px">
+            <h3>Adrese arhivate</h3>
+
+            <p>Adresele arhivate, sunt adrese care nu mai trebuiesc ascunse in vederea principala, dar care fac parte inca din portofelul dvs. Aveti posibilitatea sa le dezarhivati în orice moment, facând clic pe pictograma albastra.</p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                <th></th>
+                <th>Adresa Bitcoin</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Selectați Toate</button>
+                <button class="btn btn-secondary" id="archived-select-none">Selectați Nu există</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Matura Taste" data-content="Mutati orice bitcoins din cheile selectate catre o adresa de bitcoin diferita.">Matura Taste</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Stergeti Taste" data-content="Stergeti cheile private selectate.">Stergeti Taste</button>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<div style="display: none;" id="restore-wallet">
+
+    
+
+    
+
+    
+
+    <div class="row-fluid" id="welcome_back_container">
+        <div class="span6">
+            <div class="page-header">
+                <h3>Bine ai revenit </h3>
+                <small>Va rugam sa introduceti datele dvs. de autentificare de mai jos:</small>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Username:</label>
+
+                    <div class="controls"><input id="restore-guid" placeholder="Username sau Alias" value="" type="text"/></div>
+                </div>
+
+                <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
+                    <label class="control-label">Parola:</label>
+
+                    <div class="controls"><input id="restore-password" type="password"/></div>
+                </div>
+
+
+                <div class="control-group auth-1 auth-3" style="display:none">
+                    <label class="control-label">Yubikey:</label>
+
+                    <div class="controls">
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Selectati caseta de text de mai sus si apasati lumina verde LED de pe Yubikey-ul dumneavoastra.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-2" style="display:none">
+                    <label class="control-label">E-mail Cod:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Un e-mail care contine un cod de confirmare a fost trimis temporar în contul tau.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-4" style="display:none">
+                    <label class="control-label">Aplicatia Google Authenticator:</label>
+
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+
+                        <p class="help-block">Va rugam sa deschideti aplicatia de autentificare Google si introduce-ti codul afisat.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-5" style="display:none">
+                    <label class="control-label">SMS-uri Cod:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Un mesaj de tip text a fost trimis pe telefonul dvs. mobil. Va rugam sa introduceti codul în casuta de mai sus.</p>
+                    </div>
+                </div>
+
+                <div style="padding-left: 160px;padding-bottom:20px">
+                    <button class="btn btn-primary" id="restore-wallet-continue">Deschidere Portofel</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Creați portofel nou</a>
+                </div>
+
+                <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Nu puteti gasi codul dvs. de email?</h5>
+
+                    <p>Mesajul va fi trimis de la wallet@blockchain.info. Asigurati-va ca verificati in SPAM. Daca tot nu puteti gasi e-mailul faceti clic pe butonul de mai jos sa-l trimita.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Retrimite link</a>
+                    </p>
+                </div>
+
+                <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Nu ati primi un cod de SMS-uri?</h5>
+
+                    <p>Va rugam sa verificati semnalul de retea. Mesajele pot dura pâna la 10 minute pentru a fi livrate, în cazul în care nu a-ti primit mesajul in 10 minute, face-ti clic pe butonul de mai jos pentru a retrimite mesajul.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Retrimite Mesaj</a>
+                    </p>
+                </div>
+
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">Parola dumneavoastra nu este niciodata partajata cu serverele noastre si nu poate fi recuperate daca a fost uitata!</div>
+            </div>
+        </div>
+
+        <div class="span6" id="forgotten-something-container">
+            <div class="page-header">
+                <h3>Am uitat ceva?</h3> <small>Ajutor! Mi-am blocat contul</small>
+            </div>
+
+            <h4>Username pierdut sau Alias</h4>
+
+            <p> Daca ati pierdut username-ul Dvs. de portofel verificati mai întâi ce e-mail de confirmare l-ati primit in timpul inscriere. Nu puteti gasi e-mailul? Faceti clic pe butonul de mai jos si va putem trimite una noua.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Recuperare Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Import Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Descarca Backup</a>
+            </p>
+
+            <h4>Detalii despre pierderea celor doi factori de autentificare</h4>
+
+            <p>Daca a-ti pierdut cele doua detalii factor de autentificare, portofelul dumneavoastra este înca pe deplin recuperabil. Tot ce avem nevoie este o dovada rezonabila sunteti proprietarul contului, care pot fi furnizate prin completarea formularului de mai jos.</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Schimbati doi factor de autentificare</a>
+            </p>
+
+            <h4>Aveti nevoie de ajutor?</h4>
+
+            <p>
+                Citi-ti <a target="blank" href="https://blockchain.info/wallet/support-pages">Suport Pagini</a>
+            </p>
+        </div>
+    </div>
+
+    
+</div>
+
+<div id="my-transactions" style="display:none;">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 style="display:inline-block">Tranzactii <small>Rezumatul tranzactiilor recente</small></h2>
+
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> Vedere</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> Compact</a></li>
+                        <li><a href="#" data-value="1"> Detaliat</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> Istoricul de export</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> Se filtrează</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> Toate</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Trimis</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Primit</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> Escrow</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
+        </div>
+    </div>
+
+    <p class="padded well" id="no-transactions" align="center">În mod normal, tranzactiile bitcoin ar fi enumerate aici, dar nu ati facut nici una inca.</p>
+
+    <table id="transactions-compact" class="table table-striped table-condensed table-hover">
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="transactions-detailed"></div>
+
+    <div class="pagination" align="center" style="clear:both;float:none">
+        <ul></ul>
+    </div>
+</div>
+
+<div id="send-coins" style="display: none;">
+<div class="row-fluid">
+<div class="span3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list" id="send-coins-nav">
+            <li class="nav-header">Tipul tranzactiei</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Trimitere rapida</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Obicei</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Moneda comună</a></li>
+            
+
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
+
+            <li class="nav-header">Trimite prin</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Trimiteti e-mail</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> Mesaj SMS</a></li>
+
+            <li class="divider" id="partners-send-divider" style="display:none"></li>
+
+            <li class="nav-header">Parteneri</li>
+
+            <li class="divider"></li>
+            <li class="nav-header">Unelte</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Agenda</a></li>
+        </ul>
+    </div>
+
+    <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
+        <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
+    </div>
+</div>
+<div class="span9">
+<div class="tab-content">
+<div class="active tab-pane well" id="send-quick">
+    <h4 class="page-header">Trimitere rapida<br/>
+        <small>Foloseste formularul de mai jos pentru a trimite o plata la o adresa de bitcoin.</small>
+    </h4>
+
+    <div class="form-horizontal">
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Catre adresa" data-content="Aceasta este adresa Bitcoin al destinatarului.">Pentru:</label>
+
+                    <div class="controls">
+                        <span class="qrcodeicon"><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
+
+                        <p class="help-block">Introduceti adresa Bitcoin a beneficiarului</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Suma" data-content="Suma în Bitcoins pe care doriti sa o trimiteti.">Suma:</label>
+
+                    <div class="controls">
+
+                        <div class="input-prepend">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <b>=</b>
+
+                        <div class="input-prepend">
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <p class="help-block">Introduceti suma de Bitcoins pentru a trimite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Trimite plata" data-content="Click aici pentru a trimite plata. Nu vi se va cere sa revedeti sau sa oferiti un feedback.">Trimite plata</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-sms">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Trimite prin SMS<br/><small>Foloseste formularul de mai jos pentru a trimite bitcoin prin SMS.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Numarul SMS-uri" data-content="Introduceti numarul de SMS al persoanei la care doriti sa trimiteti bitcoins.">Pentru:</label>
+
+                    <div class="controls">
+                        <select name="sms-country-code"></select> <br/> <input placeholder="Numarul SMS-uri" name="send-to-sms" type="text" style="margin-top:5px"/>
+
+                        <p class="help-block">Introduceti numarul de SMS al beneficiarului.</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Suma" data-content="Suma în Bitcoins pe care doriti sa o trimiteti.">Suma:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+
+                        <p class="help-block">Introduceti suma de Bitcoins pentru a trimite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Trimite plata" data-content="Click aici pentru a trimite plata. Nu vi se va cere sa revedeti sau sa oferiti un feedback.">Trimite plata</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-email">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Trimite prin email<br/><small>Foloseste formularul de mai jos pentru a trimite adresa bitcoin prin email.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Adresa de email" data-content="Aceasta este adresa de e-mail a persoanei la care doriti sa trimiteti bitcoins.">Pentru:</label>
+
+                    <div class="controls">
+                        <input placeholder="Adresa de email" name="send-to-email" type="text"/>
+
+                        <p class="help-block">Introduceti adresa de email a destinatarului</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Suma" data-content="Suma în Bitcoins pe care doriti sa o trimiteti.">Suma:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+                        <p class="help-block">Introduceti suma de Bitcoins pentru a trimite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Trimite plata" data-content="Click aici pentru a trimite plata. Nu vi se va cere sa revedeti sau sa oferiti un feedback.">Trimite plata</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Moneda comună<br/><small>Monedă Trustless amestec folosind alăture monede și analiza pată</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="De la adresa" data-content="Daca este necesar, puteti alege sa trimiteti monedele de la o anumita adresa, în portofel.">De la:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Catre adresa" data-content="Aceasta este adresa Bitcoin al destinatarului.">Pentru:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Suma:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Repetari:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Încarcare</option></select>
+                    <p class="help-block">Un număr mai mare de repetari face tranzacția mult mai dificil de a urmări și îmbunătățește viața privată.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Plata opinie" data-content="Click aici pentru a revizui plata. Veti fi capabil de a confirma sau de a anula tranzactia.">Plata opinie</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Maxim Trimite Valoare:</b> <span></span><br />
+                    <b>Valoarea minima Trimite:</b> <span></span><br />
+                    <b>Procentul comisionului pe Repetarea:</b> <span></span>%</br />
+                    <b>Taxa minim pe Repetarea:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Ceva a mers prost?</h4>
+
+        <p>
+                Atunci când trimite o tranzacție monedă comună sunt utilizate o serie de adrese intermediare. Dacă ceva interupts proces sau o eroare împiedică tranzacție de completare a monedele pot fi lăsate într-o adresă intermediar. Faceți clic pe butonul de mai jos pentru a solicita orice monedele rămase în adrese intermediare, acest proces poate dura câteva minute pentru a finaliza.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Recuperare Adrese intermediare</button>
+        </p>
+    </div>
+</div>
+
+
+
+<div class="tab-pane well" id="send-custom">
+    <h4 class="page-header">Tranzactie personalizata<br/><small>Foloseste formularul de mai jos pentru a trimite o plata la una sau mai multe adrese bitcoin. Vi se va solicita analiza tranzactiei înainte de depunere.</small></h4>
+
+    <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
+        <div class="control-group">
+            <label class="control-label pop" title="De la adresa" data-content="Daca este necesar, puteti alege sa trimiteti monedele de la o anumita adresa, în portofel.">De la:</label>
+
+            <div class="controls">
+                <select name="from" multiple="multiple"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Pentru:</label>
+
+            <div class="controls recipient-container">
+                <div class="recipient" style="margin-bottom:5px">
+                    <span class="qrcodeicon"><input placeholder="Adresa bitcoin" name="send-to-address" type="text"/><span></span></span>
+
+                    <div class="input-prepend input-append">
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left;padding-bottom:7px;padding-right:7px">
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
+                </div>
+
+                <div style="float:right;padding-right:20px">
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Elimina Primitorul" data-content="Stergeti ultima adresa la care a-ti primit plata."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Adaugati destinatar" data-content="Daca doriti sa trimiteti bitcoins la mai multi destinatari simultan, click aici pentru a adauga o alta adresa"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Taxa minerilor " data-content="Aceasta taxa va fi trimisa la minerii bitcoin si poate ajuta ca tranzactia sa fie procesata mai rapid">Taxa minerilor :</label>
+
+            <div class="controls">
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Modificare Adresa" data-content="Orice schimbare din tranzactie va fi trimis înapoi la aceasta adresa">Modificare Adresa:</label>
+
+            <div class="controls">
+                <select name="change"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Nota publica" data-content="Adaugati o nota la aceasta tranzactie, care va putea fi vizoalizata pe blockchain.info.">Nota publica:</label>
+
+            <div class="controls">
+                <textarea name="public-note" placeholder="Aceste mesaje vor fi permanent încorporate în blockchain. Oricine le poate citi." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="reset btn">Resetati Forma</button>
+            <button class="send btn btn-primary pop" title="Plata opinie" data-content="Click aici pentru a revizui plata. Veti fi capabil de a confirma sau de a anula tranzactia.">Plata opinie</button>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="address-book">
+
+    <h3>Agenda</h3>
+
+    <p>Cartea adrese contine o lista de adrese trimise. Puteti sa-l utilizati pentru a stoca adresele bitcoin ale persoanelor pe care le cunoasteti sau comerciantilor pe care le utilizati frecvent.</p>
+
+    <table class="table table-striped" id="address-book-tbl">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Bitcoin Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockchain.info</td>
+            <td class="addr-book-entry">1JArS6jzE3AJ9sZ3aFij1BmTcpFGgN86hA</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <button id="add-address-book-entry-btn" class="btn btn-primary">Adaugati intrare noua</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="import-export" style="display: none;">
+    <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
+        <h2>Atentie crescuta!</h2>
+
+        <p>Aceasta sectiune va permite sa efectuati modificari in portofelul dumneavoastra, care poate fi complicat si confuz. Se recomanda ca utilizatorii experimentati cu Bitcoinul sa porneasca de aici. Tu ar trebui sa ai o întelegere a ceea ce cheile private sunt si modul în care acestea se refera la adresele bitcoin.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-import-export">Am înteles</button>
+        </p>
+    </div>
+
+    <div id="import-export-content" style="display:none;">
+
+
+
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Import / Export</li>
+            <li class="active"><a href="#import" data-toggle="tab">Import</a></li>
+            <li><a href="#import-backup" data-toggle="tab">Import Backup</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">Portofel de import</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">Exportul criptat</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">Export necriptate</a></li>
+            <li><a class="paper-wallet-btn">Portofel de hârtie</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
+
+            
+
+            <div class="page-header">
+                <h3>Adauga ca vazut Adresele Bitcoin</h3>
+
+                <p>Puteti adauga un <font color="red">Watch Only</font> adresa bitcoin la portofel. Dvs nu veti fi capabil de a trimite bitcoins de la aceasta adresa, fara a oferi mai târziu, cheia privata</p>
+
+                <div class="form-inline">
+                    <input placeholder="Bitcoin Adresa" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Adauga Watch Doar Adresa</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Import cheie privata</h3>
+
+                <p>Importa o cheie existenta privata de mai jos. Toate formatele de chei private sunt acceptate.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Adaugati cheie privata</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Import Utilizarea Portofel hârtie</h3>
+
+                <p>Utilizati webcam-ul dumneavoastra pentru a scana un cod QR dintr-un portofel de hârtie</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Scanarea cu webcam</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">Import Backup <small>O lista de backup-uri disponibile din portofel existene in serverul nostru Cloud Storage.</small></h3>
+
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>Nume fisier</th>
+                <th>Ultima modificare</th>
+                <th>Dimensiune</th>
+                <th>Actiune</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="import-wallet">
+
+            <h3 class="page-header">Portofel de import</h3>
+
+            <p>Puteti importa cheile în mai multe formate diferite.</p>
+            <ul>
+                <li>AES de rezerva criptate de la blockchain.info. (Trebuie sa fie criptate cu aceeasi parola)</li>
+                <li>Plaintext JSON de rezerva de la blockchain.info</li>
+                <li>De ie?ire de la <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
+                <li>De ie?ire de la <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
+                <li>De ie?ire de la <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+            </ul>
+
+            <p>Va rugam sa fiti constienti ca în prezent exista o limita de 400 de chei private pe portofel. Pentru portofele mari browser-ul dvs. poate raspunde cu o intarziere de timp de câteva minute.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Copiati ?i lipiti datele Dvs. de portofel în acest domeniu"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Portofel de import</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">Export <small>Mai jos sunt cheile private AES criptate.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">Descarca Backup</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">Export adrese necriptate <small>Mai jos sunt cheile private în format JSON. Atentie!!! Aceste date nu sunt ciptate, a se pastra in siguranta.</small></h3>
+
+            <h6>Selectati formatul de cheie privata:</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">Lasa cheile private criptat</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>Adauga doar adresele preferate/vazute</h3>
+            </div>
+            <div class="modal-body">
+                <p>Va rugam sa confirma-ti ca ati vrut sa adauga-ti <font color="red">Watch Only</font> adresa <span class="address"></span> .</p>
+
+                <p>Un <font color="red">Watch Only</font> adresa înseamna ca puteti observa numai tranzactiile la aceasta adresa. Daca nu aveti cheia privata salvat în alta parte, atunci nu detineti fondurile de la aceasta adresa.</p>
+
+                <p>Daca nu aveti un copie de rezerva sau un protofel de hartie nu ar trebui sa va trimite-ti monedele la aceasta adresa</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Anula</button>
+                    <button class="btn btn-primary">Continua</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-private-key-warning-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Import Private Atenție cheie</h3>
+            </div>
+            <div class="modal-body">
+                <p><b>Nu importa o cheie privată de o sursă publică sau care nu prezintă încredere.</b> Aceasta include portofele creierului comune, concursuri și chei private achiziționate. În schimb, vă recomandăm să măture cheie, ceea ce înseamnă că pentru a trimite toate fondurile la una dintre adresele existente, mai degrabă decât adăugarea de fapt o nouă adresă la portofel.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Importul direct</button>
+                    <button class="btn btn-primary">Sweep cheie</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Portofel Parola</h3>
+            </div>
+            <div class="modal-body">
+                <p>Dacă acest portofel este criptat va rugam sa introduceti parola de mai jos. În caz contrar, lăsați-l gol.</p>
+                <p align="center">
+                    <b>Portofel Parola:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Continua</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Cheia privata comprimata detectata</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>Chei private sunt comprimate în prezent nu sunt compatibile cu aplicatia Android, iPhone app sau API Merchant. Daca importati o cheie privata comprimata direct nu veti fi capabil sa folositi fondurile folosind dispozitivele enumerate anterior.</p>
+
+                <p>Solutia recomandata este de a matura fondurile într-o adresa de bitcoin existenta. Doriti sa mature aceasta cheie privata în schimb?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Importul direct</button>
+                    <button class="btn btn-primary">Sweep cheie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+
+<div id="main-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Parola principal Necesare</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Această acțiune necesită să vă re-introduceți parola principală. Vă rugăm introduceți-l cu atenție sau ați putea fi fi inregistrata afară.</p>
+
+        <div style="width:290px;margin: 0 auto;">
+            <p><b>Parola principal:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button> <button class="btn btn-primary">Continua</button>
+        </div>
+    </div>
+</div>
+
+<div id="second-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Este necesara a doua parola</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Aceasta actiune solicita sa introduceti a doua parola, care necesita sa ave-ti portofelul complet decriptat. Dvs nu ar trebui sa introduceti parola dvs. de secunde pe un computer ce nu este de încredere. Utilizati tastatura de pe ecran pentru a oferi o oarecare protectie de programele de tip keylogger.</p>
+
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
+
+        <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
+            <ul class="vkeyboard">
+                <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                <li class="delete lastitem">delete</li>
+                <li class="tab">tab</li>
+                <li class="letter">q</li>
+                <li class="letter">w</li>
+                <li class="letter">e</li>
+                <li class="letter">r</li>
+                <li class="letter">t</li>
+                <li class="letter">y</li>
+                <li class="letter">u</li>
+                <li class="letter">i</li>
+                <li class="letter">o</li>
+                <li class="letter">p</li>
+                <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                <li class="capslock">caps lock</li>
+                <li class="letter">a</li>
+                <li class="letter">s</li>
+                <li class="letter">d</li>
+                <li class="letter">f</li>
+                <li class="letter">g</li>
+                <li class="letter">h</li>
+                <li class="letter">j</li>
+                <li class="letter">k</li>
+                <li class="letter">l</li>
+                <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                <li class="return lastitem">return</li>
+                <li class="left-shift">shift</li>
+                <li class="letter">z</li>
+                <li class="letter">x</li>
+                <li class="letter">c</li>
+                <li class="letter">v</li>
+                <li class="letter">b</li>
+                <li class="letter">n</li>
+                <li class="letter">m</li>
+                <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                <li class="right-shift lastitem">shift</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button> <button class="btn btn-primary">Continua</button>
+        </div>
+    </div>
+</div>
+
+<div id="label-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Eticheta Adresa</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Va rugam sa introduceti o eticheta pentru adresa de <span class="address"></span></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Casa de discuri:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Eticheta de ex: Economie" type="text" /><p class="help-block">O eticheta este folosita pentru a ajuta sa va amintiti ce aceasta adresa este pentru. Acesta poate fi numele unei persoane sau companii.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Face publice?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">Prin adresa implicit etichetele sunt vizibile numai pentru tine. Etichetele publice sunt vizibile public pe site-ul blockchain și pot fi vizualizate de oricine.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button> <button class="btn btn-primary">Salveaza</button>
+        </div>
+    </div>
+</div>
+
+<div id="sign-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Inscriere Mesaj</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Utilizati acest instrument pentru a semna un mesaj care dovedeste ca detineti o adresa. Înregistreaza doar mesaje detaliate pe deplin de acord cu, sa nu semneze mesaje vagi. Apasând Mesaj Contul poate determina browser-ul dvs. pentru a devenit inactiva timp de câteva secunde.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Adresa:</label>
+                <div class="controls">
+                    <p class="address"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Mesaj:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Introduceti Mesajul pe care il doriti pentru semnatura"></textarea>
+                </div>
+            </div>
+            <div class="control-group signature" style="display:none">
+                <label class="control-label">Semnatura:</label>
+                <div class="controls">
+                    <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Inscriere Mesaj</button>
+        </div>
+    </div>
+</div>
+
+<div id="verify-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Verifica-ti Mesaj</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Utilizati acest instrument a verifica un mesaj semnat de catre proprietarul unei adrese de bitcoin anumita</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Adresa:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin Adresa" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Mesaj:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Introduce-ti Mesaj pentru a verifica"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Semnatura:</label>
+                <div class="controls">
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="Introduceti semnatura pentru a verifica"></textarea>
+                </div>
+            </div>
+            <div class="control-group address-result" style="display:none">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <span class="address-result-txt"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Verifica-ti Mesaj</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>Adresa QR Code <small class="address"></small></h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Închide</button>
+        </div>
+    </div>
+</div>
+
+<div id="add-address-book-entry-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Introducere Agenda cu Adrese</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Adresa:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin Adresa" type="text">
+                    <p class="help-block">Introduceti adresa Bitcoin doriti sa adaugati în agenda.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Casa de discuri:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Numele persoanei sau comerciant" type="text" />
+                    <p class="help-block">Introduce-ti eticheta pentru aceasta adresa. de exemplu, numele persoanei sau numele firmei.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Adauga Adresa</button>
+        </div>
+    </div>
+</div>
+
+<div id="not-synced-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Adresa nu a fost salvata</h3>
+    </div>
+    <div class="modal-body">
+        <p>Aceasta adresa nu a fost stocat pe serverele noastre si, poate, duce inca la pierderea acesteia dupa plecarea aceasta pagina. <span style="color:red;font-weight:bold;">Cu excepția cazului în cheia privată este salvat în altă parte nici monedelor trimise la ONU-sincronizate adrese vor fi pierdute definitiv după ieșire</span></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-danger">Arata Adresa nesalvat</button>
+            <button class="btn btn-primary" data-dismiss="modal">Închide</button>
+        </div>
+    </div>
+</div>
+
+<div id="watch-only-copy-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Uita-te doar de avertizare Adresa</h3>
+    </div>
+    <div class="modal-body">
+        <p>Ati primit acest avertisment pentru ca a-ti copiat o adresa de <font color="red">Watch Only</font> in clipboard.</p>
+
+        <p>Un <font color="red">Watch Only</font> adresa înseamna ca puteti observa numai tranzactiile la aceasta adresa. Daca nu aveti cheia privata salvat în alta parte, atunci nu detineti fondurile de la aceasta adresa.</p>
+
+        <p><b>Daca nu aveti un copie de rezerva sau un protofel de hartie nu ar trebui sa va trimite-ti monedele la aceasta adresa</b></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary" data-dismiss="modal">Închide</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Confirma-ti stergerea</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">Stergerea unei adrese incorecte va cauza pierderi financiare. Daca nu sunteti sigur de cea ce faci-ti, apasa-ti anulati acum</div>
+
+        <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
+
+        <p>
+            Sute-ti sigur ca doriti sa eliminati adresa? Nu veti mai putea trimite sau primi bitcoins de la aceasta adresa. Soldul aceasta adresa este:
+        </p>
+
+        <h2 align="center" id="delete-balance"></h2>
+
+        <h2 id="change-mind" style="display:none;text-align:center">Ai <span id="change-mind-time">5</span> secunde pentru a te razgandii ...</h2>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Stergere numai cheia privata</button>
+            <button class="btn btn-danger">Sterge?i adresa si cheie privata</button>
+        </div>
+    </div>
+</div>
+
+<div id="sweep-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Matura Taste</h3>
+    </div>
+    <div class="modal-body">
+        <p>Sweep înseamna a muta toate fondurile disponibile în una sau mai multe adrese de la o alta adresa. Va rugam sa alegeti o adresa în cazul în care doriti sweep adresele selectate (din Bilant <span class="balance"></span>).</p>
+
+        <p align="center">
+        <div class="form-inline">
+            <label class="control-label">Pentru a matura:</label> <br /><select name="change"></select>
+        </div>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Continua</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Transaction monede comună</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            O eroare a avut loc finalizarea acestei tranzacții monedă comună. Pentru informații suplimentare, vă rugăm să verificați consola JavaScript.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Tranzacție în curs de desfășurare. Nu închideți această fereastră sau ieși din browser.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>Fonduri insuficiente</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Această tranzacție nu poate fi trimis, deoarece există fonduri disponibile insufficent. Acest lucru se poate datora unor taxe suplimentare mineri sau tranzacții neconfirmate.</p>
+
+        <p>Tranzacția poate fi anulată, fie. Sau suma a trimite pot fi ajustate pentru a se potrivi suma maximă disponibilă pentru a trimite.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">Obligatoriu: <span class="amount-required"></span> (Disponibil: <span class="amount-available"></span>)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anulare tranzacție</button>
+            <button class="btn btn-primary">Reglați Suma</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-for-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Taxa de mineri recomandate</h3>
+    </div>
+    <div class="modal-body">
+        <p>Aceasta tranzactie are o prioritate scazuta. Este recomandat sa includesti cel putin un comision 0.0005 tranzac?ie BTC, în scopul de a asigura o procese de minerit.</p>
+        <div class="alert alert-block alert-error">Daca nu include-ti o taxa aceasta tranzactie poate sa ia o lunga perioada de timp pentru a obtine confirmarea. Toate fondurile vor fi returnate la tine în aproximativ 24 de ore.</div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Continuare Fara Taxa</button>
+            <button class="btn btn-primary">Adaugati Taxa</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Taxa de mai recomandat</h3>
+    </div>
+    <div class="modal-body">
+        <p>Ați specificat o taxă de obicei de <span></span> cu toate acestea, taxa recomandat pentru această tranzacție este <span></span>. Doriți să utilizați taxa recomandat în schimb?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Utilizați Taxa personalizat</button>
+            <button class="btn btn-primary">Utilizați Taxa recomandată</button>
+        </div>
+    </div>
+</div>
+
+<div id="new-transaction-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Crearea de tranzactie</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center" class="loading-indicator" style="display:none;">
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+        </p>
+
+        <div class="offline-transaction" style="display:none">
+            <p>Tranzactia dvs. a fost creat cu succes, dar nu a fost înca trimisa la reteaua p2p. </p>
+
+            Pentru a finaliza tranzactia deschis <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>. Copiati si lipiti textul de mai jos in textarea si apasati prezinte pentru a finaliza tranzactia. </ P>
+
+            <textarea name="data" style="width: 100%; height:100px;"></textarea>
+        </div>
+
+        <div id="tx-sign-progress" style="display:none">
+            <h4>Va rugam sa asteptati. Scanarea numarului de intrare <span class="n">0</span> din <span class="t"></span> ...</h4>
+        </div>
+
+        <div id="review-tx" style="display:none">
+            <div class="basic">
+                <p>Va rugam sa confirmati ca doriti sa <span id="rtc-basic-summary"></span></p>
+            </div>
+
+            <div class="adv">
+                <p>Va rugam sa verificati detaliile de mai jos:</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td width="110px;"><b>Hash</b></td>
+                        <td id="rtc-hash"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Versiune</b></td>
+                        <td id="rtc-version">1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Intrari</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Ie?iri</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Taxe totale</b></td>
+                        <td id="rtc-fees">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Valoarea totala de iesire</b></td>
+                        <td id="rtc-value">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Lasând Portofel</b></td>
+                        <td id="rtc-effect" style="color: red">0</td>
+                    </tr>
+                </table>
+            </div>
+            <p align="right"><a class="show_adv"></a></p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Trimite tranzactie</button>
+        </div>
+    </div>
+</div>
+
+<div id="send-email-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Trimite prin email</h3>
+    </div>
+
+    <div class="modal-body">
+        <h3 style="padding-bottom:25px">
+            Trimite <span class="amount"></span> la <span class="email"></span> <br /> <small>Urmatorul mesaj va fi trimis la destinatar.</small>
+        </h3>
+
+        <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Trimite plata</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="private-key-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Cheie privata necesare</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Aceasta actiune necesita cheia privata a adresei bitcoin <span class="address" style="font-weight:bold"></span>. Va rugam sa introduceti cheia privata de mai jos.</p>
+
+        <div style="width:400px;padding-left:20px;">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+            <button class="btn btn-primary">Introduceti cheia privata</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-reader-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Scanați QR Code</h3>
+    </div>
+
+    <div class="modal-body" style="padding-left:20px;overflow:hidden;">
+        <div class="qr-code-reader" align="center"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Vă rugăm să așteptați ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Cheie stretching. Vă rugăm să așteptați ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Restaurare manual de backup</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Anula</button>
+        </div>
+    </div>
+</div>
+
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Cheie criptată Private</h3>
+    </div>
+    <div class="modal-body">
+        <p>O cheie privată criptată a fost detectat. Vă rugăm introduceți criptare fraza de autentificare de mai jos:</p>
+        <p align="center">
+            <b>Frază de acces::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Continua</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

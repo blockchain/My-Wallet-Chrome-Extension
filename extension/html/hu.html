@@ -1,0 +1,2350 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saját Tárca - Légy a Saját Bankárod - Blockchain.info</title>
+    <meta name="robots" content="noindex">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
+
+    <style type="text/css">
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
+
+    
+
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
+    
+    
+    
+</head>
+
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/" data-language="hu">
+
+<div class="quickstart">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>
+                    <span class="hidden-phone">Saját Tárca <small>Légy a Saját Bankárod.</small></span>
+
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Saját Egyenleg" data-content="A bitcoin tárcád egyenlegét mutatja. Lehet, hogy nem tudod mindet elkölteni, amig nincs meg a szükséges hálózati visszaigazolás.">
+                        <span id="balance"></span>
+                        <small id="balance2">0</small>
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid" style="margin-top:10px">
+            <div class="span12 no-print">
+                <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
+                    <li><a id="home-intro-btn">Tárca Kezdőlap</a></li>
+                    <li><a id="my-transactions-btn">Saját Tranzakciók</a></li>
+                    <li><a id="send-coins-btn">Pénz Küldése</a></li>
+                    <li><a id="receive-coins-btn">Pénz Fogadása</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">Import / Export</a></li>
+                </ul>
+
+                <h6 class="pull-right" id="status-container">
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Betöltés</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
+    <span id="notices" style="max-width:600px;width:auto;"></span>
+</div>
+
+<div style="width:100%; float:left; clear:both"></div>
+
+<div class="container" style="margin-top:10px">
+
+<div id="my-account" style="display:none;">
+    <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
+        <h2>Érzékeny Adat</h2>
+
+        <p>Fiók Beállítások érzékeny adatokat tartalmaz, amiket mások nem láthatnak. Javasoljuk, hogy ne nyisd meg ezt az oldalt olyan helyen, ahol másik is látják a monitorod vagy képernyőképet készíthetnek róla.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-account-settings">Tovább</button>
+        </p>
+    </div>
+
+    <div id="my-account-content" style="display:none">
+
+
+
+
+<h2>
+    Fiók Beállítások <small>Saját Tárca Beállítások megváltoztatása.</small>
+</h2>
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Fiók Információk</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Személyes</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Általános</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Kijelző</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Értesítések</a></li>
+
+            <li class="divider"></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Jelszavak</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Biztonság</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Logolás</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Eszközök</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Hibakeresés</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+<div class="tab-content">
+<div class="active tab-pane" id="account-information">
+    <div class="page-header">
+        <h3>E-mail <small style="color:green">(Ajánlott)</small></h3>
+
+        <p>
+            Az email cím szükséges az elveszett álnév / azonosító visszanyerásáhez és a fizetési értesítőkhöz.<br/>
+        </p>
+
+        <p>
+            <input placeholder="Email Címed" id="wallet-email" type="text"/>
+        </p>
+
+        <p class="email-verified">
+            <font color="green">Email Visszaigazolva</font>
+        </p>
+
+        <div class="email-unverified">
+            <b>Email Visszaigazoló Kód:</b><br/><br/>
+
+            <div class="form-inline">
+                <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
+                <button class="btn">Azonosít</button>
+                <button class="btn" id="wallet-email-send">Link Újraküldése</button>
+            </div>
+            <br/> <font color="red">Email Nincs Visszaigazolva</font>
+        </div>
+    </div>
+
+    <div class="page-header email-verified">
+        <h3>Álnév  <small>(Opcionális)</small></h3>
+        <p>
+            Az álnév egy rövidítés, amire könnyű emlékezni és így nem kell a tárcaazonosítót megjegyezni.<br/>
+        </p>
+
+        <p>
+            <input placeholder="Álnév, becenév vagy könnyen megjegyezhető szó" id="wallet-alias" type="text"/>
+        </p>
+
+        <pre class="alias" style="display:none"></pre>
+    </div>
+
+    <div class="page-header">
+        <h3>Mobil Szám <small>(Opcionális)</small>
+        </h3>
+
+        <p>
+            Kérlek add meg a mobilszámod lent. A nemzetközi SMS küldés néha nem megbízható és nem minden országban és telefonhálózaton érhető el.
+        </p>
+
+        <p class="form-inline">
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">SMS Kód Elküldése</button>
+        </p>
+
+        <p class="sms-verified">
+            <font color="green">SMS Visszaigazolva</font>
+        </p>
+
+        <div class="sms-unverified well">
+            <p>Add meg az SMS -ben kapott kódot.</p>
+            <p class="form-inline"><input placeholder="SMS Visszaigazoló Kód" class="wallet-sms-code" type="text"/> <button class="btn">Azonosít</button> </p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Integritás Ellenőrzés</h3>
+
+        <p>Megnézni, hogy minden kulcsod a megfelelő bitcoin címhez van generálva és újratitkosítja a tárcád. Ez egyes böngészőkben lassú lehet.</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Futás</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Ellenőrizze a tömörített</h3>
+
+        <p>Ellenőrzi az egyensúlyt a két tömörített és tömörítetlen változatát minden privát kulcsokat, hogy ellenőrizze nincs olyan tranzakció, amely lehet váltani nem jelenik meg a mobiltárca egyensúlyt.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Futás</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Iterációszám</h3>
+
+        <p>PBKDF2 egy olyan funkció, amely húzódik a jelszavát növelése érdekében szükséges bruteforce azt. A nagyobb számú ismétlések jobb, azonban előfordulhat, lassítják a böngésző.</p>
+
+        <p><b>Ennek megváltoztatása érték okozhat kompatibilitási problémákat a régi ügyfeleknek, amelyek nem támogatják az új tárca titkosított formátumban.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Iterációszám:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-general">
+
+    <div class="page-header">
+        <h3>Handle Bitcoin Linkek</h3>
+
+        <p>Szeretne beállítani blockchain.info az alapértelmezett kezelő Bitcoin linkeket? Bitcoin linkek (URI) segítségével automatikusan adja meg a címzett Bitcoin-címet, és küldje értékét, ha rákattint.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Regisztráció URI Handler</button>
+    </div>
+
+    <div class="page-header">
+        <h3>Inaktivitás Kilépés</h3>
+
+        <p>
+            Alapértelmezésben akkor automatikusan kilépteti a pénztárca számla után 10 perc inaktivitás. Beállítható a várakozási idő alatt.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 perc</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 perc</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 perc</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Soha</b>
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Alap Díj Szabály</h3>
+
+        <p>
+            Blokkchain.info tranzakciók ingyenes. De a bitcoin hálózat kérhet tranzakciós díjat, ami segíti, hogy a tranzakciódat a bányászok gyorsan feldolgozzák. Lent megadhatod, mi legyen a díjak alapbeállítása.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>Mértékletes</b> - A tranzakciós díj nem lesz csatolva addig, amíg nem abszolút nélkülözhetetlen. <font color="red">Tranzakciók visszaigazolása lényegesen lassabb lesz.</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>Normál</b> - Kövesd az alap bitcoin kliens beállításait. <font color="green">Ajánlott</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>Nagylelkű</b> - Mindig adjunk hozzá tranzakciós díjat a gyors feldolgozásért (0.001 BTC).
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Automatikus Email Biztonsági Mentések</h3>
+        <p>
+            Kapcsold be, ha szeretnél automata biztonsági mentést kapni, ha megváltozik a tárcád: <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+</div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Nyelv</h3>
+
+        <p>Állítsd be a kívánt nyelvet</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Helyi Pénznem</h3>
+
+        <p>Könnyen válthatsz bitcoin és a helyi pénznemed között jobb felül.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Display</h3>
+
+        <p>Állítsa be a precíziós azt szeretné bitcoin értékek jelennek be</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Tranzakciók Per oldal</h3>
+
+        <p>Állítsa be a tranzakciók száma oldalanként</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
+
+<div class="tab-pane" id="account-notifications">
+    <div class="page-header">
+        <h3>Értesítések</h3>
+
+        <p>Kaphatsz értesítéseket, ha pénzt küldesz vagy pénz érkezik a számládra.</p>
+
+        <div id="notifications-type">
+            <input type="checkbox" value="1"> <b>Email Értesítések</b><br/>
+
+            <div class="well type-1" style="display:none">
+                Email értesítőt kapsz. Kérlek igazold vissza az email címed, ha még nem tetted meg.
+            </div>
+
+            <input type="checkbox" value="32"> <b>SMS Értesítések</b><br/>
+
+            <div class="well type-32" style="display:none">
+                <p>
+                    Kérlek add meg a mobilszámod lent. A nemzetközi SMS küldés néha nem megbízható és nem minden országban és telefonhálózaton érhető el.
+                </p>
+
+                <p class="form-inline">
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">SMS Kód Elküldése</button>
+                </p>
+
+                <p class="sms-verified">
+                    <font color="green">SMS Visszaigazolva</font>
+                </p>
+
+                <div class="sms-unverified">
+                    <p>Add meg az SMS -ben kapott kódot.</p>
+                    <p class="form-inline">
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Visszaigazol</button>
+                    </p>
+                </div>
+            </div>
+
+            <input type="checkbox" value="2" /> <b>Google Talk</b><br/>
+
+            <div class="well type-2" style="display:none">
+                Google Talk -on keresztül kapsz értesítést.
+            </div>
+
+            <input type="checkbox" value="8"> <b>Skype</b><br/>
+
+            <div class="well type-8" style="display:none">
+                <p>Skype üzenetben kapsz értesítést a következő felhasználónéven:</p>
+
+                <input placeholder="Skype Username" id="wallet-skype" type="text"/>
+            </div>
+
+            <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
+
+            <div class="well type-64" style="display:none">
+                <p>Kérlek add meg <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> az email címed:</p>
+
+                <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
+            </div>
+
+            <input type="checkbox" value="4"> <b>HTTP értesítések</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>Http értesítések küldi amikor ügyleteket küldött vagy fogadott. Kérjük, olvassa el a fejlesztők részben a végrehajtási útmutatójának visszahívás.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+            <input type="checkbox" value="128"> <b>Android értesítések</b><br/>
+
+            <div class="well type-128" style="display:none">
+                <p>Ön értesítést kap a Android készülék egyszer párosítva.</p>
+            </div>
+
+        </div>
+
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 Értesítések</b><br/>
+
+        <div class="well" style="display:none">
+            <p>HTML 5 Értesítések mások, mint a hagyományos popup ablakok. Jelenleg csak Chrome és Safari böngészőben működik.</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Ha Saját Tárcára</h3>
+
+        <p>
+            <select id="notifications-on">
+                <option value="0">Bitcoin befizetés vagy kifizetés</option>
+                <option value="1">Bitcoin kifizetés</option>
+                <option value="2">Bitcoin befizetés</option>
+            </select>
+        </p>
+    </div>
+
+    <h3>Visszaigazolás után</h3>
+
+    <p>
+        <select id="notifications-confirmations">
+            <option value="0">Azonnal</option>
+            <option value="1">1 Visszaigazolás</option>
+            <option value="2">2 Visszaigazolás</option>
+            <option value="3">3 Visszaigazolás</option>
+            <option value="4">4 Visszaigazolás</option>
+            <option value="5">5 Visszaigazolás</option>
+            <option value="6">6 Visszaigazolás</option>
+        </select>
+    </p>
+</div>
+
+
+<div class="tab-pane" id="account-logging">
+    <h3 class="page-header">Logolás Szint</h3>
+
+    <p>A logolási szint megadja, hogy milyen adatokat őrizzünk meg rólad, amikor műveleteket hajtasz végre a tárcádban. Alapbeállításként semmit sem logolunk. Ezt engedélyezve nagyobb biztonságot érhetsz el a fiókodban, bár némi anonimitást fel kell áldoznod ezért..</p>
+
+    <p>
+        <select id="logging-level">
+            <option value="0">Logolás Kikapcsolva</option>
+            <option value="1">Műveletek megőrzése az IP cím hash -elésével</option>
+            <option value="2">Műveletek megőrzése az IP címmel és Böngésző típusával</option>
+        </select>
+    </p>
+
+    <p class="well">
+        A logolási szint átállítása nem törli az eddigi logokat. A logokat 2 hét után töröljük.
+    </p>
+
+    <div class="logl l2 l1">
+        <table class="table table-striped well" style="margin-top:10px;display:none;">
+            <thead>
+            <th>Időpont</th>
+            <th>Műveletek</th>
+            <th>IP Cím</th>
+            <th>Böngésző típusa</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p class="logl l0" style="display:none;">
+        <font color="green">Logolás Kikapcsolva</font>
+    </p>
+</div>
+
+<div class="tab-pane" id="account-devices">
+    <h3>Eszköz Társítása</h3>
+
+    <p>Scanneld be az alábbi kódot az iPhone vagy Android készülékeddel, hogy társítsd a fiókod.</p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
+                    Mutat / Elrejt Kódod.
+                </a>
+            </div>
+
+            <div id="pairing_code" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-passwords">
+    <div class="alert alert-block alert-error"><B>Figyelem!</B> Minden elveszett jelszó a bitcoinjaid elvesztését jelenti. Nincs jelszó visszaállító funkció!</div>
+
+    <p>
+        A jelszavad soha nincs megosztva a szerverünkkel. Ez azt jelenti, hogy a pénzed akkor is biztonságban van, ha feltörik a szerverünket. Ezért nincs jelszó visszaállítás.
+    </p>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Jelszó Mnemonic</h3>
+
+        <p>Jelszó Mnemonics segítségével a tárcádat elveszett jelszó esetén is visszaállíthatod. Mnemonic nélkül nincs esélyed a tárcád visszaállítására. Ha változtatod a jelszót, az mnemonic is változik.</p>
+
+        <div id="accordion1">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
+                        Mutat / Elrejt Jelszó Mnemonic
+                    </a>
+                </div>
+
+                <div id="password_mnemonic" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="password_mnemonic1">
+                            <h5 class="page-header">Main Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+
+                        <div id="password_mnemonic2">
+                            <h5 class="page-header">Second Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Főjelszó</h3>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Jelszó:</label>
+
+                <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Jelszó megint:</label>
+
+                <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+        </div>
+
+        <p>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Főjelszó cseréje</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Másodlagos Jelszó</h3>
+
+        <div class="double-encryption-off">
+            <p>Megadhatsz egy második jelszót is, ami a tranzakciók indításához lesz szükséges. Nagy tárcáknál több percre is megakadhat a böngésződ, ha ezt a beállítást engedélyezed.</p>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Jelszó:</label>
+
+                    <div class="controls"><input id="double-password" type="password"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Jelszó megint:</label>
+
+                    <div class="controls"><input id="double-password2" type="password"/></div>
+                </div>
+            </div>
+
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">Dupla Titkosítás engedélyezése</button>
+        </div>
+
+        <div class="double-encryption-on">
+            <p>Dupla titkosítás engedélyezve. A másodlagos jelszó lesz szükséges a tranzakciók indításához.</p>
+
+            <p>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">Dupla Titkosítás tiltása</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Jelszó Emlékeztető</h3>
+
+        <p>Ha elfelejted a jelszót, akkor az emlékeztető segíthet emlékezni. Ha meg van adva egy email cím, akkor erre el tudjuk küldeni az emlékeztetőt. Ha nincs megadva email, akkor az emlékeztető szöveg bárkinek elérhető, aki ismeri a tárcád azonosítóját.</p>
+
+        <p class="well">
+            <b>Például:</b> Ha a jelszavad: CsillámNindzsák egy jó emlékeztető: Milyen csapatban játszott Bruce Lee?
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Főjelszó Emlékeztető:</label>
+
+                <div class="controls"><input id="password-hint1" type="text"/></div>
+            </div>
+
+            <div class="control-group double-encryption-on">
+                <label class="control-label">Másodlagos Jelszó Emlékeztető:</label>
+
+                <div class="controls"><input id="password-hint2" type="text"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-security">
+    <div class="page-header">
+        <h3>Két Faktoros Azonosítás</h3>
+
+        <p>Két faktoros azonosítás egy további biztonsági réteget ad.</p>
+
+        <p>
+            <select id="two-factor-select">
+                <option value="0">Nincs</option>
+                <option value="5">SMS Üzenet</option>
+                <option value="1">Yubikey</option>
+                <option value="2">E-mail</option>
+                <!--<option value="3">Mt Gox Yubikey</option>-->
+                <option value="4">Google Authenticator</option>
+            </select>
+        </p>
+
+        <div class="well two-factor t0" style="display:none">
+            Két faktoros azonosítás engedélyezve van
+        </div>
+
+        <div class="well two-factor t1 t3" style="display:none">
+            <b>Yubikey</b> <br/> Hogy hozzáad a kulcsodat a fiókhoz, válaszd ki a lenti beviteli mezőt és nyomd meg a zöld gombot a yubikey eszközödön.
+
+            <div class="controls">
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">Válassz ki a beviteli meződ és nyomd meg a zöld gombot a Yubikey -eden.</p>
+            </div>
+        </div>
+
+        <div class="well two-factor t2" style="display:none">
+            <b>E-mail</b> <br/> Email -ben kapod meg az azonosító kódod.
+        </div>
+
+        <div class="two-factor t4" style="display:none">
+            <p class="well">
+                Google Hitelesítő engedélyezve
+            </p>
+
+            <div style="display:none">
+                <p>
+                    Nyísd meg a Google Authenticator alkalmazást és scanneld be a QR kódot a társításhoz.
+                </p>
+
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>Beolvasása után a fenti QR kódot a google hitelesítő alkalmazás írja be a hitelesítési kódot az alábbi:</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-factor t5 well" style="display:none">
+            <b>SMS Üzenet</b>
+
+            <p>
+                Kérlek add meg a mobilszámod lent. A nemzetközi SMS küldés néha nem megbízható és nem minden országban és telefonhálózaton érhető el.
+            </p>
+
+            <p class="form-inline">
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">SMS Kód Elküldése</button>
+            </p>
+
+            <p class="sms-verified" style="color:green">
+                SMS Visszaigazolva
+            </p>
+
+            <div class="sms-unverified well">
+                <p>Add meg az SMS -ben kapott kódot.</p>
+                <p class="form-inline"><input placeholder="SMS Visszaigazoló Kód" class="wallet-sms-code" type="text"/> <button class="btn">Visszaigazol</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Mindig tartsa Browser Backup</h3>
+
+        <p>Engedélyezze ezt az opciót kényszeríteni a pénztárca mentés kell tárolni a böngésző a helyi tárolás akkor is, ha a két tényező hitelesítés engedélyezve van. Ha engedélyezve van a támadó hozzáférést a böngésző képes lenne megkerülni kéttényezős hitelesítést, de ha a pénztárca érhető bármilyen más PC vagy a böngésző még mindig védi a kéttényezős hitelesítést.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Mindig tartsa:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Titkos Kulcs</h3>
+
+        <p>A titkos kulcs segít, hogy megtaláljuk a tárcád, ha elveszne a yubikey -ed vagy nem emlékeznél a tárcád azonosítójára. Lehet ez egy szó vagy mondat, ami maximum 255 karakter hosszú.</p>
+
+        <p>
+            <input id="wallet-phrase" type="text"/>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Soha ne emlékezz a Két Faktoros Belépésre</h3>
+
+        <p>
+            Alapbeállításként, amikor belépsz a két faktoros azonosítóddal, a böngésződ egy rövid ideig emlékezik az azonsítódra, hogy újra beléphess könnyen. Kattints ide, ha ezt tiltani szeretnéd és minden alkalommal teljes belépést kérsz.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Soha ne emlékezz:</label>
+
+                <div class="controls">
+                    <input id="never-save-auth-type" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Blokk TOR IP címek</h3>
+
+        <p>
+            Engedélyezze a következő lehetőség, hogy megakadályozzák az IP-címeket része a TOR névtelenítését hálózati hozzáférését a pénztárca.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Engedélyez / Tilt:</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>IP címhez kötés</h3>
+
+        <p>
+            Ha engedélyezed, akkor fiókod csak az adott IP címekről lesz elérhető. Csak akkor engedélyezd, ha biztosan statikus IP címed van. Ha nem tudsz ugyanarról az IP címről belépni, akkor kizárod magad a fiókból. Az API sem fog működni, de a mobilalkalmazások továbbra is bármilyen IP címről elérik a tárcád.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Engedélyez / Tilt:</label>
+
+                <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">IP címhez kötés:</label>
+
+                <div class="controls">
+                    <input id="ip-lock" type="text"/>
+
+                    <p class="help-block">Több IP címet vesszővel kell elválasztani.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Jelenlegi IP:</label>
+
+                <div class="controls"><span id="my-ip"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="update-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Jelszó Változás Megerősítése</h3>
+    </div>
+    <div class="modal-body">
+        <p>A jelszavad azonnal frissítjük. Heleyezd biztonságba a jelszót, mert nem lehet visszaállítani, ha elfelejted! Ha van biztonsági mentésed a titkosított tárcádról, akkor azokat még a régi jelszóval lehet kititkosítani. Ajánlott törölni a régi biztonsági mentéseket.</p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Jelszó Frissítése</button>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div id="home-intro" style="display:none;">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="well table table-striped">
+                <tr>
+                    <td>Összes Tranzakciók</td>
+                    <td><span id="summary-n-tx">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Összes Beérkezett</td>
+                    <td><span id="summary-received">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Összes Elküldve</td>
+                    <td colspan="2"><span id="summary-sent">0</span></td>
+                </tr>
+                <tr>
+                    <td>Végső Egyenleg</td>
+                    <td><span id="summary-balance">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
+
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
+                    <small>Ez a Bitcoin Címed</small>
+
+                    <p class="primary-address" id="my-primary-address"></p>
+
+                    <small>Erre a címre bárki tud neked bitcoint küldeni.</small>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="span6">
+            <div class="no-watch-only" id="home-deposit-container"></div>
+
+            <div class="page-header" id="partner-home-buttons" style="display:none">
+                <h3 style="padding-bottom:10px">Partnerek</h3>
+
+                <p align="right"></p>
+            </div>
+
+            <div class="page-header" id="home-account-container">
+                <h3>Fiók Beállítások</h3>
+
+                <p>Fiók beállítások szerkesztése, email cím, jelszó cseréje, értesítési beállítások.</p>
+
+                <p align="right">
+                    <button class="btn" id="my-account-btn">Fiók Beállítások</button>
+                </p>
+            </div>
+
+            <div id="home-backup-container">
+                <h3>Biztonsági Mentés</h3>
+
+                <p>A tárcád biztonsági mentése egy fontos dolog, amiről könnyű elfeledkezni. Blokkchain.info mindent megtesz, hogy biztonságban legyen a tárcád, de mindig jobb félni, mint megijedni. Célszerű, ha helyi másolatot is készítesz.</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">E-mail</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="receive-coins" style="display:none;">
+
+    <h2>Címek <small>A fogadó bitcoin címed</small></h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#active-addresses" data-toggle="tab">Aktív</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">Archív</a></li>
+        
+    </ul>
+
+    <div id="receive-content" class="tab-content">
+        <div class="active tab-pane" id="active-addresses" style="margin-bottom:200px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Cím</th>
+                    <th>Egyensúly</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Új Cím" data-content="Kattints ide új címek generálásához. Azonnal tudsz fogadni bitcoint az új címen">Új Cím</button>
+
+            <div class="btn-group pull-right" style="margin:5px">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Tovább Műveletek <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">New Cold Storage címe</a></li>
+                    <li><a id="chord-diagram">Kapcsolati Diagram megtekintése</a></li>
+                    <li><a id="group-received" title="Taint Grouping">Group Címek Taint által</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">Üzenet Visszaigazolása</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="archived-addresses" style="margin-bottom:200px">
+            <h3>Archív Címek</h3>
+
+            <p>Archív címek olyan címeid, amire már nem akarsz bitcoint fogadni és elrejtjük őket a fiókból. Bármikor visszaállíthatod őket, ha a kék ikonra kattintasz.</p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                <th></th>
+                <th>Bitcoin Cím</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Az összes kijelölése</button>
+                <button class="btn btn-secondary" id="archived-select-none">Válassza a None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Kulcsok Takarítása" data-content="Minden kulcshoz tartozó bitcoin átküldése más bitcoin címre.">Kulcsok Takarítása</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Kulcsok Törlése" data-content="A kiválasztott privát kulcsok törlése.">Kulcsok Törlése</button>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<div style="display: none;" id="restore-wallet">
+
+    
+
+    
+
+    
+
+    <div class="row-fluid" id="welcome_back_container">
+        <div class="span6">
+            <div class="page-header">
+                <h3>Üdv újra </h3>
+                <small>Kérlek add meg a belépési részleteket:</small>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Azonosító:</label>
+
+                    <div class="controls"><input id="restore-guid" placeholder="Azonosító vagy Álnév" value="" type="text"/></div>
+                </div>
+
+                <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
+                    <label class="control-label">Jelszó:</label>
+
+                    <div class="controls"><input id="restore-password" type="password"/></div>
+                </div>
+
+
+                <div class="control-group auth-1 auth-3" style="display:none">
+                    <label class="control-label">Yubikey:</label>
+
+                    <div class="controls">
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Válassz ki a beviteli meződ és nyomd meg a zöld gombot a Yubikey -eden.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-2" style="display:none">
+                    <label class="control-label">Email kód:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Egy email -t küldütnk, ami tartalmazza az ideiglenes visszaigazoló kódot a fiókodhoz.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-4" style="display:none">
+                    <label class="control-label">Google Authenticator:</label>
+
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+
+                        <p class="help-block">Tartsd nyitva a Google Authenticator alkalmazást és add meg a megjelenő kódot.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-5" style="display:none">
+                    <label class="control-label">SMS Kód:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Egy SMS -t küldtünk a telefonodra. Kérlek add meg az üzenetben szereplő kódot.</p>
+                    </div>
+                </div>
+
+                <div style="padding-left: 160px;padding-bottom:20px">
+                    <button class="btn btn-primary" id="restore-wallet-continue">Tárca Megnyitása</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Új Wallet</a>
+                </div>
+
+                <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Nem Találod az Email Kódot?</h5>
+
+                    <p>Az emailt wallet@blockchain.info címről küldtük. Ellenőrizd a spam mappát is. Ha továbbra sincs meg, kattints az újraküldés gombra.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Link Újraküldése</a>
+                    </p>
+                </div>
+
+                <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Nem Kaptad Meg az SMS Kódot?</h5>
+
+                    <p>Kérlek nézd meg, hogy van-e térerőd. Az üzenetek kézbesítése akár 10 percig is eltarthat. Ha több, mint 10 perc telt el, kattints az újraküldés gombra.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Üzenet Újraküldése</a>
+                    </p>
+                </div>
+
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">A jelszavad nem lesz megosztva a szerverrel és nem lehet visszanyerni, ha elveszik!</div>
+            </div>
+        </div>
+
+        <div class="span6" id="forgotten-something-container">
+            <div class="page-header">
+                <h3>Elfelejtettél Valamit?</h3> <small>Segítség! Kizártam magam a fiókomból</small>
+            </div>
+
+            <h4>Elveszett Azonosító vagy Álnév</h4>
+
+            <p> Ha elvesztetted a átrca azonosítod, akkor keresd meg az email -t, amit regisztrációkor küldtünk. Nem találod az email -t? Kattints a gombra és küldönk egy újat.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Vissza Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Biztonsági Mentés Importálása</a> <a class="btn btn-small btn-secondary download-backup-btn">Letöltés Backup</a>
+            </p>
+
+            <h4>Elveszett Két-factor Azonosítás Részletek.</h4>
+
+            <p>Ha elvesztek a két faktoros azonosítás részletei, a fiókod még visszaállítható. Csak annyira van szükségünk, hogy igazold, az adott fiók hozzád tartozik. Töltsd ki az alábbi űrlapot.</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Két Faktoros Azonosítás törlése</a>
+            </p>
+
+            <h4>Segítség kell?</h4>
+
+            <p>
+                olvasd el <a target="blank" href="https://blockchain.info/wallet/support-pages">Segítség Oldal</a>
+            </p>
+        </div>
+    </div>
+
+    
+</div>
+
+<div id="my-transactions" style="display:none;">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 style="display:inline-block">Tranzakciók <small>A legutóbbi tranzakcióid összesítői</small></h2>
+
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> Kilátás</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> Tömör nézet</a></li>
+                        <li><a href="#" data-value="1"> Részletes nézet</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> SzámlatörténetExportálás</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> Szűrő</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> Mind</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Elküldve</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Beérkezett</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> Zálog</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
+        </div>
+    </div>
+
+    <p class="padded well" id="no-transactions" align="center">Itt fognak megjelenni a bitcoin tranzakciód, de még egyetlen tranzakciód sincs.</p>
+
+    <table id="transactions-compact" class="table table-striped table-condensed table-hover">
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="transactions-detailed"></div>
+
+    <div class="pagination" align="center" style="clear:both;float:none">
+        <ul></ul>
+    </div>
+</div>
+
+<div id="send-coins" style="display: none;">
+<div class="row-fluid">
+<div class="span3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list" id="send-coins-nav">
+            <li class="nav-header">Tranzakció Típus</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Gyorsküldés</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Egyedi</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Megosztott Coin</a></li>
+            
+
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Zálog</a></li>
+
+            <li class="nav-header">Elküldve</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> E-mail</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS Üzenet</a></li>
+
+            <li class="divider" id="partners-send-divider" style="display:none"></li>
+
+            <li class="nav-header">Partnerek</li>
+
+            <li class="divider"></li>
+            <li class="nav-header">Eszközök</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Címjegyzék</a></li>
+        </ul>
+    </div>
+
+    <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
+        <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
+    </div>
+</div>
+<div class="span9">
+<div class="tab-content">
+<div class="active tab-pane well" id="send-quick">
+    <h4 class="page-header">Gyorsküldés<br/>
+        <small>Használd az alábbi űrlapot, hogy pénzt küldj egy bitcoin címre.</small>
+    </h4>
+
+    <div class="form-horizontal">
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Címzett" data-content="Ez a címzett bitcoin címe.">To:</label>
+
+                    <div class="controls">
+                        <span class="qrcodeicon"><input placeholder="Bitcoin Cím" name="send-to-address" type="text"/><span></span></span>
+
+                        <p class="help-block">Add meg a címzett bitcoin címét</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Mennyiség" data-content="Az Összeg Bitcoinban, amit küldeni szeretnél">Mennyiség:</label>
+
+                    <div class="controls">
+
+                        <div class="input-prepend">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <b>=</b>
+
+                        <div class="input-prepend">
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <p class="help-block">Add meg az összeget, amit küldeni szeretnél</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Fizetés küldése" data-content="Kattints ide a tranzakció küldéséhez. Nem lesz ellenőrző képernyő, azonnal küldjük.">Fizetés küldése</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-sms">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Küldés SMS -ben<br/><small>Használd az alábbi űrlapot a bitcoin SMS -ben való küldésére.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="SMS Szám" data-content="Add meg az SMS számát annak a személynek, akinek bitcoint szeretnél küldeni.">To:</label>
+
+                    <div class="controls">
+                        <select name="sms-country-code"></select> <br/> <input placeholder="SMS Szám" name="send-to-sms" type="text" style="margin-top:5px"/>
+
+                        <p class="help-block">Add meg a címzett SMS számát.</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Mennyiség" data-content="Az Összeg Bitcoinban, amit küldeni szeretnél">Mennyiség:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+
+                        <p class="help-block">Add meg az összeget, amit küldeni szeretnél</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Fizetés küldése" data-content="Kattints ide a tranzakció küldéséhez. Nem lesz ellenőrző képernyő, azonnal küldjük.">Fizetés küldése</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-email">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Küldés Email -ben<br/><small>Használd az alábbi űrlapot, hogy email -ben küldj bitcoint.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Email Cím" data-content="Ez annak a személynek az email címe, akinek bitcoint szeretnél küldeni.">To:</label>
+
+                    <div class="controls">
+                        <input placeholder="Email Cím" name="send-to-email" type="text"/>
+
+                        <p class="help-block">Add meg a címzett email címét</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Mennyiség" data-content="Az Összeg Bitcoinban, amit küldeni szeretnél">Mennyiség:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+                        <p class="help-block">Add meg az összeget, amit küldeni szeretnél</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Fizetés küldése" data-content="Kattints ide a tranzakció küldéséhez. Nem lesz ellenőrző képernyő, azonnal küldjük.">Fizetés küldése</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Megosztott Coin<br/><small>Megbízhatatlan érme keverő segítségével érme csatlakozhatnak, és megfertőz elemzés</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="Feladó címe" data-content="Ha szükséges, megadhatod, hogy a tárcádban szereplő melyik bitcoin címről szeretnél utalni.">Feladó:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Címzett" data-content="Ez a címzett bitcoin címe.">To:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Bitcoin Cím" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Mennyiség:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Ismétlések:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Betöltés</option></select>
+                    <p class="help-block">A nagyobb számú ismétlések miatt a tranzakció nehezebb nyomon követni, és javítja a magánélet.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Fizetés Áttekintése" data-content="Kattints ide a tranzakció áttekintéséhez. Megerősítheted vagy elvetheted a tranzakciót még küldés előtt.">Fizetés Áttekintése</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Maximális küldési érték:</b> <span></span><br />
+                    <b>Minimum Küldés érték:</b> <span></span><br />
+                    <b>Fee százalékkal Ismétlés:</b> <span></span>%</br />
+                    <b>Minimum díj Per Ismétlés:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Valami baj van?</h4>
+
+        <p>
+                Ha küld egy megosztott érme tranzakció számos közbenső címeket használnak. Ha valami interupts a folyamat, vagy egy hiba megakadályozza, hogy a tranzakció befejezése az érméket maradhat egy köztes címét. Kattintson az alábbi gombra, hogy igényt érmék maradt köztes címek, ez a folyamat több percig is eltarthat a teljes.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Vissza Intermediate címek</button>
+        </p>
+    </div>
+</div>
+
+
+
+<div class="tab-pane well" id="send-custom">
+    <h4 class="page-header">Egyedi Tranzakció<br/><small>Használd az alábbi űrlapot, hogy egy vagy több címzettnek küldhess bitcoint. A kiküldés előtt még egyszer áttekintheted a tranzakciót.</small></h4>
+
+    <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
+        <div class="control-group">
+            <label class="control-label pop" title="Feladó címe" data-content="Ha szükséges, megadhatod, hogy a tárcádban szereplő melyik bitcoin címről szeretnél utalni.">Feladó:</label>
+
+            <div class="controls">
+                <select name="from" multiple="multiple"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">To:</label>
+
+            <div class="controls recipient-container">
+                <div class="recipient" style="margin-bottom:5px">
+                    <span class="qrcodeicon"><input placeholder="Bitcoin Cím" name="send-to-address" type="text"/><span></span></span>
+
+                    <div class="input-prepend input-append">
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left;padding-bottom:7px;padding-right:7px">
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
+                </div>
+
+                <div style="float:right;padding-right:20px">
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Címzett eltávolítása" data-content="Utolsó címzett eltávolítása."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Címzett hozzáadása" data-content="Ha egyszerre több bitcoin címre szeretnél küldeni, kattints ide és adj hozzá még címeket"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Bányászok Díja" data-content="Ez a díj a bányászoknak lesz küldve, hogy gyorsabban feldolgozásra kerüljön a tranzakció.">Bányászok Díja:</label>
+
+            <div class="controls">
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Cím megváltoztatása" data-content="Minden apró ami megmarad a tranzakcióból, erre a címre lesz visszaküldve">Cím megváltoztatása:</label>
+
+            <div class="controls">
+                <select name="change"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Publikus jegyzet" data-content="Ez a megjegyzés publikusan olvasható lesz a blockchain.info -n.">Publikus jegyzet:</label>
+
+            <div class="controls">
+                <textarea name="public-note" placeholder="Ez az üzenet véglegesen csatolva lesz. Bárki el tudja olvasni." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="reset btn">Űrlap törlése</button>
+            <button class="send btn btn-primary pop" title="Fizetés Áttekintése" data-content="Kattints ide a tranzakció áttekintéséhez. Megerősítheted vagy elvetheted a tranzakciót még küldés előtt.">Fizetés Áttekintése</button>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="address-book">
+
+    <h3>Címjegyzék</h3>
+
+    <p>Ez a címjegyzék tartalmazza a címzettjeidet. Arra használhatod, hogy tárold az ismerőseid bitcoin címét, akikkel gyakran cserélsz bitcoint.</p>
+
+    <table class="table table-striped" id="address-book-tbl">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Bitcoin Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockchain.info</td>
+            <td class="addr-book-entry">1JArS6jzE3AJ9sZ3aFij1BmTcpFGgN86hA</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <button id="add-address-book-entry-btn" class="btn btn-primary">Új hozzáadása</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="import-export" style="display: none;">
+    <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
+        <h2>Figyelem!</h2>
+
+        <p>Ebben a szekcióban olyan változtatásokat hajthatsz végre, amik nehezek és nem egyértelműek az átlagos felhasználónak. Csak rutinos felhasználóknak javasolt. Szükséges, hogy ismerd a bitcoin hálózat felépítését és a privát kulcsok működését.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-import-export">Megértettem</button>
+        </p>
+    </div>
+
+    <div id="import-export-content" style="display:none;">
+
+
+
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Importálás / Exportálás</li>
+            <li class="active"><a href="#import" data-toggle="tab">Import</a></li>
+            <li><a href="#import-backup" data-toggle="tab">Biztonsági Mentés Importálása</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">Tárca Importálása</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">Titkosított mentés exportálása</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">Titkosítatlan mentés exportálása</a></li>
+            <li><a class="paper-wallet-btn">Papír Tárca</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
+
+            
+
+            <div class="page-header">
+                <h3>Megfigyelő Bitcoin Cím hozzáadása</h3>
+
+                <p>Hozzáadhatsz olyan <font color="red">Watch Only</font> bitcoin címeket a fiókodhoz, amiket csak megfigyelsz. Természetesen nem tudsz ezekről bitcoint elküldeni addig, amíg meg nem adod a hozzátartozó titkos kulcsot is</p>
+
+                <div class="form-inline">
+                    <input placeholder="Bitcoin Cím" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Megfigyelő Cím hozzáadása</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Privát Kulcs importálása</h3>
+
+                <p>Importálj be meglévő privát kulcsot. Az összes privát kulcs formátum támogatott.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Privát Kulcs hozzáadása</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Papír Tárca importálása</h3>
+
+                <p>Használd a Webcamed, hogy leolvasd a papírról a QR kódot.</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Webcam Szkennelés</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">Biztonsági Mentés Importálása <small>A biztonsági mentések listája, amik a szerverünkön van.</small></h3>
+
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>Fájl neve</th>
+                <th>Utolsó módosítás</th>
+                <th>Méret</th>
+                <th>Műveletek</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="import-wallet">
+
+            <h3 class="page-header">Tárca Importálása</h3>
+
+            <p>Többféle formátumban is importálhatod a kulcsot.</p>
+            <ul>
+                <li>AES titkosított mentés a blokkchain.info -ról. (Ugyanazzal a jelszóval kell legyen titkosítva.)</li>
+                <li>Nyers szöveg JSON a blokkchain.info -ról</li>
+                <li>Kimenet: <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
+                <li>Kimenet: <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
+                <li>Kimenet: <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+            </ul>
+
+            <p>Vedd figyelembe, hogy maximum 400 privát kulcsot tarthatsz egy tárcában jelenleg. Nagy tárcáknál belassulhat a böngésződ akár percekre is.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Másold be a tárcád ebbe a dobozba"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Tárca Importálása</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">Exportálás <small>Lent találod az AES titkosított privát kulcsod.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">Biztonsági Mentés Letöltése</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">Titkosítatlan exportálás <small>Itt van a privát kulcsod JSON formátumban. Figyelem! Titkosítatlan az adat, tartsd biztonságban.</small></h3>
+
+            <h6>Válassz privát kulcs formátumot:</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">Hagyd a privát kulcsot titkosítva</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>Megfigyelő Bitcoin Cím Hozzáadása</h3>
+            </div>
+            <div class="modal-body">
+                <p>Kérlek erősítsd meg, hogy hozzá akarod adni <font color="red">Watch Only</font> címet <span class="address"></span>.</p>
+
+                <p>A <font color="red">Watch Only</font> megfigyelő cím azt jelenti, hogy látod az adott címre érkező tranzakciókat. Amíg nincs meg a privát kulcsod a címhez, addig nem férsz hozzá a számlaegyenleghez.</p>
+
+                <p>Amíg nincs biztonsági mentésed vagy papír tárcád erről a címről, addig nem tanácsos bitcoint mozgatnod ide vagy másokat kérni, hogy utaljanak erre a címre</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Mégsem</button>
+                    <button class="btn btn-primary">Tovább</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-private-key-warning-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Privát kulcs importálása Warning</h3>
+            </div>
+            <div class="modal-body">
+                <p><b>Soha importálni privát kulcs nyilvános vagy nem megbízható forrásból.</b> Ez magában foglalja a közös agy pénztárca, versenyek és a vásárolt privát kulcsokat. Ehelyett azt javasoljuk, hogy söpörni a kulcsot, ami azt jelenti, hogy elküldi az összes alap az egyik a meglévő címek inkább mint hogy egy új címet a pénztárca.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Közvetlen Import</button>
+                    <button class="btn btn-primary">Kulcs Nullázás</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Wallet jelszó</h3>
+            </div>
+            <div class="modal-body">
+                <p>Ha a pénztárca titkosítva adja meg a jelszót. Ellenkező esetben hagyja üresen.</p>
+                <p align="center">
+                    <b>Wallet jelszó:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Tovább</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Tömörített Privát Kulcsot találtunk</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>A tömörített privát kulcsot jelenleg az Android, az iPhone alkalmazásunk és a Kereskedési API -nk nem támogatja. Ha használni szeretnéd, akkor az előbb említett alkalmazásokban nem fog működni ez a fajta cím.</p>
+
+                <p>Ajánlott, hogy nullázd a címet és küldd át egy másik bitcoin címre a teljes egyenlegét. Szeretnéd nullázni inkább ezt a kulcsot?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Közvetlen Import</button>
+                    <button class="btn btn-primary">Kulcs Nullázás</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+
+<div id="main-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Főjelszó Szükséges</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Ehhez a művelethez meg kell adnod a jelszavad. Kérlek pontosan add meg vagy a rendszer kijelentkeztet.</p>
+
+        <div style="width:290px;margin: 0 auto;">
+            <p><b>Főjelszó:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button> <button class="btn btn-primary">Tovább</button>
+        </div>
+    </div>
+</div>
+
+<div id="second-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Másodlagos Jelszó Szükséges</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Ehhez a művelethez szükséges, hogy megadd a másodlagos jelszavad, hogy hozzáférjünk a titkosított tárcádhoz. Ezt a másodlagos jelszót soha ne add meg olyan számítógépen, amiben nem bízol meg. Használd a képernyőbillentyűzetet, hogy megvédd magad a keylogger programoktól.</p>
+
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
+
+        <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
+            <ul class="vkeyboard">
+                <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                <li class="delete lastitem">delete</li>
+                <li class="tab">tab</li>
+                <li class="letter">q</li>
+                <li class="letter">w</li>
+                <li class="letter">e</li>
+                <li class="letter">r</li>
+                <li class="letter">t</li>
+                <li class="letter">y</li>
+                <li class="letter">u</li>
+                <li class="letter">i</li>
+                <li class="letter">o</li>
+                <li class="letter">p</li>
+                <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                <li class="capslock">caps lock</li>
+                <li class="letter">a</li>
+                <li class="letter">s</li>
+                <li class="letter">d</li>
+                <li class="letter">f</li>
+                <li class="letter">g</li>
+                <li class="letter">h</li>
+                <li class="letter">j</li>
+                <li class="letter">k</li>
+                <li class="letter">l</li>
+                <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                <li class="return lastitem">return</li>
+                <li class="left-shift">shift</li>
+                <li class="letter">z</li>
+                <li class="letter">x</li>
+                <li class="letter">c</li>
+                <li class="letter">v</li>
+                <li class="letter">b</li>
+                <li class="letter">n</li>
+                <li class="letter">m</li>
+                <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                <li class="right-shift lastitem">shift</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button> <button class="btn btn-primary">Tovább</button>
+        </div>
+    </div>
+</div>
+
+<div id="label-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Címke Neve</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Kérlek adj meg egy címkét a címhez <span class="address"></span></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Címke:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Címke pl. Megtakarítások" type="text" /><p class="help-block">A címke segít azonosítani a címet, hogy mire használod. Lehet akár egy személy vagy egy cég neve is.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Legyen állami?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">Az alapértelmezett cím a címkék csak mi látjuk. Állami címkék nyilvánosan látható a blockchain honlapon, és megtekinthető bárki.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button> <button class="btn btn-primary">Mentés</button>
+        </div>
+    </div>
+</div>
+
+<div id="sign-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Üzenet Aláírása</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Ezt az eszközt arra használhatod, hogy igazold, az adott bitcoin cím hozzád tartozik. Csak részletes, hosszabb üzeneteket írj alá, amivel teljesen egyetértesz. Az üzenet aláírása gomb megnyomásával a böngésződ néhány másodpercre megakadhat, amíg dolgozik.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Address:</label>
+                <div class="controls">
+                    <p class="address"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Üzenet:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Add meg az Üzenetet, ami alá akarsz írni"></textarea>
+                </div>
+            </div>
+            <div class="control-group signature" style="display:none">
+                <label class="control-label">Aláírás:</label>
+                <div class="controls">
+                    <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Üzenet Aláírása</button>
+        </div>
+    </div>
+</div>
+
+<div id="verify-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Üzenet Visszaigazolása</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Ezzel az eszközzel megállapíthatod, hogy az adott üzenetet valóban az adott bitcoin cím tulajdonosa írta alá</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Address:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin Cím" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Üzenet:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Add meg az Üzenetet az Azonosításhoz"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Aláírás:</label>
+                <div class="controls">
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="Add meg az Aláírást az üzenethez"></textarea>
+                </div>
+            </div>
+            <div class="control-group address-result" style="display:none">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <span class="address-result-txt"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Üzenet Visszaigazolása</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>QR Kód Cím <small class="address"></small></h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Bezár</button>
+        </div>
+    </div>
+</div>
+
+<div id="add-address-book-entry-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Új Címjegyzék Bejegyzés</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Address:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Bitcoin Cím" type="text">
+                    <p class="help-block">Add meg a bitcoin címet, amit hozzá akarsz adni a címjegyzékhez.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Címke:</label>
+                <div class="controls">
+                    <input name="label" placeholder="A személy vagy kereskedő neve" type="text" />
+                    <p class="help-block">Adj meg címkét a címhez. Pl. egy személy vagy cég neve.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Cím Hozzáadása</button>
+        </div>
+    </div>
+</div>
+
+<div id="not-synced-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Cím Nincs Elmentve</h3>
+    </div>
+    <div class="modal-body">
+        <p>Ez a cím még nincs elmentve a szerverünkön és lehetéges, hogy elveszik, ha most bezárod az ablakot. <span style="color:red;font-weight:bold;">Kivéve, ha a titkos kulcs elmentésre máshol minden érmét küldött az ENSZ-szinkronizál címeket véglegesen elvesznek logout</span></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-danger">Mutassa mentett Address</button>
+            <button class="btn btn-primary" data-dismiss="modal">Bezár</button>
+        </div>
+    </div>
+</div>
+
+<div id="watch-only-copy-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Megfigyelő Cím Figyelmeztetés</h3>
+    </div>
+    <div class="modal-body">
+        <p>Azért kapod ezt a figyelmeztetést, mert mert vágólapra másoltad a címet <font color="red">Watch Only</font>.</p>
+
+        <p>A <font color="red">Watch Only</font> megfigyelő cím azt jelenti, hogy látod az adott címre érkező tranzakciókat. Amíg nincs meg a privát kulcsod a címhez, addig nem férsz hozzá a számlaegyenleghez.</p>
+
+        <p><b>Amíg nincs biztonsági mentésed vagy papír tárcád erről a címről, addig nem tanácsos bitcoint mozgatnod ide vagy másokat kérni, hogy utaljanak erre a címre</b></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary" data-dismiss="modal">Bezár</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Megerősítése törlése</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">Nem megfelelő cím törlése pénzügyi veszteséget okozhat neked. Ha nem vagy biztos a dolgodban, kattints a mégse gombra</div>
+
+        <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
+
+        <p>
+            Biztosan törölni akarod a címet? Többet nem tudsz fogadni vagy küldeni erről a címről. A bitcoin cím számlaegyenlege:
+        </p>
+
+        <h2 align="center" id="delete-balance"></h2>
+
+        <h2 id="change-mind" style="display:none;text-align:center">Még <span id="change-mind-time">5</span> másodperced van meggondolni magad...</h2>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Csak a Privát Kulcs Törlése</button>
+            <button class="btn btn-danger">Cím és Privát Kulcs Törlése</button>
+        </div>
+    </div>
+</div>
+
+<div id="sweep-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Kulcsok Nullázása</h3>
+    </div>
+    <div class="modal-body">
+        <p>A nullázás azt jelenti, hogy az összes bitcoint átutalod egy másik címre. Kérlek válassz egy címet, amire küldeni szerenéd (Egyenleg: <span class="balance"></span>).</p>
+
+        <p align="center">
+        <div class="form-inline">
+            <label class="control-label">Nullázás erre Címre:</label> <br /><select name="change"></select>
+        </div>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Tovább</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Megosztott Coin Tranzakció</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            Hiba történt befejezése ez a közös érme tranzakciót. További információért kérjük, ellenőrizze a javascript konzolon.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Tranzakció folyamatban van. Ne zárja be ezt az ablakot, vagy kilép a böngésző.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>Fedezethiány</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Ez az ügylet nem lehet elküldeni, mert vannak rendelkezik megfelelő források rendelkezésre állnak. Ez lehet az oka, hogy a további bányászok díjak vagy a meg nem erősített tranzakciókat.</p>
+
+        <p>A tranzakció sem törölhető. Vagy az összeg, hogy küldjön lehet beállítani, hogy megfeleljen a maximálisan rendelkezésre álló összeg küldeni.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">Szükséges: <span class="amount-required"></span> (Elérhető: <span class="amount-available"></span>)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Cancel Transaction</button>
+            <button class="btn btn-primary">Állítsa összeg</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-for-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Bányászok Díj Ajánlott</h3>
+    </div>
+    <div class="modal-body">
+        <p>Ez a tranzakció alacsony prioritású. Ajánlott, hogy csatolj hozzá legalább 0.0005 BTC tranzakciós díjat, hogy motiváld a bányászokat a feldolgozásra.</p>
+        <div class="alert alert-block alert-error">Ha nem adsz meg díjat, a tranzakciód csak nagyon lassan kerül feldolgozásra.</div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Tovább Díj Nélkül</button>
+            <button class="btn btn-primary">Díj Hozzáadása</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Magasabb díjat ajánlott</h3>
+    </div>
+    <div class="modal-body">
+        <p>Adott meg egyéni díjat <span></span> de az ajánlott díj a tranzakció <span></span>. Szeretnéd, hogy az ajánlott díj helyett?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Az Egyéni díj</button>
+            <button class="btn btn-primary">Használja az ajánlott díj</button>
+        </div>
+    </div>
+</div>
+
+<div id="new-transaction-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Tranzakció Készítése</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center" class="loading-indicator" style="display:none;">
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+        </p>
+
+        <div class="offline-transaction" style="display:none">
+            <p>A tranzakciót elkészült, de nem lett szétküldve a p2p bitcoin hálózatban. </p>
+
+            A tranzakció véglegesítéséhez nyisd meg <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>. Másold ki és illeszd be az alábbi szöveget és kattints a tranzakció véglegesítése gombra.</p>
+
+            <textarea name="data" style="width: 100%; height:100px;"></textarea>
+        </div>
+
+        <div id="tx-sign-progress" style="display:none">
+            <h4>Kérlek Várj. Bemenet Aláírása <span class="n">0</span> / <span class="t"></span>...</h4>
+        </div>
+
+        <div id="review-tx" style="display:none">
+            <div class="basic">
+                <p>Kérlek erősítsd meg <span id="rtc-basic-summary"></span></p>
+            </div>
+
+            <div class="adv">
+                <p>Kérlek ellenőrizd a részleteket lent:</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td width="110px;"><b>Hash</b></td>
+                        <td id="rtc-hash"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Verzió</b></td>
+                        <td id="rtc-version">1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Bemenetek</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Kimenetek</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Összes Díjak</b></td>
+                        <td id="rtc-fees">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Összes Kimenet Értéke</b></td>
+                        <td id="rtc-value">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Kilépés a Tárcából</b></td>
+                        <td id="rtc-effect" style="color: red">0</td>
+                    </tr>
+                </table>
+            </div>
+            <p align="right"><a class="show_adv"></a></p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Tranzakció Elküldése</button>
+        </div>
+    </div>
+</div>
+
+<div id="send-email-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Email -ben Küldés</h3>
+    </div>
+
+    <div class="modal-body">
+        <h3 style="padding-bottom:25px">
+            Elküld <span class="amount"></span> BTC <span class="email"></span> címzettnek <br /> <small>A következő üzenetet küldjük a címzettnek.</small>
+        </h3>
+
+        <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Fizetés Küldése</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="private-key-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Privát Kulcs Szükséges</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Ehhez a művelethez szükséged van a címhez <span class="address" style="font-weight:bold"></span> tartozó privát kulcsra. Kérlek add meg itt.</p>
+
+        <div style="width:400px;padding-left:20px;">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+            <button class="btn btn-primary">Add meg a privát kulcsot</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-reader-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Scan QR Code</h3>
+    </div>
+
+    <div class="modal-body" style="padding-left:20px;overflow:hidden;">
+        <div class="qr-code-reader" align="center"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Kérem, várjon ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Key nyújtás. Kérjük, várjon ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Restore Backup utasítások</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Mégsem</button>
+        </div>
+    </div>
+</div>
+
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Titkosított privát kulcs</h3>
+    </div>
+    <div class="modal-body">
+        <p>A titkosított privát kulcsot észlelt. Kérjük, adja meg a titkosítási jelszót, az alábbi:</p>
+        <p align="center">
+            <b>Jelmondatot::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Tovább</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

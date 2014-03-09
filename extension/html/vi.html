@@ -1,0 +1,2350 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ví của tôi - Làm chủ ngân hàng của chính mình - Blockchain.info</title>
+    <meta name="robots" content="noindex">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel="stylesheet" href="/Resources/app-overrides.css?" type="text/css">
+    <link rel="stylesheet" href="/Resources/print.css?" type="text/css" media="print"/>
+    
+
+    <style type="text/css">
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Resources/wallet/bitcoinjs.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/blockchainapi.min.js?"></script>
+    <script type="text/javascript" src="/Resources/wallet/wallet.min.js?"></script>
+
+    
+
+    <script type="text/javascript" src="/Resources/wallet/chrome.js?"></script>
+    
+    
+    
+</head>
+
+<body data-war-checksum="" data-root="https://blockchain.info/" data-resource="/Resources/" data-language="vi">
+
+<div class="quickstart">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>
+                    <span class="hidden-phone">Ví của tôi <small>Làm chủ ngân hàng của chính mình.</small></span>
+
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Số dư của bạn" data-content="Đây là số dư của bạn. Bạn không thể chi tiêu số tiền này cho đến khi tất cả các giao dịch được xác nhận.">
+                        <span id="balance"></span>
+                        <small id="balance2">0</small>
+                    </div>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid" style="margin-top:10px">
+            <div class="span12 no-print">
+                <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
+                    <li><a id="home-intro-btn">Trang chủ ví</a></li>
+                    <li><a id="my-transactions-btn">Giao dịch của tôi</a></li>
+                    <li><a id="send-coins-btn">Gửi tiền</a></li>
+                    <li><a id="receive-coins-btn">Nhận tiền</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">Nhập / Xuất</a></li>
+                </ul>
+
+                <h6 class="pull-right" id="status-container">
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">Đang tải</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-notices-container" style="z-index:1; position:absolute; right:0px; margin:20px; width:auto; min-width:280px; overflow:visible; height:0px;">
+    <span id="notices" style="max-width:600px;width:auto;"></span>
+</div>
+
+<div style="width:100%; float:left; clear:both"></div>
+
+<div class="container" style="margin-top:10px">
+
+<div id="my-account" style="display:none;">
+    <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
+        <h2>Dữ liệu nhạy cảm</h2>
+
+        <p>Cài đặt tài khoản hiển thị các dữ liệu nhạy cảm mà không nên được hiển thị cho người khác. Đó là khuyến cáo bạn không mở phần này ở những nơi công cộng hoặc chụp ảnh màn hình của phần này.</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-account-settings">Tiếp tục</button>
+        </p>
+    </div>
+
+    <div id="my-account-content" style="display:none">
+
+
+
+
+<h2>
+    Cài đặt tài khoản <small>Thay đổi cài đặt tài khoản Ví của tôi</small>
+</h2>
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Thông tin tài khoản</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Riêng</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> Chung</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Hiển thị</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Thông báo</a></li>
+
+            <li class="divider"></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Mật khẩu</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Bảo mật</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Đăng nhập</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Thiết bị</a></li>
+            <li class="divider"></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Gỡ lỗi</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+<div class="tab-content">
+<div class="active tab-pane" id="account-information">
+    <div class="page-header">
+        <h3>Hòm thư <small style="color:green">(Lời khuyên)</small></h3>
+
+        <p>
+            Một email cần thiết để giúp phục hồi một định danh ví bị mất và thông báo thanh toán.<br/>
+        </p>
+
+        <p>
+            <input placeholder="Địa chỉ hòm thư" id="wallet-email" type="text"/>
+        </p>
+
+        <p class="email-verified">
+            <font color="green">Xác thực hòm thư</font>
+        </p>
+
+        <div class="email-unverified">
+            <b>Mã xác thực hòm thư:</b><br/><br/>
+
+            <div class="form-inline">
+                <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
+                <button class="btn">Xác thực</button>
+                <button class="btn" id="wallet-email-send">Gửi lại link</button>
+            </div>
+            <br/> <font color="red">Hòm thư chưa được xác thực</font>
+        </div>
+    </div>
+
+    <div class="page-header email-verified">
+        <h3>Bí danh  <small>(Tùy chọn)</small></h3>
+        <p>
+            Một bí danh sẽ làm bạn dễ dàng truy cập vào tài khoản hơn là việc nhớ 1 định danh<br/>
+        </p>
+
+        <p>
+            <input placeholder="1 biệt hiệu hoặc một từ dễ nhớ khác" id="wallet-alias" type="text"/>
+        </p>
+
+        <pre class="alias" style="display:none"></pre>
+    </div>
+
+    <div class="page-header">
+        <h3>Số điện thoại <small>(Tùy chọn)</small>
+        </h3>
+
+        <p>
+            Vui lòng nhập vào số điện thoại của bạn dưới đây. Tin nhắn SMS có thể sẽ gặp trục trặc với một số quốc gia.
+        </p>
+
+        <p class="form-inline">
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Gửi mã qua SMS</button>
+        </p>
+
+        <p class="sms-verified">
+            <font color="green">Xác thực SMS</font>
+        </p>
+
+        <div class="sms-unverified well">
+            <p>Nhập mã có trong tin SMS mà chúng tôi đã gửi.</p>
+            <p class="form-inline"><input placeholder="Mã xác thực SMS" class="wallet-sms-code" type="text"/> <button class="btn">Xác thực</button> </p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-debug">
+    <div class="page-header">
+        <h3>Kiểm tra tính toàn vẹn</h3>
+
+        <p>Kiểm tra tất cả các khóa trong ví của bạn phù hợp với địa chỉ và tái mã hóa ví của bạn. Điều này có thể sẽ mất thời gian với một số trình duyệt</p>
+
+        <p>
+            <button class="btn" id="run-key-check">Chạy</button>
+        </p>
+    </div>
+    <div class="page-header">
+        <h3>Kiểm tra nén</h3>
+
+        <p>Kiểm tra sự cân bằng của cả hai phiên bản nén và không nén của tất cả các khóa riêng để xác minh không có giao dịch có thể được mua lại không được thể hiện trong sự cân bằng ví chính.</p>
+
+        <p>
+            <button class="btn" id="run-compressed-check">Chạy</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>PBKDF2 Interactions</h3>
+
+        <p>PBKDF2 là một chức năng mà trải dài mật khẩu của bạn tăng các nỗ lực cần thiết để bruteforce nó. Một số cao lặp đi lặp lại là tốt hơn tuy nhiên bạn có thể nhận thấy một sự xuống chậm của trình duyệt của bạn.</p>
+
+        <p><b>Thay đổi giá trị này có thể gây ra vấn đề tương thích giữa các khách hàng cũ mà không hỗ trợ các định dạng mã hóa ví mới.</b></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Lặp đi lặp lại:</label>
+
+                <div class="controls">
+                    <select id="pbkdf2-iterations">
+                        <option value="10">10 (Default)</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-general">
+
+    <div class="page-header">
+        <h3>Xử lý Liên kết Bitcoin</h3>
+
+        <p>Bạn có muốn thiết lập blockchain.info như xử lý mặc định của liên kết Bitcoin? Bitcoin liên kết (URI) được sử dụng để tự động nhập địa chỉ Bitcoin người nhận và gửi giá trị khi nhấp vào.</p>
+
+        <button class="btn btn-secondary" id="register-uri-handler">Đăng ký URI Handler</button>
+    </div>
+
+    <div class="page-header">
+        <h3>Không hoạt động Đăng xuất</h3>
+
+        <p>
+            Theo mặc định, bạn sẽ được tự động được đăng nhập của tài khoản ví của bạn sau 10 phút không hoạt động. Bạn có thể điều chỉnh thời gian timeout bên dưới.
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 phút</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 phút</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 phút</b>
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Không bao giờ</b>
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Chính sách phí mặc định</h3>
+
+        <p>
+            Giao dịch tại Blockchain.info là miễn phí. Tuy nhiên mạng bitcoin có thể yêu cầu phí thợ mỏ bổ sung. Điều này sẽ ảnh hưởng tới tốc độ giao dịch của bạn và hỗ trợ mạng lưới. Thay đổi các thiết lập dưới đây để thay đổi các chính sách phí thợ mỏ mặc định
+        </p>
+
+        <p style="padding-left:10px">
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="-1"><b>Đơn giản</b> - Không có phí thợ mỏ trừ khi tuyệt đối cần thiết. <font color="red">Giao dịch sẽ chậm hơn đáng kể để xác nhận</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="0"><b>Bình thường</b> - Thực hiện các chính sách phí được đề xuất bởi khách hàng bitcoin chính. <font color="green">Lời khuyên</font>.
+            </label>
+            <label class="radio" style="font-weight:normal">
+                <input type="radio" name="fee-policy" value="1"><b>Hào phóng</b> - Phí sẽ được thiết lập để đảm bảo độ ưu tiên cao (Phí cơ bản 0.001 BTC).
+            </label>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Tự động sao lưu tài khoản</h3>
+        <p>
+            Đánh dấu vào nó để nhận những bản sao tự động mỗi khi ví của bạn được cập nhật: <input id="auto-email-backup" type="checkbox"/>
+        </p>
+    </div>
+</div>
+
+
+<div class="tab-pane" id="account-display">
+
+    <div class="page-header">
+        <h3>Ngôn ngữ</h3>
+
+        <p>Cài đặt ngôn ngữ ưa thích của bạn ở dưới đây</p>
+
+        <select id="language_select"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Tiền tệ địa phương</h3>
+
+        <p>Bạn có thể thay đổi giữa bitcoin và tiền tệ địa phương bạn bằng cách nhấn vào số dư của bạn ở trên cùng bên phải.</p>
+
+        <select id="local_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Bitcoin Hiển thị</h3>
+
+        <p>Điều chỉnh chính xác bạn muốn giá trị Bitcoin được hiển thị in</p>
+
+        <select id="btc_currency"></select>
+    </div>
+
+    <div class="page-header">
+        <h3>Giao dịch trung bình mỗi trang</h3>
+
+        <p>Thiết lập số lượng giao dịch hiển thị trên mỗi trang</p>
+
+        <p>
+            <select id="transactions_per_page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </p>
+    </div>
+</div>
+
+
+<div class="tab-pane" id="account-notifications">
+    <div class="page-header">
+        <h3>Thông báo</h3>
+
+        <p>Tùy chọn nhận thông báo khi thanh toán xảy ra từ ví của bạn.</p>
+
+        <div id="notifications-type">
+            <input type="checkbox" value="1"> <b>Thông báo hòm thư</b><br/>
+
+            <div class="well type-1" style="display:none">
+                Bạn sẽ nhận được thông báo qua hòm thư điện tử. Vui lòng xác nhận địa chỉ hòm thư nếu như bạn chưa sẵn sàng.
+            </div>
+
+            <input type="checkbox" value="32"> <b>Thông báo qua SMS</b><br/>
+
+            <div class="well type-32" style="display:none">
+                <p>
+                    Vui lòng nhập vào số điện thoại của bạn dưới đây. Tin nhắn SMS có thể sẽ gặp trục trặc với một số quốc gia.
+                </p>
+
+                <p class="form-inline">
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Gửi mã qua SMS</button>
+                </p>
+
+                <p class="sms-verified">
+                    <font color="green">Xác thực SMS</font>
+                </p>
+
+                <div class="sms-unverified">
+                    <p>Nhập mã có trong tin SMS mà chúng tôi đã gửi.</p>
+                    <p class="form-inline">
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Xác thực</button>
+                    </p>
+                </div>
+            </div>
+
+            <input type="checkbox" value="2" /> <b>Trò chuyện Google</b><br/>
+
+            <div class="well type-2" style="display:none">
+                Bạn sẽ nhận được thông báo qua Trò chuyện Google.
+            </div>
+
+            <input type="checkbox" value="8"> <b>Skype</b><br/>
+
+            <div class="well type-8" style="display:none">
+                <p>Bạn sẽ nhận được thông báo qua Skype tới tên người dùng dưới đây:</p>
+
+                <input placeholder="Skype Username" id="wallet-skype" type="text"/>
+            </div>
+
+            <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
+
+            <div class="well type-64" style="display:none">
+                <p>Vui lòng nhập vào <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> hòm thư của bạn dưới đây:</p>
+
+                <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
+            </div>
+
+            <input type="checkbox" value="4"> <b>HTTP Thông báo</b><br/>
+
+            <div class="well type-4" style="display:none">
+                <p>Thông báo Http sẽ được gửi khi giao dịch gửi hoặc nhận. Xin vui lòng xem các nhà phát triển phần cho một hướng dẫn để thực hiện gọi lại.</p>
+
+                <input placeholder="Http URL" id="wallet-http-url" type="text"/>
+            </div>
+
+            <input type="checkbox" value="128"> <b>Android Thông báo</b><br/>
+
+            <div class="well type-128" style="display:none">
+                <p>Bạn sẽ nhận được thông báo thiết bị Android của bạn một lần cặp.</p>
+            </div>
+
+        </div>
+
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 Thông báo</b><br/>
+
+        <div class="well" style="display:none">
+            <p>HTML 5 Thông báo là khác nhau từ thường xuyên pop-up mà họ yêu cầu sự cho phép của người sử dụng được hiển thị. Hiện thời hỗ trợ trong Chrome và Safari.</p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Khi dịch vụ Ví của tôi</h3>
+
+        <p>
+            <select id="notifications-on">
+                <option value="0">Gửi hoặc nhận Bitcoin</option>
+                <option value="1">Gửi Bitcoins</option>
+                <option value="2">Nhận Bitcoins</option>
+            </select>
+        </p>
+    </div>
+
+    <h3>Sau khi xác nhận</h3>
+
+    <p>
+        <select id="notifications-confirmations">
+            <option value="0">Ngay lập tức</option>
+            <option value="1">1 xác nhận</option>
+            <option value="2">2 xác nhận</option>
+            <option value="3">3 xác nhận</option>
+            <option value="4">4 xác nhận</option>
+            <option value="5">5 xác nhận</option>
+            <option value="6">6 xác nhận</option>
+        </select>
+    </p>
+</div>
+
+
+<div class="tab-pane" id="account-logging">
+    <h3 class="page-header">Đăng nhập Cấp</h3>
+
+    <p>Các điều khiển mức ghi những dữ liệu được ghi lại khi các hành động được thực hiện bằng cách sử dụng ví của bạn. Theo mặc định khai thác gỗ bị tắt ngoài từ hành động được thực hiện bởi các quản trị viên. Cho phép nó cung cấp bảo mật tốt hơn bằng cách cung cấp thêm thông tin về khả năng truy cập trái phép vào ví của bạn tuy nhiên một số có thể hy sinh sự riêng tư.</p>
+
+    <p>
+        <select id="logging-level">
+            <option value="0">Đăng nhập người khuyết tật</option>
+            <option value="1">Đăng nhập Actions với các địa chỉ IP băm</option>
+            <option value="2">Đăng nhập Actions với địa chỉ IP và User Agent</option>
+        </select>
+    </p>
+
+    <p class="well">
+        Thay đổi mức độ khai thác gỗ không xóa bản ghi hiện có. Logs hết hạn sau 2 tuần.
+    </p>
+
+    <div class="logl l2 l1">
+        <table class="table table-striped well" style="margin-top:10px;display:none;">
+            <thead>
+            <th>Thời gian</th>
+            <th>Hành động</th>
+            <th>Địa chỉ IP</th>
+            <th>User Agent</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p class="logl l0" style="display:none;">
+        <font color="green">Đăng nhập người khuyết tật</font>
+    </p>
+</div>
+
+<div class="tab-pane" id="account-devices">
+    <h3>Đang ghép thiết bị</h3>
+
+    <p>Quét mã dưới đây với iPhone hoặc Android của bạn để ghép nó với tài khoản của bạn.</p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
+                    Hiện / Ẩn Ghép Mã.
+                </a>
+            </div>
+
+            <div id="pairing_code" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+
+                    <div id="pairing-code-v1" style="margin:20px"></div>
+
+                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
+
+                    <div id="pairing-code-v0" style="margin:20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-passwords">
+    <div class="alert alert-block alert-error"><B>Cảnh báo!</B> Việc quên mật khẩu sẽ dẫn đến tình trạng không thể truy cập vào ví của bạn. Sẽ không có quá trình phục hồi mật khẩu!</div>
+
+    <p>
+        Mật khẩu của bạn là không bao giờ được chia sẻ với các máy chủ của chúng tôi trong bất kỳ hình dạng hoặc hình thức. Điều này có nghĩa là ví của bạn vẫn sẽ được an toàn trong trường hợp máy chủ của chúng tôi đã bị tổn hại. Tuy nhiên, có nghĩa là không có chức năng thiết lập lại mật khẩu.
+    </p>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Mật khẩu Mnemonic</h3>
+
+        <p>Giúp trí nhớ mật khẩu có thể được sử dụng để khôi phục mật khẩu ví của bạn nếu quên. Nếu không có ghi nhớ không có cách nào chúng tôi có thể giúp khôi phục mật khẩu bị lãng quên. Khi thay đổi mật khẩu ví ghi nhớ sẽ thay đổi.</p>
+
+        <div id="accordion1">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
+                        Hiện / Ẩn Mật khẩu Mnemonic
+                    </a>
+                </div>
+
+                <div id="password_mnemonic" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="password_mnemonic1">
+                            <h5 class="page-header">Main Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+
+                        <div id="password_mnemonic2">
+                            <h5 class="page-header">Second Password Mnemonic</h5>
+
+                            <span style="font-size:14px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Mật khẩu chính</h3>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Mật khẩu:</label>
+
+                <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Xác nhận mật khẩu:</label>
+
+                <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
+            </div>
+        </div>
+
+        <p>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Cập nhật mật khẩu chính</button>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3 style="margin-bottom:5px">Mật khẩu phụ:</h3>
+
+        <div class="double-encryption-off">
+            <p>Bạn có thể tùy chọn cài đặt một mật khẩu phụ để yêu cầu mỗi khi tài khoản của bạn thực hiện giao dịch gửi. Đối với những ví có số dư lớn, trình duyệt của bạn có thể sẽ không có phản hồi trong vài phút khi thay đổi tùy chọn này.</p>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Mật khẩu:</label>
+
+                    <div class="controls"><input id="double-password" type="password"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Xác nhận mật khẩu:</label>
+
+                    <div class="controls"><input id="double-password2" type="password"/></div>
+                </div>
+            </div>
+
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">Kích hoạt Mã hóa đôi</button>
+        </div>
+
+        <div class="double-encryption-on">
+            <p>Mã hóa đôi đã được kích hoạt. Một mật khẩu phụ sẽ được yêu cầu trước khi bạn thực hiện giao dịch gửi.</p>
+
+            <p>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">Vô hiệu mã hóa đôi</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Gợi ý mật khẩu</h3>
+
+        <p>Nếu bạn quên mật khẩu, gợi ý mật khẩu sẽ hữu dụng trong việc nhớ lại. Nếu nó là 1 địa chỉ hòm thư liên kết với tài khoản của bạn, gợi ý có thể được gửi qua hòm thư cho bạn. Nếu không có hòm thư nào liên kết với tài khoản của bạn, gợi ý sẽ có sẵn cho bất kì ai biết định danh ví của bạn.</p>
+
+        <p class="well">
+            <b>Ví dụ:</b> Nếu mật khẩu ví của bạn là toikhongbiet, một gợi ý tốt sẽ là: mật khẩu là gì?
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Gợi ý mật khẩu chính:</label>
+
+                <div class="controls"><input id="password-hint1" type="text"/></div>
+            </div>
+
+            <div class="control-group double-encryption-on">
+                <label class="control-label">Gợi ý mật khẩu phụ:</label>
+
+                <div class="controls"><input id="password-hint2" type="text"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="account-security">
+    <div class="page-header">
+        <h3>Xác thực 2 bước</h3>
+
+        <p>Xác thực 2 bước sẽ thêm một lớp bảo mật bổ sung lên mật khẩu của bạn.</p>
+
+        <p>
+            <select id="two-factor-select">
+                <option value="0">Không</option>
+                <option value="5">Tin nhắn SMS</option>
+                <option value="1">Yubikey</option>
+                <option value="2">Hòm thư</option>
+                <!--<option value="3">Mt Gox Yubikey</option>-->
+                <option value="4">Google Authenticator</option>
+            </select>
+        </p>
+
+        <div class="well two-factor t0" style="display:none">
+            Xác thực 2 bước không được kích hoạt trong tài khoản của bạn
+        </div>
+
+        <div class="well two-factor t1 t3" style="display:none">
+            <b>Yubikey</b> <br/> Để ghép khóa của bạn với tài khoản, chọn hộp hội thoại dưới đây và ấn nút led xanh trên yubikey của bạn.
+
+            <div class="controls">
+                <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                <p class="help-block">Chọn hộp thoại ở trên và nhấn vào đèn led màu xanh trên Yubikey của bạn.</p>
+            </div>
+        </div>
+
+        <div class="well two-factor t2" style="display:none">
+            <b>Hòm thư</b> <br/> Bạn sẽ nhận được mã xác thực qua email.
+        </div>
+
+        <div class="two-factor t4" style="display:none">
+            <p class="well">
+                Google Authenticator được kích hoạt
+            </p>
+
+            <div style="display:none">
+                <p>
+                    Mở ứng dụng Xác minh Google và quét mã QR dưới đây để hoàn thành việc ghép.
+                </p>
+
+                <div id="wallet-google-qr" style="margin:20px"></div>
+
+                <div class="well">
+                    <p>Sau khi quét mã QR ở trên với các ứng dụng Google Authenticator nhập mã xác nhận bên dưới:</p>
+
+                    <div class="controls">
+                        <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-factor t5 well" style="display:none">
+            <b>Tin nhắn SMS</b>
+
+            <p>
+                Vui lòng nhập vào số điện thoại của bạn dưới đây. Tin nhắn SMS có thể sẽ gặp trục trặc với một số quốc gia.
+            </p>
+
+            <p class="form-inline">
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Gửi mã qua SMS</button>
+            </p>
+
+            <p class="sms-verified" style="color:green">
+                Xác thực SMS
+            </p>
+
+            <div class="sms-unverified well">
+                <p>Nhập mã có trong tin SMS mà chúng tôi đã gửi.</p>
+                <p class="form-inline"><input placeholder="Mã xác thực SMS" class="wallet-sms-code" type="text"/> <button class="btn">Xác thực</button> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Luôn Giữ Sao lưu trình duyệt</h3>
+
+        <p>Kích hoạt tính năng tùy chọn này để buộc ví tiền đến một bản sao lưu được lưu trữ trong trình duyệt của bạn lưu trữ địa phương ngay cả khi hai yếu tố xác thực được kích hoạt. Nếu cho phép kẻ tấn công truy cập vào trình duyệt của bạn sẽ có thể để phá vỡ hai yếu tố xác thực, tuy nhiên nếu ví được truy cập bằng cách sử dụng bất kỳ máy tính hoặc trình duyệt khác nó vẫn còn được bảo vệ bởi hai yếu tố xác thực.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Always Keep:</label>
+
+                <div class="controls">
+                    <input name="always-keep-local-backup" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Cụm từ bí mật</h3>
+
+        <p>Một cụm từ bí mật sẽ được sử dụng để giúp chúng tôi xác thực danh tính của bạn trong trường hợp mất định danh ví hoặc yubikey. Nó có thể là một từ đơn hoặc 1 câu với tối đá 255 kí tự.</p>
+
+        <p>
+            <input id="wallet-phrase" type="text"/>
+        </p>
+    </div>
+
+    <div class="page-header">
+        <h3>Không báo giờ lưu 2 bước đăng nhập</h3>
+
+        <p>
+            Theo mặc định sau khi đăng nhập với hai yếu tố xác thực trình duyệt của bạn sẽ được ghi nhớ trong một thời gian ngắn thời gian cho phép bạn đăng nhập lại mà không cần phải chứng thực lại. Đánh dấu vào ô dưới đây nếu bạn muốn vô hiệu hóa hành vi này và yêu cầu xác thực đầy đủ mỗi lần.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Không bao giờ nhớ:</label>
+
+                <div class="controls">
+                    <input id="never-save-auth-type" type="checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Chặn địa chỉ IP TOR</h3>
+
+        <p>
+            Kích hoạt tùy chọn sau đây để ngăn chặn địa chỉ IP là một phần của mạng TOR nặc danh truy cập vào ví của bạn.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Kích hoạt / Vô hiệu hóa:</label>
+
+                <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h3>Hạn chế đối với IP</h3>
+
+        <p>
+            Kích hoạt hạn chế truy cập vào ví của bạn, một số địa chỉ IP xác định hoặc đa địa chỉ ip với dấu phẩy riêng rẽ. Chỉ kích hoạt cái này nếu bạn có một địa chỉ ip tĩnh. Bạn sẽ không thể đăng nhập hoặc truy cập bất API từ bất kì máy tính mà không được quy định, tuy nhiên với ứng dụng di động sẽ tiếp tục với một lần ghép.
+        </p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Kích hoạt / Vô hiệu hóa:</label>
+
+                <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Khóa tới IP:</label>
+
+                <div class="controls">
+                    <input id="ip-lock" type="text"/>
+
+                    <p class="help-block">Với nhiều địa chỉ thì nên cách nhau bởi dấu phẩy.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">IP đã dùng:</label>
+
+                <div class="controls"><span id="my-ip"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="update-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Xác nhận thay đổi mật khẩu</h3>
+    </div>
+    <div class="modal-body">
+        <p>Mật khẩu của bạn đã được cập nhật ngay lập tức. Chắc chắn rằng bạn đã lưu mật khẩu mới ở một nơi nào đó, nó không thể phục hồi nếu bạn quên! Nếu bạn có bất kì bản sao lưu mã hóa ví nào, nó sẽ có thể giải mã khi sử dụng mật khẩu cũ, khuyên bạn nên gỡ bỏ toàn bộ sao lưu đó.</p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Cập nhật mật khẩu</button>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div id="home-intro" style="display:none;">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="well table table-striped">
+                <tr>
+                    <td>Tổng số giao dịch</td>
+                    <td><span id="summary-n-tx">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" border="0" id="summary-n-tx-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tổng giao dịch nhận</td>
+                    <td><span id="summary-received">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-received-chart">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tổng giao dịch gửi</td>
+                    <td colspan="2"><span id="summary-sent">0</span></td>
+                </tr>
+                <tr>
+                    <td>Số dư cuối cùng</td>
+                    <td><span id="summary-balance">0</span></td>
+                    <td>
+                        <div class="img">
+                            <img src="/Resources/chart_bar.png" id="summary-balance-chart">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="text-align:center;padding-top:10px;padding-bottom:10px;overflow:hidden" class="no-watch-only">
+                <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
+
+                <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
+                    <small>Đây là địa chỉ Bitcoin của bạn</small>
+
+                    <p class="primary-address" id="my-primary-address"></p>
+
+                    <small>Chia sẻ điều này với bất kì ai, và họ sẽ gửi bạn thanh toán.</small>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="span6">
+            <div class="no-watch-only" id="home-deposit-container"></div>
+
+            <div class="page-header" id="partner-home-buttons" style="display:none">
+                <h3 style="padding-bottom:10px">Đối tác</h3>
+
+                <p align="right"></p>
+            </div>
+
+            <div class="page-header" id="home-account-container">
+                <h3>Cài đặt tài khoản</h3>
+
+                <p>Chỉnh sửa cài đặt tài khoản của bạn bao gồm địa chỉ hòm thư, mật khẩu và cài đặt thông báo.</p>
+
+                <p align="right">
+                    <button class="btn" id="my-account-btn">Cài đặt tài khoản</button>
+                </p>
+            </div>
+
+            <div id="home-backup-container">
+                <h3>Sao lưu</h3>
+
+                <p>Sao lưu ví của bạn là 1 bước quan trọng mà bạn dễ quên. Blockchain.info tận dụng mọi biện pháp phòng ngừa để ví của bạn được an toàn nhưng sẽ luôn luôn luôn tốt hơn nếu có 1 bản sao .</p>
+
+                <div class="btn-group" align="right">
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Hòm thư</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="receive-coins" style="display:none;">
+
+    <h2>Địa chỉ <small>Địa chỉ nhận bitcoin của bạn</small></h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#active-addresses" data-toggle="tab">Kích hoạt</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">Đã lưu trữ</a></li>
+        
+    </ul>
+
+    <div id="receive-content" class="tab-content">
+        <div class="active tab-pane" id="active-addresses" style="margin-bottom:200px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Địa chỉ</th>
+                    <th>Số dư</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="Địa chỉ mới" data-content="Nhấn vào đây để tạo một địa chỉ bitcoin mới. Bạn có thể nhận bitcoin từ địa chỉ này ngay lập tức">Địa chỉ mới</button>
+
+            <div class="btn-group pull-right" style="margin:5px">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Những tùy chọn khác <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="generate-cold-storage">Mới lạnh Địa chỉ lưu trữ</a></li>
+                    <li><a id="chord-diagram">Xem biểu đồ quan hệ</a></li>
+                    <li><a id="group-received" title="Taint Grouping">Nhóm địa chỉ theo độ xấu</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">Xác thực tin nhắn</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="archived-addresses" style="margin-bottom:200px">
+            <h3>Địa chỉ đã lưu trữ</h3>
+
+            <p>Những địa chỉ đã lưu trữ là những địa chỉ bạn có thể không cần nữa, chúng được ẩn đi từ trang chính những vẫn là 1 phần trong ví của bạn. Bạn có thể bỏ lưu trữ chúng bất cứ lúc nào bằng cách nhấn vào biểu tượng xanh.</p>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                <th></th>
+                <th>Địa chỉ Bitcoin</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div style="float:left">
+                <button class="btn btn-secondary" id="archived-select-all">Chọn tất cả</button>
+                <button class="btn btn-secondary" id="archived-select-none">Chọn None</button>
+            </div>
+
+            <div style="float:right">
+                <button class="btn btn-secondary pop" id="archived-sweep" title="Khóa quét" data-content="Di chuyển bất cứ bitcoin trong khóa đã chọn tới một địa chỉ khác.">Khóa quét</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="Xóa khóa" data-content="Xóa những khóa riêng đã chọn.">Xóa khóa</button>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<div style="display: none;" id="restore-wallet">
+
+    
+
+    
+
+    
+
+    <div class="row-fluid" id="welcome_back_container">
+        <div class="span6">
+            <div class="page-header">
+                <h3>Chào mừng quay trở lại </h3>
+                <small>Vui lòng nhập vào thông tin đăng nhập của bạn dưới đây:</small>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Định danh:</label>
+
+                    <div class="controls"><input id="restore-guid" placeholder="Định danh hoặc biệt danh" value="" type="text"/></div>
+                </div>
+
+                <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
+                    <label class="control-label">Mật khẩu:</label>
+
+                    <div class="controls"><input id="restore-password" type="password"/></div>
+                </div>
+
+
+                <div class="control-group auth-1 auth-3" style="display:none">
+                    <label class="control-label">Yubikey:</label>
+
+                    <div class="controls">
+                        <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Chọn hộp thoại ở trên và nhấn vào đèn led màu xanh trên Yubikey của bạn.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-2" style="display:none">
+                    <label class="control-label">Mã thư:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Một thư chứa nội dung xác thực đã được gửi đến hòm thư của bạn.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-4" style="display:none">
+                    <label class="control-label">Xác thực Google:</label>
+
+                    <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
+
+                        <p class="help-block">Vui lòng mở ứng dụng Xác thực Google và nhập vào mã đã hiển thị.</p>
+                    </div>
+                </div>
+
+                <div class="control-group auth-5" style="display:none">
+                    <label class="control-label">Mã SMS:</label>
+
+                    <div class="controls">
+                        <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
+
+                        <p class="help-block">Một tin nhắn đã được gửi tới điện thoại của bạn. Vui lòng nhập mã tin nhắn lên trên đây.</p>
+                    </div>
+                </div>
+
+                <div style="padding-left: 160px;padding-bottom:20px">
+                    <button class="btn btn-primary" id="restore-wallet-continue">Mở ví</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Tạo Wallet mới</a>
+                </div>
+
+                <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Không thể tìm thấy mã thư?</h5>
+
+                    <p>Hãy chắc chắn để kiểm tra thư mục thư rác của bạn. Nếu bạn vẫn không thể tìm thấy email nhấp vào nút bên dưới để gửi lại nó.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Gửi lại</a>
+                    </p>
+                </div>
+
+                <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
+                    <h5>Không nhận được Mã SMS?</h5>
+
+                    <p>Vui lòng kiểm tra tín hiệu mạng của bạn. Tin nhắn có thể mất đến 10 phút để được giao, nếu nó đã được hơn 10 phút nhấp vào nút bên dưới để gửi lại tin nhắn.</p>
+
+                    <p align="center">
+                        <a class="btn resend-code">Gửi tin nhắn</a>
+                    </p>
+                </div>
+
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">Mật khẩu của bạn không bao giờ được chia sẻ với máy chủ của chúng tôi và không thể phục hồi nó nếu mất!</div>
+            </div>
+        </div>
+
+        <div class="span6" id="forgotten-something-container">
+            <div class="page-header">
+                <h3>Quên gì đó?</h3> <small>Cần giúp đỡ! Tôi bị khóa mất tài khoản</small>
+            </div>
+
+            <h4>Mất định danh hoặc biệt hiệu</h4>
+
+            <p>Nếu bạn mất định danh ví, đầu tiên hãy xác nhận hòm thư mỗi khi bạn đăng kí. Không thể tìm thấy thư? Nhấn vào nút dưới đây và chúng tôi sẽ gửi một cái mới.</p>
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary recover-wallet-btn">Phục hồi Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Nhập sao lưu</a> <a class="btn btn-small btn-secondary download-backup-btn">Tải về sao lưu</a>
+            </p>
+
+            <h4>Mất thông tin xác thực 2 bước.</h4>
+
+            <p>Nếu bạn mất thông tin xác thực 2 bước, ví của bạn vẫn có thể được phục hồi. Tất cả những gì chúng tôi cần là bằng chứng về việc bạn là chủ tài khoản của bạn và cung cấp cho chúng tôi đầy đủ thông tin theo mẫu liên kết ở dưới.</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Thiết lập lại xác thực 2 bước</a>
+            </p>
+
+            <h4>Cần giúp đỡ?</h4>
+
+            <p>
+                Đọc <a target="blank" href="https://blockchain.info/wallet/support-pages">Trang hỗ trợ</a> của chúng tôi
+            </p>
+        </div>
+    </div>
+
+    
+</div>
+
+<div id="my-transactions" style="display:none;">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 style="display:inline-block">Giao dịch <small>Tổng số giao dịch gần đây</small></h2>
+
+            <div style="float:right">
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> Xem</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_display">
+                        <li><a href="#" data-value="0"> Qui ước</a></li>
+                        <li><a href="#" data-value="1"> Chi tiết</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-value="export"> Xuất khẩu Lịch sử</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="display:inline-block">
+                    <a class="btn" href="#"><i class="icon-filter"></i> Lọc</a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu tx_filter">
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> Tất cả</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Đã Gửi</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Đã nhận</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> Ký quỹ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-header" style="margin-top:0px;padding:0px"></div>
+        </div>
+    </div>
+
+    <p class="padded well" id="no-transactions" align="center">Bình thường thì giao dịch bitcoin của bạn được nêu ở đây nhưng có thể bạn vẫn chưa làm nó.</p>
+
+    <table id="transactions-compact" class="table table-striped table-condensed table-hover">
+        <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="transactions-detailed"></div>
+
+    <div class="pagination" align="center" style="clear:both;float:none">
+        <ul></ul>
+    </div>
+</div>
+
+<div id="send-coins" style="display: none;">
+<div class="row-fluid">
+<div class="span3">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list" id="send-coins-nav">
+            <li class="nav-header">Loại giao dịch</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Gửi nhanh</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Tùy biến</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Coin chia sẻ</a></li>
+            
+
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Ký quỹ</a></li>
+
+            <li class="nav-header">Gửi qua</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Thư</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> Tin nhắn SMS</a></li>
+
+            <li class="divider" id="partners-send-divider" style="display:none"></li>
+
+            <li class="nav-header">Đối tác</li>
+
+            <li class="divider"></li>
+            <li class="nav-header">Công cụ</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Sổ địa chỉ</a></li>
+        </ul>
+    </div>
+
+    <div class="well hidden-phone" style="padding: 8px 0;" id="send-ticker">
+        <div style="font-size:12px;padding-left:10px;">Exchange Rates (1 BTC = )</div>
+
+        <ul class="nav nav-list"></ul>
+
+        <div style="font-size:10px;padding-left:25px;">Delayed By Up To 15 minutes</div>
+    </div>
+</div>
+<div class="span9">
+<div class="tab-content">
+<div class="active tab-pane well" id="send-quick">
+    <h4 class="page-header">Gửi nhanh<br/>
+        <small>Sử dụng mẫu dưới đây để tạo một giao dịch tới một địa chỉ bitcoin.</small>
+    </h4>
+
+    <div class="form-horizontal">
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Tới địa chỉ" data-content="Đây là địa chỉ Bitcoin của người nhận.">Tới:</label>
+
+                    <div class="controls">
+                        <span class="qrcodeicon"><input placeholder="Địa chỉ Bitcoin" name="send-to-address" type="text"/><span></span></span>
+
+                        <p class="help-block">Nhập vào địa chỉ Bitcoin của người nhận</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Giá trị" data-content="Giá trị của Bitcoin muốn gửi">Giá trị:</label>
+
+                    <div class="controls">
+
+                        <div class="input-prepend">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <b>=</b>
+
+                        <div class="input-prepend">
+                            <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
+                        </div>
+
+                        <p class="help-block">Nhập vào giá trị của lượng Bitcoin muốn gửi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Gửi thanh toán" data-content="Nhấn vào đây để gửi thanh toán. Bạn sẽ không bị yêu cầu xem xét giao dịch.">Gửi thanh toán</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-sms">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Gửi qua SMS<br/><small>Sử dụng mẫu dưới đây để gửi Bitcoin qua SMS.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/phone.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Số điện thoại" data-content="Nhập vào số điện thoại của người bạn muốn gửi bitcoin tới.">Tới:</label>
+
+                    <div class="controls">
+                        <select name="sms-country-code"></select> <br/> <input placeholder="Số điện thoại" name="send-to-sms" type="text" style="margin-top:5px"/>
+
+                        <p class="help-block">Nhập vào số điện thoại của người nhận.</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Giá trị" data-content="Giá trị của Bitcoin muốn gửi">Giá trị:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+
+                        <p class="help-block">Nhập vào giá trị của lượng Bitcoin muốn gửi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Gửi thanh toán" data-content="Nhấn vào đây để gửi thanh toán. Bạn sẽ không bị yêu cầu xem xét giao dịch.">Gửi thanh toán</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="send-email">
+    <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
+
+    <h4 class="page-header">Gửi qua Email<br/><small>Sử dụng mẫu dưới đây để gửi bitcoin qua địa chỉ thư điện tử.</small></h4>
+
+    <div class="form-horizontal">
+        <div class="controls">
+            <img src="/Resources/email.png" style="padding-bottom:25px">
+        </div>
+
+        <div class="recipient-container">
+            <div class="recipient">
+                <div class="control-group">
+                    <label class="control-label pop" title="Địa chỉ email" data-content="Đây là địa chỉ email của người bạn muốn gửi bitcoin tới.">Tới:</label>
+
+                    <div class="controls">
+                        <input placeholder="Địa chỉ email" name="send-to-email" type="text"/>
+
+                        <p class="help-block">Nhập vào địa chỉ email của người nhận</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label pop" title="Giá trị" data-content="Giá trị của Bitcoin muốn gửi">Giá trị:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
+                        </div>
+                        <p class="help-block">Nhập vào giá trị của lượng Bitcoin muốn gửi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="send btn btn-success pop" title="Gửi thanh toán" data-content="Nhấn vào đây để gửi thanh toán. Bạn sẽ không bị yêu cầu xem xét giao dịch.">Gửi thanh toán</button>
+
+            <div class="progress" style="display:none;">
+                <div class="bar" style="width:10%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="shared-coin">
+    <div class="well">
+        <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
+
+        <h4 class="page-header">Coin chia sẻ<br/><small>Đồng tiền không hy vọng trộn sử dụng tham gia đồng tiền và phân tích làm hỏng</small></h4>
+
+        <div class="form-horizontal">
+            <div class="controls">
+                <img src="/Resources/sharedcoin_logo_circle.png" style="padding-bottom:25px">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop" title="Từ địa chỉ" data-content="Bạn có thể chọn gửi từ một địa chỉ riêng trong ví của bạn.">Từ:</label>
+
+                <div class="controls">
+                    <select name="from" multiple="multiple"></select>
+                </div>
+            </div>
+
+            <div class="recipient-container">
+                <div class="recipient">
+                    <div class="control-group">
+                        <label class="control-label pop" title="Tới địa chỉ" data-content="Đây là địa chỉ Bitcoin của người nhận.">Tới:</label>
+
+                        <div class="controls">
+                            <span class="qrcodeicon" /><input placeholder="Địa chỉ Bitcoin" name="send-to-address" type="text"/><span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label pop">Giá trị:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <span class="add-on btc-symbol"></span><input class="send-value span2" style="width:90px;" name="send-value" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label pop">Lặp đi lặp lại:</label>
+
+                <div class="controls">
+                    <select name="repetitions"><option value="0">Đang tải</option></select>
+                    <p class="help-block">Một số cao hơn lần lặp lại làm cho các giao dịch khó khăn hơn để theo dõi và cải thiện bảo mật.</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="send btn btn-primary pop" title="Xem lại thanh toán" data-content="Nhấn vào đây để xem lại thanh toán. Bạn sẽ có thể nhận hoặc hủy bỏ giao dịch.">Xem lại thanh toán</button>
+
+                <p class="help-block send-options" style="padding-top:10px">
+                    <b>Gửi tối đa giá trị gia tăng:</b> <span></span><br />
+                    <b>Giá trị tối thiểu Gửi:</b> <span></span><br />
+                    <b>Phí phần trăm mỗi lặp lại:</b> <span></span>%</br />
+                    <b>Phí tối thiểu mỗi lặp lại:</b> <span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 style="margin-bottom: 5px">Một cái gì đó đã xảy ra?</h4>
+
+        <p>
+                Khi gửi một giao dịch tiền chia sẻ một số địa chỉ trung gian được sử dụng. Nếu bất cứ điều gì interupts quá trình hoặc một lỗi ngăn chặn các giao dịch hoàn tất các đồng tiền có thể bị bỏ trong một địa chỉ trung gian. Nhấp vào nút bên dưới để yêu cầu bất kỳ đồng tiền còn lại trong địa chỉ trung gian, quá trình này có thể mất vài phút để hoàn thành.
+        </p>
+
+        <p>
+            <button class="btn" id="sharedcoin-recover">Khôi phục lại địa chỉ Trung cấp</button>
+        </p>
+    </div>
+</div>
+
+
+
+<div class="tab-pane well" id="send-custom">
+    <h4 class="page-header">Tùy biến giao dịch<br/><small>Sử dụng mẫu dưới đây để gửi một giao dịch tới một hoặc nhiều địa chỉ bitcoin. Bạn sẽ được hỏi để xem xét giao dịch trước khi hoàn thành giao dịch.</small></h4>
+
+    <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
+        <div class="control-group">
+            <label class="control-label pop" title="Từ địa chỉ" data-content="Bạn có thể chọn gửi từ một địa chỉ riêng trong ví của bạn.">Từ:</label>
+
+            <div class="controls">
+                <select name="from" multiple="multiple"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Tới:</label>
+
+            <div class="controls recipient-container">
+                <div class="recipient" style="margin-bottom:5px">
+                    <span class="qrcodeicon"><input placeholder="Địa chỉ Bitcoin" name="send-to-address" type="text"/><span></span></span>
+
+                    <div class="input-prepend input-append">
+                        <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left;padding-bottom:7px;padding-right:7px">
+                    <small>Total Value: <span class="amount-needed">0</span> (Available: <span class="amount-available">0</span>)</small>
+                </div>
+
+                <div style="float:right;padding-right:20px">
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Loại bỏ người nhận" data-content="Loại bỏ người nhận mới nhất."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Thêm người nhận" data-content="Nếu bạn muốn gửi bitcoin tới nhiều người nhận trong 1 lần nhấn vào đây để thêm các địa chỉ khác"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Phí thợ mỏ" data-content="Đây là phí sẽ để gửi bitcoin tới những thợ mỏ bitcoin và có thể giúp giao dịch của bạn được xử lý nhanh hơn">Phí thợ mỏ:</label>
+
+            <div class="controls">
+                <div class="input-prepend input-append" style="width:220px">
+                    <span class="add-on btc-symbol"></span><input class="span2" name="fees" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Thay đổi địa chỉ" data-content="Bất kì thay đổi nào từ giao dịch sẽ được gửi trở lại địa chỉ này">Thay đổi địa chỉ:</label>
+
+            <div class="controls">
+                <select name="change"></select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label pop" title="Lưu ý chung" data-content="Thêm lưu ý vào giao dịch này sẽ có thể được xem trên blockchain.info.">Lưu ý chung:</label>
+
+            <div class="controls">
+                <textarea name="public-note" placeholder="Tin này sẽ luôn được nhúng trên blockchain. Bất kì ai cũng có thể đọc nó." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="reset btn">Làm lại mẫu</button>
+            <button class="send btn btn-primary pop" title="Xem lại thanh toán" data-content="Nhấn vào đây để xem lại thanh toán. Bạn sẽ có thể nhận hoặc hủy bỏ giao dịch.">Xem lại thanh toán</button>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane well" id="address-book">
+
+    <h3>Sổ địa chỉ</h3>
+
+    <p>Sổ địa chỉ chứa danh sách của những địa chỉ đã gửi. Bạn có thể sử dụng nó để lưu các địa chỉ bitcoin của người bạn biết hoặc merchant mà bạn trao đổi thường xuyên.</p>
+
+    <table class="table table-striped" id="address-book-tbl">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Bitcoin Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockchain.info</td>
+            <td class="addr-book-entry">1JArS6jzE3AJ9sZ3aFij1BmTcpFGgN86hA</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <button id="add-address-book-entry-btn" class="btn btn-primary">Thêm mục nhập mới</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="import-export" style="display: none;">
+    <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
+        <h2>Cảnh báo nâng cao!</h2>
+
+        <p>Lựa cho này sẽ làm cho ví của bạn phức tạp và khó hiểu hơn. Đề nghị nếu bạn có hiểu biết nâng cao thì mới dùng tính năng này. Bạn phải hiểu khoá riêng là gì và nó có liên quan thế nào đến địa chỉ bitcoin</p>
+
+        <p align="right">
+            <button class="btn btn-primary" id="show-import-export">Tôi hiểu</button>
+        </p>
+    </div>
+
+    <div id="import-export-content" style="display:none;">
+
+
+
+
+<div class="row-fluid">
+<div class="span2">
+    <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">Nhập / Xuất</li>
+            <li class="active"><a href="#import" data-toggle="tab">Nhập</a></li>
+            <li><a href="#import-backup" data-toggle="tab">Nhập sao lưu</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">Nhập khẩu Wallet</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">Xuất mã hoá</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">Xuất không mã hoá</a></li>
+            <li><a class="paper-wallet-btn">Ví giấy</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span10">
+    <div class="tab-content">
+        <div class="tab-pane active" id="import">
+
+            
+
+            <div class="page-header">
+                <h3>Xem Chỉ Địa chỉ Bitcoin</h3>
+
+                <p>Bạn có thể thêm <font color="red">Watch Only</font> Bitcoin địa chỉ cho ví tiền của bạn. Bạn sẽ không thể gửi bitcoins từ địa chỉ này mà không có sau đó cung cấp các khóa riêng</p>
+
+                <div class="form-inline">
+                    <input placeholder="Bitcoin Địa chỉ" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Xem Chỉ Địa chỉ</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Nhập khẩu khoá cá nhân</h3>
+
+                <p>Nhập khẩu một khóa hiện có tin dưới đây. Tất cả các định dạng chính tư nhân được hỗ trợ.</p>
+
+                <div class="form-inline">
+                    <input placeholder="Private Key" id="import-private-key" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Thêm Private Key</button>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h3>Nhập khẩu Sử dụng Wallet Giấy</h3>
+
+                <p>Sử dụng webcam của bạn để quét mã QR từ một ví giấy</p>
+
+                <div class="form-inline">
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Quét Với ​​Webcam</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="import-backup">
+            <h3 class="page-header">Nhập sao lưu <small>Một danh sách các bản sao lưu ví có sẵn từ máy chủ lưu trữ đám mây của chúng tôi.</small></h3>
+
+            <table class="table table-striped well" style="margin-top:10px">
+                <thead>
+                <th>File Name</th>
+                <th>Sửa đổi lần cuối</th>
+                <th>Kích</th>
+                <th>Hành động</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="import-wallet">
+
+            <h3 class="page-header">Nhập khẩu Wallet</h3>
+
+            <p>Bạn có thể nhập phím trong một số định dạng khác nhau.</p>
+            <ul>
+                <li>Sao lưu mã hóa AES từ blockchain.info. (Phải được mã hóa với cùng một mật khẩu)</li>
+                <li>Plaintext JSON sao lưu từ blockchain.info</li>
+                <li>Kết quả từ <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
+                <li>Kết quả từ <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
+                <li>Kết quả từ <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+            </ul>
+
+            <p>Xin được biết hiện đang có một giới hạn của 400 khóa riêng cho mỗi ví. Đối với ví lớn trình duyệt của bạn có thể trở thành không phản hồi trong một vài phút.</p>
+
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Sao chép và dán dữ liệu ví của bạn vào khu vực này"></textarea>
+
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Nhập khẩu Wallet</button>
+        </div>
+
+        <div class="tab-pane" id="export-crypted">
+            <h3 class="page-header">Xuất khẩu <small>Dưới đây là khóa riêng của bạn AES mã hóa.</small></h3>
+
+            <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+
+            <p style="margin-top:10px">
+                <button class="btn btn-success download-backup-btn">Tải về sao lưu</button>
+            </p>
+        </div>
+
+        <div class="tab-pane" id="export-unencrypted">
+            <h3 class="page-header">Xuất khẩu không mã hóa <small>Dưới đây là khóa riêng của bạn ở định dạng JSON. Cảnh báo! Dữ liệu này không được mã hóa giữ nó an toàn.</small></h3>
+
+            <h6>Chọn tin định dạng chính:</h6>
+
+            <p>
+                <select id="export-priv-format">
+                    <option value="base58">Base58</option>
+                    <option value="sipa">Bitcoin-Qt Format</option>
+                    <option value="base64">Base64</option>
+                    <option value="hex">Hex</option>
+                    <option value="">Để khóa riêng được mã hóa</option>
+                </select>
+            </p>
+
+            <textarea name="textarea" id="json-unencrypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
+        </div>
+
+        <div id="watch-only-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h3>Thêm địa chỉ Bitcoin (chỉ để xem)</h3>
+            </div>
+            <div class="modal-body">
+                <p>Vui lòng xác nhận bạn muốn thêm <font color="red">Watch Only</font> địa chỉ <span class="address"></span>.</p>
+
+                <p>Một <font color="red">Watch Only</font> địa chỉ này có nghĩa là bạn chỉ có thể thực hiện giao dịch tại địa chỉ này. Trừ khi bạn có khóa riêng lưu ở nơi nào đó sau đó bạn không còn làm chủ các thanh toán của địa chỉ này.</p>
+
+                <p>Nếu bạn không có một ví giấy hoặc một chỗ sao lưu, bạn không nên rút tiền từ địa chỉ này hoặc hướng dẫn bất cứ ai gửi tiền tới địa chỉ này</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Huỷ bỏ</button>
+                    <button class="btn btn-primary">Tiếp tục</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-private-key-warning-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Cảnh báo nhập khẩu Tin chính</h3>
+            </div>
+            <div class="modal-body">
+                <p><b>Không bao giờ nhập một khóa bí mật từ một nguồn công cộng hoặc không đáng tin cậy.</b> Điều này bao gồm ví não chung, các cuộc thi và mua khóa riêng. Thay vào đó, chúng tôi khuyên bạn nên quét quan trọng, có nghĩa là để gửi tất cả các khoản tiền cho một trong những địa chỉ hiện tại của bạn chứ không phải là thực sự thêm một địa chỉ mới để ví của bạn.</p>
+                <h4 align="center" class="address padded"></h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Nhập vào trực tiếp</button>
+                    <button class="btn btn-primary">Quét khóa</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-password-modal" class="modal hide">
+            <div class="modal-header">
+                <h3>Ví Mật khẩu</h3>
+            </div>
+            <div class="modal-body">
+                <p>Nếu ví này được mã hóa xin vui lòng nhập mật khẩu dưới đây. Nếu không để trống.</p>
+                <p align="center">
+                    <b>Ví Mật khẩu:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary">Tiếp tục</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="compressed-private-key-modal" class="modal hide">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Phát hiện nén khóa riêng</h3>
+            </div>
+
+            <div class="modal-body">
+                <p>Nén khóa riêng hiện tại không hỗ trợ sử dụng ứng dụng Android, ứng dụng iPhone hoặc API Merchant. Nếu bạn nhập vào trực tiếp một khóa riêng đã nén, bạn sẽ không thể trả tiền cho địa chỉ sử dụng thiết bị được liệt kê trước đó.</p>
+
+                <p>Giải pháp được khuyên dùng là quét quỹ trong địa chỉ bitcoin đang tồn tại. Bạn có muốn quét thêm cả khóa riêng không?</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary">Nhập vào trực tiếp</button>
+                    <button class="btn btn-primary">Quét khóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+
+<div id="main-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Main mật khẩu cần thiết</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Hành động này yêu cầu bạn nhập lại mật khẩu chính của bạn. Xin vui lòng nhập nó một cách cẩn thận hoặc bạn có thể được đăng nhập.</p>
+
+        <div style="width:290px;margin: 0 auto;">
+            <p><b>Main Mật khẩu:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button> <button class="btn btn-primary">Tiếp tục</button>
+        </div>
+    </div>
+</div>
+
+<div id="second-password-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Cần một mật khẩu thứ 2</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Hành động này cần bạn nhập vào một mật khẩu thứ hai, để cần thiết cho việc giải mã đầy đủ ví của bạn. Bạn không bao giờ nhập mật khẩu thứ 2 vào một máy tính không tin cậy. Sử dung một bàn phím ảo để tránh bị keylogger.</p>
+
+        <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
+
+        <div style="width:435px;height:105px;margin:0 auto;" class="hidden-phone">
+            <ul class="vkeyboard">
+                <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                <li class="delete lastitem">delete</li>
+                <li class="tab">tab</li>
+                <li class="letter">q</li>
+                <li class="letter">w</li>
+                <li class="letter">e</li>
+                <li class="letter">r</li>
+                <li class="letter">t</li>
+                <li class="letter">y</li>
+                <li class="letter">u</li>
+                <li class="letter">i</li>
+                <li class="letter">o</li>
+                <li class="letter">p</li>
+                <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                <li class="capslock">caps lock</li>
+                <li class="letter">a</li>
+                <li class="letter">s</li>
+                <li class="letter">d</li>
+                <li class="letter">f</li>
+                <li class="letter">g</li>
+                <li class="letter">h</li>
+                <li class="letter">j</li>
+                <li class="letter">k</li>
+                <li class="letter">l</li>
+                <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                <li class="return lastitem">return</li>
+                <li class="left-shift">shift</li>
+                <li class="letter">z</li>
+                <li class="letter">x</li>
+                <li class="letter">c</li>
+                <li class="letter">v</li>
+                <li class="letter">b</li>
+                <li class="letter">n</li>
+                <li class="letter">m</li>
+                <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                <li class="right-shift lastitem">shift</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button> <button class="btn btn-primary">Tiếp tục</button>
+        </div>
+    </div>
+</div>
+
+<div id="label-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Nhãn địa chỉ</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Nhập vào một nhãn địa chỉ <span class="address"></span></p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Nhãn:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Nhãn ví dụ: Tiết kiệm" type="text" /><p class="help-block">Nhãn sẽ giúp bạn nhớ những địa chỉ cho mục đích nào đó. Nó có thể là tên người hoặc công ty.</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Làm cho công cộng?</label>
+                <div class="controls">
+                    <input name="make_public" type="checkbox" /><p class="help-block">Theo địa chỉ định nhãn có thể nhìn thấy chỉ có bạn. Nhãn nào là công khai có thể nhìn thấy trên trang web blockchain và có thể được xem bởi bất cứ ai.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button> <button class="btn btn-primary">Lưu</button>
+        </div>
+    </div>
+</div>
+
+<div id="sign-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Ký tin nhắn</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Sử dụng công cụ này để kí tin nhắn sẽ chứng minh bạn là chủ của một địa chỉ. Chỉ kí vào tin nhắn khi bạn hoàn toàn đồng ý, không bao giờ ký một thông điệp mơ hồ. Nhấn và ký tin nhắn có thể làm trình duyệt của bạn không phản hồi trong một vài giây.</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Địa chỉ:</label>
+                <div class="controls">
+                    <p class="address"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Tin nhắn:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Nhập vào tin nhắn bạn muốn ký"></textarea>
+                </div>
+            </div>
+            <div class="control-group signature" style="display:none">
+                <label class="control-label">Chữ ký:</label>
+                <div class="controls">
+                    <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Ký tin nhắn</button>
+        </div>
+    </div>
+</div>
+
+<div id="verify-message-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Xác thực tin nhắn</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Sử dụng công cụ này để xác thực tin nhắn được ký bởi chủ của một địa chỉ bitcoin cụ thể</p>
+
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Địa chỉ:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Địa chỉ Bitcoin" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Tin nhắn:</label>
+                <div class="controls">
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="Nhập vào tin nhắn để xác thực"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Chữ ký:</label>
+                <div class="controls">
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="Nhập vào chữ ký để xác thực"></textarea>
+                </div>
+            </div>
+            <div class="control-group address-result" style="display:none">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <span class="address-result-txt"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Xác thực tin nhắn</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>Mã địa chỉ QR <small class="address"></small></h3>
+    </div>
+
+    <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
+        <div style="width:300px;height:300px;margin: 0 auto;" class="address-qr-code"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Đóng lại</button>
+        </div>
+    </div>
+</div>
+
+<div id="add-address-book-entry-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Thêm một sổ địa chỉ</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Địa chỉ:</label>
+                <div class="controls">
+                    <input name="address" placeholder="Địa chỉ Bitcoin" type="text">
+                    <p class="help-block">Nhập vào một địa chỉ Bitcoin bạn muốn thêm vào sổ địa chỉ.</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Nhãn:</label>
+                <div class="controls">
+                    <input name="label" placeholder="Tên của người hoặc merchant" type="text" />
+                    <p class="help-block">Nhập vào nhãn cho địa chỉ này. Ví dụ: tên của một người hoặc tên của công ty.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Thêm địa chỉ</button>
+        </div>
+    </div>
+</div>
+
+<div id="not-synced-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Địa chỉ chưa được lưu</h3>
+    </div>
+    <div class="modal-body">
+        <p>Một địa chỉ mới được tạo ra đã không được lưu trên các máy chủ của chúng tôi. <span style="color:red;font-weight:bold;">Trừ khi các khóa riêng được lưu ở nơi khác bất kỳ đồng tiền gửi đến địa chỉ chưa được đồng bộ hóa sẽ được vĩnh viễn mất đi sau khi đăng xuất</span></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-danger">Hiện chưa lưu Địa chỉ</button>
+            <button class="btn btn-primary" data-dismiss="modal">Đóng lại</button>
+        </div>
+    </div>
+</div>
+
+<div id="watch-only-copy-warning-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3 style="color:red;">Xem cảnh bảo địa chỉ duy nhất</h3>
+    </div>
+    <div class="modal-body">
+        <p>Bạn nhận được cảnh báo này vì bạn đã sao chép một <font color="red">Watch Only</font> địa chỉ vào bộ nhớ đệm.</p>
+
+        <p>Một <font color="red">Watch Only</font> địa chỉ này có nghĩa là bạn chỉ có thể thực hiện giao dịch tại địa chỉ này. Trừ khi bạn có khóa riêng lưu ở nơi nào đó sau đó bạn không còn làm chủ các thanh toán của địa chỉ này.</p>
+
+        <p><b>Nếu bạn không có một ví giấy hoặc một chỗ sao lưu, bạn không nên rút tiền từ địa chỉ này hoặc hướng dẫn bất cứ ai gửi tiền tới địa chỉ này</b></p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary" data-dismiss="modal">Đóng lại</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Xác nhận xóa</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">Xóa một địa chỉ không chính xác sẽ gây ra tổn thất tài chính. Nếu bạn không chắc chắn những gì bạn đang làm, nhấn vào huỷ bây giờ</div>
+
+        <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
+
+        <p>
+            Bạn có chắc chắn muốn bỏ địa chỉ này? Bạn sẽ không thể gửi và nhận bitcoin từ địa chỉ này được nữa. Số dư của địa chỉ này là:
+        </p>
+
+        <h2 align="center" id="delete-balance"></h2>
+
+        <h2 id="change-mind" style="display:none;text-align:center">Bạn có  <span id="change-mind-time">5</span> giây để thay đổi quyết định...</h2>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Chỉ xóa khóa riêng</button>
+            <button class="btn btn-danger">Xóa khóa riêng và địa chỉ</button>
+        </div>
+    </div>
+</div>
+
+<div id="sweep-address-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Quét phím</h3>
+    </div>
+    <div class="modal-body">
+        <p>Quét có nghĩa là bỏ tất cả các quỹ có giá trị trong một hoặc nhiều địa chỉ tới địa chỉ khác. Vui lòng chọn một địa chỉ mà bạn muốn chọn để quét (Số dư <span class="balance"></span>).</p>
+
+        <p align="center">
+        <div class="form-inline">
+            <label class="control-label">Quét tới:</label> <br /><select name="change"></select>
+        </div>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Tiếp tục</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="sharedcoin-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Chia sẻ Coin giao dịch</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-block alert-error">
+            Đã xảy ra lỗi hoàn thành giao dịch này xu chia sẻ. Để biết thêm thông tin xin vui lòng kiểm tra các giao diện điều khiển javascript.
+        </div>
+
+        <div class="alert alert-block alert-warning">
+            Giao dịch được tiến hành. Không đóng cửa sổ này hoặc thoát khỏi trình duyệt của bạn.
+        </div>
+
+        <p align="center" class="loading-indicator" style="display:none;padding:10px;">
+            <img src="/Resources/loading-large.gif"><br /><br /><span class="loading-text" style="font-weight:bold;font-size:16px;"></span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
+
+            <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+        </div>
+    </div>
+</div>
+
+<div id="insufficient-funds" class="modal hide">
+    <div class="modal-header">
+        <h3>Thiếu Quỹ</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Giao dịch này không có thể được gửi vì có quỹ insufficent có sẵn. Điều này có thể do thợ mỏ thêm phí hoặc giao dịch chưa được xác nhận.</p>
+
+        <p>Giao dịch có thể bị hủy bỏ. Hoặc số tiền gửi có thể được điều chỉnh để phù hợp với số tiền tối đa có sẵn để gửi.</p>
+    </div>
+
+    <h3 align="center" style="padding-bottom:10px">Yêu cầu: <span class="amount-required"></span> (Có sẵn: <span class="amount-available"></span>)</h3>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Hủy bỏ giao dịch</button>
+            <button class="btn btn-primary">Điều chỉnh lượng</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-for-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Phí trộn khuyên dùng</h3>
+    </div>
+    <div class="modal-body">
+        <p>Giao dịch này là ưu tiên thấp. Chúng tôi đề nghị bạn bao gồm ít nhất một khoản phí giao dịch 0.0001 BTC để đảm bảo thợ mỏ xử lý nó.</p>
+        <div class="alert alert-block alert-error">Nếu bạn không thêm một khoản phí, giao dịch này sẽ mất một khoảng thời gian dài để xác nhận. Và tiền của bạn sẽ được trả lại trong xấp xỉ 24 giờ.</div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Tiếp tục mà không cần phí</button>
+            <button class="btn btn-primary">Thêm phí</button>
+        </div>
+    </div>
+</div>
+
+<div id="ask-to-increase-fee" class="modal hide">
+    <div class="modal-header">
+        <h3>Phí cao Đê</h3>
+    </div>
+    <div class="modal-body">
+        <p>Bạn chỉ định một khoản phí tùy chỉnh của <span></span> tuy nhiên lệ phí đề nghị cho giao dịch này là <span></span>. Bạn muốn sử dụng lệ phí đề nghị để thay thế?</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Phí sử dụng tùy chỉnh</button>
+            <button class="btn btn-primary">Sử dụng đề nghị Phí</button>
+        </div>
+    </div>
+</div>
+
+<div id="new-transaction-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Tạo giao dịch mới</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center" class="loading-indicator" style="display:none;">
+            <img src="/Resources/ajax-loader.gif"><br /><span class="loading-text"></span>
+        </p>
+
+        <div class="offline-transaction" style="display:none">
+            <p>Giao dịch của bạn đã được tạo thành công nhưng vẫn chưa được đưa lên mạng p2p. </p>
+
+            Để hoàn thành giao dịch, mở <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>. Sao chép và dán đoạn mã dưới đây và nhấn vào nút đệ trình để hoàn thành giao dịch.</p>
+
+            <textarea name="data" style="width: 100%; height:100px;"></textarea>
+        </div>
+
+        <div id="tx-sign-progress" style="display:none">
+            <h4>Vui lòng đợi. Nhập vào số <span class="n">0</span> trong số <span class="t"></span>...</h4>
+        </div>
+
+        <div id="review-tx" style="display:none">
+            <div class="basic">
+                <p>Vui lòng xác nhận rằng bạn muốn <span id="rtc-basic-summary"></span></p>
+            </div>
+
+            <div class="adv">
+                <p>Vui lòng kiểm tra chi tiết dưới đây:</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td width="110px;"><b>Hash</b></td>
+                        <td id="rtc-hash"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Phiên bản</b></td>
+                        <td id="rtc-version">1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Nhập vào</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Đầu ra</b></td>
+                        <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Tổng phí</b></td>
+                        <td id="rtc-fees">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Tổng giá trị đầu ra</b></td>
+                        <td id="rtc-value">0</td>
+                    </tr>
+                    <tr>
+                        <td><b>Rời bỏ ví</b></td>
+                        <td id="rtc-effect" style="color: red">0</td>
+                    </tr>
+                </table>
+            </div>
+            <p align="right"><a class="show_adv"></a></p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Gửi giao dịch</button>
+        </div>
+    </div>
+</div>
+
+<div id="send-email-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Gửi qua thư</h3>
+    </div>
+
+    <div class="modal-body">
+        <h3 style="padding-bottom:25px">
+            Gửi <span class="amount"></span> đến <span class="email"></span> <br /> <small>Thông báo sau sẽ được gửi đến người nhận.</small>
+        </h3>
+
+        <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Gửi thanh toán</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="private-key-modal" class="modal hide">
+    <div class="modal-header">
+        <h3>Cần khóa riêng</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>Hành động này cần khóa riêng của địa chỉ bitcoin <span class="address" style="font-weight:bold"></span>. Nhập vào khóa riêng dưới đây.</p>
+
+        <div style="width:400px;padding-left:20px;">
+            <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+            <button class="btn btn-primary">Nhập vào khóa riêng</button>
+        </div>
+    </div>
+</div>
+
+<div id="qr-code-reader-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Quét mã QR</h3>
+    </div>
+
+    <div class="modal-body" style="padding-left:20px;overflow:hidden;">
+        <div class="qr-code-reader" align="center"></div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+        </div>
+    </div>
+</div>
+
+<div id="decrypting-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <h3>Vui lòng đợi ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Chính kéo dài. Xin vui lòng chờ đợi ..
+        </p>
+
+        <div class="progress progress-striped active" align="center">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="restore-backup-modal" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Khôi phục Hướng dẫn Sao lưu</h3>
+    </div>
+
+    <div class="modal-body">
+        <p>
+            A wallet backup contains everything you need to restore your bitcoins even if the blockchain.info website is offline. Your browser will automatically cache your latest wallet backup. The following instructions explain how to restore a backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Online</h4>
+
+        <p>
+            Use the <a href="https://blockchain.info/wallet/import-wallet" target="new">Import wallet tool</a> to create a new wallet from an existing backup.
+        </p>
+
+        <h4 class="page-header">Blockchain.info Is Offline</h4>
+
+        <p>
+        <ul>
+            <li>Download the <a href="https://blockchain.info/r?url=https://multibit.org">Multibit</a> desktop client available for Windows, Mac OSX and Linux.</li>
+            <li>Launch the application. Choose Tools -> Import Private Keys.</li>
+            <li>Click the "Choose Import File" button and navigate to your wallet.aes.json file. Change the file format to *.aes.json and open the file.</li>
+            <li>Enter the wallet password and press unlock. If required enter the second password and press unlock again.</li>
+            <li>Click The Import Private Keys Button to complete the process. Your balance will be restored once the blockchain has downloaded.</li>
+        </ul>
+        </p>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-secondary">Huỷ bỏ</button>
+        </div>
+    </div>
+</div>
+
+<div id="import-private-key-password" class="modal hide">
+    <div class="modal-header">
+        <h3>Mã hóa khóa riêng</h3>
+    </div>
+    <div class="modal-body">
+        <p>Một khóa bí mật được mã hóa đã được phát hiện. Xin vui lòng nhập vào mã hóa mật khẩu dưới đây:</p>
+        <p align="center">
+            <b>Mật khẩu::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary">Tiếp tục</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
