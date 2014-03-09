@@ -97,9 +97,7 @@ cp $RESOURCE_DIR/app-overrides.css ./Resources/
 
 #flags
 mkdir ./Resources/flags/
-cp $RESOURCE_DIR/flags/us.png ./Resources/flags/
-cp $RESOURCE_DIR/flags/gb.png ./Resources/flags/
-cp $RESOURCE_DIR/flags/eu.png ./Resources/flags/
+cp $RESOURCE_DIR/flags/*.png ./Resources/flags/*
 
 #wallet resource
 mkdir ./Resources/wallet/
