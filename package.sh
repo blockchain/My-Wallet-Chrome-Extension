@@ -7,7 +7,7 @@ cd ../
 cd ./My-Wallet-Chrome-Extension/extension
 
 WEB_CONTENT="../../website/WebContent"
-DOWNLOAD_HTML=true;
+DOWNLOAD_HTML=false;
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
 if $DOWNLOAD_HTML ; then
@@ -97,7 +97,7 @@ cp $RESOURCE_DIR/app-overrides.css ./Resources/
 
 #flags
 mkdir ./Resources/flags/
-cp $RESOURCE_DIR/flags/*.png ./Resources/flags/*
+cp $RESOURCE_DIR/flags/*.png ./Resources/flags/
 
 #wallet resource
 mkdir ./Resources/wallet/
