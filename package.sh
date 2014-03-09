@@ -85,6 +85,7 @@ cp $RESOURCE_DIR/sharedcoin_logo_circle.png ./Resources/
 cp $RESOURCE_DIR/loading-large.gif ./Resources/
 
 #Temp Ads
+mkdir ./Resources/partners/
 cp $RESOURCE_DIR/partners/bitcoinstore-logo-small.png ./Resources/partners/
 cp $RESOURCE_DIR/partners/gyft-logo-white.png ./Resources/partners/
 
