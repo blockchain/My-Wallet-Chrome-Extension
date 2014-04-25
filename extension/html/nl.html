@@ -162,7 +162,7 @@
         </h3>
 
         <p>
-            Voer hieronder uw mobiele telefoonnummer in. Internationale SMS-berichten zijn soms onbetrouwbaar en mogelijk niet beschikbaar voor bepaalde landen en netwerken.
+            Voer hieronder uw mobiele telefoonnummer in. Internationale SMS-berichten zijn soms onbetrouwbaar en zijn mogelijk niet beschikbaar voor bepaalde landen en netwerken.
         </p>
 
         <p class="form-inline">
@@ -274,7 +274,7 @@
                 <input type="radio" name="fee-policy" value="0"><b>Normaal</b> - Volg het kostenbeleid voorgesteld door de primaire bitcoin client. <font color="green">Aanbevolen</font>.
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="1"><b>Hoog</b> - De Kosten zullen gebruikt worden om ervoor te zorgen dat uw transacties hoge prioriteit hebben (0,001 BTC Basiskosten).
+                <input type="radio" name="fee-policy" value="1"><b>Hoog</b> - De kosten zullen gebruikt worden om ervoor te zorgen dat uw transacties hoge prioriteit hebben (0,001 BTC basiskosten).
             </label>
         </p>
     </div>
@@ -282,7 +282,7 @@
     <div class="page-header">
         <h3>Automatische e-mail back-ups</h3>
         <p>
-            Vink dit aan om een ​​nieuwe back-up automatisch te ontvangen als u uw portemonnee updatet: <input id="auto-email-backup" type="checkbox"/>
+            Vink dit aan om een ​​nieuwe back-up automatisch te ontvangen als u uw portemonnee bijwerkt: <input id="auto-email-backup" type="checkbox"/>
         </p>
     </div>
 </div>
@@ -348,7 +348,7 @@
 
             <div class="well type-32" style="display:none">
                 <p>
-                    Voer hieronder uw mobiele telefoonnummer in. Internationale SMS-berichten zijn soms onbetrouwbaar en mogelijk niet beschikbaar voor bepaalde landen en netwerken.
+                    Voer hieronder uw mobiele telefoonnummer in. Internationale SMS-berichten zijn soms onbetrouwbaar en zijn mogelijk niet beschikbaar voor bepaalde landen en netwerken.
                 </p>
 
                 <p class="form-inline">
@@ -389,7 +389,7 @@
                 <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
             </div>
 
-            <input type="checkbox" value="4"> <b>Http notificaties</b><br/>
+            <input type="checkbox" value="4"> <b>HTTP notificaties</b><br/>
 
             <div class="well type-4" style="display:none">
                 <p>HTTP Notificaties zullen worden verzonden wanneer transacties worden verzonden of ontvangen. Zie de ontwikkelaars sectie voor een handleiding voor de uitvoering van de callback.</p>
@@ -443,7 +443,7 @@
 <div class="tab-pane" id="account-logging">
     <h3 class="page-header">Log Niveau</h3>
 
-    <p>Het logniveau bepaalt welke gegevens worden geregistreerd wanneer uw acties uitvoert met uw portemonnee. Standaard is het log uitgeschakeld, afgezien van adminhandelingen. Het inschakelen van het log biedt een betere beveiliging door het verstrekken van meer informatie over potentiële onbevoegde toegang tot uw portemonnee, maar hiervoor wordt wel wat privacy opgeofferd.</p>
+    <p>Het logniveau bepaalt welke gegevens worden geregistreerd wanneer u acties uitvoert met uw portemonnee. Standaard is het log uitgeschakeld, afgezien van adminhandelingen. Het inschakelen van het log biedt een betere beveiliging door het verstrekken van meer informatie over potentiële onbevoegde toegang tot uw portemonnee, maar hiervoor wordt wel wat privacy opgeofferd.</p>
 
     <p>
         <select id="logging-level">
@@ -679,7 +679,7 @@
             <b>SMS-bericht</b>
 
             <p>
-                Voer hieronder uw mobiele telefoonnummer in. Internationale SMS-berichten zijn soms onbetrouwbaar en mogelijk niet beschikbaar voor bepaalde landen en netwerken.
+                Voer hieronder uw mobiele telefoonnummer in. Internationale SMS-berichten zijn soms onbetrouwbaar en zijn mogelijk niet beschikbaar voor bepaalde landen en netwerken.
             </p>
 
             <p class="form-inline">
@@ -1367,7 +1367,9 @@
 
                 <div class="controls">
                     <select name="repetitions"><option value="0">Laden</option></select>
-                    <p class="help-block">Een hoger aantal herhalingen maakt de transactie moeilijker te traceren en verbetert privacy.</p>
+                    <p class="help-block">Een hoger aantal herhalingen maakt de transactie moeilijker te traceren en verbetert privacy.<br />
+                        <div style="margin-top:3px"><small><input type="checkbox" name="shared-coin-donate" style="position:relative;bottom:4px;" checked> Check to donate an additional 0.1% of your transaction to help fund further improvements to Blockchain's free service.</small></div>
+                    </p>
                 </div>
             </div>
 

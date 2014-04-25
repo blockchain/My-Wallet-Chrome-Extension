@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Wallet - Be Your Own Bank - Blockchain.info</title>
+    <title>我的钱包 - 您自己的银行 - Blockchain.info</title>
     <meta name="robots" content="noindex">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="/Resources/bootstrap.min.css"><link rel="stylesheet" href="/Resources/bootstrap-responsive.min.css"><link rel="stylesheet" href="/Resources/overrides.min.css?"><script src="/Resources/wallet/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="/Resources/wallet/bootstrap.min.js"></script><script src="/Resources/wallet/shared.min.js?" type="text/javascript"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -38,9 +38,9 @@
         <div class="row-fluid">
             <div class="span12">
                 <h1>
-                    <span class="hidden-phone">My Wallet <small>Be Your Own Bank.</small></span>
+                    <span class="hidden-phone">我的钱包 <small>您自己的银行.</small></span>
 
-                    <div style="display:none;" id="large-summary" class="pop pull-right" title="Your Balance" data-content="This shows the balance of your bitcoin wallet. You may not be able to spend this amount until all transactions are confirmed.">
+                    <div style="display:none;" id="large-summary" class="pop pull-right" title="您的帐户余额" data-content="这是您比特币钱包的余额。在所有的进行中的交易完成确认之前，部分金额可能无法使用。">
                         <span id="balance"></span>
                         <small id="balance2">0</small>
                     </div>
@@ -51,15 +51,15 @@
         <div class="row-fluid" style="margin-top:10px">
             <div class="span12 no-print">
                 <ul class="nav nav-pills pull-left" style="margin-bottom: 3px">
-                    <li><a id="home-intro-btn">Wallet Home</a></li>
-                    <li><a id="my-transactions-btn">My Transactions</a></li>
-                    <li><a id="send-coins-btn">Send Money</a></li>
-                    <li><a id="receive-coins-btn">Receive Money</a></li>
-                    <li><a class="hidden-phone" id="import-export-btn">Import / Export</a></li>
+                    <li><a id="home-intro-btn">钱包首页</a></li>
+                    <li><a id="my-transactions-btn">我的交易</a></li>
+                    <li><a id="send-coins-btn">付款</a></li>
+                    <li><a id="receive-coins-btn">收款</a></li>
+                    <li><a class="hidden-phone" id="import-export-btn">导入/导出</a></li>
                 </ul>
 
                 <h6 class="pull-right" id="status-container">
-                    <span style="display: none" class="loading-indicator"><span class="loading-text">Loading</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
+                    <span style="display: none" class="loading-indicator"><span class="loading-text">载入中……</span> <img style="vertical-align:middle" src="/Resources/ajax-loader.gif"></span>
                 </h6>
             </div>
         </div>
@@ -76,12 +76,12 @@
 
 <div id="my-account" style="display:none;">
     <div style="width:400px;margin:50px auto;" class="well" id="account-settings-warning">
-        <h2>Sensitive Data</h2>
+        <h2>私密数据</h2>
 
-        <p>Account Settings displays sensitive data which should not be shown to other people. It is recommended you do not open this section in public places or take screenshots of this section.</p>
+        <p>「账户设置」中将显示许多不可向他人公开的私密信息。非常不建议您在公共场所打开此页面或对页面进行任何截图操作。</p>
 
         <p align="right">
-            <button class="btn btn-primary" id="show-account-settings">Continue</button>
+            <button class="btn btn-primary" id="show-account-settings">继续</button>
         </p>
     </div>
 
@@ -91,26 +91,26 @@
 
 
 <h2>
-    Account Settings <small>Change your My Wallet account settings.</small>
+    帐户设置 <small>更改「我的钱包」帐户设置。</small>
 </h2>
 
 <div class="row-fluid">
 <div class="span2">
     <div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list">
-            <li class="nav-header">Account Information</li>
-            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> Personal</a></li>
-            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> General</a></li>
-            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> Display</a></li>
-            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> Notifications</a></li>
+            <li class="nav-header">帐户信息</li>
+            <li class="active"><a href="#account-information" data-toggle="tab"><i class="icon-user"></i> 用户</a></li>
+            <li><a href="#account-general" data-toggle="tab"><i class="icon-wrench"></i> 通用</a></li>
+            <li><a href="#account-display" data-toggle="tab"><i class="icon-eye-open"></i> 显示</a></li>
+            <li><a href="#account-notifications" data-toggle="tab"><i class="icon-bell"></i> 通知</a></li>
 
             <li class="divider"></li>
-            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> Passwords</a></li>
-            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> Security</a></li>
-            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> Logging</a></li>
-            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> Devices</a></li>
+            <li><a href="#account-passwords" data-toggle="tab"><i class="icon-tasks"></i> 密码</a></li>
+            <li><a href="#account-security" data-toggle="tab"><i class="icon-lock"></i> 安全</a></li>
+            <li><a href="#account-logging" data-toggle="tab"><i class="icon-info-sign"></i> 记录</a></li>
+            <li><a href="#account-devices" data-toggle="tab"><i class="icon-qrcode"></i> 设备</a></li>
             <li class="divider"></li>
-            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> Debugging</a></li>
+            <li><a href="#account-debug" data-toggle="tab"><i class="icon-ok" style="background:url(/Resources/bug-16.png) center; background-size:contain;"></i> 调试</a></li>
         </ul>
     </div>
 </div>
@@ -118,98 +118,98 @@
 <div class="tab-content">
 <div class="active tab-pane" id="account-information">
     <div class="page-header">
-        <h3>Email <small style="color:green">(Recommended)</small></h3>
+        <h3>电子邮件 <small style="color:green">(推荐)</small></h3>
 
         <p>
-            An email is needed to help recover a lost wallet identifier and for payment notifications.<br/>
+            恢复钱包身份码或接收付款通知都将通过您的电子邮箱完成。<br/>
         </p>
 
         <p>
-            <input placeholder="Your Email" id="wallet-email" type="text"/>
+            <input placeholder="您的电子邮件地址" id="wallet-email" type="text"/>
         </p>
 
         <p class="email-verified">
-            <font color="green">Email Verified</font>
+            <font color="green">电子邮件已验证</font>
         </p>
 
         <div class="email-unverified">
-            <b>Email Verification Code:</b><br/><br/>
+            <b>电子邮件验证码：</b><br/><br/>
 
             <div class="form-inline">
                 <input placeholder="Email Verification Code" id="wallet-email-code" type="text"/>
-                <button class="btn">Verify</button>
-                <button class="btn" id="wallet-email-send">Resend Link</button>
+                <button class="btn">验证</button>
+                <button class="btn" id="wallet-email-send">重新发送链接</button>
             </div>
-            <br/> <font color="red">Email Not Verified</font>
+            <br/> <font color="red">电子邮件未验证</font>
         </div>
     </div>
 
     <div class="page-header email-verified">
-        <h3>Alias  <small>(Optional)</small></h3>
+        <h3>账户短名  <small>(可选)</small></h3>
         <p>
-            An alias is short link which can be memorized for quick access to your account without needing to remember an identifier<br/>
+            账户短名是一种无需记住钱包身份码便可快速访问帐户的短链接。<br/>
         </p>
 
         <p>
-            <input placeholder="A Nickname or other memorable word" id="wallet-alias" type="text"/>
+            <input placeholder="个人昵称或其他难以遗忘的代号" id="wallet-alias" type="text"/>
         </p>
 
         <pre class="alias" style="display:none"></pre>
     </div>
 
     <div class="page-header">
-        <h3>Mobile Number <small>(Optional)</small>
+        <h3>手机号码 <small>(可选)</small>
         </h3>
 
         <p>
-            Please enter Your Mobile Phone number below. International SMS messaging can sometimes be unreliable and may not be available to some countries and networks.
+            请在下面输入您的手机号码。国际短信有时并不可靠，在一些国家与网络中无法使用。
         </p>
 
         <p class="form-inline">
-            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Send SMS Code</button>
+            <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">发送短信验证码</button>
         </p>
 
         <p class="sms-verified">
-            <font color="green">SMS Verified</font>
+            <font color="green">短信已验证</font>
         </p>
 
         <div class="sms-unverified well">
-            <p>Enter the code contained within verification sms message.</p>
-            <p class="form-inline"><input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Verify</button> </p>
+            <p>请输入手机短信内包含的验证码。</p>
+            <p class="form-inline"><input placeholder="短信验证码" class="wallet-sms-code" type="text"/> <button class="btn">验证</button> </p>
         </div>
     </div>
 </div>
 
 <div class="tab-pane" id="account-debug">
     <div class="page-header">
-        <h3>Integrity Check</h3>
+        <h3>完整性检查</h3>
 
-        <p>Checks all keys in your wallet match the correct bitcoin address and re-encrypts your wallet. This may take a long time in some browsers.</p>
+        <p>检查你钱包中的所有私钥与比特币地址的匹配情况，并重新加密您的钱包。在某些浏览器中，可能需要较长的处理时间。</p>
 
         <p>
-            <button class="btn" id="run-key-check">Run</button>
+            <button class="btn" id="run-key-check">运行</button>
         </p>
     </div>
     <div class="page-header">
-        <h3>Check Compressed</h3>
+        <h3>压缩检查</h3>
 
-        <p>Checks the balance of both compressed and uncompressed versions of all private keys to verify there is no transactions which can be redeemed not shown in the main wallet balance.</p>
+        <p>检查所有压缩以及尚未压缩的私钥数据，以检查是否存在未被正确显示的有效资金。</p>
 
         <p>
-            <button class="btn" id="run-compressed-check">Run</button>
+            <button class="btn" id="run-compressed-check">运行</button>
         </p>
     </div>
 
     <div class="page-header">
-        <h3>PBKDF2 Iterations</h3>
+        <h3>PBKDF2 迭代</h3>
 
-        <p>PBKDF2 is a function which stretches your password increasing the effort required to bruteforce it. A higher number of iterations is better however you may notice a slow down of your browser.</p>
+        <p>PBKDF2是一种通过延展密码长度提高暴力破解难度的加密算法。更高的迭代次数固然更好，但运算时也更容易导致您的浏览器性能降低。</p>
 
-        <p><b>Changing this value can cause compatability issues between old clients which don't support the new wallet encryption format.</b></p>
+        <p><b>更改此值会引起老客户不支持新电子钱包加密格式的兼容性问题。</b></p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Iterations:</label>
+                <label class="control-label">迭代次数:</label>
 
                 <div class="controls">
                     <select id="pbkdf2-iterations">
@@ -229,60 +229,60 @@
 <div class="tab-pane" id="account-general">
 
     <div class="page-header">
-        <h3>Handle Bitcoin Links</h3>
+        <h3>比特币链接打开方式</h3>
 
-        <p>Would you like to set blockchain.info as the default handler of bitcoin links? Bitcoin links (URIs) are used to automatically enter a recipient bitcoin address and send value when clicked.</p>
+        <p>您希望将blockchain.info设置为默认的比特币链接处理程序么？ 比特币链接（URI）是一种点击后可自动输入比特币地址与金额的超链接。</p>
 
-        <button class="btn btn-secondary" id="register-uri-handler">Register URI Handler</button>
+        <button class="btn btn-secondary" id="register-uri-handler">注册URI处理程序</button>
     </div>
 
     <div class="page-header">
-        <h3>Inactivity Logout</h3>
+        <h3>闲置登出</h3>
 
         <p>
-            By default you will be automatically be logged out of your wallet account after 10 minutes of inactivity. You can adjust the timeout period below.
+            默认情况下，你的钱包账户闲置10分钟后将自动登出。您可以在此调整超时间隔。
         </p>
 
         <p style="padding-left:10px">
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="inactivity-logout-time" value="300000"><b>5 Minutes</b>
+                <input type="radio" name="inactivity-logout-time" value="300000"><b>5分钟</b>
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="inactivity-logout-time" value="600000"><b>10 Minutes</b>
+                <input type="radio" name="inactivity-logout-time" value="600000"><b>10分钟</b>
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30 Minutes</b>
+                <input type="radio" name="inactivity-logout-time" value="1800000"><b>30分钟</b>
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="inactivity-logout-time" value="86400000"><b>Never</b>
+                <input type="radio" name="inactivity-logout-time" value="86400000"><b>尚未有任何活动</b>
             </label>
         </p>
     </div>
 
     <div class="page-header">
-        <h3>Default Fee Policy</h3>
+        <h3>默认的交易费策略</h3>
 
         <p>
-            Blockchain.info transactions are free of charge. However the bitcoin network may require an additional Miners Fee which affects the speed your transactions are verified and helps support the network. Change the settings below to alter the default Miners Fee Policy.
+            Blockchain.info的交易功能本身是免费的。但比特币网络可能要收取额外的的矿工费用，这不只影响您交易验证的优先级，同时也会为矿工及网络的发展提供助力。更改以下设置来改变默认的交易费策略。
         </p>
 
         <p style="padding-left:10px">
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="-1"><b>Frugal</b> - A Miners fee will not be included unless absolutely essential. <font color="red">Transactions will be significantly slower to confirm</font>.
+                <input type="radio" name="fee-policy" value="-1"><b>节俭模式</b> - 不支付交易费用，除非在绝对必要的情况下。 <font color="red">交易的确认速度将大大变慢</font>.
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="0"><b>Normal</b> - Follow the fee policy suggested by the mainline bitcoin client. <font color="green">Recommended</font>.
+                <input type="radio" name="fee-policy" value="0"><b>标准</b> - 参照目前主流比特币客户端的交易费用设置。 <font color="green">推荐</font>.
             </label>
             <label class="radio" style="font-weight:normal">
-                <input type="radio" name="fee-policy" value="1"><b>Generous</b> - Fees will be set to ensure transactions are high priority (0.001 BTC Base Fee).
+                <input type="radio" name="fee-policy" value="1"><b>慷慨模式</b> - 提高交易费用，以确保交易的优先确认（至少支付0.001 BTC）。
             </label>
         </p>
     </div>
 
     <div class="page-header">
-        <h3>Automatic Email Backups</h3>
+        <h3>电子邮件自动备份</h3>
         <p>
-            Check this to receive a new backup automatically when your wallet updates: <input id="auto-email-backup" type="checkbox"/>
+            启用以下选项后，当您的钱包数据更新时将自动向您的邮箱发送一份备份数据： <input id="auto-email-backup" type="checkbox"/>
         </p>
     </div>
 </div>
@@ -291,33 +291,33 @@
 <div class="tab-pane" id="account-display">
 
     <div class="page-header">
-        <h3>Language</h3>
+        <h3>语言</h3>
 
-        <p>Set your preferred language below</p>
+        <p>在此设置您的首选语言</p>
 
         <select id="language_select"></select>
     </div>
 
     <div class="page-header">
-        <h3>Local Currency</h3>
+        <h3>本地币种</h3>
 
-        <p>You can quickly switch between bitcoins and your local currency by clicking your balance in the top right.</p>
+        <p>点击右上角的账户余额，可在比特币与您的当地币种之间迅速换算。</p>
 
         <select id="local_currency"></select>
     </div>
 
     <div class="page-header">
-        <h3>Bitcoin Display</h3>
+        <h3>比特币的显示方式</h3>
 
-        <p>Adjust the precision you would prefer bitcoin values to be displayed in.</p>
+        <p>调整比特币的显示单位。</p>
 
         <select id="btc_currency"></select>
     </div>
 
     <div class="page-header">
-        <h3>Transactions Per Page</h3>
+        <h3>每页显示交易数</h3>
 
-        <p>Set the number of transactions displayed per page</p>
+        <p>设置每页显示交易数</p>
 
         <p>
             <select id="transactions_per_page">
@@ -333,36 +333,36 @@
 
 <div class="tab-pane" id="account-notifications">
     <div class="page-header">
-        <h3>Notifications</h3>
+        <h3>通知</h3>
 
-        <p>Optionally receive notifications when a payment is sent or received from your wallet.</p>
+        <p>在您的钱包进行付款操作时发送通知。</p>
 
         <div id="notifications-type">
-            <input type="checkbox" value="1"> <b>Email Notifications</b><br/>
+            <input type="checkbox" value="1"> <b>电子邮件通知</b><br/>
 
             <div class="well type-1" style="display:none">
-                You will receive notifications via email. Please confirm your email address if you haven't already.
+                您将通过电子邮件收到通知。如果你还没有进行邮件地址验证，请尽快完成。
             </div>
 
-            <input type="checkbox" value="32"> <b>SMS Notifications</b><br/>
+            <input type="checkbox" value="32"> <b>SMS通知</b><br/>
 
             <div class="well type-32" style="display:none">
                 <p>
-                    Please enter Your Mobile Phone number below. International SMS messaging can sometimes be unreliable and may not be available to some countries and networks.
+                    请在下面输入您的手机号码。国际短信有时并不可靠，在一些国家与网络中无法使用。
                 </p>
 
                 <p class="form-inline">
-                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Send SMS Code</button>
+                    <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">发送短信验证码</button>
                 </p>
 
                 <p class="sms-verified">
-                    <font color="green">SMS Verified</font>
+                    <font color="green">短信已验证</font>
                 </p>
 
                 <div class="sms-unverified">
-                    <p>Enter the code contained within verification sms message.</p>
+                    <p>请输入手机短信内包含的验证码。</p>
                     <p class="form-inline">
-                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Verify</button>
+                        <input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">验证</button>
                     </p>
                 </div>
             </div>
@@ -370,13 +370,13 @@
             <input type="checkbox" value="2" /> <b>Google Talk</b><br/>
 
             <div class="well type-2" style="display:none">
-                You will receive notifications via Google Talk.
+                通过Google Talk接收通知。
             </div>
 
             <input type="checkbox" value="8"> <b>Skype</b><br/>
 
             <div class="well type-8" style="display:none">
-                <p>You will receive notifications via Skype to the username below:</p>
+                <p>您会通过此Skype帐号收到通知：</p>
 
                 <input placeholder="Skype Username" id="wallet-skype" type="text"/>
             </div>
@@ -384,106 +384,106 @@
             <input type="checkbox" value="64"> <b>Boxcar.io</b><br/>
 
             <div class="well type-64" style="display:none">
-                <p>Please enter your <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> email below:</p>
+                <p>请输入您的 <a href="https://blockchain.info/r?url=http://boxcar.io">Boxcar.io</a> 电子邮件地址：</p>
 
                 <input placeholder="Boxcar Email" id="wallet-boxcar" type="text"/>
             </div>
 
-            <input type="checkbox" value="4"> <b>HTTP Notifications</b><br/>
+            <input type="checkbox" value="4"> <b>HTTP通知</b><br/>
 
             <div class="well type-4" style="display:none">
-                <p>Http Notifications will be sent when transactions are sent or received. Please see developers section for a guide to implementing the callback.</p>
+                <p>发送和接收交易时将触发Http通知。请参阅开发者手册，以实现函数回调。</p>
 
                 <input placeholder="Http URL" id="wallet-http-url" type="text"/>
             </div>
 
-            <input type="checkbox" value="128"> <b>Android Notifications</b><br/>
+            <input type="checkbox" value="128"> <b>Android的通知</b><br/>
 
             <div class="well type-128" style="display:none">
-                <p>You will receive notifications to your android device once paired.</p>
+                <p>您的Android设备在完成配对后将发出提示。</p>
             </div>
 
         </div>
 
-        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML 5 Notifications</b><br/>
+        <input type="checkbox" id="html5-notifications-checkbox"> <b>HTML5通知</b><br/>
 
         <div class="well" style="display:none">
-            <p>HTML 5 Notifications are different from regular pop-ups in that they require the user's permission to be shown. Currently supported in Chrome & Safari.</p>
+            <p>HTML 5通知不同于常规的弹出式窗口，用户授权后方可使用。目前支持Chrome和Safari浏览器。</p>
         </div>
     </div>
 
     <div class="page-header">
-        <h3>When My Wallet</h3>
+        <h3>当我的钱包</h3>
 
         <p>
             <select id="notifications-on">
-                <option value="0">Sends or Receives Bitcoins</option>
-                <option value="1">Sends Bitcoins</option>
-                <option value="2">Receives Bitcoins</option>
+                <option value="0">发送或收到比特币时</option>
+                <option value="1">发送比特币</option>
+                <option value="2">接收比特币</option>
             </select>
         </p>
     </div>
 
-    <h3>After Confirmations</h3>
+    <h3>需要的确认数</h3>
 
     <p>
         <select id="notifications-confirmations">
-            <option value="0">Instantly</option>
-            <option value="1">1 Confirmation</option>
-            <option value="2">2 Confirmations</option>
-            <option value="3">3 Confirmations</option>
-            <option value="4">4 Confirmations</option>
-            <option value="5">5 Confirmations</option>
-            <option value="6">6 Confirmations</option>
+            <option value="0">即刻</option>
+            <option value="1">1次确认后</option>
+            <option value="2">2次确认后</option>
+            <option value="3">3次确认后</option>
+            <option value="4">4次确认后</option>
+            <option value="5">5次确认后</option>
+            <option value="6">6次确认后</option>
         </select>
     </p>
 </div>
 
 
 <div class="tab-pane" id="account-logging">
-    <h3 class="page-header">Logging Level</h3>
+    <h3 class="page-header">日志记录级别</h3>
 
-    <p>The logging level controls what data is recorded when actions are taken using your wallet. By default the logging is turned off apart from actions taken by admins. Enabling it provides better security by providing more information on potential unauthorized access to your wallet however some privacy may be sacrificed.</p>
+    <p>日志记录级别将影响您的钱包发生操作时，后台记录操作信息的详尽程度。默认情况下，除了由网站管理员采取的行动，并不记录任何日志。启用它可在发生安全问题时获得更详细的操作信息，便于发现潜在的未授权访问，但也会牺牲一些隐私。</p>
 
     <p>
         <select id="logging-level">
-            <option value="0">Logging Disabled</option>
-            <option value="1">Log Actions with Hashed IP Addresses</option>
-            <option value="2">Log Actions with IP Address and User Agent</option>
+            <option value="0">禁用日志记录</option>
+            <option value="1">记录操作的同时也记录经Hash处理的IP地址</option>
+            <option value="2">记录操作的同时记录IP地址与浏览器信息</option>
         </select>
     </p>
 
     <p class="well">
-        Altering the logging level does not delete existing logs. Logs expire after 2 weeks.
+        更改日志记录级别不会删除现有的日志。日志将保留2周。
     </p>
 
     <div class="logl l2 l1">
         <table class="table table-striped well" style="margin-top:10px;display:none;">
             <thead>
-            <th>Time</th>
-            <th>Action</th>
-            <th>IP Address</th>
-            <th>User Agent</th>
+            <th>时间</th>
+            <th>行为</th>
+            <th>IP地址</th>
+            <th>浏览器user_agent标识</th>
             </thead>
             <tbody></tbody>
         </table>
     </div>
 
     <p class="logl l0" style="display:none;">
-        <font color="green">Logging Disabled</font>
+        <font color="green">禁用日志记录</font>
     </p>
 </div>
 
 <div class="tab-pane" id="account-devices">
-    <h3>Device Pairing</h3>
+    <h3>设备配对</h3>
 
-    <p>Scan the code below with your iPhone or Android device to pair it with your account.</p>
+    <p>扫描下面的二维码，您的iPhone或Android设备便可与帐户进行配对。</p>
 
     <div class="accordion" id="accordion2">
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#pairing_code">
-                    Show / Hide Pairing Code.
+                    显示、隐藏配对码。
                 </a>
             </div>
 
@@ -503,22 +503,22 @@
 </div>
 
 <div class="tab-pane" id="account-passwords">
-    <div class="alert alert-block alert-error"><B>Warning!</B> Any forgotten passwords will result in your wallet being un-accessible. There is no password recovery process!</div>
+    <div class="alert alert-block alert-error"><B>警告！</B> 遗忘密码会直接导致你的钱包不可用。同时，这里不提供密码恢复的操作！</div>
 
     <p>
-        Your password is never shared with our servers in any shape or form. This means your wallet would still be safe in the event our servers were compromised. However it means there is no password reset functionality.
+        您的密码从未以任何独立的形式保存于我们的服务器。这意味着，即使我们的服务器被入侵，你的钱包仍然是安全的。但同时，这也意味着没有「找回密码」的功能。
     </p>
 
     <div class="page-header">
-        <h3 style="margin-bottom:5px">Password Mnemonic</h3>
+        <h3 style="margin-bottom:5px">密码恢复符</h3>
 
-        <p>Password Mnemonics can be used to recover your wallet password if forgotten. Without the mnemonic there is no way we can help recover a forgotten password. When changing wallet passwords the mnemonic will change.</p>
+        <p>密码恢复符可以在您忘记密码时恢复你的钱包密码。如果没有密码恢复符，我们将无法帮助您找回密码。并且，在钱包密码更换时，密码恢复符也会发生变化。</p>
 
         <div id="accordion1">
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#password_mnemonic">
-                        Show / Hide Password Mnemonic
+                        显示或隐藏密码恢复符
                     </a>
                 </div>
 
@@ -542,75 +542,75 @@
     </div>
 
     <div class="page-header">
-        <h3 style="margin-bottom:5px">Main Password</h3>
+        <h3 style="margin-bottom:5px">主密码</h3>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Password:</label>
+                <label class="control-label">密码：</label>
 
                 <div class="controls"><input id="password" name="password2" type="password" placeholder="•••••••••"/></div>
             </div>
             <div class="control-group">
-                <label class="control-label">Confirm Password:</label>
+                <label class="control-label">确认密码：</label>
 
                 <div class="controls"><input id="password2" name="password2" type="password" placeholder="•••••••••"/></div>
             </div>
         </div>
 
         <p>
-            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">Update Main Password</button>
+            <button class="btn" id="update-password-btn" style="float: none; margin-left: 155px;width:177px">更新主密码</button>
         </p>
     </div>
 
     <div class="page-header">
-        <h3 style="margin-bottom:5px">Second Password</h3>
+        <h3 style="margin-bottom:5px">副密码</h3>
 
         <div class="double-encryption-off">
-            <p>You may optionally set a second password which will be required when you send funds from your account. For large wallets your browser may become unresponsive for a few minutes when changing this option.</p>
+            <p>您可以设置副密码，当从您的帐户对外转出资金时需经过此道密码认证。对于交易数较多的钱包用户，您的浏览器可能会停止响应几分钟。</p>
 
             <div class="form-horizontal">
                 <div class="control-group">
-                    <label class="control-label">Password:</label>
+                    <label class="control-label">密码：</label>
 
                     <div class="controls"><input id="double-password" type="password"/></div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Confirm Password:</label>
+                    <label class="control-label">确认密码：</label>
 
                     <div class="controls"><input id="double-password2" type="password"/></div>
                 </div>
             </div>
 
-            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">Enable Double Encryption</button>
+            <button class="btn" id="wallet-double-encryption-enable" style="float: none; margin-left:155px;width:177px">启用双重加密</button>
         </div>
 
         <div class="double-encryption-on">
-            <p>Double encryption is enabled. A second password will be required before you can send funds.</p>
+            <p>双重加密已启用。在您准备转出资金时，必须输入您的副密码。</p>
 
             <p>
-                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">Disable Double Encryption</button>
+                <button class="btn" id="wallet-double-encryption-disable" style="float: none; margin-left:155px;width:177px">停用双重加密</button>
             </p>
         </div>
     </div>
 
     <div class="page-header">
-        <h3>Password Hints</h3>
+        <h3>密码提示</h3>
 
-        <p>If you forget your password(s), hints can be useful to help jog your memory. If there is an email address associated with your account, hints can be emailed to you. If no email is associated with your account, hints are available to anyone who knows your wallet identifier.</p>
+        <p>如果您忘记了密码，密码提示可以帮助您唤起记忆。如果您的帐户已关联电子邮件地址，提示将通过邮件进行发送。否则，密码提示将展示给任何能提交您钱包身份码的用户。</p>
 
         <p class="well">
-            <b>For example:</b> If your wallet password was: HorseBatteryStaple a good password hint would be: Electric horse?
+            <b>例如：</b> 假设你的钱包密码是「HorseBatteryStaple」，一个很好的密码提示便是「电动马？」
         </p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Main Password Hint:</label>
+                <label class="control-label">主密码提示：</label>
 
                 <div class="controls"><input id="password-hint1" type="text"/></div>
             </div>
 
             <div class="control-group double-encryption-on">
-                <label class="control-label">Second Password Hint:</label>
+                <label class="control-label">副密码提示：</label>
 
                 <div class="controls"><input id="password-hint2" type="text"/></div>
             </div>
@@ -620,53 +620,53 @@
 
 <div class="tab-pane" id="account-security">
     <div class="page-header">
-        <h3>Two Factor Authentication</h3>
+        <h3>双重验证</h3>
 
-        <p>Two factor authentication adds an additional layer of security on top of your password.</p>
+        <p>双重验证可帮助您在密码之外额外增加一层安全性。</p>
 
         <p>
             <select id="two-factor-select">
-                <option value="0">None</option>
-                <option value="5">SMS Message</option>
+                <option value="0">无</option>
+                <option value="5">手机短信</option>
                 <option value="1">Yubikey</option>
-                <option value="2">Email</option>
+                <option value="2">电子邮件</option>
                 <!--<option value="3">Mt Gox Yubikey</option>-->
                 <option value="4">Google Authenticator</option>
             </select>
         </p>
 
         <div class="well two-factor t0" style="display:none">
-            Two factor authentication is not enabled on your account
+            您的帐户未启用双重验证
         </div>
 
         <div class="well two-factor t1 t3" style="display:none">
-            <b>Yubikey</b> <br/> To pair your key with your account select the text box below and press the green LED button on your yubikey device.
+            <b>Yubikey</b> <br/> 与您的yubikey配对前，请先点选下面的文本框，然后再摁下yubikey上的绿色LED按钮。
 
             <div class="controls">
                 <input id="wallet-yubikey" class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
-                <p class="help-block">Select the text box above and press the green LED light on your Yubikey.</p>
+                <p class="help-block">点选上方的输入框，而后触摸您Yubikey上的绿色LED按钮。</p>
             </div>
         </div>
 
         <div class="well two-factor t2" style="display:none">
-            <b>Email</b> <br/> You will receive authentication codes via email.
+            <b>电子邮件</b> <br/> 您将通过电子邮件收到验证码。
         </div>
 
         <div class="two-factor t4" style="display:none">
             <p class="well">
-                Google Authenticator is enabled
+                Google Authenticator已启用
             </p>
 
             <div style="display:none">
                 <p>
-                    Open the Google Authenticator app and scan the QR code below to complete the pairing process.
+                    打开Google Authenticator应用程序，扫描下面二维码来完成配对。
                 </p>
 
                 <div id="wallet-google-qr" style="margin:20px"></div>
 
                 <div class="well">
-                    <p>After scanning the above QR code with the google authenticator app enter the authentication code below:</p>
+                    <p>在使用Google Authenticator应用程序扫描二维码后，请输入如下验证码：</p>
 
                     <div class="controls">
                         <input id="wallet-google-qr-code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
@@ -676,35 +676,35 @@
         </div>
 
         <div class="two-factor t5 well" style="display:none">
-            <b>SMS Message</b>
+            <b>手机短信</b>
 
             <p>
-                Please enter Your Mobile Phone number below. International SMS messaging can sometimes be unreliable and may not be available to some countries and networks.
+                请在下面输入您的手机号码。国际短信有时并不可靠，在一些国家与网络中无法使用。
             </p>
 
             <p class="form-inline">
-                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">Send SMS Code</button>
+                <select class="wallet-sms-country-codes"></select><input style="margin-left:10px" class="wallet-sms" type="text"/> <button class="btn send-code sms-unverified">发送短信验证码</button>
             </p>
 
             <p class="sms-verified" style="color:green">
-                SMS Verified
+                短信已验证
             </p>
 
             <div class="sms-unverified well">
-                <p>Enter the code contained within verification sms message.</p>
-                <p class="form-inline"><input placeholder="SMS Verification Code" class="wallet-sms-code" type="text"/> <button class="btn">Verify</button> </p>
+                <p>请输入手机短信内包含的验证码。</p>
+                <p class="form-inline"><input placeholder="短信验证码" class="wallet-sms-code" type="text"/> <button class="btn">验证</button> </p>
             </div>
         </div>
     </div>
 
     <div class="page-header">
-        <h3>Always Keep Browser Backup</h3>
+        <h3>始终在浏览器中保存本地备份</h3>
 
-        <p>Enable this option to force a wallet backup to be stored in your browsers local storage even when two factor authentication is enabled. If enabled an attacker with access to your browser would be able to circumvent two factor authentication, however if the wallet is accessed using any other PC or browser it is still protected by two factor authentication.</p>
+        <p>启用该选项后，您的浏览器缓存中将被强制写入一个钱包数据的本地备份（无论是否启用了双重验证）。此时如果使攻击者访问到你的浏览器数据，将绕过双重验证系统的保护。但在使用其他电脑或浏览器时，您的钱包数据仍处于双重验证的保护之中。</p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Always Keep:</label>
+                <label class="control-label">始终记住:</label>
 
                 <div class="controls">
                     <input name="always-keep-local-backup" type="checkbox"/>
@@ -714,9 +714,9 @@
     </div>
 
     <div class="page-header">
-        <h3>Secret Phrase</h3>
+        <h3>身份暗号</h3>
 
-        <p>A secret phrase can be used to help us verify your identity in case of a lost wallet identifier or yubikey. It can be a single word or sentence up to 255 characters in length.</p>
+        <p>身份暗号可以用来帮助我们在丢失钱包身份码或yubikey的情况下验证您的身份。它可以是一个单词或是255个字符以内的短句。</p>
 
         <p>
             <input id="wallet-phrase" type="text"/>
@@ -724,15 +724,15 @@
     </div>
 
     <div class="page-header">
-        <h3>Never Remember Two Factor Login</h3>
+        <h3>从不记忆双重验证登录</h3>
 
         <p>
-            By Default after logging in with two factor authentication your browser will be remembered for a short period of time allowing you to login again without having to re-authenticate. Check the box below if you want to disable this behaviour and require full authentication every time.
+            默认状态下，当您使用双重验证登陆后的一小段时间内再次登录，您的浏览器将记住登陆信息，无需重新验证身份。如果想避免自动授权，强制在每次登陆时都进行验证，请勾选以下选项。
         </p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Never Remember:</label>
+                <label class="control-label">永不记录:</label>
 
                 <div class="controls">
                     <input id="never-save-auth-type" type="checkbox"/>
@@ -742,15 +742,15 @@
     </div>
 
     <div class="page-header">
-        <h3>Block TOR ip addresses</h3>
+        <h3>阻止TOR IP地址登陆</h3>
 
         <p>
-            Enable the following option to prevent ip addresses part of the TOR anonymizing network from accessing your wallet.
+            启用以下选项来防止使用TOR匿名网络访问您的钱包。
         </p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Enable / Disable:</label>
+                <label class="control-label">功能开关：</label>
 
                 <div class="controls"><input id="block-tor-ips" type="checkbox"/></div>
             </div>
@@ -758,29 +758,29 @@
     </div>
 
     <div class="page-header">
-        <h3>Restrict To IP</h3>
+        <h3>拒绝登陆的IP地址</h3>
 
         <p>
-            Enable this to restrict access to your wallet to a specific ip address or multiple ip addresses comma separated. Only enable this if you have a static ip address. You will not be able to login or access any API's from any computers not on the specified network however the mobile apps will continue to function once paired.
+            启用此功能后，特定的一个或多个IP地址将无法访问你的钱包。地址以逗号分隔，且仅支持静态IP地址。设置完成后，您将无法通过指定地址上的计算机登录或访问任何API，但移动设备上已配对的应用程序可继续使用。
         </p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Enable / Disable:</label>
+                <label class="control-label">功能开关：</label>
 
                 <div class="controls"><input id="ip-lock-on" type="checkbox"/></div>
             </div>
             <div class="control-group">
-                <label class="control-label">Lock To IP:</label>
+                <label class="control-label">锁定IP：</label>
 
                 <div class="controls">
                     <input id="ip-lock" type="text"/>
 
-                    <p class="help-block">Multiple ip addresses should be comma separated.</p>
+                    <p class="help-block">请用逗号分隔多个IP地址。</p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Current IP:</label>
+                <label class="control-label">当前IP地址：</label>
 
                 <div class="controls"><span id="my-ip"></span></div>
             </div>
@@ -794,16 +794,16 @@
 <div id="update-password-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Confirm Password Change</h3>
+        <h3>密码更改验证</h3>
     </div>
     <div class="modal-body">
-        <p>Your password will be updated immediately. Be sure to make a note of the new password as it cannot be recovered if forgotten! If you have any encrypted wallet backups it will be possible to decrypt them using your old password, it is recommended you remove any of these backups.</p>
+        <p>您的密码将被立即更新。请牢记，一旦遗忘密码，将无法找回！对于更改密码前的加密钱包备份文件，需要使用旧密码方能解密使用，所以我们建议您先行删除这些备份文件，以免发生混淆。</p>
     </div>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Update Password</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">更新密码</button>
         </div>
     </div>
 </div>
@@ -817,7 +817,7 @@
         <div class="span6">
             <table class="well table table-striped">
                 <tr>
-                    <td>Total Transactions</td>
+                    <td>总交易笔数</td>
                     <td><span id="summary-n-tx">0</span></td>
                     <td>
                         <div class="img">
@@ -826,7 +826,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Total Received</td>
+                    <td>总计收款</td>
                     <td><span id="summary-received">0</span></td>
                     <td>
                         <div class="img">
@@ -835,11 +835,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Total Sent</td>
+                    <td>付款总额</td>
                     <td colspan="2"><span id="summary-sent">0</span></td>
                 </tr>
                 <tr>
-                    <td>Final Balance</td>
+                    <td>当前余额</td>
                     <td><span id="summary-balance">0</span></td>
                     <td>
                         <div class="img">
@@ -853,11 +853,11 @@
                 <div id="my-primary-addres-qr-code" style="display:inline-block;vertical-align:top;margin-right:10px;"></div>
 
                 <div style="display:inline-block;vertical-align:middle;margin-top:5px;" class="well">
-                    <small>This Is Your Bitcoin Address</small>
+                    <small>这是您的比特币地址</small>
 
                     <p class="primary-address" id="my-primary-address"></p>
 
-                    <small>Share this with anyone and they can send you payments.</small>
+                    <small>发送给任何想给您付款的人。</small>
                 </div>
             </div>
 
@@ -868,28 +868,28 @@
             <div class="no-watch-only" id="home-deposit-container"></div>
 
             <div class="page-header" id="partner-home-buttons" style="display:none">
-                <h3 style="padding-bottom:10px">Partners</h3>
+                <h3 style="padding-bottom:10px">合作伙伴</h3>
 
                 <p align="right"></p>
             </div>
 
             <div class="page-header" id="home-account-container">
-                <h3>Account Settings</h3>
+                <h3>帐户设置</h3>
 
-                <p>Edit your account settings including email address, password and notification settings.</p>
+                <p>修改您的帐户设置，包括电子邮件地址、密码以及通知设置。</p>
 
                 <p align="right">
-                    <button class="btn" id="my-account-btn">Account Settings</button>
+                    <button class="btn" id="my-account-btn">帐户设置</button>
                 </p>
             </div>
 
             <div id="home-backup-container">
-                <h3>Backup</h3>
+                <h3>备份</h3>
 
-                <p>Backing up your wallet is an important step which is easy to forget. Blockchain.info takes every precaution to keep your wallet safe but it's always better to keep a local copy just in case.</p>
+                <p>备份钱包的工作虽然重要，却也很容易被忘记。 Blockchain.info采取了一切预防措施来确保您的钱包安全，但时刻保存一份本地备份依然是以防万一的最好方式。</p>
 
                 <div class="btn-group" align="right">
-                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">Email</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
+                    <button class="btn download-backup-btn hidden-phone hidden-tablet" style="display:inline;float:none">Download</button><button class="btn" id="dropbox-backup-btn" style="display:inline;float:none">Dropbox</button><button class="btn" id="gdrive-backup-btn" style="display:inline;float:none">Google Drive</button><button class="btn" id="email-backup-btn" style="display:inline;float:none">电子邮件</button><button class="btn paper-wallet-btn hidden-tablet" style="display:inline;float:none">Paper</button>
                 </div>
 
                 
@@ -900,11 +900,11 @@
 
 <div id="receive-coins" style="display:none;">
 
-    <h2>Addresses <small>Your receiving bitcoin addresses</small></h2>
+    <h2>地址 <small>您的接收比特币地址</small></h2>
 
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#active-addresses" data-toggle="tab">Active</a></li>
-        <li><a href="#archived-addresses" data-toggle="tab">Archived</a></li>
+        <li class="active"><a href="#active-addresses" data-toggle="tab">活跃</a></li>
+        <li><a href="#archived-addresses" data-toggle="tab">已归档</a></li>
         
     </ul>
 
@@ -913,39 +913,39 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Address</th>
-                    <th>Balance</th>
+                    <th>地址</th>
+                    <th>余额</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody></tbody>
             </table>
 
-            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="New Address" data-content="Click here to generate a new bitcoin address. You can begin receiving bitcoins into this address immediately">New Address</button>
+            <button class="btn btn-success pop pull-right" id="new-addr" style="margin:5px" title="生成新地址" data-content="点击此处生成一个新的比特币地址。你可以马上使用此地址接收比特币付款">生成新地址</button>
 
             <div class="btn-group pull-right" style="margin:5px">
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                    More Actions <span class="caret"></span>
+                    更多操作 <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a id="generate-cold-storage">New Cold Storage Address</a></li>
-                    <li><a id="chord-diagram">View Relationship Diagram</a></li>
-                    <li><a id="group-received" title="Taint Grouping">Group Addresses By Taint</a></li>
-                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">Verify Message</a></li>
+                    <li><a id="generate-cold-storage">生成冷储存地址</a></li>
+                    <li><a id="chord-diagram">查看谱系图</a></li>
+                    <li><a id="group-received" title="Taint Grouping">按照互涉度分组</a></li>
+                    <li><a class="hidden-phone" id="verify-message" title="Verify Message">验证消息</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="tab-pane" id="archived-addresses" style="margin-bottom:200px">
-            <h3>Archived Addresses</h3>
+            <h3>已归档地址</h3>
 
-            <p>Archived addresses are addresses you may not need anymore that are hidden from the main view but still part of your wallet. You can un-archive them at any time by clicking the blue icon.</p>
+            <p>您可将不再使用的比特币地址进行归档，它们会在主界面中隐藏，但仍然是您的钱包的一部分。您可以在任何时候点击蓝色图标来恢复它们。</p>
 
             <table class="table table-striped">
                 <thead>
                 <tr>
                 <th></th>
-                <th>Bitcoin Address</th>
+                <th>比特币地址</th>
                 <th></th>
                 <th></th>
                 </thead>
@@ -953,13 +953,13 @@
             </table>
 
             <div style="float:left">
-                <button class="btn btn-secondary" id="archived-select-all">Select All</button>
-                <button class="btn btn-secondary" id="archived-select-none">Select None</button>
+                <button class="btn btn-secondary" id="archived-select-all">全选</button>
+                <button class="btn btn-secondary" id="archived-select-none">反选</button>
             </div>
 
             <div style="float:right">
-                <button class="btn btn-secondary pop" id="archived-sweep" title="Sweep Keys" data-content="Move any bitcoins in the selected keys to a different bitcoin address.">Sweep Keys</button>
-                <button class="btn btn-danger pop" id="archived-delete" title="Delete Keys" data-content="Delete the selected private keys.">Delete Keys</button>
+                <button class="btn btn-secondary pop" id="archived-sweep" title="合并余额" data-content="将所有选中的比特币地址余额合并进另一个地址。">合并余额</button>
+                <button class="btn btn-danger pop" id="archived-delete" title="删除私钥" data-content="删除选定的私钥。">删除私钥</button>
             </div>
         </div>
 
@@ -978,19 +978,19 @@
     <div class="row-fluid" id="welcome_back_container">
         <div class="span6">
             <div class="page-header">
-                <h3>Welcome Back </h3>
-                <small>Please enter your login details below:</small>
+                <h3>欢迎回来 </h3>
+                <small>请在此仔细输入您的登录资料：</small>
             </div>
 
             <div class="form-horizontal">
                 <div class="control-group">
-                    <label class="control-label">Identifier:</label>
+                    <label class="control-label">钱包身份码：</label>
 
-                    <div class="controls"><input id="restore-guid" placeholder="Identifier or Alias" value="" type="text"/></div>
+                    <div class="controls"><input id="restore-guid" placeholder="钱包身份码或账户短名" value="" type="text"/></div>
                 </div>
 
                 <div class="control-group auth-0 auth-1 auth-2 auth-3 auth-4 auth-5" style="display:none">
-                    <label class="control-label">Password:</label>
+                    <label class="control-label">密码：</label>
 
                     <div class="controls"><input id="restore-password" type="password"/></div>
                 </div>
@@ -1002,94 +1002,94 @@
                     <div class="controls">
                         <input class="code yubikey" style=" background: white url(/Resources/yubikey_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
-                        <p class="help-block">Select the text box above and press the green LED light on your Yubikey.</p>
+                        <p class="help-block">点选上方的输入框，而后触摸您Yubikey上的绿色LED按钮。</p>
                     </div>
                 </div>
 
                 <div class="control-group auth-2" style="display:none">
-                    <label class="control-label">Email Code:</label>
+                    <label class="control-label">电子邮件验证码：</label>
 
                     <div class="controls">
                         <input class="code" style="background: white url(/Resources/email_16.gif) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
-                        <p class="help-block">An email containing a temporary confirmation code has been sent to your account.</p>
+                        <p class="help-block">一封含临时验证码的电子邮件已经发送到您的邮箱。</p>
                     </div>
                 </div>
 
                 <div class="control-group auth-4" style="display:none">
-                    <label class="control-label">Google Authenticator:</label>
+                    <label class="control-label">Google Authenticator应用程序：</label>
 
                     <div class="controls"><input class="code" style="background: white url(/Resources/google_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text">
 
-                        <p class="help-block">Please open your Google Authenticator app and enter the code displayed.</p>
+                        <p class="help-block">请打开你的Google Authenticator应用程序，并输入显示的代码。</p>
                     </div>
                 </div>
 
                 <div class="control-group auth-5" style="display:none">
-                    <label class="control-label">SMS Code:</label>
+                    <label class="control-label">短信验证码：</label>
 
                     <div class="controls">
                         <input class="code" style="background: white url(/Resources/sms_16.png) no-repeat 4px 4px; color:green; text-indent:20px;" type="text"/>
 
-                        <p class="help-block">A text message has been sent to your cell phone. Please enter the code in that message above.</p>
+                        <p class="help-block">信息已发送到您的手机。请输入该消息中的验证码。</p>
                     </div>
                 </div>
 
                 <div style="padding-left: 160px;padding-bottom:20px">
-                    <button class="btn btn-primary" id="restore-wallet-continue">Open Wallet</button>
-                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">Create New Wallet</a>
+                    <button class="btn btn-primary" id="restore-wallet-continue">打开钱包</button>
+                    <a href="https://blockchain.info/wallet/new" target="blank" id="signup-btn" class="btn btn-secondary" style="display:none">创建新钱包</a>
                 </div>
 
                 <div class="well auth-2" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
-                    <h5>Can't Find Your Email Code?</h5>
+                    <h5>无法找到您的电子邮件验证码？</h5>
 
-                    <p>Be sure to check your spam folder. If you still can't find the email click the button below to resend it.</p>
+                    <p>请务必检查垃圾邮件文件夹。如果您仍然找不到邮件，请点击下面的按钮重新发送。</p>
 
                     <p align="center">
-                        <a class="btn resend-code">Resend Link</a>
+                        <a class="btn resend-code">重新发送链接</a>
                     </p>
                 </div>
 
                 <div class="well auth-5" style="display:none;margin: 0 auto; margin-top: 10px; max-width: 470px;">
-                    <h5>Did Not Receive An SMS Code?</h5>
+                    <h5>未收到短信验证码？</h5>
 
-                    <p>Please check your network signal. Messages can take up to 10 minutes to be delivered, if it has been over 10 minutes click the button below to resend the message.</p>
+                    <p>请检查您的网络信号。消息可能需要长达10分钟的递送，如果超过10分钟仍未收到，请点击下面的按钮重新发送邮件。</p>
 
                     <p align="center">
-                        <a class="btn resend-code">Resend Message</a>
+                        <a class="btn resend-code">重新发送短信</a>
                     </p>
                 </div>
 
-                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">Your password is never shared with our servers and cannot be recovered if forgotten!</div>
+                <div class="well auth-0 auth-1 auth-3 auth-4" style="margin: 0 auto; display:none; margin-top: 10px; max-width: 470px;">您的密码从没有单独保存于我们的服务器，如果忘记，将无法恢复！</div>
             </div>
         </div>
 
         <div class="span6" id="forgotten-something-container">
             <div class="page-header">
-                <h3>Forgotten Something?</h3> <small>Help! I've locked myself out of my account</small>
+                <h3>似乎忘记了什么？</h3> <small>请帮帮我！我的帐户被锁定了！</small>
             </div>
 
-            <h4>Lost Identifier or Alias</h4>
+            <h4>遗忘钱包身份码或账户短名</h4>
 
-            <p> If you have lost your wallet identifier first check the confirmation email you received during sign up. Can't find the email? Click the button below and we can send you a new one.</p>
-
-            <p align="right">
-                <a class="btn btn-small btn-secondary recover-wallet-btn">Recover Wallet</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">Import Backup</a> <a class="btn btn-small btn-secondary download-backup-btn">Download Backup</a>
-            </p>
-
-            <h4>Lost Two-factor Authentication Details.</h4>
-
-            <p>If you have lost your two factor authentication details your wallet is still fully recoverable. All we need is reasonable proof you are the account owner which can be provided by completing the form linked below.</p>
-
+            <p>如果你已经遗忘你所注册的钱包身份码，先检查您当时收到的电子邮件。已无法找到的电子邮件？点击下面的按钮，我们可以给你重新发送一份。</p>
 
             <p align="right">
-                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">Reset Two Factor Authentication</a>
+                <a class="btn btn-small btn-secondary recover-wallet-btn">恢复钱包</a> <a class="btn btn-small btn-secondary" target="blank" href="https://blockchain.info/wallet/import-wallet">导入备份</a> <a class="btn btn-small btn-secondary download-backup-btn">下载备份</a>
             </p>
 
-            <h4>Need Help?</h4>
+            <h4>双重验证工具遗失</h4>
+
+            <p>如果您已丢失双重验证工具，仍然可以恢复您的钱包。请填写下面的表格，以向我们证明您是钱包的真正所有者。</p>
+
+
+            <p align="right">
+                <a class="btn btn-small btn-secondary" id="reset-two-factor-btn">重置双重验证</a>
+            </p>
+
+            <h4>需要帮助吗？</h4>
 
             <p>
-                Read our <a target="blank" href="https://blockchain.info/wallet/support-pages">Support Pages</a>
+                请阅读我们的<a target="blank" href="https://blockchain.info/wallet/support-pages">支持页面</a>
             </p>
         </div>
     </div>
@@ -1100,28 +1100,28 @@
 <div id="my-transactions" style="display:none;">
     <div class="row-fluid">
         <div class="span12">
-            <h2 style="display:inline-block">Transactions <small>Summary of your recent transactions</small></h2>
+            <h2 style="display:inline-block">交易 <small>您最近的交易汇总</small></h2>
 
             <div style="float:right">
                 <div class="btn-group" style="display:inline-block">
-                    <a class="btn" href="#"><i class="icon-zoom-in"></i> View</a>
+                    <a class="btn" href="#"><i class="icon-zoom-in"></i> 查看方式</a>
                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                     <ul class="dropdown-menu tx_display">
-                        <li><a href="#" data-value="0"> Compact</a></li>
-                        <li><a href="#" data-value="1"> Detailed</a></li>
+                        <li><a href="#" data-value="0"> 简洁</a></li>
+                        <li><a href="#" data-value="1"> 详细</a></li>
                         <li class="divider"></li>
-                        <li><a href="#" data-value="export"> Export History</a></li>
+                        <li><a href="#" data-value="export"> 导出历史记录</a></li>
                     </ul>
                 </div>
 
                 <div class="btn-group" style="display:inline-block">
-                    <a class="btn" href="#"><i class="icon-filter"></i> Filter</a>
+                    <a class="btn" href="#"><i class="icon-filter"></i> 筛选</a>
                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                     <ul class="dropdown-menu tx_filter">
-                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> All</a></li>
-                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> Sent</a></li>
-                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> Received</a></li>
-                        <li><a href="#" data-value="4"><i class="icon-random"></i> Escrow</a></li>
+                        <li><a href="#" data-value="0"><i class="icon-resize-horizontal"></i> 所有交易</a></li>
+                        <li><a href="#" data-value="1"><i class="icon-arrow-right"></i> 支付</a></li>
+                        <li><a href="#" data-value="2"><i class="icon-arrow-left"></i> 收款</a></li>
+                        <li><a href="#" data-value="4"><i class="icon-random"></i> 第三方托管</a></li>
                     </ul>
                 </div>
             </div>
@@ -1130,7 +1130,7 @@
         </div>
     </div>
 
-    <p class="padded well" id="no-transactions" align="center">Normally your bitcoin transactions would be listed here but you have not made any yet.</p>
+    <p class="padded well" id="no-transactions" align="center">比特币交易通常在此显示，但您还没有进行过任何交易。</p>
 
     <table id="transactions-compact" class="table table-striped table-condensed table-hover">
         <thead><tr><th class="hidden-phone" style="width:365px">To / From</th><th style="min-width:130px">Date</th><th style="min-width:152px">Amount</th><th class="hidden-phone">Balance</th></tr></thead>
@@ -1149,25 +1149,25 @@
 <div class="span3">
     <div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list" id="send-coins-nav">
-            <li class="nav-header">Transaction Type</li>
-            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> Quick Send</a></li>
-            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> Custom</a></li>
-            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> Shared Coin</a></li>
+            <li class="nav-header">交易类型</li>
+            <li class="active"><a href="#send-quick" data-toggle="tab"><i class="icon-time"></i> 快速发送</a></li>
+            <li><a href="#send-custom" data-toggle="tab"><i class="icon-cog"></i> 自定义</a></li>
+            <li><a href="#shared-coin" data-toggle="tab"><i class="icon-random"></i> 熔币付款</a></li>
             
 
-            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> Escrow</a></li>
+            <li class="hidden"><a href="#send-email" data-toggle="tab"><i class="icon-lock"></i> 第三方存管</a></li>
 
-            <li class="nav-header">Send Via</li>
-            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> Email</a></li>
-            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> SMS Message</a></li>
+            <li class="nav-header">付款方式</li>
+            <li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> 电子邮件</a></li>
+            <li><a href="#send-sms" data-toggle="tab"><i class="icon-user" style="background-image:url('/Resources/sms.png');width:16px;background-position: 0px"></i> 手机短信</a></li>
 
             <li class="divider" id="partners-send-divider" style="display:none"></li>
 
-            <li class="nav-header">Partners</li>
+            <li class="nav-header">合作伙伴</li>
 
             <li class="divider"></li>
-            <li class="nav-header">Tools</li>
-            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> Address Book</a></li>
+            <li class="nav-header">工具</li>
+            <li><a href="#address-book" data-toggle="tab"><i class="icon-book"></i> 地址簿</a></li>
         </ul>
     </div>
 
@@ -1182,25 +1182,25 @@
 <div class="span9">
 <div class="tab-content">
 <div class="active tab-pane well" id="send-quick">
-    <h4 class="page-header">Quick Send<br/>
-        <small>Use the form below to send a payment to a bitcoin address.</small>
+    <h4 class="page-header">快速发送<br/>
+        <small>填写下面的表格，向任意比特币地址发送付款。</small>
     </h4>
 
     <div class="form-horizontal">
         <div class="recipient-container">
             <div class="recipient">
                 <div class="control-group">
-                    <label class="control-label pop" title="To Address" data-content="This is the Bitcoin Address of the recipient.">To:</label>
+                    <label class="control-label pop" title="接受付款地址" data-content="此处输入收款方的比特币地址。">接收：</label>
 
                     <div class="controls">
-                        <span class="qrcodeicon"><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
+                        <span class="qrcodeicon"><input placeholder="比特币地址" name="send-to-address" type="text"/><span></span></span>
 
-                        <p class="help-block">Enter The Bitcoin Address of the Recipient</p>
+                        <p class="help-block">请输入收款方的比特币地址</p>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label pop" title="Amount" data-content="The Amount in Bitcoins to Send">Amount:</label>
+                    <label class="control-label pop" title="金额" data-content="发送比特币的数额">金额:</label>
 
                     <div class="controls">
 
@@ -1214,14 +1214,14 @@
                             <span class="add-on local-symbol"></span><input class="send-value-usd span2" placeholder="0.0" type="text" style="width:90px;"/>
                         </div>
 
-                        <p class="help-block">Enter The Amount of Bitcoins to send</p>
+                        <p class="help-block">请输入需要发送的比特币数额</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="form-actions">
-            <button class="send btn btn-success pop" title="Send Payment" data-content="Click Here to send payment. You will not be asked to review the transaction.">Send Payment</button>
+            <button class="send btn btn-success pop" title="发送付款" data-content="点此进行付款。之后将没有再次核对信息的机会。">发送付款</button>
 
             <div class="progress" style="display:none;">
                 <div class="bar" style="width:10%"></div>
@@ -1233,7 +1233,7 @@
 <div class="tab-pane well" id="send-sms">
     <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
 
-    <h4 class="page-header">Send Via SMS<br/><small>Use the form below to send bitcoin's via SMS.</small></h4>
+    <h4 class="page-header">通过短信发送<br/><small>填写如下表格，通过手机短信发送比特币。</small></h4>
 
     <div class="form-horizontal">
         <div class="controls">
@@ -1243,31 +1243,31 @@
         <div class="recipient-container">
             <div class="recipient">
                 <div class="control-group">
-                    <label class="control-label pop" title="SMS Number" data-content="Enter the SMS number of the person you want to send bitcoins to.">To:</label>
+                    <label class="control-label pop" title="短信号码" data-content="输入比特币收款方的手机短信接收号码。">接收：</label>
 
                     <div class="controls">
-                        <select name="sms-country-code"></select> <br/> <input placeholder="SMS Number" name="send-to-sms" type="text" style="margin-top:5px"/>
+                        <select name="sms-country-code"></select> <br/> <input placeholder="短信号码" name="send-to-sms" type="text" style="margin-top:5px"/>
 
-                        <p class="help-block">Enter The SMS Number of the Recipient.</p>
+                        <p class="help-block">请输入短信收款人的电话号码。</p>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label pop" title="Amount" data-content="The Amount in Bitcoins to Send">Amount:</label>
+                    <label class="control-label pop" title="金额" data-content="发送比特币的数额">金额:</label>
 
                     <div class="controls">
                         <div class="input-prepend input-append">
                             <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" type="text" style="width:90px;"/><span class="add-on send-value-usd">$0</span>
                         </div>
 
-                        <p class="help-block">Enter The Amount of Bitcoins to send</p>
+                        <p class="help-block">请输入需要发送的比特币数额</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="form-actions">
-            <button class="send btn btn-success pop" title="Send Payment" data-content="Click Here to send payment. You will not be asked to review the transaction.">Send Payment</button>
+            <button class="send btn btn-success pop" title="发送付款" data-content="点此进行付款。之后将没有再次核对信息的机会。">发送付款</button>
 
             <div class="progress" style="display:none;">
                 <div class="bar" style="width:10%"></div>
@@ -1279,7 +1279,7 @@
 <div class="tab-pane well" id="send-email">
     <a style="float:right;" href="https://blockchain.info/wallet/send-via" target="blank"><img src="/Resources/info.png"></a>
 
-    <h4 class="page-header">Send Via Email<br/><small>Use the form below to send bitcoin's to an email address.</small></h4>
+    <h4 class="page-header">通过电子邮件付款<br/><small>使用下面的表格发送比特币的电子邮件地址。</small></h4>
 
     <div class="form-horizontal">
         <div class="controls">
@@ -1289,30 +1289,30 @@
         <div class="recipient-container">
             <div class="recipient">
                 <div class="control-group">
-                    <label class="control-label pop" title="Email Address" data-content="This is the email address of the person you wish to send bitcoins to.">To:</label>
+                    <label class="control-label pop" title="电子邮件地址" data-content="比特币收款人的电子邮件地址。">接收：</label>
 
                     <div class="controls">
-                        <input placeholder="Email Address" name="send-to-email" type="text"/>
+                        <input placeholder="电子邮件地址" name="send-to-email" type="text"/>
 
-                        <p class="help-block">Enter The Email Address of the Recipient</p>
+                        <p class="help-block">请输入收款人的电子邮件地址</p>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label pop" title="Amount" data-content="The Amount in Bitcoins to Send">Amount:</label>
+                    <label class="control-label pop" title="金额" data-content="发送比特币的数额">金额:</label>
 
                     <div class="controls">
                         <div class="input-prepend input-append">
                             <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" placeholder="0.0" style="width:90px;" type="text"/><span class="add-on send-value-usd">$0</span>
                         </div>
-                        <p class="help-block">Enter The Amount of Bitcoins to send</p>
+                        <p class="help-block">请输入需要发送的比特币数额</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="form-actions">
-            <button class="send btn btn-success pop" title="Send Payment" data-content="Click Here to send payment. You will not be asked to review the transaction.">Send Payment</button>
+            <button class="send btn btn-success pop" title="发送付款" data-content="点此进行付款。之后将没有再次核对信息的机会。">发送付款</button>
 
             <div class="progress" style="display:none;">
                 <div class="bar" style="width:10%"></div>
@@ -1325,7 +1325,7 @@
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Shared Coin<br/><small>Trustless coin mixing using coin join and taint analysis</small></h4>
+        <h4 class="page-header">熔币付款<br/><small>利用币值合并及资金源流分析技术，重新熔解、铸造出具备高度隐私保护的比特币</small></h4>
 
         <div class="form-horizontal">
             <div class="controls">
@@ -1333,7 +1333,7 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label pop" title="From Address" data-content="If required you can choose to send coins from a specific address in your wallet.">From:</label>
+                <label class="control-label pop" title="发出付款地址" data-content="如果需要，您可以使用钱包中的指定地址进行付款。">发送：</label>
 
                 <div class="controls">
                     <select name="from" multiple="multiple"></select>
@@ -1343,15 +1343,15 @@
             <div class="recipient-container">
                 <div class="recipient">
                     <div class="control-group">
-                        <label class="control-label pop" title="To Address" data-content="This is the Bitcoin Address of the recipient.">To:</label>
+                        <label class="control-label pop" title="接受付款地址" data-content="此处输入收款方的比特币地址。">接收：</label>
 
                         <div class="controls">
-                            <span class="qrcodeicon" /><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
+                            <span class="qrcodeicon" /><input placeholder="比特币地址" name="send-to-address" type="text"/><span></span></span>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label pop">Amount:</label>
+                        <label class="control-label pop">金额:</label>
 
                         <div class="controls">
                             <div class="input-prepend input-append">
@@ -1363,35 +1363,37 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label pop">Repetitions:</label>
+                <label class="control-label pop">熔铸重复次数:</label>
 
                 <div class="controls">
-                    <select name="repetitions"><option value="0">Loading</option></select>
-                    <p class="help-block">A higher number of repetitions makes the transaction more difficult to trace and improves privacy.</p>
+                    <select name="repetitions"><option value="0">载入中……</option></select>
+                    <p class="help-block">较高的重复次数可使交易更难以追查，同时强化对隐私的保护。<br />
+                        <div style="margin-top:3px"><small><input type="checkbox" name="shared-coin-donate" style="position:relative;bottom:4px;" checked> Check to donate an additional 0.1% of your transaction to help fund further improvements to Blockchain's free service.</small></div>
+                    </p>
                 </div>
             </div>
 
             <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Review Payment" data-content="Click Here to review payment. You will be able to confirm or cancel the transaction.">Review Payment</button>
+                <button class="send btn btn-primary pop" title="核对交易信息" data-content="点击这里核对交易信息。您可以确认或取消交易。">核对交易信息</button>
 
                 <p class="help-block send-options" style="padding-top:10px">
-                    <b>Maximum Send Value:</b> <span></span><br />
-                    <b>Minimum Send Value:</b> <span></span><br />
-                    <b>Fee Percent Per Repetition:</b> <span></span>%</br />
-                    <b>Minimum Fee Per Repetition:</b> <span></span>
+                    <b>单笔付款上限:</b> <span></span><br />
+                    <b>单笔付款下限:</b> <span></span><br />
+                    <b>每次重复收取手续费:</b> <span></span>%</br />
+                    <b>每次重复最低交易费:</b> <span></span>
                 </p>
             </div>
         </div>
     </div>
     <div class="well">
-        <h4 style="margin-bottom: 5px">Something went wrong?</h4>
+        <h4 style="margin-bottom: 5px">出现错误？</h4>
 
         <p>
-                When sending a shared coin transaction a number of intermediate addresses are used. If anything interupts the process or an error prevents the transaction from completing the coins may be left in an intermediate address. Click the button below to claim any coins left in intermediate addresses, this process can take several minutes to complete.
+                熔币交易时，会经过一系列的地址进行周转。如果熔币加工过程被中途打断或发生错误，部分资金可能会留存在周转地址中。点击下面的按钮来取回所有暂扣于周转地址中的资金，整个过程可能需要几分钟才能完成。
         </p>
 
         <p>
-            <button class="btn" id="sharedcoin-recover">Recover Intermediate Addresses</button>
+            <button class="btn" id="sharedcoin-recover">周转地址残币回收</button>
         </p>
     </div>
 </div>
@@ -1399,11 +1401,11 @@
 
 
 <div class="tab-pane well" id="send-custom">
-    <h4 class="page-header">Custom Transaction<br/><small>Use the form below to send a payment to one or more bitcoin addresses. You will be asked review your transaction before submission.</small></h4>
+    <h4 class="page-header">自定义交易<br/><small>使用下面的表格向一个或多个比特币地址发送付款。交易发送前，您需核对并确认交易信息。</small></h4>
 
     <div class="form-horizontal" style="max-width:660px" id="send-tx-custom-form">
         <div class="control-group">
-            <label class="control-label pop" title="From Address" data-content="If required you can choose to send coins from a specific address in your wallet.">From:</label>
+            <label class="control-label pop" title="发出付款地址" data-content="如果需要，您可以使用钱包中的指定地址进行付款。">发送：</label>
 
             <div class="controls">
                 <select name="from" multiple="multiple"></select>
@@ -1411,11 +1413,11 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">To:</label>
+            <label class="control-label">接收：</label>
 
             <div class="controls recipient-container">
                 <div class="recipient" style="margin-bottom:5px">
-                    <span class="qrcodeicon"><input placeholder="Bitcoin Address" name="send-to-address" type="text"/><span></span></span>
+                    <span class="qrcodeicon"><input placeholder="比特币地址" name="send-to-address" type="text"/><span></span></span>
 
                     <div class="input-prepend input-append">
                         <span class="add-on btc-symbol"></span><input class="send-value span2" name="send-value" style="width:90px;" placeholder="0.0" type="text"/><span class="add-on send-value-usd">$0</span>
@@ -1431,13 +1433,13 @@
                 </div>
 
                 <div style="float:right;padding-right:20px">
-                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="Remove Recipient" data-content="Remove the last recipient."/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="Add Recipient" data-content="If you want to send bitcoins to multiple recipients at once click here to add another address"/>
+                    <img src="/Resources/remove.png" class="pop remove-recipient" style="display:none" title="删除收款人" data-content="删除最后一名收款人。"/> &nbsp; <img src="/Resources/add.png" class="pop add-recipient" title="添加收款人" data-content="如果你想通过一次交易付款给多人，可点击这里添加地址"/>
                 </div>
             </div>
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Miners Fee" data-content="This fee will be sent to the bitcoin miners and can help your transaction be processed faster">Miners Fee:</label>
+            <label class="control-label pop" title="交易费" data-content="这笔费用将用于酬谢矿工，以便加速您的交易确认速度">交易费:</label>
 
             <div class="controls">
                 <div class="input-prepend input-append" style="width:220px">
@@ -1447,7 +1449,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Change Address" data-content="Any Change From The Transaction will be sent back to this address">Change Address:</label>
+            <label class="control-label pop" title="找零地址" data-content="交易的找零余款将被发送到这个地址">找零地址:</label>
 
             <div class="controls">
                 <select name="change"></select>
@@ -1455,25 +1457,25 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Public Note" data-content="Add a note to this transaction which will be viewable on blockchain.info.">Public Note:</label>
+            <label class="control-label pop" title="公开注释" data-content="为本次交易添加注释，此信息可在blockchain.info查询。">公开注释:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="This message will be permanently embedded in the blockchain. Anyone can read it." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="此消息将永久性地嵌入到区块链中。任何人都可以查阅。" style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
         <div class="form-actions">
-            <button class="reset btn">Reset Form</button>
-            <button class="send btn btn-primary pop" title="Review Payment" data-content="Click Here to review payment. You will be able to confirm or cancel the transaction.">Review Payment</button>
+            <button class="reset btn">重置表单</button>
+            <button class="send btn btn-primary pop" title="核对交易信息" data-content="点击这里核对交易信息。您可以确认或取消交易。">核对交易信息</button>
         </div>
     </div>
 </div>
 
 <div class="tab-pane well" id="address-book">
 
-    <h3>Address Book</h3>
+    <h3>地址簿</h3>
 
-    <p>The address book contains a list of sending addresses. You can use it to store the bitcoin addresses of people you know or merchants you use frequently.</p>
+    <p>地址簿是记录付款地址的列表。您可以用它来存储熟人或商家的比特币地址。</p>
 
     <table class="table table-striped" id="address-book-tbl">
         <thead>
@@ -1491,7 +1493,7 @@
     </table>
 
     <div class="form-actions">
-        <button id="add-address-book-entry-btn" class="btn btn-primary">Add New Entry</button>
+        <button id="add-address-book-entry-btn" class="btn btn-primary">添加新条目</button>
     </div>
 </div>
 </div>
@@ -1501,12 +1503,12 @@
 
 <div id="import-export" style="display: none;">
     <div style="width:400px;margin: 50px auto;" class="well" id="export-warning">
-        <h2>Advanced Warning!</h2>
+        <h2>注意，此为专业级操作！</h2>
 
-        <p>This section allows you to make changes to your wallet which can be complicated and confusing. It is recommended only experienced Bitcoin Users proceed from here. You should have an understanding of what private keys are and how they relate to bitcoin addresses.</p>
+        <p>本功能可允许您对钱包进行一些比较复杂的操作。只建议经验丰富的比特币用户使用。您应当先行了解什么是私钥，以及它们如何与比特币地址对应。</p>
 
         <p align="right">
-            <button class="btn btn-primary" id="show-import-export">I Understand</button>
+            <button class="btn btn-primary" id="show-import-export">确认继续操作</button>
         </p>
     </div>
 
@@ -1519,13 +1521,13 @@
 <div class="span2">
     <div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list">
-            <li class="nav-header">Import / Export</li>
-            <li class="active"><a href="#import" data-toggle="tab">Import</a></li>
-            <li><a href="#import-backup" data-toggle="tab">Import Backup</a></li>
-            <li><a href="#import-wallet" data-toggle="tab">Import Wallet</a></li>
-            <li><a href="#export-crypted" data-toggle="tab">Export Encrypted</a></li>
-            <li><a href="#export-unencrypted" data-toggle="tab">Export Unencrypted</a></li>
-            <li><a class="paper-wallet-btn">Paper Wallet</a></li>
+            <li class="nav-header">导入、导出</li>
+            <li class="active"><a href="#import" data-toggle="tab">导入</a></li>
+            <li><a href="#import-backup" data-toggle="tab">导入备份</a></li>
+            <li><a href="#import-wallet" data-toggle="tab">导入钱包</a></li>
+            <li><a href="#export-crypted" data-toggle="tab">导出已加密数据</a></li>
+            <li><a href="#export-unencrypted" data-toggle="tab">导出未加密数据</a></li>
+            <li><a class="paper-wallet-btn">纸钱包</a></li>
         </ul>
     </div>
 </div>
@@ -1536,47 +1538,47 @@
             
 
             <div class="page-header">
-                <h3>Add Watch Only Bitcoin Address</h3>
+                <h3>添加只用于监视资金动向的比特币地址</h3>
 
-                <p>You may add a <font color="red">Watch Only</font> bitcoin address to your wallet. You will not be able to send bitcoins from this address without later providing the private key</p>
+                <p>您可以添加<font color="red">Watch Only</font>比特币地址到您的钱包。从该地址发送比特币前需提供私钥。</p>
 
                 <div class="form-inline">
-                    <input placeholder="Bitcoin Address" id="import-address-address" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">Add Watch Only Address</button>
+                    <input placeholder="比特币地址" id="import-address-address" type="text"/>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-address-btn">开始监视此地址</button>
                 </div>
             </div>
 
             <div class="page-header">
-                <h3>Import Private Key</h3>
+                <h3>导入私钥</h3>
 
-                <p>Import an existing private key below. All private key formats are supported.</p>
+                <p>导入现有的私钥。支持所有的私钥格式。</p>
 
                 <div class="form-inline">
                     <input placeholder="Private Key" id="import-private-key" type="text"/>
-                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">Add Private Key</button>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-btn">私钥</button>
                 </div>
             </div>
 
             <div class="page-header">
-                <h3>Import Using Paper Wallet</h3>
+                <h3>导入纸钱包</h3>
 
-                <p>Use your Webcam to scan a QR code from a paper wallet</p>
+                <p>使用您的摄像头扫描纸钱包上的二维码</p>
 
                 <div class="form-inline">
-                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">Scan With Webcam</button>
+                    <button class="btn btn-primary" style="min-width:171px" id="import-private-scan">用摄像头扫描</button>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane" id="import-backup">
-            <h3 class="page-header">Import Backup <small>A list of wallet backups available from our cloud storage server.</small></h3>
+            <h3 class="page-header">导入备份 <small>我们云存储服务器保存所的钱包备份清单。</small></h3>
 
             <table class="table table-striped well" style="margin-top:10px">
                 <thead>
-                <th>File Name</th>
-                <th>Last Modified</th>
-                <th>Size</th>
-                <th>Action</th>
+                <th>文件名</th>
+                <th>最后修改</th>
+                <th>文件大小</th>
+                <th>操作</th>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -1584,38 +1586,38 @@
 
         <div class="tab-pane" id="import-wallet">
 
-            <h3 class="page-header">Import Wallet</h3>
+            <h3 class="page-header">导入钱包</h3>
 
-            <p>You may import keys in several different formats.</p>
+            <p>您可以导入多种不同格式的私钥。</p>
             <ul>
-                <li>AES encrypted backup from blockchain.info. (Must be encrypted with the same password)</li>
-                <li>Plaintext JSON backup from blockchain.info</li>
-                <li>Output from <a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet</li>
-                <li>Output from <a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key</li>
-                <li>Output from <a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a></li>
+                <li>来自blockchain.info的AES加密备份（须使用相同的密码加密）</li>
+                <li>来自blockchain.info的JSON明文备份</li>
+                <li>从<a href="https://blockchain.info/r?url=https://github.com/jackjack-jj/pywallet" target="new">pywallet.py</a> -dumpwallet导出数据</li>
+                <li>从<a href="https://blockchain.info/r?url=http://multibit.org/" target="new">Multibit</a> .key导出数据</li>
+                <li>从<a href="https://blockchain.info/r?url=https://github.com/samr7/vanitygen" target="new">Vanitygen</a>导出数据</li>
             </ul>
 
-            <p>Please be aware there is currently a limit of 400 private keys per wallet. For large wallets your browser may become unresponsive for a few minutes.</p>
+            <p>每个钱包最多可包含400个私钥。对于较大的钱包，您的浏览器可能会停止响应几分钟。</p>
 
-            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="Copy And Paste your wallet data into this area"></textarea>
+            <textarea name="textarea" id="import-json" style="width:100%;height:450px;box-sizing:border-box;" placeholder="复制钱包字段并粘贴到此处"></textarea>
 
-            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">Import Wallet</button>
+            <button class="btn btn-primary" id="import-json-btn" style="margin-top: 10px">导入钱包文件</button>
         </div>
 
         <div class="tab-pane" id="export-crypted">
-            <h3 class="page-header">Export <small>Below are your private keys AES encrypted.</small></h3>
+            <h3 class="page-header">导出 <small>以下是经过AES加密的私钥信息。</small></h3>
 
             <textarea name="textarea" id="json-crypted-export" style="width:100%;box-sizing: border-box;height:450px;" readonly></textarea>
 
             <p style="margin-top:10px">
-                <button class="btn btn-success download-backup-btn">Download Backup</button>
+                <button class="btn btn-success download-backup-btn">下载备份</button>
             </p>
         </div>
 
         <div class="tab-pane" id="export-unencrypted">
-            <h3 class="page-header">Export Unencrypted <small>Below are your private keys in JSON format. Warning! This data is unencrypted keep it safe.</small></h3>
+            <h3 class="page-header">导出未加密的数据 <small>以下是JSON格式的私钥。警告！本数据未经加密，请确保它的信息安全。</small></h3>
 
-            <h6>Select private key format:</h6>
+            <h6>选择私钥格式：</h6>
 
             <p>
                 <select id="export-priv-format">
@@ -1623,7 +1625,7 @@
                     <option value="sipa">Bitcoin-Qt Format</option>
                     <option value="base64">Base64</option>
                     <option value="hex">Hex</option>
-                    <option value="">Leave Private Keys Encrypted</option>
+                    <option value="">保持私钥的加密状态</option>
                 </select>
             </p>
 
@@ -1634,53 +1636,53 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
 
-                <h3>Add Watch Only Bitcoin Address</h3>
+                <h3>添加监视用比特币地址</h3>
             </div>
             <div class="modal-body">
-                <p>Please Confirm you would to add the <font color="red">Watch Only</font> address <span class="address"></span>.</p>
+                <p>确认添加<font color="red">Watch Only</font>地址<span class="address"></span>。</p>
 
-                <p>A <font color="red">Watch Only</font> address means you can only observe the transactions at this address. Unless you have the private key saved elsewhere then you do not own the funds at this address.</p>
+                <p><font color="red">Watch Only</font>地址意味着你只能查看这个地址上发生的交易。如果未持有对应的私钥，您依旧无权使用地址内包含的资金。</p>
 
-                <p>If you do not have a paper wallet or other backup you should not withdraw coins to this address or instruct anyone to send you coins at this address</p>
+                <p>如果你没有使用纸钱包或其他形式的备份，你不应该向此地址转入比特币或让任何人向此地址发送比特币。</p>
             </div>
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-secondary">Cancel</button>
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-secondary">取消</button>
+                    <button class="btn btn-primary">继续</button>
                 </div>
             </div>
         </div>
 
         <div id="import-private-key-warning-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Import Private Key Warning</h3>
+                <h3>私钥导入警示</h3>
             </div>
             <div class="modal-body">
-                <p><b>Never import a private key from a public or untrusted source.</b> This includes common brain wallets, competitions and purchased private keys. Instead we recommend to sweep the key, which means to send all the funds to one of your existing addresses rather than actually adding a new address to your wallet.</p>
+                <p><b>决不要导入从公开场合或不可信来源获取的私钥。</b>其中也包括常见的脑钱包、竞赛奖品以及从别处购入的私钥。我们建议使用「合并余额」功能，也就是将您多个比特币地址中的资产余额合并到一个单独的地址中，而不是一味的在你的钱包中添加新地址。</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-secondary">Import Directly</button>
-                    <button class="btn btn-primary">Sweep Key</button>
+                    <button class="btn btn-secondary">直接导入</button>
+                    <button class="btn btn-primary">合并余额</button>
                 </div>
             </div>
         </div>
 
         <div id="import-password-modal" class="modal hide">
             <div class="modal-header">
-                <h3>Wallet Password</h3>
+                <h3>钱包密码</h3>
             </div>
             <div class="modal-body">
-                <p>If this wallet is encrypted please enter the password below. Otherwise leave it blank.</p>
+                <p>如果钱包已加密，请在下面输入密码。否则，请保持留空。</p>
                 <p align="center">
-                    <b>Wallet Password:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+                    <b>钱包密码:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-primary">Continue</button>
+                    <button class="btn btn-primary">继续</button>
                 </div>
             </div>
         </div>
@@ -1688,19 +1690,19 @@
         <div id="compressed-private-key-modal" class="modal hide">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3>Compressed Private Key Detected</h3>
+                <h3>检测到经过压缩的私钥</h3>
             </div>
 
             <div class="modal-body">
-                <p>Compressed private keys are currently not supported using the Android app, iPhone app or Merchant API. If you import a compressed private key directly you will not be able to spend the funds at that address using the previously listed devices.</p>
+                <p>已压缩加密的私钥暂时无法在Android应用程序、iPhone应用程序或商业API中使用。如果您导入一组已压缩私钥，你将无法使用上述设备支配此地址上的资金。</p>
 
-                <p>The recommended solution is to sweep the funds into a existing bitcoin address. Would you like to sweep this private key instead?</p>
+                <p>建议的解决方案是将现有比特币地址中的余额合并入一个地址中。是否要开始合并？</p>
             </div>
 
             <div class="modal-footer">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-secondary">Import Directly</button>
-                    <button class="btn btn-primary">Sweep Key</button>
+                    <button class="btn btn-secondary">直接导入</button>
+                    <button class="btn btn-primary">合并余额</button>
                 </div>
             </div>
         </div>
@@ -1715,20 +1717,20 @@
 <div id="main-password-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Main Password Needed</h3>
+        <h3>需要输入主密码</h3>
     </div>
 
     <div class="modal-body">
-        <p>This action requires you re-enter your main password. Please enter it carefully or you may be be logged out.</p>
+        <p>本操作需要你重新输入主密码。请仔细输入，否则您可能会被强制登出钱包。</p>
 
         <div style="width:290px;margin: 0 auto;">
-            <p><b>Main Password:</b></p><p><input placeholder="password" name="password" type="password"/></p>
+            <p><b>主密码:</b></p><p><input placeholder="password" name="password" type="password"/></p>
         </div>
     </div>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button> <button class="btn btn-primary">Continue</button>
+            <button class="btn btn-secondary">取消</button> <button class="btn btn-primary">继续</button>
         </div>
     </div>
 </div>
@@ -1736,11 +1738,11 @@
 <div id="second-password-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Second Password Needed</h3>
+        <h3>需要副密码</h3>
     </div>
 
     <div class="modal-body">
-        <p>This action requires that you enter your second password which is needed fully decrypt your wallet. You should never enter your second password on an untrusted computer. Use the onscreen keyboard to provide some protection from keyloggers.</p>
+        <p>这里需要输入你的钱包副密码，您处于加密状态的钱包在解密后方可使用。你不该在任何不受信任的计算机上输入副密码。建议使用屏幕键盘点击输入，可避免被键盘监控类木马程序截获。</p>
 
         <p align="center"><input placeholder="password" name="password" type="password" style=""/></p>
 
@@ -1805,7 +1807,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button> <button class="btn btn-primary">Continue</button>
+            <button class="btn btn-secondary">取消</button> <button class="btn btn-primary">继续</button>
         </div>
     </div>
 </div>
@@ -1813,31 +1815,31 @@
 <div id="label-address-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Label Address</h3>
+        <h3>给地址设置标签</h3>
     </div>
 
     <div class="modal-body">
-        <p>Please enter a label for address <span class="address"></span></p>
+        <p>请为地址<span class="address"></span>设置一个标签</p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Label:</label>
+                <label class="control-label">标签：</label>
                 <div class="controls">
-                    <input name="label" placeholder="Label e.g. Savings" type="text" /><p class="help-block">A label is used to help you remember what this address is for. It can be the name of a person or company.</p>
+                    <input name="label" placeholder="此处输入标签，例如：Savings" type="text" /><p class="help-block">使用标签可以更方便的记忆地址的用途。如设置为人名或公司名。</p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Make Public?</label>
+                <label class="control-label">公开信息？</label>
                 <div class="controls">
-                    <input name="make_public" type="checkbox" /><p class="help-block">By Default address labels are visible to you only. Public labels are publically visible on the blockchain website and can be viewed by anyone.</p>
+                    <input name="make_public" type="checkbox" /><p class="help-block">默认情况下地址标签只有您本人可见。一旦公开后，在blockchain网站任何人都可以进行查看。</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button> <button class="btn btn-primary">Save</button>
+            <button class="btn btn-secondary">取消</button> <button class="btn btn-primary">保存</button>
         </div>
     </div>
 </div>
@@ -1845,27 +1847,27 @@
 <div id="sign-message-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Sign Message</h3>
+        <h3>签发信息</h3>
     </div>
 
     <div class="modal-body">
-        <p>Use this tool to sign a message which proves that you own an address. Only Sign Detailed Messages you fully agree with, never sign vague messages. Pressing Sign Message may cause your browser to become unresponsive for a few seconds.</p>
+        <p>使用此工具对消息进行签名，这可用于证明您对此地址具有支配权。请只签发您能完全确信的信息，绝不要出现含糊其辞、模棱两可的内容。点击签名按钮可能会导致您的浏览器失去响应几秒钟。</p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Address:</label>
+                <label class="control-label">地址：</label>
                 <div class="controls">
                     <p class="address"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Message:</label>
+                <label class="control-label">消息：</label>
                 <div class="controls">
-                    <textarea name="message" style="width:90%;height:100px;" placeholder="Enter the Message You Wish To Sign"></textarea>
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="输入您想验证的信息"></textarea>
                 </div>
             </div>
             <div class="control-group signature" style="display:none">
-                <label class="control-label">Signature:</label>
+                <label class="control-label">签名：</label>
                 <div class="controls">
                     <p class="signature-result" style="word-wrap:break-word;width:90%;"></p>
                 </div>
@@ -1875,8 +1877,8 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Sign Message</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">签发信息</button>
         </div>
     </div>
 </div>
@@ -1884,29 +1886,29 @@
 <div id="verify-message-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Verify Message</h3>
+        <h3>验证消息</h3>
     </div>
 
     <div class="modal-body">
-        <p>Use this tool verify a message signed by the owner of a particular bitcoin address</p>
+        <p>使用此工具验证来自特定的比特币地址的所有者的签名消息</p>
 
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Address:</label>
+                <label class="control-label">地址：</label>
                 <div class="controls">
-                    <input name="address" placeholder="Bitcoin Address" type="text">
+                    <input name="address" placeholder="比特币地址" type="text">
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Message:</label>
+                <label class="control-label">消息：</label>
                 <div class="controls">
-                    <textarea name="message" style="width:90%;height:100px;" placeholder="Enter the Message To Verify"></textarea>
+                    <textarea name="message" style="width:90%;height:100px;" placeholder="请输入验证信息"></textarea>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Signature:</label>
+                <label class="control-label">签名：</label>
                 <div class="controls">
-                    <textarea name="signature" style="width:90%;height:100px;" placeholder="Enter the Signature To Verify"></textarea>
+                    <textarea name="signature" style="width:90%;height:100px;" placeholder="请输入要验证的签名"></textarea>
                 </div>
             </div>
             <div class="control-group address-result" style="display:none">
@@ -1920,15 +1922,15 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Verify Message</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">验证消息</button>
         </div>
     </div>
 </div>
 
 <div id="qr-code-modal" class="modal hide" style="max-width:400px">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button> <h3>Address QR Code <small class="address"></small></h3>
+        <button type="button" class="close" data-dismiss="modal">×</button> <h3>地址二维码 <small class="address"></small></h3>
     </div>
 
     <div class="modal-body" style="width:auto;padding-left:0px;padding-right:0px;overflow:hidden;">
@@ -1937,7 +1939,7 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Close</button>
+            <button class="btn btn-secondary">关闭</button>
         </div>
     </div>
 </div>
@@ -1945,30 +1947,30 @@
 <div id="add-address-book-entry-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Add Address Book Entry</h3>
+        <h3>向地址簿中添加新地址</h3>
     </div>
     <div class="modal-body">
         <div class="form-horizontal">
             <div class="control-group">
-                <label class="control-label">Address:</label>
+                <label class="control-label">地址：</label>
                 <div class="controls">
-                    <input name="address" placeholder="Bitcoin Address" type="text">
-                    <p class="help-block">Enter the Bitcoin Address you wish to add to your address book.</p>
+                    <input name="address" placeholder="比特币地址" type="text">
+                    <p class="help-block">请输入想加入地址簿中的比特币地址。</p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Label:</label>
+                <label class="control-label">标签：</label>
                 <div class="controls">
-                    <input name="label" placeholder="Name of person or merchant" type="text" />
-                    <p class="help-block">Enter the Label for this address. e.g. the name of the person or company name.</p>
+                    <input name="label" placeholder="人名或商家名称" type="text" />
+                    <p class="help-block">标注此地址的标签。如人名、公司名称。</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Add Address</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">添加地址</button>
         </div>
     </div>
 </div>
@@ -1976,16 +1978,16 @@
 <div id="not-synced-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Address Not Saved</h3>
+        <h3 style="color:red;">地址未保存</h3>
     </div>
     <div class="modal-body">
-        <p>A newly generated address has not been saved on our servers yet. <span style="color:red;font-weight:bold;">Unless the private key is saved elsewhere any coins sent to un-synced addresses will be permanently lost after logout</span></p>
+        <p>有新生成的地址尚未与服务器同步。 <span style="color:red;font-weight:bold;">除非你已用其他方式记录并保存私钥，否则，在您登出钱包后，未完成同步的比特币地址（以及地址上保管的资金）都将消失。</span></p>
     </div>
 
     <div class="modal-footer">
         <div class="pull-right">
-            <button class="btn btn-danger">Show Unsaved Address</button>
-            <button class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button class="btn btn-danger">显示未保存的地址</button>
+            <button class="btn btn-primary" data-dismiss="modal">关闭</button>
         </div>
     </div>
 </div>
@@ -1993,19 +1995,19 @@
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Watch Only Address Warning</h3>
+        <h3 style="color:red;">监视用地址警告</h3>
     </div>
     <div class="modal-body">
-        <p>You are receiving this warning because you have copied a <font color="red">Watch Only</font> address to the clipboard.</p>
+        <p>您将一个<font color="red">Watch Only</font>地址复制到了剪贴板，特此警示。</p>
 
-        <p>A <font color="red">Watch Only</font> address means you can only observe the transactions at this address. Unless you have the private key saved elsewhere then you do not own the funds at this address.</p>
+        <p><font color="red">Watch Only</font>地址意味着你只能查看这个地址上发生的交易。如果未持有对应的私钥，您依旧无权使用地址内包含的资金。</p>
 
-        <p><b>If you do not have a paper wallet or other backup you should not withdraw coins to this address or instruct anyone to send you coins at this address</b></p>
+        <p><b>如果你没有使用纸钱包或其他形式的备份，你不应该向此地址转入比特币或让任何人向此地址发送比特币。</b></p>
     </div>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-secondary" data-dismiss="modal">关闭</button>
         </div>
     </div>
 </div>
@@ -2013,27 +2015,27 @@
 <div id="delete-address-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Confirm Delete</h3>
+        <h3>确认删除</h3>
     </div>
     <div class="modal-body">
-        <div class="alert alert-block alert-error">Deleting an incorrect address will cause financial loss. If you are not sure what you are doing press cancel now</div>
+        <div class="alert alert-block alert-error">错删地址将造成不可挽回的经济损失。如果您不确定自己正在做什么，请点击取消</div>
 
         <p id="to-delete-address" style="text-align:center;font-weight:bold;"></p>
 
         <p>
-            Are you sure would like to remove the address? You will no longer be able to send or receive bitcoins from this address. The balance of this address is:
+            您确定要删除此地址吗？一旦删除，您将不能使用这个地址发送或接收比特币。目前此地址的余额是：
         </p>
 
         <h2 align="center" id="delete-balance"></h2>
 
-        <h2 id="change-mind" style="display:none;text-align:center">You have <span id="change-mind-time">5</span> seconds to change your mind...</h2>
+        <h2 id="change-mind" style="display:none;text-align:center">您还有<span id="change-mind-time">5</span>秒时间来改变想法……</h2>
     </div>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Delete Private Key Only</button>
-            <button class="btn btn-danger">Delete Address and Private Key</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">只删除私钥</button>
+            <button class="btn btn-danger">同时删除地址与私钥</button>
         </div>
     </div>
 </div>
@@ -2041,22 +2043,22 @@
 <div id="sweep-address-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Sweep Keys</h3>
+        <h3>合并余额</h3>
     </div>
     <div class="modal-body">
-        <p>Sweep means to move all available funds in one or more addresses to another address. Please choose an address where you would like to sweep the selected addresses (Balance <span class="balance"></span>).</p>
+        <p>合并是指将所有地址的可支配余额集中到一个地址中进行更方便的保管。请选择一个准备用于收纳资金的地址（余额总计：<span class="balance"></span>）。</p>
 
         <p align="center">
         <div class="form-inline">
-            <label class="control-label">Sweep To:</label> <br /><select name="change"></select>
+            <label class="control-label">合并至：</label> <br /><select name="change"></select>
         </div>
         </p>
     </div>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Continue</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">继续</button>
         </div>
     </div>
 </div>
@@ -2064,15 +2066,15 @@
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
-        <h3>Shared Coin Transaction</h3>
+        <h3>熔币交易</h3>
     </div>
     <div class="modal-body">
         <div class="alert alert-block alert-error">
-            An error occurred completing this shared coin transaction. For further information please check the javascript console.
+            熔币交易发生错误。欲了解更多信息，请检查JavaScript控制台。
         </div>
 
         <div class="alert alert-block alert-warning">
-            Transaction in progress. Do not close this window or exit your browser.
+            交易还在进行。请勿关闭此窗口及浏览器。
         </div>
 
         <p align="center" class="loading-indicator" style="display:none;padding:10px;">
@@ -2083,66 +2085,66 @@
         <div class="pull-left">Send <span class="total_value" style="font-weight:bold"></span> to <span class="address" style="font-weight:bold"></span></div>
 
             <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">取消</button>
         </div>
     </div>
 </div>
 
 <div id="insufficient-funds" class="modal hide">
     <div class="modal-header">
-        <h3>Insufficient Funds</h3>
+        <h3>资金不足</h3>
     </div>
 
     <div class="modal-body">
-        <p>This transaction cannot be sent because there are insufficent funds available. This may be due to additional miners fees or unconfirmed transactions.</p>
+        <p>本次交易发送失败，账户资金不足。这可能是由于您未计算交易费用，或钱包内的某些交易尚未完成确认。</p>
 
-        <p>The transaction can either be cancelled. Or the amount to send can be adjusted to match the maximum amount available to send.</p>
+        <p>本次交易可以被取消。或发送金额可以调整，以匹配可发送的最大额度。</p>
     </div>
 
-    <h3 align="center" style="padding-bottom:10px">Required: <span class="amount-required"></span> (Available: <span class="amount-available"></span>)</h3>
+    <h3 align="center" style="padding-bottom:10px">所需余额： <span class="amount-required"></span> (可用余额： <span class="amount-available"></span>)</h3>
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel Transaction</button>
-            <button class="btn btn-primary">Adjust Amount</button>
+            <button class="btn btn-secondary">取消交易</button>
+            <button class="btn btn-primary">调整金额</button>
         </div>
     </div>
 </div>
 
 <div id="ask-for-fee" class="modal hide">
     <div class="modal-header">
-        <h3>Miners Fee Recommended</h3>
+        <h3>建议设置交易费</h3>
     </div>
     <div class="modal-body">
-        <p>This transaction is low priority. It is recommended you include at least a 0.0001 BTC transaction fee in order to ensure miners process it.</p>
-        <div class="alert alert-block alert-error">If you do not include a fee this transaction may take a long time to get confirmed. Any funds will be returned to you in approximately 24 hours.</div>
+        <p>本次交易处于低优先级。我们建议您支付至少0.0001BTC的交易费，以确保矿工能更快速地确认交易。</p>
+        <div class="alert alert-block alert-error">如果您未支付交易费用，此比交易可能需要很长的时间方能完成确认。约24小时后仍未确认的交易款项将退回您的钱包。</div>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Continue Without Fee</button>
-            <button class="btn btn-primary">Add Fee</button>
+            <button class="btn btn-secondary">确认提交无交易费的交易</button>
+            <button class="btn btn-primary">添加交易费</button>
         </div>
     </div>
 </div>
 
 <div id="ask-to-increase-fee" class="modal hide">
     <div class="modal-header">
-        <h3>Higher Fee Recommended</h3>
+        <h3>建议增加交易费数额</h3>
     </div>
     <div class="modal-body">
-        <p>You specified a custom fee of <span></span> however the recommended fee for this transaction is <span></span>. Would you like to use the recommended fee instead?</p>
+        <p>您设置了<span></span>作为交易费然而，但对于本次交易，推荐的费用为<span></span>。你是否想使用此推荐费率？</p>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Use Custom Fee</button>
-            <button class="btn btn-primary">Use Recommended Fee</button>
+            <button class="btn btn-secondary">使用自定义费率</button>
+            <button class="btn btn-primary">使用推荐的费率</button>
         </div>
     </div>
 </div>
 
 <div id="new-transaction-modal" class="modal hide">
     <div class="modal-header">
-        <h3>Creating Transaction</h3>
+        <h3>创建交易</h3>
     </div>
 
     <div class="modal-body">
@@ -2152,52 +2154,52 @@
         </p>
 
         <div class="offline-transaction" style="display:none">
-            <p>Your transaction has been created successfully but has not yet been broadcast to the p2p network. </p>
+            <p>您的交易已成功创建，但尚未在P2P网络中进行播报。 </p>
 
-            To complete the transaction open <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>. Copy and paste the text below into the textarea and press submit to complete the transaction.</p>
+            要完成此次交易，请打开地址 <a href="https://blockchain.info/pushtx" target="new">blockchain.info/pushtx</a>。复制并粘贴以下本文，然后点击提交完成交易。</p>
 
             <textarea name="data" style="width: 100%; height:100px;"></textarea>
         </div>
 
         <div id="tx-sign-progress" style="display:none">
-            <h4>Please Wait. Signing Input Number <span class="n">0</span> out of <span class="t"></span>...</h4>
+            <h4>请稍候。正在签署第<span class="n">0</span>项转入地址，共<span class="t"></span>项……</h4>
         </div>
 
         <div id="review-tx" style="display:none">
             <div class="basic">
-                <p>Please confirm you would like to <span id="rtc-basic-summary"></span></p>
+                <p>请确认您准备<span id="rtc-basic-summary"></span></p>
             </div>
 
             <div class="adv">
-                <p>Please check the details below:</p>
+                <p>请检查以下明细：</p>
 
                 <table class="table table-striped">
                     <tr>
-                        <td width="110px;"><b>Hash</b></td>
+                        <td width="110px;"><b>哈希值</b></td>
                         <td id="rtc-hash"></td>
                     </tr>
                     <tr>
-                        <td><b>Version</b></td>
+                        <td><b>版本</b></td>
                         <td id="rtc-version">1</td>
                     </tr>
                     <tr>
-                        <td><b>Inputs</b></td>
+                        <td><b>转入</b></td>
                         <td><div style="max-height:100px;overflow:auto;" id="rtc-from"></div></td>
                     </tr>
                     <tr>
-                        <td><b>Outputs</b></td>
+                        <td><b>转出</b></td>
                         <td><div style="max-height:100px;overflow:auto;" id="rtc-to"></div></td>
                     </tr>
                     <tr>
-                        <td><b>Total Fees</b></td>
+                        <td><b>总费用</b></td>
                         <td id="rtc-fees">0</td>
                     </tr>
                     <tr>
-                        <td><b>Total Output Value</b></td>
+                        <td><b>转出总额</b></td>
                         <td id="rtc-value">0</td>
                     </tr>
                     <tr>
-                        <td><b>Leaving Wallet</b></td>
+                        <td><b>退出钱包</b></td>
                         <td id="rtc-effect" style="color: red">0</td>
                     </tr>
                 </table>
@@ -2209,20 +2211,20 @@
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Send Transaction</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">发送交易</button>
         </div>
     </div>
 </div>
 
 <div id="send-email-modal" class="modal hide">
     <div class="modal-header">
-        <h3>Send Via Email</h3>
+        <h3>通过电子邮件发送</h3>
     </div>
 
     <div class="modal-body">
         <h3 style="padding-bottom:25px">
-            Send <span class="amount"></span> to <span class="email"></span> <br /> <small>The following message will be sent to the recipient.</small>
+            <span class="amount"></span> <span class="email"></span> <br /> <small>以下消息将发送给收件人。</small>
         </h3>
 
         <div class="well frame" style="width:100%;height:350px;box-sizing:border-box;"></div>
@@ -2230,8 +2232,8 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Send Payment</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">发送付款</button>
         </div>
     </div>
 </div>
@@ -2240,11 +2242,11 @@
 
 <div id="private-key-modal" class="modal hide">
     <div class="modal-header">
-        <h3>Private Key Needed</h3>
+        <h3>需要私钥</h3>
     </div>
 
     <div class="modal-body">
-        <p>This action requires the private key of bitcoin address <span class="address" style="font-weight:bold"></span>. Please enter the private key below.</p>
+        <p>本操作需要与地址 <span class="address" style="font-weight:bold"></span> 对应的私钥。请在下方输入私钥。</p>
 
         <div style="width:400px;padding-left:20px;">
             <span class="qrcodeicon" /><input style="width:500px;max-width:400px;margin-bottom:0px;" placeholder="Private Key" name="key" type="text"/><span></span></span>
@@ -2253,15 +2255,15 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Enter Private Key</button>
+            <button class="btn btn-secondary">取消</button>
+            <button class="btn btn-primary">输入私钥</button>
         </div>
     </div>
 </div>
 
 <div id="qr-code-reader-modal" class="modal hide" style="max-width:400px">
     <div class="modal-header">
-        <h3>Scan QR Code</h3>
+        <h3>扫描二维码</h3>
     </div>
 
     <div class="modal-body" style="padding-left:20px;overflow:hidden;">
@@ -2270,20 +2272,20 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">取消</button>
         </div>
     </div>
 </div>
 
 <div id="decrypting-progress-modal" class="modal hide" style="max-width:400px">
     <div class="modal-header">
-        <h3>Please Wait...</h3>
+        <h3>请稍候……</h3>
     </div>
 
     <div class="modal-body">
 
         <p align="center">
-            Key stretching. Please wait..
+            正在延展密钥。请稍等。
         </p>
 
         <div class="progress progress-striped active" align="center">
@@ -2295,7 +2297,7 @@
 <div id="restore-backup-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Restore Backup Instructions</h3>
+        <h3>数据备份与恢复指南</h3>
     </div>
 
     <div class="modal-body">
@@ -2324,24 +2326,24 @@
 
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-secondary">取消</button>
         </div>
     </div>
 </div>
 
 <div id="import-private-key-password" class="modal hide">
     <div class="modal-header">
-        <h3>Encrypted Private Key</h3>
+        <h3>已加密的私钥</h3>
     </div>
     <div class="modal-body">
-        <p>An encrypted private key has been detected. Please enter the encryption passphrase below:</p>
+        <p>检测到私钥已加密。请在此输入密码：</p>
         <p align="center">
-            <b>Passphrase::</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
+            <b>加密密码：:</b> <input style="margin-left:10px" placeholder="password" name="password" type="password"/>
         </p>
     </div>
     <div class="modal-footer">
         <div class="btn-group pull-right">
-            <button class="btn btn-primary">Continue</button>
+            <button class="btn btn-primary">继续</button>
         </div>
     </div>
 </div>
