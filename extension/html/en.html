@@ -1325,7 +1325,7 @@
     <div class="well">
         <a style="float:right;" href="https://blockchain.info/r?url=https%3A%2F%2Fsharedcoin.com" target="blank"><img src="/Resources/info.png"></a>
 
-        <h4 class="page-header">Shared Coin<br/><small>Trustless coin mixing using coin join and taint analysis</small></h4>
+        <h4 class="page-header">Shared Coin<br/><small>A privacy service that helps users create joint transactions</small></h4>
 
         <div class="form-horizontal">
             <div class="controls">
@@ -1368,13 +1368,13 @@
                 <div class="controls">
                     <select name="repetitions"><option value="0">Loading</option></select>
                     <p class="help-block">A higher number of repetitions makes the transaction more difficult to trace and improves privacy.<br />
-                        <div style="margin-top:3px"><small><input type="checkbox" name="shared-coin-donate" style="position:relative;bottom:4px;" checked> Check to donate an additional 0.1% of your transaction to help fund further improvements to Blockchain's free service.</small></div>
+                        <div style="margin-top:3px"><small><input type="checkbox" name="shared-coin-donate" style="position:relative;bottom:4px;" checked> Check to donate an additional 0.5% of your transaction to help fund further improvements to Blockchain's free service.</small></div>
                     </p>
                 </div>
             </div>
 
             <div class="form-actions">
-                <button class="send btn btn-primary pop" title="Review Payment" data-content="Click Here to review payment. You will be able to confirm or cancel the transaction.">Review Payment</button>
+                <button class="send btn btn-primary pop" title="Send Payment" data-content="Click Here to send payment. You will not be asked to review the transaction.">Send Payment</button>
 
                 <p class="help-block send-options" style="padding-top:10px">
                     <b>Maximum Send Value:</b> <span></span><br />
@@ -1385,12 +1385,11 @@
             </div>
         </div>
     </div>
+
     <div class="well">
         <h4 style="margin-bottom: 5px">Something went wrong?</h4>
 
-        <p>
-                When sending a shared coin transaction a number of intermediate addresses are used. If anything interupts the process or an error prevents the transaction from completing the coins may be left in an intermediate address. Click the button below to claim any coins left in intermediate addresses, this process can take several minutes to complete.
-        </p>
+        <p>When sending a shared coin transaction a number of intermediate addresses are used. If anything interupts the process or an error prevents the transaction from completing the coins may be left in an intermediate address. Click the button below to claim any coins left in intermediate addresses, this process can take several minutes to complete.</p>
 
         <p>
             <button class="btn" id="sharedcoin-recover">Recover Intermediate Addresses</button>
