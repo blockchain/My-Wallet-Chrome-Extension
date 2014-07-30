@@ -58,7 +58,6 @@ cp $RESOURCE_DIR/dice.png ./Resources/
 cp $RESOURCE_DIR/up_green.png ./Resources/
 cp $RESOURCE_DIR/satoshi_dice.png ./Resources/
 cp $RESOURCE_DIR/down_red.png ./Resources/
-cp $RESOURCE_DIR/cash_deposit_large.png ./Resources/
 cp $RESOURCE_DIR/network.png ./Resources/
 cp $RESOURCE_DIR/logout.png ./Resources/
 cp $RESOURCE_DIR/logout-orange.png ./Resources/
@@ -68,7 +67,6 @@ cp $RESOURCE_DIR/twitter.png ./Resources/
 cp $RESOURCE_DIR/twitter-200.png ./Resources/
 cp $RESOURCE_DIR/email.png ./Resources/
 cp $RESOURCE_DIR/android.png ./Resources/
-cp $RESOURCE_DIR/anon-man.png ./Resources/
 cp $RESOURCE_DIR/phone.png ./Resources/
 cp $RESOURCE_DIR/note_grey.png ./Resources/
 cp $RESOURCE_DIR/beep.wav ./Resources/
@@ -121,7 +119,6 @@ cp $RESOURCE_DIR/wallet/chrome.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/country_codes.html ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/mnemonic_words_v3.html ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/shared-addresses.min.js ./Resources/wallet/
-cp $RESOURCE_DIR/wallet/dicegames.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/mnemonic.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/jsuri-1.1.1.min.js ./Resources/wallet/
 cp $RESOURCE_DIR/wallet/paper-wallet.min.js ./Resources/wallet/
