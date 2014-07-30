@@ -6,7 +6,7 @@ cd ../
 
 cd ./My-Wallet-Chrome-Extension/extension
 
-WEB_CONTENT="../../website/WebContent"
+WEB_CONTENT="$HOME/Sites/blockchain.info/website/WebContent"
 DOWNLOAD_HTML=false;
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
