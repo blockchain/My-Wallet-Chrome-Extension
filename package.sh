@@ -38,7 +38,6 @@ cp $RESOURCE_DIR/facebook.png ./Resources/
 cp $RESOURCE_DIR/facebook14.png ./Resources/
 cp $RESOURCE_DIR/bitcoin-wallet-app.png ./Resources/
 cp $RESOURCE_DIR/app-store.png ./Resources/
-cp $RESOURCE_DIR/logo_chrome.png ./Resources/logo_new.png
 cp $RESOURCE_DIR/advanced.png ./Resources/
 cp $RESOURCE_DIR/chart_bar.png ./Resources/
 cp $RESOURCE_DIR/qrcode.png ./Resources/
