@@ -1,6 +1,5 @@
 #!/bin/bash          
 
-
 cd ./extension
 
 WEB_CONTENT="$HOME/Sites/blockchain.info/website/WebContent"
