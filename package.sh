@@ -1,10 +1,7 @@
 #!/bin/bash          
 
-cd ../
 
-./minify.sh
-
-cd ./My-Wallet-Chrome-Extension/extension
+cd ./extension
 
 WEB_CONTENT="$HOME/Sites/blockchain.info/website/WebContent"
 DOWNLOAD_HTML=false;
