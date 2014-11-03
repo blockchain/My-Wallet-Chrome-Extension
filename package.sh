@@ -86,13 +86,11 @@ mkdir ./Resources/partners/
 cp $RESOURCE_DIR/partners/bitcoinstore-logo-small.png ./Resources/partners/
 cp $RESOURCE_DIR/partners/gyft-logo-white.png ./Resources/partners/
 
-
 cp $RESOURCE_DIR/bootstrap-responsive.min.css ./Resources/
 cp $RESOURCE_DIR/bootstrap.min.css ./Resources/
 cp $RESOURCE_DIR/print.css ./Resources/
 cp $RESOURCE_DIR/overrides.min.css ./Resources/
 cp $RESOURCE_DIR/app-overrides.css ./Resources/
-
 
 #flags
 mkdir ./Resources/flags/
