@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1459,7 +1455,7 @@
             <label class="control-label pop" title="सार्वजनिक नोट" data-content="जोड़ें एक नोट इस लेनदेन जो blockchain। जानकारी पर दिख रहा होगा।">सार्वजनिक नोट:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="यह संदेश स्थायी रूप से blockchain में एम्बेडेड हो जाएगा. किसी को भी यह पढ़ सकते हैं." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Blockchain पर लेनदेन को देखने जब यह संदेश दिखाई देगा. कोई भी इसे पढ़ सकते हैं." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>निजी कुंजी चेतावनी आयात</h3>
             </div>
             <div class="modal-body">
-                <p><b>एक सार्वजनिक या अविश्वस्त स्रोत से एक निजी कुंजी आयात न करें.</b> यह आम मस्तिष्क पर्स, प्रतियोगिताओं और खरीदा निजी चाबियाँ शामिल हैं. इसके बजाय हम वास्तव में अपने बटुए के लिए एक नया पता जोड़ने के अलावा अपने मौजूदा पतों के बजाय एक के लिए सब धन भेजने के लिए इसका मतलब है जो कुंजी, स्वीप करने की सलाह देते हैं.</p>
+                <p><b>एक सार्वजनिक या अविश्वस्त स्रोत से एक निजी कुंजी आयात कभी नहीं.</b> यह सामान्य मस्तिष्क पर्स और खरीदी निजी कुंजी शामिल हैं. इसके बजाय हम वास्तव में अपने बटुए को एक नया पता जोड़ने के बजाय अपने मौजूदा पतों में से एक के लिए सब धन भेजने के लिए इसका मतलब है जो कुंजी, स्वीप करने की सलाह देते हैं.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">बचाया नहीं पता करने के लिए</h3>
-    </div>
-    <div class="modal-body">
-        <p>यह पता हमारे सर्वरों पर संग्रहीत नहीं है और शायद इस पृष्ठ छोड़ने के बाद खो गया हो सकता है. <span style="color:red;font-weight:bold;">जब तक निजी कुंजी को बचाया है कहीं और संयुक्त राष्ट्र-synced पते पर भेजे गए किसी भी सिक्के स्थायी रूप से जाने के बाद लॉगआउट खो जाएगा</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">क़तार पता दिखाएं</button>
-            <button class="btn btn-primary" data-dismiss="modal">पास</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>कुंजी पोंछें</h3>
     </div>
+
     <div class="modal-body">
         <p>झाडू एक और पते के लिए एक या एक से अधिक पते के सभी उपलब्ध bitcoins का मतलब है। जहाँ आप चाहते हैं चयनित पते (संतुलन <span class="balance"></span>) के सिक्के झाडू जाना चाहता हूँ एक पता चुनें। </p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>कृपया प्रतीक्षा करें ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            उबर बीज कृपया प्रतीक्षा करें ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

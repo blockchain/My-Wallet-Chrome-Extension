@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Offentlig anmärkning" data-content="Lägg till en anteckning till denna transaktion, som kan visas på blockchain.info.">Offentlig anmärkning:</label>
+            <label class="control-label pop" title="Offentlig anmärkning" data-content="Lägg till en anteckning till denna transaktion, som kan visas på blockchain.">Offentlig anmärkning:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Detta meddelande kommer att vara permanent inbäddad i blockchain. Vem som helst kan läsa den." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Detta meddelande kommer att visas när du visar transaktionen på blockchain. Vem som helst kan läsa den." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Import privat nyckel Varning</h3>
             </div>
             <div class="modal-body">
-                <p><b>Aldrig importera en privat nyckel från en offentlig eller inte betrodd källa.</b> Detta inkluderar vanliga hjärnan plånböcker, tävlingar och köpta privata nycklar. Istället rekommenderar vi att sopa nyckeln, vilket innebär att skicka alla pengar till en av dina befintliga adresser snarare än att faktiskt lägga till en ny adress till din plånbok.</p>
+                <p><b>Importerar aldrig en privat nyckel från en offentlig eller icke betrodd källa.</b> Detta inkluderar vanliga hjärn plånböcker och köpta privata nycklar. Istället rekommenderar vi att sopa nyckeln, vilket innebär att skicka alla pengar till en av dina befintliga adresser i stället för att lägga till en ny adress till din plånbok.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Behandlar inte sparat</h3>
-    </div>
-    <div class="modal-body">
-        <p>En nyligen genererade adress har inte sparats på våra servrar än. <span style="color:red;font-weight:bold;">Såvida den privata nyckeln sparas på annat håll några mynt som skickas till un-synkroniserade adresser kommer att permanent förlorade efter utloggning</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Visa Osparat Adress</button>
-            <button class="btn btn-primary" data-dismiss="modal">Stäng</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Sopa Keys</h3>
     </div>
+
     <div class="modal-body">
         <p>Sweep betyder att flytta alla tillgängliga medel i en eller flera adresser till en annan adress. Välj ett adress där du vill att sopa de valda adresserna (Balans <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Vänta ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Återställa Frön Vänta ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

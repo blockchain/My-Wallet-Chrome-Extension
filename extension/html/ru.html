@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1658,7 +1654,7 @@
                 <h3>Импорт закрытого ключа предупреждение</h3>
             </div>
             <div class="modal-body">
-                <p><b>Никогда не импортировать закрытый ключ из государственных или ненадежного источника.</b> Это включает в себя общие кошельки мозга, конкурсы и приобрели закрытых ключей. Вместо этого мы рекомендуем подмести ключ, который означает, отправить все средства на один из существующих адресов, а не на самом деле добавление нового адреса в вашем бумажнике.</p>
+                <p><b>Никогда не импортировать закрытый ключ из государственного или ненадежного источника.</b> Это включает в себя общие кошельки мозга и приобретенные личные ключи. Вместо этого мы рекомендуем прокатиться ключ, а это значит, чтобы отправить все средства на один из существующих адресов, а не на самом деле, добавив новый адрес в вашем бумажнике.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Адрес не сохранен</h3>
-    </div>
-    <div class="modal-body">
-        <p>Этот адрес ещё не был сохранен на наших серверах, и может быть потерян после выхода с этой страницы. <span style="color:red;font-weight:bold;">Если закрытый ключ сохраняется в другом месте любой монеты направлены не синхронизированные адреса будут безвозвратно утеряны после выхода</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Показать Несохраненный адрес</button>
-            <button class="btn btn-primary" data-dismiss="modal">Закрыть</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Опустошить ключи</h3>
     </div>
+
     <div class="modal-body">
         <p>Опустошить означает переместить все доступные средства в одном или более адресов на другой адрес. Пожалуйста, выберите адрес, куда бы вы хотели отправить средства из выбранных адресов (Баланс <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Пожалуйста, подождите ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Восстановление Семена Пожалуйста, подождите ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Catatan Publik" data-content="Tambahkan catatan untuk transaksi ini yang akan dilihat pada blockchain.info.">Catatan Publik:</label>
+            <label class="control-label pop" title="Catatan Publik" data-content="Tambahkan catatan untuk transaksi ini yang akan dilihat pada blockchain.">Catatan Publik:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Pesan ini akan secara permanen tertanam dalam blockchain tersebut. Siapapun dapat membacanya." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Pesan ini akan terlihat ketika melihat transaksi pada blockchain. Siapapun dapat membacanya." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Impor Peringatan Private Key</h3>
             </div>
             <div class="modal-body">
-                <p><b>Jangan pernah mengimpor kunci pribadi dari sumber umum atau tidak dipercaya.</b> Ini termasuk dompet otak umum, kompetisi dan kunci pribadi dibeli. Namun kami menyarankan untuk menyapu kunci, yang berarti mengirim semua dana ke salah satu alamat yang ada daripada benar-benar menambahkan alamat baru untuk dompet Anda.</p>
+                <p><b>Tidak pernah mengimpor kunci pribadi dari sumber publik atau tidak dipercaya.</b> Ini termasuk dompet otak umum dan kunci privat yang dibeli. Namun kami menyarankan untuk menyapu kunci, yang berarti untuk mengirim semua dana ke salah satu alamat yang ada daripada benar-benar menambahkan alamat baru untuk dompet Anda.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Alamat Tidak Disimpan</h3>
-    </div>
-    <div class="modal-body">
-        <p>Sebuah alamat baru yang dihasilkan belum disimpan di server kami belum. <span style="color:red;font-weight:bold;">Kecuali kunci privat disimpan di tempat lain setiap koin dikirim ke un-synced alamat akan hilang secara permanen setelah logout</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Tampilkan yang belum disimpan Alamat</button>
-            <button class="btn btn-primary" data-dismiss="modal">Menutup</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Sapu kunci Bitcon</h3>
     </div>
+
     <div class="modal-body">
         <p>Sapu berarti untuk memindahkan semua dana yang tersedia dalam satu atau lebih alamat ke alamat lain. Silahkan pilih alamat di mana Anda ingin menyapu alamat yang dipilih (Saldo <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Harap Tunggu ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Memulihkan Benih Harap Tunggu ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

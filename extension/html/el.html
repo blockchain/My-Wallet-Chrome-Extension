@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Δημόσια Σημείωση" data-content="Προσθήκη σημείωσης σε αυτή τη συναλλαγή η οποία θα είναι ορατή σε blockchain.info.">Δημόσια Σημείωση:</label>
+            <label class="control-label pop" title="Δημόσια Σημείωση" data-content="Προσθέστε μια σημείωση για τη συναλλαγή αυτή, που θα είναι ορατή σε blockchain.">Δημόσια Σημείωση:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Αυτό το μήνυμα θα πρέπει να ενσωματωθεί μόνιμα στο blockchain. Ο καθένας μπορεί να το διαβάσει." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Αυτό το μήνυμα θα είναι ορατό κατά την προβολή της συναλλαγής για blockchain. Ο καθένας μπορεί να το διαβάσει." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Εισαγωγή ιδιωτικού κλειδιού Προειδοποίηση</h3>
             </div>
             <div class="modal-body">
-                <p><b>Ποτέ μην εισάγετε ένα ιδιωτικό κλειδί από το δημόσιο ή μη αξιόπιστες πηγές.</b> Αυτό περιλαμβάνει κοινά πορτοφόλια εγκεφάλου, διαγωνισμοί και αγόρασε τα ιδιωτικά κλειδιά. Αντί γι &#39;αυτό προτείνουμε να σαρώσει το κλειδί, το οποίο σημαίνει να στείλει όλα τα κεφάλαια σε μία από τις υπάρχουσες διευθύνσεις σας αντί να τις προσθέσετε μια νέα διεύθυνση στο πορτοφόλι σας.</p>
+                <p><b>Ποτέ μην εισάγετε ένα ιδιωτικό κλειδί από το δημόσιο ή μη αξιόπιστο πηγή.</b> Αυτό περιλαμβάνει την κοινή πορτοφόλια εγκεφάλου και αγόρασε ιδιωτικών κλειδιών. Αντ &#39;αυτού προτείνουμε να σαρώσει το κλειδί, το οποίο σημαίνει να στείλει όλα τα κεφάλαια σε μία από τις υπάρχουσες διευθύνσεις σας και όχι πραγματικά προσθέτοντας μια νέα διεύθυνση στο πορτοφόλι σας.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Δεν Διεύθυνση αποθηκευμένων</h3>
-    </div>
-    <div class="modal-body">
-        <p>Μια νέα διεύθυνση που παράγεται δεν έχει αποθηκευτεί στους διακομιστές μας ακόμα. <span style="color:red;font-weight:bold;">Εκτός αν το ιδιωτικό κλειδί αποθηκεύεται κάπου αλλού κάθε νομίσματα αποστέλλονται σε μη συγχρονισμένες διευθύνσεις θα χαθούν οριστικά μετά την αποσύνδεση</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Εμφάνιση Μη αποθηκευμένο Διεύθυνση</button>
-            <button class="btn btn-primary" data-dismiss="modal">Κοντά</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Κλειδιά Sweep</h3>
     </div>
+
     <div class="modal-body">
         <p>Sweep σημαίνει να μετακινήσετε όλα τα διαθέσιμα κεφάλαια σε μία ή περισσότερες διευθύνσεις σε μια άλλη διεύθυνση. Παρακαλώ επιλέξτε μια διεύθυνση στην οποία θα θέλατε να σαρώσει τις επιλεγμένες διευθύνσεις (Υπόλοιπο <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Παρακαλώ περιμένετε ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Ανάκτηση Σπόροι Παρακαλώ περιμένετε ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

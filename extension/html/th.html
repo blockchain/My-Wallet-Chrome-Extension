@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="หมายเหตุสาธารณะ" data-content="เพิ่มบันทึกการทำธุรกรรมนี้ซึ่งจะสามารถดูได้บน blockchain.info">หมายเหตุสาธารณะ:</label>
+            <label class="control-label pop" title="หมายเหตุสาธารณะ" data-content="เพิ่มบันทึกการทำธุรกรรมครั้งนี้ซึ่งจะสามารถดูได้ใน blockchain">หมายเหตุสาธารณะ:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="ข้อความนี้จะถูกฝังอย่างถาวรใน blockchain ทุกคนสามารถอ่านมัน" style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="ข้อความนี้จะปรากฏเมื่อดูการทำธุรกรรมที่เกี่ยวกับ blockchain ทุกคนสามารถอ่านได้" style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>คำเตือนนำเข้าคีย์ส่วนตัว</h3>
             </div>
             <div class="modal-body">
-                <p><b>ไม่เคยนำเข้าคีย์ส่วนตัวจากแหล่งสาธารณะหรือไม่น่าเชื่อถือ.</b> นี้รวมถึงกระเป๋าสตางค์ของสมองร่วมการแข่งขันและซื้อคีย์ส่วนตัว แต่เราขอแนะนำให้ไปกวาดที่สำคัญซึ่งหมายถึงการส่งเงินทุนทั้งหมดให้เป็นหนึ่งในอยู่ที่มีอยู่ของคุณมากกว่าจริงเพิ่มที่อยู่ใหม่ไปยังกระเป๋าสตางค์ของคุณ</p>
+                <p><b>ไม่เคยนำเข้าคีย์ส่วนตัวจากแหล่งสาธารณะหรือไม่น่าเชื่อถือ.</b> นี้รวมถึงกระเป๋าสมองร่วมกันและคีย์ส่วนตัวซื้อ แต่เราขอแนะนำให้กวาดสำคัญซึ่งหมายความว่าจะส่งเงินทั้งหมดให้เป็นหนึ่งในที่อยู่ที่มีอยู่มากกว่าจริงการเพิ่มที่อยู่ใหม่ให้กับกระเป๋าสตางค์ของคุณ</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">ที่อยู่ไม่บันทึก</h3>
-    </div>
-    <div class="modal-body">
-        <p>ที่อยู่นี้ยังไม่ได้รับการบันทึกในเซิร์ฟเวอร์ของเรายังอาจจะหายไปและหลังจากออกจากหน้านี้ <span style="color:red;font-weight:bold;">เว้นแต่คีย์ส่วนตัวจะถูกบันทึกไว้ที่อื่นเหรียญใด ๆ ที่ส่งไปยังที่อยู่ที่ซิงค์ยกเลิกจะหายไปอย่างถาวรหลังจากออกจากระบบ</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">แสดงที่อยู่ไม่ได้บันทึกไว้</button>
-            <button class="btn btn-primary" data-dismiss="modal">ปิด</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>คีย์กวาด</h3>
     </div>
+
     <div class="modal-body">
         <p>หมายถึงการกวาดย้ายทั้งหมดเงินที่มีในหนึ่งหรือมากกว่าที่อยู่ไปยังที่อยู่อื่น กรุณาเลือกที่อยู่ที่คุณต้องการจะกวาดอยู่ที่เลือก (สมดุล <span class="balance"></span>)</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>กรุณารอ ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            เมล็ดพันธุ์กู้คืนกรุณารอสักครู่ ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

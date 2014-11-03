@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Offentlig Note" data-content="Legg til et notat i denne transaksjonen som vil bli tilgjengelig på blockchain.info.">Offentlig Note:</label>
+            <label class="control-label pop" title="Offentlig Note" data-content="Legg til et notat til denne transaksjonen som vil være synlig på blockchain.">Offentlig Note:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Denne meldingen vil bli permanent innebygd i blockchain. Alle kan lese det." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Denne meldingen vil være synlig når du ser på transaksjonen på blockchain. Hvem som helst kan lese den." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Importer privat nøkkel Warning</h3>
             </div>
             <div class="modal-body">
-                <p><b>Aldri importere en privat nøkkel fra en offentlig eller ikke-klarert kilde.</b> Dette inkluderer felles hjerne lommebøker, konkurranser og innkjøpte private nøkler. I stedet anbefaler vi å feie nøkkelen, som betyr å sende alle midler til en av dine eksisterende adresser snarere enn faktisk å legge til en ny adresse til lommeboken din.</p>
+                <p><b>Aldri importere en privat nøkkel fra en offentlig eller uklarert kilde.</b> Dette inkluderer vanlige hjerne lommebøker og innkjøpte private nøkler. I stedet anbefaler vi å feie nøkkelen, som betyr å sende alle midler til en av dine eksisterende adresser snarere enn faktisk å legge til en ny adresse i lommeboken.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Adressen ikke Lagret</h3>
-    </div>
-    <div class="modal-body">
-        <p>En nylig genererte adresse har ikke blitt lagret på våre servere ennå. <span style="color:red;font-weight:bold;">Med mindre den private nøkkelen er lagret et annet sted noen mynter sendt til un-synkroniserte adresser vil bli tapt etter utlogging</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Vis Ulagret Adresse</button>
-            <button class="btn btn-primary" data-dismiss="modal">Lukk</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Feie Keys</h3>
     </div>
+
     <div class="modal-body">
         <p>Sweep betyr å flytte alle tilgjengelige midler i en eller flere adresser til en annen adresse. Velg en adresse hvor du ønsker å feie de valgte adressene (Balance <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Vennligst vent ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Gjenopprette Frø, vennligst vent ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

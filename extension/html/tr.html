@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Genel Not" data-content="Blockchain.info görüntülenebilir olacak bu işlem için bir not ekleyin.">Genel Not:</label>
+            <label class="control-label pop" title="Genel Not" data-content="Blockchain görüntülenebilir olacak bu işlem için bir not ekleyin.">Genel Not:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Bu mesaj, kalıcı olarak blockchain içine eklenecektir. Herkes okuyabilir." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Blockchain üzerinde işlem görüntülerken Bu mesaj görünür olacaktır. Herkes okuyabilir." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Özel Anahtar Uyarı İthalat</h3>
             </div>
             <div class="modal-body">
-                <p><b>Bir kamu veya güvenilmeyen bir kaynaktan özel anahtar almak asla.</b> Bu sık görülen beyin cüzdan, yarışmalar ve satın alınan özel anahtarları içerir. Bunun yerine biz aslında cüzdan için yeni bir adres ekleyerek daha mevcut adresleri yerine bir tüm para göndermek anlamına gelir anahtarı, süpürüyor tavsiye ederiz.</p>
+                <p><b>Bir kamu veya güvenilmeyen bir kaynaktan özel anahtar almak asla.</b> Bu sık görülen beyin cüzdan ve satın özel tuşları içerir. Bunun yerine biz aslında cüzdan yeni bir adres eklemek yerine mevcut adreslerden birine tüm para göndermek anlamına gelir anahtarını, süpürüyor tavsiye ederiz.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Adres Kayıtlı Değil</h3>
-    </div>
-    <div class="modal-body">
-        <p>Bir yeni oluşturulan adrese henüz bizim sunucularında kayıtlı değil. <span style="color:red;font-weight:bold;">Özel anahtar kaydedilir sürece logout sonra başka un-synced adreslerine gönderilen paralar kalıcı olarak kaybolur</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Kaydedilmemiş Adres göster</button>
-            <button class="btn btn-primary" data-dismiss="modal">Yakın</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Sweep Tuşları</h3>
     </div>
+
     <div class="modal-body">
         <p>Süpürme başka bir adres için bir veya daha fazla adres mevcut tüm fonların hareket etmek anlamına gelir. Eğer seçilen adresleri (Denge <span class="balance"></span>) süpürmek istiyoruz bir adres seçiniz.</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Lütfen Bekleyin ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Kurtarılması Tohumlar Lütfen Bekleyin ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

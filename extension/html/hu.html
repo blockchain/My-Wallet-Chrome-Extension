@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Publikus jegyzet" data-content="Ez a megjegyzés publikusan olvasható lesz a blockchain.info -n.">Publikus jegyzet:</label>
+            <label class="control-label pop" title="Publikus jegyzet" data-content="Megjegyzés fűzése a tranzakció, amely megtekinthető legyen blockchain.">Publikus jegyzet:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Ez az üzenet véglegesen csatolva lesz. Bárki el tudja olvasni." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Ez az üzenet akkor látható, ha megtekinti a tranzakciót blockchain. Bárki elolvashatja azt." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Privát kulcs importálása Warning</h3>
             </div>
             <div class="modal-body">
-                <p><b>Soha importálni privát kulcs nyilvános vagy nem megbízható forrásból.</b> Ez magában foglalja a közös agy pénztárca, versenyek és a vásárolt privát kulcsokat. Ehelyett azt javasoljuk, hogy söpörni a kulcsot, ami azt jelenti, hogy elküldi az összes alap az egyik a meglévő címek inkább mint hogy egy új címet a pénztárca.</p>
+                <p><b>Soha importálni egy privát kulcsot nyilvános vagy nem megbízható forrásból.</b> Ez magában foglalja a közös agy tárca és a vásárolt privát kulcsokat. Ehelyett azt javasoljuk, hogy söpörni a kulcs, ami azt jelenti, hogy küldje a pénzeszközök egy meglévő címek helyett valójában, hogy egy új címet a pénztárca.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Cím Nincs Elmentve</h3>
-    </div>
-    <div class="modal-body">
-        <p>Ez a cím még nincs elmentve a szerverünkön és lehetéges, hogy elveszik, ha most bezárod az ablakot. <span style="color:red;font-weight:bold;">Kivéve, ha a titkos kulcs elmentésre máshol minden érmét küldött az ENSZ-szinkronizál címeket véglegesen elvesznek logout</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Mutassa mentett Address</button>
-            <button class="btn btn-primary" data-dismiss="modal">Bezár</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Kulcsok Nullázása</h3>
     </div>
+
     <div class="modal-body">
         <p>A nullázás azt jelenti, hogy az összes bitcoint átutalod egy másik címre. Kérlek válassz egy címet, amire küldeni szerenéd (Egyenleg: <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Kérem, várjon ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Helyreállítás Seeds Kérem várjon ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

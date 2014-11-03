@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1658,7 +1654,7 @@
                 <h3>Importar chave privada Warning</h3>
             </div>
             <div class="modal-body">
-                <p><b>Nunca importar a chave privada a partir de uma fonte pública ou não confiáveis.</b> Isso inclui carteiras cerebrais comuns, competições e chaves privadas comprados. Em vez disso, recomendamos a varrer a chave, o que significa para enviar todos os fundos para um de seus endereços existentes em vez de realmente adicionar um novo endereço para a sua carteira.</p>
+                <p><b>Nunca importar uma chave privada de uma fonte pública ou não confiável.</b> Isso inclui carteiras cerebrais comuns e chaves privadas adquiridas. Em vez disso, recomendamos a varrer a chave, o que significa para enviar todos os recursos para um de seus endereços existentes em vez de realmente adicionar um novo endereço para a sua carteira.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">O Endereço Não Foi Guardado</h3>
-    </div>
-    <div class="modal-body">
-        <p>Este endereço ainda não foi guardado nos nossos servidores e será perdido caso abandone desta página. <span style="color:red;font-weight:bold;">A não ser que a chave privada é guardada em outro lugar qualquer moedas enviadas para não-sincronizados endereços serão perdidos após o logout</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Mostrar Unsaved Endereço</button>
-            <button class="btn btn-primary" data-dismiss="modal">Fechar</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Varrer Chaves</h3>
     </div>
+
     <div class="modal-body">
         <p>Varrer uma chave significa mover todo o saldo disponível num ou mais endereços, para outro endereço final. Por favor, escolha o endereço para onde deseja varrer o saldo dos endereços selecionados (Saldo <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Aguarde ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Recuperando Sementes Aguarde ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

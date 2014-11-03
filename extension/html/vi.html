@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Lưu ý chung" data-content="Thêm lưu ý vào giao dịch này sẽ có thể được xem trên blockchain.info.">Lưu ý chung:</label>
+            <label class="control-label pop" title="Lưu ý chung" data-content="Thêm một lưu ý đến giao dịch này sẽ được xem trên blockchain.">Lưu ý chung:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Tin này sẽ luôn được nhúng trên blockchain. Bất kì ai cũng có thể đọc nó." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Thông điệp này sẽ được hiển thị khi xem các giao dịch trên blockchain. Bất cứ ai cũng có thể đọc nó." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Cảnh báo nhập khẩu Tin chính</h3>
             </div>
             <div class="modal-body">
-                <p><b>Không bao giờ nhập một khóa bí mật từ một nguồn công cộng hoặc không đáng tin cậy.</b> Điều này bao gồm ví não chung, các cuộc thi và mua khóa riêng. Thay vào đó, chúng tôi khuyên bạn nên quét quan trọng, có nghĩa là để gửi tất cả các khoản tiền cho một trong những địa chỉ hiện tại của bạn chứ không phải là thực sự thêm một địa chỉ mới để ví của bạn.</p>
+                <p><b>Không bao giờ nhập một khóa riêng từ một nguồn công cộng hoặc không đáng tin cậy.</b> Điều này bao gồm ví não phổ biến và các phím riêng mua. Thay vào đó, chúng tôi khuyên bạn nên để quét phím, có nghĩa là để gửi tất cả các khoản tiền đến một trong các địa chỉ hiện tại của bạn hơn là thực sự thêm một địa chỉ mới cho ví tiền của bạn.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Địa chỉ chưa được lưu</h3>
-    </div>
-    <div class="modal-body">
-        <p>Một địa chỉ mới được tạo ra đã không được lưu trên các máy chủ của chúng tôi. <span style="color:red;font-weight:bold;">Trừ khi các khóa riêng được lưu ở nơi khác bất kỳ đồng tiền gửi đến địa chỉ chưa được đồng bộ hóa sẽ được vĩnh viễn mất đi sau khi đăng xuất</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Hiện chưa lưu Địa chỉ</button>
-            <button class="btn btn-primary" data-dismiss="modal">Đóng lại</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Quét phím</h3>
     </div>
+
     <div class="modal-body">
         <p>Quét có nghĩa là bỏ tất cả các quỹ có giá trị trong một hoặc nhiều địa chỉ tới địa chỉ khác. Vui lòng chọn một địa chỉ mà bạn muốn chọn để quét (Số dư <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Vui lòng đợi ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Phục hồi Hạt Vui lòng chờ ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1658,7 +1654,7 @@
                 <h3>Importer la clé privée Avertissement</h3>
             </div>
             <div class="modal-body">
-                <p><b>Jamais importer une clé privée à partir d&#39;une source publique ou non fiable.</b> Cela comprend les portefeuilles de cerveau communs, des concours et des clés privées achetés. Au lieu de cela nous vous recommandons de balayer la clé, ce qui signifie d&#39;envoyer tous les fonds à l&#39;un de vos adresses existantes plutôt que d&#39;ajouter réellement une nouvelle adresse à votre portefeuille.</p>
+                <p><b>Ne jamais importer une clé privée d&#39;une source publique ou non fiable.</b> Cela comprend les portefeuilles du cerveau communes et les clés privées achetés. Au lieu de cela, nous vous recommandons de balayer la clé, ce qui signifie d&#39;envoyer tous les fonds à une de vos adresses existantes plutôt que d&#39;ajouter réellement une nouvelle adresse à votre porte-monnaie.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Adresse non enregistrée</h3>
-    </div>
-    <div class="modal-body">
-        <p>Cette adresse n'a pas encore été sauvegardée sur nos serveurs et peut être perdue si vous quittez cette page. <span style="color:red;font-weight:bold;">Sauf si la clé privée est enregistrée ailleurs des pièces envoyées à des adresses non synchronisées seront définitivement perdues après la déconnexion</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Afficher l&#39;adresse Unsaved</button>
-            <button class="btn btn-primary" data-dismiss="modal">Fermer</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Touches de balayage</h3>
     </div>
+
     <div class="modal-body">
         <p>Balayer consiste à déplacer tous les fonds disponibles depuis une ou plusieurs adresses vers une autre adresse. Veuillez choisir une adresse où vous souhaiteriez balayer les adresses sélectionnées (Balance <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Attendez s&#39;il vous plaît ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Récupération Graines Se il vous plaît patienter ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

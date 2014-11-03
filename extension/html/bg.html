@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Бележка," data-content="Добавяне на бележка към тази сделка, която ще се виждат на blockchain.info.">Бележка,:</label>
+            <label class="control-label pop" title="Бележка," data-content="Добавяне на бележка към тази сделка, която ще може да се вижда на blockchain.">Бележка,:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Това съобщение ще бъде трайно вградени в blockchain. Всеки може да го прочете." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Това съобщение ще бъде видима, когато разглеждате сделката върху blockchain. Всеки може да го прочете." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Внос частен ключ Внимание</h3>
             </div>
             <div class="modal-body">
-                <p><b>Никога не внасят частен ключ от публичен или ненадежден източник.</b> Това включва общи портфейли мозъка, състезания и закупени частни ключове. Вместо това, ние препоръчваме да помита ключ, което означава да изпрати всички средства, на един от вашите съществуващи адреси, а не действително добавянето на нов адрес за портфейла си.</p>
+                <p><b>Никога не внасят частен ключ от обществен или ненадежден източник.</b> Това включва общи портфейли мозъка и закупени частни ключове. Вместо това, ние препоръчваме да помита ключ, което означава да се изпрати на всички средства към една от съществуващите си адреси, а не действително да добавите нов адрес за портфейла си.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Адрес няма Запазени</h3>
-    </div>
-    <div class="modal-body">
-        <p>Новосъздадения адрес не е записан на нашите сървъри. <span style="color:red;font-weight:bold;">Освен частния ключ се записва другаде всички монети, изпратени до Несинхронизираните адреси ще бъдат загубени след излизане</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Покажи Незапаметената Адрес</button>
-            <button class="btn btn-primary" data-dismiss="modal">Близо</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Почистване ключове</h3>
     </div>
+
     <div class="modal-body">
         <p>Sweep означава да преместите всички налични средства в една или повече адреси на друг адрес. Моля, изберете адреса, където бихте желали да почистват избрани адреси (Баланс <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Моля, изчакайте ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Възстановяване Семена Моля, изчакайте ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

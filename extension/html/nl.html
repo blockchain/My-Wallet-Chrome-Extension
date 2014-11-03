@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1459,7 +1455,7 @@
             <label class="control-label pop" title="Openbaar bericht" data-content="Een notitie toevoegen aan deze transactie die zichtbaar zal zijn op blockchain.info.">Openbaar bericht:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="Dit bericht zal definitief worden ingebed in de blockchain. Iedereen kan het lezen." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="Dit bericht zal zichtbaar zijn bij het bekijken van de transactie op blockchain. Iedereen kan het lezen." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>Importeren Private Key Waarschuwing</h3>
             </div>
             <div class="modal-body">
-                <p><b>Importeert nooit een private sleutel van een openbare of niet-vertrouwde bron.</b> Dit omvat gemeenschappelijke hersenen portefeuilles, wedstrijden en kocht private sleutels. In plaats daarvan raden wij u aan de sleutel, wat betekent dat voor alle fondsen te sturen naar een van uw bestaande adressen in plaats van eigenlijk het toevoegen van een nieuw adres aan uw portemonnee vegen.</p>
+                <p><b>Importeren nooit een private sleutel van een openbare of niet-vertrouwde bron.</b> Dit omvat gemeenschappelijke hersenen portefeuilles en gekochte private keys. In plaats daarvan raden wij u aan de sleutel, wat betekent dat alle fondsen te sturen naar een van uw bestaande adressen in plaats van daadwerkelijk toevoegen van een nieuw adres om uw portemonnee te vegen.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Adres niet opgeslagen</h3>
-    </div>
-    <div class="modal-body">
-        <p>Dit adres is nog niet opgeslagen op onze servers en kan misschien verloren gaan na het verlaten van deze pagina. <span style="color:red;font-weight:bold;">Tenzij de private sleutel wordt opgeslagen elders elke munten verzonden naar niet-gesynchroniseerde adressen worden definitief verloren na uitloggen</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Show-opgeslagen Adres</button>
-            <button class="btn btn-primary" data-dismiss="modal">Sluiten</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Veeg sleutels</h3>
     </div>
+
     <div class="modal-body">
         <p>Vegen betekent alle beschikbare bitcoins van een of meer adressen naar een ander adres sturen. Kies een adres waar u de bitcoins van de geselecteerde adressen (Saldo <span class="balance"></span>) heen wilt vegen.</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Gelieve te wachten ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Herstellende Zaden Gelieve te wachten ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,10 +1452,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="공공 참고" data-content="blockchain.info에 볼 수 있습니다이 거래에 메모를 추가 할 수 있습니다.">공공 참고:</label>
+            <label class="control-label pop" title="공공 참고" data-content="blockchain에서 볼 수있을 것입니다이 거래에 메모를 추가합니다.">공공 참고:</label>
 
             <div class="controls">
-                <textarea name="public-note" placeholder="이 메시지는 영구적으로 blockchain에 포함됩니다. 모든 사용자가 읽을 수 있습니다." style="width:100%;box-sizing:border-box;height:75px"></textarea>
+                <textarea name="public-note" placeholder="blockchain에 트랜잭션을 볼 때이 메시지가 표시됩니다. 사람은 그것을 읽을 수 있습니다." style="width:100%;box-sizing:border-box;height:75px"></textarea>
             </div>
         </div>
 
@@ -1658,7 +1654,7 @@
                 <h3>개인 키 경고 가져 오기</h3>
             </div>
             <div class="modal-body">
-                <p><b>공용 또는 신뢰할 수없는 소스에서 개인 키를 가져하지 마십시오.이</b> 일반적인 뇌 지갑, 대회 및 구입 개인 키를 포함합니다. 대신에 우리는 실제로 당신의 지갑에 새 주소를 추가하는 대신 기존의 주소가 아니라 하나에 모든 자금을 전송하는 것을 의미 키를 청소하는 것이 좋습니다.</p>
+                <p><b>공용 또는 신뢰할 수없는 소스에서 개인 키를 가져하지 마십시오.</b> 이것은 일반적인 뇌 지갑 구입 한 개인 키를 포함합니다. 대신에 우리는 실제로 당신의 지갑에 새 주소를 추가하기보다는 기존 주소 중 하나에 모든 자금을 전송하는 것을 의미 키를 청소하는 것이 좋습니다.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">주소 저장되지</h3>
-    </div>
-    <div class="modal-body">
-        <p>새로 생성 된 주소가 아직 서버에 저장되지 않았습니다. <span style="color:red;font-weight:bold;">개인 키가 저장되어 있지 않으면 로그 아웃 한 후 다른 곳에서 동기화되지 않은 주소로 보내지는 모든 동전이 영구적으로 손실됩니다</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">저장되지 않은 주소 표시</button>
-            <button class="btn btn-primary" data-dismiss="modal">가까운</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>스위프 키</h3>
     </div>
+
     <div class="modal-body">
         <p>쓸어 다른 주소로 하나 이상의 주소에서 사용할 수있는 모든 자금을 이동하는 것을 의미합니다. 선택한 주소를 (밸런스 <span class="balance"></span>) 청소하고자하는 주소를 선택하십시오.</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>잠시 기다려주세요 ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            복구 씨앗 기다려주십시오 ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1658,7 +1654,7 @@
                 <h3>Importieren privaten Schlüssel Warnung</h3>
             </div>
             <div class="modal-body">
-                <p><b>Nie importieren einen privaten Schlüssel von einem öffentlichen oder nicht vertrauenswürdigen Quelle.</b> Dazu gehören gemeinsame Gehirn Brieftaschen, Wettbewerbe und gekauft privaten Schlüsseln. Stattdessen empfehlen wir, den Schlüssel, der alle Mittel für eine der vorhandenen Adressen schicken, statt tatsächlich um eine neue Adresse für Ihren Geldbeutel bedeutet fegen.</p>
+                <p><b>Nie einen privaten Schlüssel von einem öffentlichen oder nicht vertrauenswürdigen Quelle zu importieren.</b> Dazu gehören gemeinsame Gehirnbrieftaschen und gekauft privaten Schlüsseln. Stattdessen empfehlen wir, den Schlüssel, der alle verfügbaren Mittel zu einem Ihrer vorhandenen Adressen anstatt tatsächlich um eine neue Adresse zu Ihrem Geldbeutel zu senden bedeutet fegen.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Nicht gespeicherte Adresse</h3>
-    </div>
-    <div class="modal-body">
-        <p>Eine neu generierte Adresse, die noch nicht auf unseren Servern gespeichert ist. <span style="color:red;font-weight:bold;">Sofern der private Schlüssel nicht anderswo gespeichert ist, sollten keine Bitcoins an eine nicht synchronisierte Adressen gesendet werden, da diese nach dem Abmelden nicht wieder herstellbar ist.</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Zeigen Sie gespeicherte Adresse</button>
-            <button class="btn btn-primary" data-dismiss="modal">Schließen</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Schlüssel zusammenfügen</h3>
     </div>
+
     <div class="modal-body">
         <p>"Schlüssel zusammenfügen" bedeutet, dass alle verfügbaren Bitcoins in den Adressen auf eine andere transferiert werden. Bitte wählen Sie die gewünschte Ziel-Adresse aus (Kontostand <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Bitte warten ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Wiederherstellen Seeds Bitte warten ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1658,7 +1654,7 @@
                 <h3>Importazione della chiave privata Warning</h3>
             </div>
             <div class="modal-body">
-                <p><b>Mai importare una chiave privata da una fonte pubblica o non attendibili.</b> Ciò comprende portafogli cerebrali comuni, concorsi e le chiavi private acquistate. Invece vi consigliamo di spazzare la chiave, il che significa che per inviare tutti i fondi ad uno dei vostri indirizzi esistenti piuttosto che in realtà l&#39;aggiunta di un nuovo indirizzo per il vostro portafoglio.</p>
+                <p><b>Non importare una chiave privata da una fonte di pubblico o non attendibile.</b> Ciò include portafogli cerebrali comuni e le chiavi private acquistati. Invece si consiglia di spazzare la chiave, il che significa che per inviare tutti i fondi a uno dei tuoi indirizzi esistenti piuttosto che in realtà l&#39;aggiunta di un nuovo indirizzo per il vostro portafoglio.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Indirizzo Non Salvato</h3>
-    </div>
-    <div class="modal-body">
-        <p>Questo Indirizzo non è ancora stato salvato sui nostri server e lo perderai appena ti allontani da questa pagina. <span style="color:red;font-weight:bold;">A meno che la chiave privata viene salvata altrove, tutte le monete inviate a non sincronizzate indirizzi saranno definitivamente persi dopo il logout</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Mostra non salvati Indirizzo</button>
-            <button class="btn btn-primary" data-dismiss="modal">Chiudi</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Raccogli le Chiavi</h3>
     </div>
+
     <div class="modal-body">
         <p>Raccogliere vuol dire muovere verso un altro indirizzo tutti i fondi disponibili in uno o più indirizzi. Per favore scegli un indirizzo nel quale vuoi raccogliere gli indirizzi selezionati (Saldo <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>La preghiamo di attendere ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Recupero Semi Please Wait ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

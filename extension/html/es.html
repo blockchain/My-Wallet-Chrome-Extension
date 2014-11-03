@@ -491,13 +491,9 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1660,7 +1656,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
                 <h3>Importar clave privada Advertencia</h3>
             </div>
             <div class="modal-body">
-                <p><b>Nunca importar una clave privada de una fuente pública o no es de confianza.</b> Esto incluye carteras cerebrales comunes, concursos y claves privadas comprados. En su lugar se recomienda para barrer la llave, lo que significa que para enviar todos los fondos a una de las direcciones existentes en lugar de tener que añadir una nueva dirección a su cartera.</p>
+                <p><b>Nunca importar una clave privada de una fuente pública o no es de confianza.</b> Esto incluye carteras cerebrales comunes y claves privadas comprados. En su lugar se recomienda barrer la llave, lo que significa para enviar todos los fondos a una de las direcciones existentes en lugar de tener que añadir una nueva dirección a su cartera.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1976,23 +1972,6 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Dirección no guardada</h3>
-    </div>
-    <div class="modal-body">
-        <p>Esta dirección aún no se ha guardado en nuestros servidores y podría perderse al salir de esta página. <span style="color:red;font-weight:bold;">A menos que la clave privada se guarda en otra parte cualquier moneda enviadas a des-sincronizados direcciones se perderán permanentemente después de cerrar la sesión</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Mostrar Unsaved Dirección</button>
-            <button class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2046,6 +2025,7 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Barrer Claves</h3>
     </div>
+
     <div class="modal-body">
         <p>Barrer significa mover todos los fondos de una o más direcciones a otra dirección destino. Elige, por favor, una dirección a la que barrer el saldo de las direcciones seleccionadas (Balance <span class="balance"></span>).</p>
 
@@ -2064,6 +2044,23 @@ Puedes cambiar la dívisa entre Bitcoin y tu moneda local fácilmente haciendo c
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Espere por favor ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Semillas Recuperación Por favor espere ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">

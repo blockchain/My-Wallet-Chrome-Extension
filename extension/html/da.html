@@ -489,13 +489,9 @@
 
             <div id="pairing_code" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <h3>Pairing Code Version 1 <small>Latest Android App</small></h3>
+                    <h3>Pairing Code Version 1 <small>Latest iPhone and Android App</small></h3>
 
                     <div id="pairing-code-v1" style="margin:20px"></div>
-
-                    <h3>Pairing Code Version 0 <small>iPhone App and Old Android</small></h3>
-
-                    <div id="pairing-code-v0" style="margin:20px"></div>
                 </div>
             </div>
         </div>
@@ -1456,7 +1452,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label pop" title="Offentlig Note" data-content="Tilføj en note til denne transaktion, som vil kunne ses på blockchain.info.">Offentlig Note:</label>
+            <label class="control-label pop" title="Offentlig Note" data-content="Tilføj en note til denne transaktion, der kan ses på blockchain.">Offentlig Note:</label>
 
             <div class="controls">
                 <textarea name="public-note" placeholder="Denne besked vil blive permanent indlejret i blokkæden. Alle kan læse den." style="width:100%;box-sizing:border-box;height:75px"></textarea>
@@ -1658,7 +1654,7 @@
                 <h3>Importer privat nøgle Warning</h3>
             </div>
             <div class="modal-body">
-                <p><b>Aldrig importere en privat nøgle fra en offentlig eller tillid kilde.</b> Dette omfatter fælles hjerne tegnebøger, konkurrencer og indkøbte private nøgler. I stedet anbefaler vi at feje nøgle, som betyder at sende alle midler til en af ​​dine eksisterende adresser i stedet rent faktisk at tilføje en ny adresse til din tegnebog.</p>
+                <p><b>Aldrig importere en privat nøgle fra en offentlig eller untrusted kilde.</b> Dette omfatter fælles hjerne tegnebøger og indkøbte private nøgler. I stedet anbefaler vi at feje nøgle, hvilket betyder, at sende alle de penge til en af ​​dine eksisterende adresser i stedet for rent faktisk at tilføje en ny adresse til din tegnebog.</p>
                 <h4 align="center" class="address padded"></h4>
             </div>
             <div class="modal-footer">
@@ -1974,23 +1970,6 @@
     </div>
 </div>
 
-<div id="not-synced-warning-modal" class="modal hide">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 style="color:red;">Adresse er ikke gemt</h3>
-    </div>
-    <div class="modal-body">
-        <p>Denne adresse er ikke blevet gemt på vores servere endnu, og går måske tabt når du forlader denne side. <span style="color:red;font-weight:bold;">Medmindre den private nøgle gemmes andetsteds nogen mønter sendt til un-synkroniserede adresser vil blive tabt efter logout</span></p>
-    </div>
-
-    <div class="modal-footer">
-        <div class="pull-right">
-            <button class="btn btn-danger">Vis Ikke-gemt adresse</button>
-            <button class="btn btn-primary" data-dismiss="modal">Luk</button>
-        </div>
-    </div>
-</div>
-
 <div id="watch-only-copy-warning-modal" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -2044,6 +2023,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Sweep nøgler</h3>
     </div>
+
     <div class="modal-body">
         <p>Sweep betyder at flytte alle disponible midler i en eller flere adresser til en anden adresse. Vælg en adresse, hvortil du ønsker at overføre midlerne fra de udvalgte adresser (Balance <span class="balance"></span>).</p>
 
@@ -2062,6 +2042,23 @@
     </div>
 </div>
 
+<div id="sharedcoin-recover-progress-modal" class="modal hide" style="max-width:400px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Vent venligst ...</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <p align="center">
+            Gendannelse Frø Vent venligst ...
+        </p>
+
+        <div class="progress progress-info">
+            <div class="bar" style="width: 0%;"></div>
+        </div>
+    </div>
+</div>
 
 <div id="sharedcoin-modal" class="modal hide">
     <div class="modal-header">
