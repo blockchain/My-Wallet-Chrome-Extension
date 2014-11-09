@@ -1,4 +1,4 @@
-#!/bin/bash          
+#!/bin/bash
 
 cd ./extension
 
@@ -14,7 +14,7 @@ if $DOWNLOAD_HTML ; then
 	for i in "${array[@]}"
 	do
 		echo $i
-		wget --no-check-certificate -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&enable_partners=false&no_header=true&type=chrome"
+		wget -O "./html/$i.html" "https://blockchain.info/$i/wallet/extension-template?resource_relative=false&enable_partners=false&no_header=true&type=chrome"
 	done
 fi
 
