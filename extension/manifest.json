@@ -5,7 +5,7 @@
     "description": "A Bitcoin wallet which runs in your browser.",
     "container" : "GOOGLE_DRIVE",
     "api_console_project_id" : "789483738880",
-    "version": "3.1.30",
+    "version": "3.1.31",
     "offline_enabled": true,
     "icons": {
         "16": "favicon.ico",
