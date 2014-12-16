@@ -3,7 +3,7 @@
 cd ./extension
 
 WEB_CONTENT="$HOME/Sites/blockchain.info/website/WebContent"
-DOWNLOAD_HTML=true;
+DOWNLOAD_HTML=false;
 RESOURCE_DIR="$WEB_CONTENT/Resources"
 
 if $DOWNLOAD_HTML ; then
